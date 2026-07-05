@@ -1,0 +1,114 @@
+@import "tailwindcss";
+
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=JetBrains+Mono:wght@400;500&display=swap');
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-display: "Plus Jakarta Sans", "Inter", sans-serif;
+  --font-serif: "Playfair Display", serif;
+  --font-mono: "JetBrains Mono", monospace;
+
+  --color-charcoal: #1D1D1D;
+  --color-offwhite: #FAFAF8;
+  --color-sand: #D8C3A5;
+  --color-concrete: #E7E7E7;
+  --color-forest: #314D3D;
+  
+  --animate-fade-in: fade-in 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  --animate-slide-up: slide-up 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  --animate-slide-down: slide-down 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slide-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slide-down {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Custom Base Styles for Premium Editorial Touch */
+html {
+  scroll-behavior: smooth;
+  font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  background-color: #FAFAF8;
+  color: #1D1D1D;
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background-color: #D8C3A5;
+  color: #1D1D1D;
+}
+
+/* Hide default map frame borders and format premium layouts */
+iframe {
+  border: 0;
+}
+
+/* Custom fine scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #FAFAF8;
+}
+::-webkit-scrollbar-thumb {
+  background: #D8C3A5;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #1D1D1D;
+}
+
+/* Utility classes for subtle animations */
+.animate-delay-100 {
+  animation-delay: 100ms;
+}
+.animate-delay-200 {
+  animation-delay: 200ms;
+}
+.animate-delay-300 {
+  animation-delay: 300ms;
+}
+.animate-delay-400 {
+  animation-delay: 400ms;
+}
+
+/* Form input styling for elegant floating effects */
+.floating-input:focus ~ label,
+.floating-input:not(:placeholder-shown) ~ label {
+  transform: translateY(-1.25rem) scale(0.85);
+  color: #1D1D1D;
+}
+
+/* Subtle image-hover overlay zoom */
+.hover-zoom-container {
+  overflow: hidden;
+}
+.hover-zoom-image {
+  transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.hover-zoom-container:hover .hover-zoom-image {
+  transform: scale(1.05);
+}
