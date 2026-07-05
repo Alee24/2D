@@ -3,6 +3,8 @@ import { useRouter } from '../context/NavigationContext';
 import { communityEvents } from '../data/coworkingData';
 import { Calendar, Users, MapPin, Download, BookOpen, Clock, Heart, Award, ArrowRight } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
+import { SEO } from '../components/SEO';
+import { Breadcrumbs } from '../components/Breadcrumbs';
 
 export const Community: React.FC = () => {
   const { navigate } = useRouter();
@@ -42,6 +44,11 @@ export const Community: React.FC = () => {
 
   return (
     <div className="bg-offwhite text-charcoal pt-20 animate-fade-in">
+      <SEO 
+        title="Our Coworking Community & Events"
+        description="Join a vibrant community of innovators, founders, and creators in Nairobi. Browse our calendar of weekly networking events, workshops, and business growth resources."
+      />
+      <Breadcrumbs />
       {/* Editorial Hero */}
       <section className="bg-charcoal text-white py-24 lg:py-32 relative overflow-hidden">
         <div className="absolute inset-0 opacity-10">

@@ -1,10 +1,29 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useRouter } from '../context/NavigationContext';
 import { locations, faqs } from '../data/coworkingData';
+import { SEO } from '../components/SEO';
+import { Breadcrumbs } from '../components/Breadcrumbs';
 import { 
   MapPin, Phone, Mail, Check, Compass, Sliders, Users, 
-  ArrowLeft, ArrowRight, ShieldCheck, Heart, Map, HelpCircle, ChevronDown 
+  ArrowLeft, ArrowRight, ShieldCheck, Heart, Map, HelpCircle, ChevronDown,
+  PenTool, Tv, Presentation, Coffee, Wifi, Utensils, Armchair, Lock, Fingerprint, Wind,
+  LucideIcon
 } from 'lucide-react';
+
+const iconMap: Record<string, LucideIcon> = {
+  PenTool,
+  Tv,
+  Presentation,
+  Coffee,
+  Wifi,
+  Utensils,
+  Armchair,
+  Lock,
+  Fingerprint,
+  Wind,
+  Users,
+  Sliders,
+};
 
 export const LocationDetail: React.FC = () => {
   const { currentPath, navigate } = useRouter();
@@ -18,6 +37,11 @@ export const LocationDetail: React.FC = () => {
   // Gallery viewer state
   const [activeImage, setActiveImage] = useState(location.image);
 
+  // Sync active image when location changes
+  useEffect(() => {
+    setActiveImage(location.image);
+  }, [location.image]);
+
   // FAQ accordion state
   const [openFaq, setOpenFaq] = useState<number | null>(null);
 
@@ -25,24 +49,21 @@ export const LocationDetail: React.FC = () => {
     setOpenFaq(openFaq === idx ? null : idx);
   };
 
+  const scrollToAvailability = () => {
+    const element = document.getElementById('availability-table');
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <div className="bg-offwhite text-charcoal pt-20 animate-fade-in">
-      {/* Editorial Navigation breadcrumb */}
-      <div className="bg-white border-b border-concrete py-4">
-        <div className="max-w-[1440px] mx-auto px-6 lg:px-12 flex items-center justify-between">
-          <button 
-            onClick={() => navigate('/locations')}
-            className="text-xs font-semibold uppercase tracking-wider text-charcoal/60 hover:text-charcoal flex items-center gap-2 group cursor-pointer"
-          >
-            <ArrowLeft className="w-4 h-4 transition-transform group-hover:-translate-x-1" /> Back to All Locations
-          </button>
-          <div className="flex items-center gap-2 font-sans text-xs text-charcoal/40">
-            <span>Locations</span>
-            <span>/</span>
-            <span className="text-charcoal/80 font-medium">{location.name}</span>
-          </div>
-        </div>
-      </div>
+      <SEO 
+        title={`${location.name} Coworking & Private Offices`}
+        description={`Explore SecondDesk ${location.name} in Nairobi. Premium boutique workspace featuring flexible hot desks, dedicated permanent desks, private office suites, and state-of-the-art meeting rooms. Rates starting from ${location.startingPrice}.`}
+        ogImage={location.image}
+      />
+      <Breadcrumbs />
 
       {/* Hero Header */}
       <section className="relative h-[60vh] min-h-[400px] flex items-end bg-charcoal">
@@ -78,7 +99,7 @@ export const LocationDetail: React.FC = () => {
         <div className="lg:col-span-8 space-y-16">
           
           {/* 1. Availability Table */}
-          <div className="space-y-6">
+          <div id="availability-table" className="space-y-6 scroll-mt-24">
             <h2 className="font-display font-light text-2xl sm:text-3xl tracking-tight text-charcoal">
               Workspace Availability
             </h2>
@@ -104,19 +125,109 @@ export const LocationDetail: React.FC = () => {
                       <span className="font-mono text-[10px] text-charcoal/40 block uppercase">Standard Rate</span>
                       <span className="font-display font-medium text-xs text-charcoal">{row.rate}</span>
                     </div>
-                    <div className="text-right">
-                      <span className="font-mono text-[10px] text-charcoal/40 block uppercase">Status</span>
-                      <span className={`inline-block text-[10px] font-sans px-2.5 py-0.5 font-semibold ${
-                        row.status.includes('Remaining') || row.status.includes('Low') 
-                          ? 'bg-amber-50 text-amber-800 border border-amber-200' 
-                          : 'bg-emerald-50 text-emerald-800 border border-emerald-200'
-                      }`}>
-                        {row.status}
-                      </span>
+                    <div className="flex items-center justify-between sm:justify-end gap-6">
+                      <div className="text-right">
+                        <span className="font-mono text-[10px] text-charcoal/40 block uppercase">Status</span>
+                        <span className={`inline-block text-[10px] font-sans px-2.5 py-0.5 font-semibold ${
+                          row.status.includes('Remaining') || row.status.includes('Low') 
+                            ? 'bg-amber-50 text-amber-800 border border-amber-200' 
+                            : 'bg-emerald-50 text-emerald-800 border border-emerald-200'
+                        }`}>
+                          {row.status}
+                        </span>
+                      </div>
                     </div>
                   </div>
                 </div>
               ))}
+            </div>
+          </div>
+
+          {/* Solutions designed for all your needs */}
+          <div className="space-y-12 pt-8 border-t border-concrete">
+            <div className="max-w-xl">
+              <span className="font-sans font-bold text-[10px] tracking-widest uppercase text-sand block mb-2">Bespoke Workspace Environments</span>
+              <h2 className="font-display font-light text-3xl sm:text-4xl text-charcoal tracking-tight leading-tight">
+                Solutions designed for all your needs
+              </h2>
+            </div>
+
+            <div className="space-y-20">
+              {/* Meeting Rooms Showcase */}
+              {location.meetingRoomDetails && (
+                <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
+                  {/* Left: Image */}
+                  <div className="md:col-span-6 aspect-4/3 overflow-hidden border border-concrete hover-zoom-container h-full max-h-[350px]">
+                    <img 
+                      src={location.meetingRoomDetails.image} 
+                      alt="Meeting Room" 
+                      className="w-full h-full object-cover hover-zoom-image"
+                      referrerPolicy="no-referrer"
+                    />
+                  </div>
+                  {/* Right: Details */}
+                  <div className="md:col-span-6 space-y-6">
+                    <h3 className="font-display font-semibold text-2xl text-charcoal">
+                      {location.meetingRoomDetails.title}
+                    </h3>
+                    <div className="space-y-3.5">
+                      {location.meetingRoomDetails.features.map((feat, idx) => {
+                        const IconComp = iconMap[feat.iconName] || Check;
+                        return (
+                          <div key={idx} className="flex items-center gap-3 text-charcoal/85">
+                            <IconComp className="w-5 h-5 text-charcoal/70 shrink-0" />
+                            <span className="font-sans text-xs sm:text-sm font-light leading-snug">{feat.text}</span>
+                          </div>
+                        );
+                      })}
+                    </div>
+                    <button 
+                      onClick={scrollToAvailability}
+                      className="bg-sand border border-sand hover:bg-charcoal hover:border-charcoal hover:text-white text-charcoal font-sans text-[10px] font-bold uppercase tracking-widest px-6 py-3.5 transition-all cursor-pointer shadow-sm text-center inline-block"
+                    >
+                      See Available Options
+                    </button>
+                  </div>
+                </div>
+              )}
+
+              {/* Private Offices Showcase */}
+              {location.privateOfficeDetails && (
+                <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-center pt-4">
+                  {/* Left: Details */}
+                  <div className="md:col-span-6 order-2 md:order-1 space-y-6">
+                    <h3 className="font-display font-semibold text-2xl text-charcoal">
+                      {location.privateOfficeDetails.title}
+                    </h3>
+                    <div className="space-y-3.5">
+                      {location.privateOfficeDetails.features.map((feat, idx) => {
+                        const IconComp = iconMap[feat.iconName] || Check;
+                        return (
+                          <div key={idx} className="flex items-center gap-3 text-charcoal/85">
+                            <IconComp className="w-5 h-5 text-charcoal/70 shrink-0" />
+                            <span className="font-sans text-xs sm:text-sm font-light leading-snug">{feat.text}</span>
+                          </div>
+                        );
+                      })}
+                    </div>
+                    <button 
+                      onClick={scrollToAvailability}
+                      className="bg-sand border border-sand hover:bg-charcoal hover:border-charcoal hover:text-white text-charcoal font-sans text-[10px] font-bold uppercase tracking-widest px-6 py-3.5 transition-all cursor-pointer shadow-sm text-center inline-block"
+                    >
+                      See Available Options
+                    </button>
+                  </div>
+                  {/* Right: Image */}
+                  <div className="md:col-span-6 order-1 md:order-2 aspect-4/3 overflow-hidden border border-concrete hover-zoom-container h-full max-h-[350px]">
+                    <img 
+                      src={location.privateOfficeDetails.image} 
+                      alt="Private Office" 
+                      className="w-full h-full object-cover hover-zoom-image"
+                      referrerPolicy="no-referrer"
+                    />
+                  </div>
+                </div>
+              )}
             </div>
           </div>
 

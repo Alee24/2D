@@ -3,6 +3,8 @@ import { useRouter } from '../context/NavigationContext';
 import { blogPosts } from '../data/coworkingData';
 import { BlogPost } from '../types';
 import { Search, Calendar, Clock, BookOpen, ArrowRight, X, Mail } from 'lucide-react';
+import { SEO } from '../components/SEO';
+import { Breadcrumbs } from '../components/Breadcrumbs';
 
 export const Insights: React.FC = () => {
   const { navigate } = useRouter();
@@ -39,6 +41,14 @@ export const Insights: React.FC = () => {
 
   return (
     <div className="bg-offwhite text-charcoal pt-20 animate-fade-in relative min-h-screen">
+      <SEO 
+        title="Workspace Insights & Business Trends"
+        description="Read the latest insights on hybrid work models, business trends in East Africa, productivity tips, and updates from the SecondDesk team."
+      />
+      <Breadcrumbs 
+        activeSubItem={activePost ? activePost.title : undefined}
+        onClearSubItem={() => setActivePost(null)}
+      />
       {/* Editorial Hero */}
       <section className="bg-charcoal text-white py-20 lg:py-24 relative overflow-hidden">
         <div className="max-w-[1440px] mx-auto px-6 lg:px-12 relative z-10">

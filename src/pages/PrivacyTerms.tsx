@@ -1,6 +1,8 @@
 import React from 'react';
 import { useRouter } from '../context/NavigationContext';
 import { ArrowLeft, ShieldAlert, FileText, CheckCircle } from 'lucide-react';
+import { SEO } from '../components/SEO';
+import { Breadcrumbs } from '../components/Breadcrumbs';
 
 export const PrivacyTerms: React.FC = () => {
   const { navigate, currentPath } = useRouter();
@@ -8,22 +10,15 @@ export const PrivacyTerms: React.FC = () => {
 
   return (
     <div className="bg-offwhite text-charcoal pt-20 animate-fade-in min-h-screen">
-      {/* Editorial Navigation breadcrumb */}
-      <div className="bg-white border-b border-concrete py-4">
-        <div className="max-w-[1440px] mx-auto px-6 lg:px-12 flex items-center justify-between">
-          <button 
-            onClick={() => navigate('/')}
-            className="text-xs font-semibold uppercase tracking-wider text-charcoal/60 hover:text-charcoal flex items-center gap-2 group cursor-pointer"
-          >
-            <ArrowLeft className="w-4 h-4 transition-transform group-hover:-translate-x-1" /> Back to Home
-          </button>
-          <div className="flex items-center gap-2 font-sans text-xs text-charcoal/40">
-            <span>Legal</span>
-            <span>/</span>
-            <span className="text-charcoal/80 font-medium">{isPrivacy ? 'Privacy Policy' : 'Terms of Service'}</span>
-          </div>
-        </div>
-      </div>
+      <SEO 
+        title={isPrivacy ? 'Privacy Policy & Data Ethics' : 'Terms & Conditions of Membership'}
+        description={
+          isPrivacy 
+            ? 'Read the privacy policy, cookie policy, and data protection guidelines for SecondDesk premium workspace members.' 
+            : 'Review the terms and conditions of membership, workspace use rules, and service guidelines for SecondDesk.'
+        }
+      />
+      <Breadcrumbs />
 
       <section className="py-20 max-w-4xl mx-auto px-6 lg:px-12 space-y-12">
         <div className="space-y-4">

@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { useRouter } from '../context/NavigationContext';
 import { locations } from '../data/coworkingData';
 import { MapPin, ArrowRight, Layers, DollarSign, Phone, Mail, Navigation } from 'lucide-react';
+import { SEO } from '../components/SEO';
+import { Breadcrumbs } from '../components/Breadcrumbs';
 
 export const Locations: React.FC = () => {
   const { navigate } = useRouter();
@@ -13,6 +15,11 @@ export const Locations: React.FC = () => {
 
   return (
     <div className="bg-offwhite text-charcoal pt-20 animate-fade-in">
+      <SEO 
+        title="Premium Coworking & Private Office Locations in Nairobi"
+        description="Explore SecondDesk's network of premium workspace locations in Westlands, Kilimani, Karen, Upper Hill, and Nairobi CBD. Find your perfect workspace setup."
+      />
+      <Breadcrumbs />
       {/* Editorial Hero */}
       <section className="bg-charcoal text-white py-24 lg:py-32 relative overflow-hidden">
         {/* Subtle background graphics */}

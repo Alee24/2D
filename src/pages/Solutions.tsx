@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { useRouter } from '../context/NavigationContext';
 import { Check, HelpCircle, Lightbulb, Compass, Award, ArrowRight, ShieldCheck, MessageSquare } from 'lucide-react';
+import { SEO } from '../components/SEO';
+import { Breadcrumbs } from '../components/Breadcrumbs';
 
 interface SolutionDetails {
   title: string;
@@ -133,6 +135,11 @@ export const Solutions: React.FC = () => {
 
   return (
     <div className="bg-offwhite text-charcoal pt-20 animate-fade-in">
+      <SEO 
+        title="Tailored Workspace Solutions for Teams & Solopreneurs"
+        description="Discover tailored coworking and private office solutions designed for freelancers, remote teams, agencies, consultants, and law firms in Nairobi."
+      />
+      <Breadcrumbs />
       {/* Editorial Hero */}
       <section className="bg-charcoal text-white py-24 lg:py-32 relative overflow-hidden">
         <div className="absolute inset-0 opacity-5">

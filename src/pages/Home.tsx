@@ -1,16 +1,37 @@
 import React, { useState, useEffect } from 'react';
 import { useRouter } from '../context/NavigationContext';
 import { workspaceCategories, locations, testimonials } from '../data/coworkingData';
+import { SEO } from '../components/SEO';
 import { 
   ArrowRight, Check, Compass, Users, Sparkles, MapPin, 
   Wifi, Shield, Coffee, FileText, Smartphone, Calendar, 
-  ChevronLeft, ChevronRight, HelpCircle, Activity, Award
+  ChevronLeft, ChevronRight, HelpCircle, Activity, Award,
+  Download
 } from 'lucide-react';
+import { generateBrochurePDF } from '../utils/pdfGenerator';
 import { motion, AnimatePresence } from 'motion/react';
 
 export const Home: React.FC = () => {
   const { navigate } = useRouter();
   const [activeTestimonial, setActiveTestimonial] = useState(0);
+  const [isDownloading, setIsDownloading] = useState(false);
+  const [downloadSuccess, setDownloadSuccess] = useState(false);
+
+  const handleDownloadBrochure = () => {
+    setIsDownloading(true);
+    setDownloadSuccess(false);
+    setTimeout(() => {
+      try {
+        generateBrochurePDF();
+        setDownloadSuccess(true);
+      } catch (err) {
+        console.error('Failed to generate PDF brochure', err);
+      } finally {
+        setIsDownloading(false);
+        setTimeout(() => setDownloadSuccess(false), 4000);
+      }
+    }, 1200);
+  };
 
   // Statistics counters simulation
   const [stats, setStats] = useState({
@@ -80,6 +101,10 @@ export const Home: React.FC = () => {
 
   return (
     <div className="bg-offwhite text-charcoal animate-fade-in">
+      <SEO 
+        title="Bespoke Coworking & Private Offices in Nairobi"
+        description="Experience premier, design-led coworking spaces, executive private offices, and state-of-the-art meeting rooms across Nairobi's most prestigious districts."
+      />
       {/* 1. HERO SECTION */}
       <section className="relative h-screen flex items-center justify-center overflow-hidden bg-charcoal">
         {/* Parallax background image */}
@@ -487,6 +512,114 @@ export const Home: React.FC = () => {
                 </div>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 8.5 PREMIUM BROCHURE CTA SECTION */}
+      <section className="py-24 bg-offwhite border-b border-concrete relative overflow-hidden">
+        {/* Subtle geometric line layout */}
+        <div className="absolute right-0 top-0 w-80 h-80 bg-sand/10 rounded-full blur-3xl pointer-events-none"></div>
+        <div className="absolute left-10 bottom-0 w-[1px] h-32 bg-concrete"></div>
+        
+        <div className="max-w-[1440px] mx-auto px-6 lg:px-12 relative z-10">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            {/* Left Column: Context & Detail */}
+            <div className="lg:col-span-7 space-y-6">
+              <span className="font-sans font-bold text-xs tracking-widest uppercase text-sand block">
+                Portfolio & Floorplans
+              </span>
+              <h2 className="font-display font-light text-3xl sm:text-5xl text-charcoal tracking-tight leading-[1.1]">
+                Download Our <span className="font-serif italic text-charcoal/60">Premium Brochure.</span>
+              </h2>
+              <p className="font-sans text-sm text-charcoal/70 leading-relaxed max-w-xl">
+                Get an instant, high-fidelity corporate overview of SecondDesk's workspace designs and configurations. Our comprehensive A4 portfolio booklet details architectural layouts, secure fiber infrastructure setups, executive boardroom pricing packages, and customized enterprise branding models for your teams in Westlands, Kilimani, Karen, Upper Hill, and CBD.
+              </p>
+              
+              {/* Premium Specs list */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4">
+                {[
+                  'Architectural Floorplans & Specs',
+                  'Fibre Uplink & redundant power failovers',
+                  'Custom corporate layouts & branding',
+                  'Premium tea & single-origin coffee menu',
+                  'Workspace dimension & capacity metrics',
+                  'Dedicated executive support services'
+                ].map((spec, i) => (
+                  <div key={i} className="flex items-center gap-2.5">
+                    <div className="w-1.5 h-1.5 bg-sand rounded-full"></div>
+                    <span className="font-sans text-xs text-charcoal/80 font-light">{spec}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Right Column: Interactive CTA Card */}
+            <div className="lg:col-span-5">
+              <div className="bg-white border border-concrete p-8 sm:p-10 shadow-sm relative">
+                {/* Minimal design card border */}
+                <div className="absolute top-2 left-2 right-2 bottom-2 border border-concrete/30 pointer-events-none"></div>
+                
+                <div className="space-y-6 relative z-10">
+                  <div className="flex items-center justify-between border-b border-concrete pb-4">
+                    <div>
+                      <span className="font-mono text-[9px] uppercase tracking-widest text-sand font-bold block mb-1">Document Format</span>
+                      <span className="font-sans text-xs font-bold text-charcoal">High-Quality Vector PDF</span>
+                    </div>
+                    <div className="text-right">
+                      <span className="font-mono text-[9px] uppercase tracking-widest text-white/0 block mb-1">Pages</span>
+                      <span className="font-mono text-[10px] font-bold bg-charcoal text-white px-2 py-0.5">3 PAGES</span>
+                    </div>
+                  </div>
+
+                  <p className="font-sans text-xs text-charcoal/60 leading-relaxed">
+                    Designed for real estate heads, corporate directors, remote company managers, and founders looking to establish premier presences in Kenya.
+                  </p>
+
+                  {/* Dynamic feedback CTA button */}
+                  <div className="pt-2">
+                    <button
+                      onClick={handleDownloadBrochure}
+                      disabled={isDownloading}
+                      className={`w-full font-sans text-xs font-bold uppercase tracking-widest px-6 py-4.5 transition-all flex items-center justify-center gap-3 cursor-pointer shadow-md ${
+                        downloadSuccess 
+                          ? 'bg-emerald-600 border border-emerald-600 text-white' 
+                          : isDownloading 
+                            ? 'bg-concrete border border-concrete text-charcoal/40 cursor-wait' 
+                            : 'bg-charcoal border border-charcoal hover:bg-sand hover:border-sand text-white hover:text-charcoal'
+                      }`}
+                    >
+                      {isDownloading ? (
+                        <>
+                          <div className="w-4 h-4 border-2 border-charcoal/20 border-t-charcoal animate-spin rounded-full"></div>
+                          <span>Generating Portfolio...</span>
+                        </>
+                      ) : downloadSuccess ? (
+                        <>
+                          <Check className="w-4 h-4" />
+                          <span>Brochure Downloaded!</span>
+                        </>
+                      ) : (
+                        <>
+                          <Download className="w-4 h-4" />
+                          <span>Download Brochure</span>
+                        </>
+                      )}
+                    </button>
+                  </div>
+
+                  {downloadSuccess && (
+                    <p className="text-center font-sans text-[11px] text-emerald-600 animate-fade-in font-medium">
+                      Check your download folder for "SecondDesk_Premium_Workspace_Brochure.pdf"!
+                    </p>
+                  )}
+
+                  <p className="text-center font-mono text-[9px] text-charcoal/40 uppercase tracking-widest">
+                    Developed by KKDES
+                  </p>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>

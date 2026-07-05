@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { useRouter } from '../context/NavigationContext';
 import { Mail, ArrowUp, Linkedin, Instagram, Facebook, ArrowRight } from 'lucide-react';
+import { generateBrochurePDF } from '../utils/pdfGenerator';
+import { Logo } from './Logo';
 
 export const Footer: React.FC = () => {
   const { navigate } = useRouter();
@@ -35,9 +37,7 @@ export const Footer: React.FC = () => {
           {/* Brand Info */}
           <div className="lg:col-span-4">
             <div className="flex items-center gap-2 mb-6 cursor-pointer" onClick={() => navigate('/')}>
-              <div className="w-8 h-8 flex items-center justify-center border border-sand bg-sand text-charcoal font-display font-extrabold text-sm tracking-wider">
-                SD
-              </div>
+              <Logo size={40} light={true} />
               <span className="font-display font-semibold tracking-[0.2em] text-lg uppercase text-white">
                 Second Desk
               </span>
@@ -134,10 +134,17 @@ export const Footer: React.FC = () => {
                 { name: 'Careers', path: '/about' },
                 { name: 'Book a Tour', path: '/book-tour' },
                 { name: 'Contact Sales', path: '/contact' },
+                { name: 'Download Brochure', path: 'download_pdf_brochure' },
               ].map((link) => (
                 <li key={link.name}>
                   <button
-                    onClick={() => navigate(link.path)}
+                    onClick={() => {
+                      if (link.path === 'download_pdf_brochure') {
+                        generateBrochurePDF();
+                      } else {
+                        navigate(link.path);
+                      }
+                    }}
                     className="font-sans text-sm text-white/60 hover:text-white transition-colors cursor-pointer text-left"
                   >
                     {link.name}
@@ -184,6 +191,9 @@ export const Footer: React.FC = () => {
           <div className="flex flex-wrap items-center gap-6">
             <span className="font-sans text-xs text-white/40">
               © {new Date().getFullYear()} Second Desk Ltd. All Rights Reserved.
+            </span>
+            <span className="font-sans text-xs text-white/40">
+              Developed by <a href="https://wa.me/254724454757" target="_blank" rel="noreferrer" className="text-sand/90 underline hover:text-white transition-colors">KKDES</a>
             </span>
             <button
               onClick={() => navigate('/privacy')}

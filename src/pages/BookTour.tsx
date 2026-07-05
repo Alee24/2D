@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { useRouter } from '../context/NavigationContext';
 import { locations } from '../data/coworkingData';
 import { MapPin, Calendar, Users, Check, Clock, Phone, Mail, Award, ArrowLeft } from 'lucide-react';
+import { SEO } from '../components/SEO';
+import { Breadcrumbs } from '../components/Breadcrumbs';
 
 export const BookTour: React.FC = () => {
   const { navigate } = useRouter();
@@ -33,6 +35,11 @@ export const BookTour: React.FC = () => {
 
   return (
     <div className="bg-offwhite text-charcoal pt-20 animate-fade-in min-h-screen">
+      <SEO 
+        title="Schedule a Private Tour | SecondDesk Nairobi"
+        description="Book a personalized tour of our boutique coworking and office spaces in Westlands, Karen, Kilimani, Upper Hill, or CBD."
+      />
+      <Breadcrumbs />
       {/* Editorial Hero */}
       <section className="bg-charcoal text-white py-20 lg:py-24 relative overflow-hidden">
         <div className="absolute inset-0 opacity-15">

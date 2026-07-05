@@ -1,11 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import { useRouter } from '../context/NavigationContext';
 import { workspaceCategories, locations } from '../data/coworkingData';
-import { Menu, X, Search, Calendar, MapPin, Layers, ArrowRight, Compass, ShieldAlert } from 'lucide-react';
+import { Menu, X, Search, Calendar, MapPin, Layers, ArrowRight, Compass, ShieldAlert, Download, Phone, Instagram, MessageSquare, Sun, Moon } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
+import { Logo } from './Logo';
+import { generateBrochurePDF } from '../utils/pdfGenerator';
+import { useTheme } from '../context/ThemeContext';
 
 export const Header: React.FC = () => {
   const { currentPath, navigate, searchQuery, setSearchQuery } = useRouter();
+  const { theme, toggleTheme } = useTheme();
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeMegaMenu, setActiveMegaMenu] = useState<string | null>(null);
@@ -86,11 +90,7 @@ export const Header: React.FC = () => {
             onClick={() => navigate('/')} 
             className="flex items-center gap-2 cursor-pointer group"
           >
-            <div className={`w-8 h-8 flex items-center justify-center border font-display font-extrabold text-sm tracking-wider transition-colors duration-300 ${
-              isScrolled || mobileMenuOpen || activeMegaMenu ? 'border-charcoal bg-charcoal text-white' : 'border-white bg-transparent text-white'
-            }`}>
-              SD
-            </div>
+            <Logo size={40} light={!(isScrolled || mobileMenuOpen || activeMegaMenu)} />
             <span className="font-display font-semibold tracking-[0.2em] text-lg uppercase">
               Second Desk
             </span>
@@ -133,6 +133,17 @@ export const Header: React.FC = () => {
 
           {/* Desktop Call To Actions & Tools */}
           <div className="hidden lg:flex items-center space-x-6">
+            {/* Theme Switcher Toggle */}
+            <button
+              onClick={toggleTheme}
+              className={`p-2 transition-colors duration-200 cursor-pointer ${
+                isScrolled || activeMegaMenu ? 'text-charcoal hover:text-sand' : 'text-white hover:text-sand'
+              }`}
+              aria-label="Toggle theme mode"
+            >
+              {theme === 'dark' ? <Sun className="w-5 h-5 text-sand" /> : <Moon className="w-5 h-5" />}
+            </button>
+
             {/* Search Trigger */}
             <button
               onClick={() => setShowSearchModal(true)}
@@ -171,6 +182,17 @@ export const Header: React.FC = () => {
 
           {/* Mobile Right Controls */}
           <div className="flex items-center space-x-4 lg:hidden">
+            {/* Theme Switcher Toggle */}
+            <button
+              onClick={toggleTheme}
+              className={`p-2 transition-colors duration-200 cursor-pointer ${
+                isScrolled || mobileMenuOpen ? 'text-charcoal hover:text-sand' : 'text-white hover:text-sand'
+              }`}
+              aria-label="Toggle theme mode"
+            >
+              {theme === 'dark' ? <Sun className="w-5 h-5 text-sand" /> : <Moon className="w-5 h-5" />}
+            </button>
+
             <button
               onClick={() => setShowSearchModal(true)}
               className={`p-2 transition-colors duration-200 cursor-pointer ${
@@ -328,55 +350,152 @@ export const Header: React.FC = () => {
         </AnimatePresence>
       </header>
 
-      {/* Mobile Drawer Overlay Links */}
+      {/* Mobile Side Drawer Navigation */}
       <AnimatePresence>
         {mobileMenuOpen && (
-          <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: 'auto' }}
-            exit={{ opacity: 0, height: 0 }}
-            className="fixed inset-x-0 top-20 bg-white border-b border-concrete shadow-xl z-40 lg:hidden overflow-hidden flex flex-col max-h-[calc(100vh-5rem)]"
-          >
-            <div className="p-6 space-y-4 overflow-y-auto">
-              <nav className="flex flex-col space-y-4">
-                {navLinks.map((link) => (
-                  <button
-                    key={link.label}
-                    onClick={() => {
-                      navigate(link.path);
-                      setMobileMenuOpen(false);
-                    }}
-                    className={`text-left font-sans text-base font-semibold tracking-wide py-1.5 border-b border-concrete/40 ${
-                      currentPath === link.path ? 'text-sand' : 'text-charcoal'
-                    }`}
-                  >
-                    {link.label}
-                  </button>
-                ))}
-              </nav>
+          <>
+            {/* Backdrop Overlay */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setMobileMenuOpen(false)}
+              className="fixed inset-0 bg-charcoal/40 backdrop-blur-md z-50 lg:hidden"
+            />
 
-              <div className="pt-6 flex flex-col space-y-3">
-                <button
+            {/* Sliding Panel */}
+            <motion.div
+              initial={{ x: '100%' }}
+              animate={{ x: 0 }}
+              exit={{ x: '100%' }}
+              transition={{ type: 'spring', damping: 25, stiffness: 200 }}
+              className="fixed right-0 top-0 bottom-0 w-full max-w-[360px] bg-white h-screen shadow-2xl z-50 overflow-hidden flex flex-col border-l border-concrete"
+            >
+              {/* Drawer Header */}
+              <div className="p-6 border-b border-concrete flex items-center justify-between">
+                <div 
                   onClick={() => {
-                    navigate('/book-tour');
+                    navigate('/');
                     setMobileMenuOpen(false);
-                  }}
-                  className="w-full bg-charcoal text-white font-sans text-xs font-bold uppercase tracking-wider py-3.5 text-center"
+                  }} 
+                  className="flex items-center gap-2 cursor-pointer"
                 >
-                  Book a Tour
-                </button>
-                <button
-                  onClick={() => {
-                    navigate('/workspace');
-                    setMobileMenuOpen(false);
-                  }}
-                  className="w-full border border-charcoal text-charcoal font-sans text-xs font-bold uppercase tracking-wider py-3.5 text-center"
-                >
-                  Get Started
-                </button>
+                  <Logo size={36} light={false} />
+                  <span className="font-display font-semibold tracking-[0.15em] text-base uppercase text-charcoal">
+                    Second Desk
+                  </span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <button
+                    onClick={toggleTheme}
+                    className="p-1.5 bg-concrete/40 hover:bg-concrete text-charcoal hover:text-sand rounded-full transition-colors cursor-pointer flex items-center justify-center"
+                    aria-label="Toggle theme"
+                  >
+                    {theme === 'dark' ? <Sun className="w-4 h-4 text-sand" /> : <Moon className="w-4 h-4" />}
+                  </button>
+                  <button
+                    onClick={() => setMobileMenuOpen(false)}
+                    className="p-1.5 bg-concrete/40 hover:bg-concrete text-charcoal hover:text-sand rounded-full transition-colors cursor-pointer"
+                    aria-label="Close menu"
+                  >
+                    <X className="w-5 h-5" />
+                  </button>
+                </div>
               </div>
-            </div>
-          </motion.div>
+
+              {/* Drawer Content */}
+              <div className="flex-1 overflow-y-auto p-6 space-y-8 flex flex-col justify-between">
+                <div className="space-y-6">
+                  {/* Quick Search Trigger */}
+                  <button
+                    onClick={() => {
+                      setMobileMenuOpen(false);
+                      setShowSearchModal(true);
+                    }}
+                    className="w-full flex items-center justify-between px-4 py-2.5 bg-concrete/30 text-charcoal/60 rounded-sm font-sans text-xs hover:bg-concrete/50 hover:text-charcoal transition-all text-left"
+                  >
+                    <span className="flex items-center gap-2">
+                      <Search className="w-4 h-4 text-charcoal/40" />
+                      Search workspaces or articles...
+                    </span>
+                    <span className="font-mono text-[9px] bg-charcoal/5 px-1.5 py-0.5">SEARCH</span>
+                  </button>
+
+                  {/* Navigation Links */}
+                  <nav className="flex flex-col space-y-1">
+                    <span className="font-mono text-[9px] uppercase tracking-widest text-charcoal/40 font-bold block mb-2">Navigation Menu</span>
+                    {navLinks.map((link) => {
+                      const isActive = currentPath === link.path || (link.path !== '/' && currentPath.startsWith(link.path));
+                      return (
+                        <button
+                          key={link.label}
+                          onClick={() => {
+                            navigate(link.path);
+                            setMobileMenuOpen(false);
+                          }}
+                          className={`w-full text-left font-sans text-sm font-medium tracking-wide py-2.5 px-3 flex items-center justify-between rounded-xs transition-all ${
+                            isActive 
+                              ? 'bg-sand/10 text-sand font-bold pl-4' 
+                              : 'text-charcoal hover:bg-concrete/20 hover:pl-4'
+                          }`}
+                        >
+                          <span>{link.label}</span>
+                          {isActive && <div className="w-1.5 h-1.5 bg-sand rounded-full" />}
+                        </button>
+                      );
+                    })}
+                  </nav>
+                </div>
+
+                <div className="space-y-6 border-t border-concrete/60 pt-6">
+                  {/* Premium CTAs */}
+                  <div className="flex flex-col space-y-3">
+                    <button
+                      onClick={() => {
+                        navigate('/book-tour');
+                        setMobileMenuOpen(false);
+                      }}
+                      className="w-full bg-charcoal text-white font-sans text-xs font-bold uppercase tracking-widest py-3.5 text-center hover:bg-sand hover:text-charcoal transition-all cursor-pointer shadow-xs"
+                    >
+                      Book a Tour
+                    </button>
+                    
+                    <button
+                      onClick={() => {
+                        generateBrochurePDF();
+                        setMobileMenuOpen(false);
+                      }}
+                      className="w-full border border-charcoal/20 hover:border-charcoal text-charcoal font-sans text-xs font-bold uppercase tracking-widest py-3.5 flex items-center justify-center gap-2 transition-all cursor-pointer bg-white"
+                    >
+                      <Download className="w-3.5 h-3.5" />
+                      Download Brochure
+                    </button>
+                  </div>
+
+                  {/* Contact Info & Socials */}
+                  <div className="space-y-3 bg-concrete/20 p-4 rounded-sm">
+                    <span className="font-mono text-[9px] uppercase tracking-widest text-charcoal/40 font-bold block">Contact Desk</span>
+                    <a 
+                      href="https://wa.me/254724454757" 
+                      target="_blank" 
+                      rel="noreferrer" 
+                      className="flex items-center gap-2 text-xs font-sans text-charcoal/80 hover:text-charcoal transition-colors font-medium"
+                    >
+                      <MessageSquare className="w-3.5 h-3.5 text-sand" />
+                      <span>WhatsApp: +254 724 454757</span>
+                    </a>
+                  </div>
+
+                  {/* Developer Signature */}
+                  <div className="text-center pt-2">
+                    <p className="font-mono text-[9px] uppercase tracking-widest text-charcoal/30">
+                      Developed by <span className="font-bold text-charcoal/50">KKDES</span>
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+          </>
         )}
       </AnimatePresence>
 

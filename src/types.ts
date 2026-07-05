@@ -22,6 +22,12 @@ export interface WorkspaceSolution {
   image: string;
 }
 
+export interface DetailFeature {
+  title: string;
+  image: string;
+  features: { iconName: string; text: string }[];
+}
+
 export interface LocationData {
   id: string;
   name: string;
@@ -36,6 +42,8 @@ export interface LocationData {
   spacesAvailable: string[];
   amenities: string[];
   gallery: string[];
+  meetingRoomDetails?: DetailFeature;
+  privateOfficeDetails?: DetailFeature;
 }
 
 export interface BlogPost {

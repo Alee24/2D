@@ -1,5 +1,6 @@
 import React from 'react';
 import { NavigationProvider, useRouter } from './context/NavigationContext';
+import { ThemeProvider } from './context/ThemeContext';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import Home from './pages/Home';
@@ -71,7 +72,10 @@ const AppContent: React.FC = () => {
 export default function App() {
   return (
     <NavigationProvider>
-      <AppContent />
+      <ThemeProvider>
+        <AppContent />
+      </ThemeProvider>
     </NavigationProvider>
   );
 }
+

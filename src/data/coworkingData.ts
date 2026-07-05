@@ -8,6 +8,12 @@ import {
   WorkspaceSolution,
 } from '../types';
 
+import westlandsImg from '../assets/images/nairobi_westlands_coworking_1783253639262.jpg';
+import kilimaniImg from '../assets/images/nairobi_kilimani_workspace_1783253654765.jpg';
+import karenImg from '../assets/images/nairobi_karen_greenery_1783253669175.jpg';
+import upperHillImg from '../assets/images/nairobi_upper_hill_office_1783253682757.jpg';
+import cbdImg from '../assets/images/nairobi_cbd_coworking_1783253697927.jpg';
+
 export const workspaceCategories: WorkspaceCategory[] = [
   {
     id: 'coworking',
@@ -147,15 +153,40 @@ export const locations: LocationData[] = [
     email: 'westlands@seconddesk.co',
     mapEmbedUrl: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3988.8413693240217!2d36.80211561533261!3d-1.2614539990800635!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x182f1741ca6cc3f1%3A0xd6891cc774fcf373!2sWestlands%2C%20Nairobi!5e0!3m2!1sen!2ske!4v1655112233445!5m2!1sen!2ske',
     startingPrice: 'KES 25,000 / mo',
-    image: 'https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=1200',
+    image: westlandsImg,
     nearbyLandmarks: ['Sarit Centre Mall', 'Westgate Shopping Mall', 'GTC Tower', 'Mövenpick Hotel'],
     spacesAvailable: ['Coworking Hot Desks', 'Dedicated Desks', 'Private Offices', 'Meeting Rooms', 'Event Spaces'],
     amenities: ['Artisanal Espresso Bar', 'Dual backup generators', 'Valet parking options', 'Rooftop garden terrace', 'Lactation & wellness room'],
     gallery: [
-      'https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=600',
+      westlandsImg,
       'https://images.unsplash.com/photo-1497215728101-856f4ea42174?auto=format&fit=crop&q=80&w=600',
       'https://images.unsplash.com/photo-1524758631624-e2822e304c36?auto=format&fit=crop&q=80&w=600'
-    ]
+    ],
+    meetingRoomDetails: {
+      title: 'Meeting Rooms',
+      image: 'https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=800',
+      features: [
+        { iconName: 'PenTool', text: 'On Demand Stationery' },
+        { iconName: 'Tv', text: '75" 4K Smart TV with Polycom Video conferencing' },
+        { iconName: 'Presentation', text: 'Acoustic Whiteboards & Flip Charts' },
+        { iconName: 'Coffee', text: 'Complimentary Single-Origin Kenyan Coffee & Tea' },
+        { iconName: 'Users', text: 'Spacious Serviced Reception Lounge' },
+        { iconName: 'Wifi', text: 'Uncapped 500Mbps High-Speed Fiber' },
+        { iconName: 'Utensils', text: 'Gourmet Catered lunch services on-demand' }
+      ]
+    },
+    privateOfficeDetails: {
+      title: 'Private Offices',
+      image: 'https://images.unsplash.com/photo-1497215728101-856f4ea42174?auto=format&fit=crop&q=80&w=800',
+      features: [
+        { iconName: 'Armchair', text: 'Ergonomic Steelcase chairs & custom solid-oak desks' },
+        { iconName: 'Lock', text: 'Acoustically sound-masked glass partitions' },
+        { iconName: 'Fingerprint', text: 'Biometric fingerprint keyless security entry' },
+        { iconName: 'Wind', text: 'Personalized Nest intelligent climate controls' },
+        { iconName: 'Sliders', text: 'Dimmable indirect warm LED ambient lighting' },
+        { iconName: 'Wifi', text: 'High-volume secure badge-release cloud printing' }
+      ]
+    }
   },
   {
     id: 'kilimani',
@@ -166,15 +197,40 @@ export const locations: LocationData[] = [
     email: 'kilimani@seconddesk.co',
     mapEmbedUrl: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3988.8188173426095!2d36.79092491533261!3d-1.2882199990605156!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x182f17218b08cd63%3A0xe54b9f2b8ba3737b!2sKilimani%2C%20Nairobi!5e0!3m2!1sen!2ske!4v1655112255445!5m2!1sen!2ske',
     startingPrice: 'KES 22,000 / mo',
-    image: 'https://images.unsplash.com/photo-1497215728101-856f4ea42174?auto=format&fit=crop&q=80&w=1200',
+    image: kilimaniImg,
     nearbyLandmarks: ['Yaya Centre Mall', 'Adlife Plaza', 'Hurlingham Commercial Center', 'French Cultural Center'],
     spacesAvailable: ['Coworking Hot Desks', 'Dedicated Desks', 'Private Offices', 'Meeting Rooms'],
     amenities: ['Quiet study library', 'Lush interior plants & air purifiers', 'Dedicated bike racks', 'Organic juice & tea station', 'Outdoor sun deck'],
     gallery: [
-      'https://images.unsplash.com/photo-1497215728101-856f4ea42174?auto=format&fit=crop&q=80&w=600',
+      kilimaniImg,
       'https://images.unsplash.com/photo-1606857521015-7f9fcf423740?auto=format&fit=crop&q=80&w=600',
       'https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&q=80&w=600'
-    ]
+    ],
+    meetingRoomDetails: {
+      title: 'Meeting Rooms',
+      image: 'https://images.unsplash.com/photo-1542744094-3a31f103e35f?auto=format&fit=crop&q=80&w=800',
+      features: [
+        { iconName: 'PenTool', text: 'On Demand Stationery' },
+        { iconName: 'Tv', text: 'Smart TVs With Virtual Conferencing System' },
+        { iconName: 'Presentation', text: 'Whiteboards & Flip Charts' },
+        { iconName: 'Coffee', text: 'Organic juices, fresh fruit water, loose leaf tea & espresso' },
+        { iconName: 'Users', text: 'Lush Indoor Garden Waiting Rooms' },
+        { iconName: 'Wifi', text: 'High-Speed Internet' },
+        { iconName: 'Utensils', text: 'Catered Conferencing' }
+      ]
+    },
+    privateOfficeDetails: {
+      title: 'Private Offices',
+      image: 'https://images.unsplash.com/photo-1606857521015-7f9fcf423740?auto=format&fit=crop&q=80&w=800',
+      features: [
+        { iconName: 'Armchair', text: 'Solid hardwood custom-milled wooden desks' },
+        { iconName: 'Wind', text: 'Natural floor-to-ceiling solar illumination & purifiers' },
+        { iconName: 'Users', text: 'Direct private sun deck access doors' },
+        { iconName: 'Lock', text: 'Acoustically insulated solid timber framing' },
+        { iconName: 'Tv', text: 'Dedicated direct-dial digital desk phones' },
+        { iconName: 'Fingerprint', text: 'Smart biometric locker storage & personal lockboxes' }
+      ]
+    }
   },
   {
     id: 'karen',
@@ -185,15 +241,40 @@ export const locations: LocationData[] = [
     email: 'karen@seconddesk.co',
     mapEmbedUrl: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3988.751333791053!2d36.70295241533261!3d-1.3256039990326463!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x182f1bc2cc724a87%3A0xe54b9f2b8ba3737b!2sKaren%2C%20Nairobi!5e0!3m2!1sen!2ske!4v1655112277445!5m2!1sen!2ske',
     startingPrice: 'KES 30,000 / mo',
-    image: 'https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&q=80&w=1200',
+    image: karenImg,
     nearbyLandmarks: ['The Hub Karen Mall', 'Karen Country Club', 'Waterfront Mall Karen', 'Karen Blixen Museum'],
     spacesAvailable: ['Coworking Hot Desks', 'Dedicated Desks', 'Premium Private Suites', 'Boardrooms', 'Event Spaces'],
     amenities: ['Extensive private park & gardens', 'On-site premium fitness gym', 'Artistic lounge with fireplace', 'Tesla charging stations', 'Gourmet restaurant partnership'],
     gallery: [
-      'https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&q=80&w=600',
+      karenImg,
       'https://images.unsplash.com/photo-1542744094-3a31f103e35f?auto=format&fit=crop&q=80&w=600',
       'https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&q=80&w=600'
-    ]
+    ],
+    meetingRoomDetails: {
+      title: 'Meeting Rooms',
+      image: 'https://images.unsplash.com/photo-1517502884422-41eaaced0168?auto=format&fit=crop&q=80&w=800',
+      features: [
+        { iconName: 'PenTool', text: 'On Demand Premium Stationery' },
+        { iconName: 'Tv', text: 'Integrated Pro-Caster Wireless Presentation Screens' },
+        { iconName: 'Presentation', text: 'Porcelain Magnetic Whiteboards' },
+        { iconName: 'Coffee', text: 'Artisanal cold-brew, fresh herbal tea & pastry basket' },
+        { iconName: 'Users', text: 'Fireside Serviced Waiting Lounges' },
+        { iconName: 'Wifi', text: 'Ultra-Fast Dedicated Fiber Uplinks' },
+        { iconName: 'Utensils', text: 'Gourmet Estate-to-Table Catering Partnerships' }
+      ]
+    },
+    privateOfficeDetails: {
+      title: 'Private Offices',
+      image: 'https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&q=80&w=800',
+      features: [
+        { iconName: 'Armchair', text: 'Chesterfield leather armchair lounge seats & solid walnut tables' },
+        { iconName: 'Lock', text: 'Private secure safe and lockable filing credenza' },
+        { iconName: 'Wind', text: 'Whisper-quiet medical-grade HEPA air filtration' },
+        { iconName: 'Users', text: 'Direct private French-door access to garden lawns' },
+        { iconName: 'Sliders', text: 'Exclusive on-site administrative secretarial support' },
+        { iconName: 'Fingerprint', text: 'Keycard-controlled access doors with logs' }
+      ]
+    }
   },
   {
     id: 'upper-hill',
@@ -204,15 +285,40 @@ export const locations: LocationData[] = [
     email: 'upperhill@seconddesk.co',
     mapEmbedUrl: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3988.8091823426095!2d36.81592491533261!3d-1.2982199990605156!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x182f17218b08cd63%3A0xe54b9f2b8ba3737b!2sUpper%20Hill%2C%20Nairobi!5e0!3m2!1sen!2ske!4v1655112299445!5m2!1sen!2ske',
     startingPrice: 'KES 28,000 / mo',
-    image: 'https://images.unsplash.com/photo-1524758631624-e2822e304c36?auto=format&fit=crop&q=80&w=1200',
+    image: upperHillImg,
     nearbyLandmarks: ['Britam Tower', 'KCB Towers', 'Radisson Blu Hotel Upper Hill', 'Nairobi Club'],
     spacesAvailable: ['Executive Offices', 'Enterprise Suites', 'Boardrooms', 'Private Desks'],
     amenities: ['Skyline panorama business lounge', 'Dedicated server-room racks', 'Secured fingerprint biometric access', 'Helipad accessibility', 'Premium leather boardroom interiors'],
     gallery: [
-      'https://images.unsplash.com/photo-1524758631624-e2822e304c36?auto=format&fit=crop&q=80&w=600',
+      upperHillImg,
       'https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=600',
       'https://images.unsplash.com/photo-1606857521015-7f9fcf423740?auto=format&fit=crop&q=80&w=600'
-    ]
+    ],
+    meetingRoomDetails: {
+      title: 'Meeting Rooms',
+      image: 'https://images.unsplash.com/photo-1431540015161-0bf868a2d407?auto=format&fit=crop&q=80&w=800',
+      features: [
+        { iconName: 'PenTool', text: 'On Demand Corporate Stationery' },
+        { iconName: 'Tv', text: 'Multi-Screen 4K Video Wall & Telepresence Hub' },
+        { iconName: 'Presentation', text: 'Interactive Smart Whiteboards' },
+        { iconName: 'Coffee', text: 'Premium imported mineral waters, espresso bars' },
+        { iconName: 'Users', text: 'Skyline Panorama Executive Waiting Lounge' },
+        { iconName: 'Wifi', text: 'Symmetrical Gigabit Fiber with microwave backup' },
+        { iconName: 'Utensils', text: 'Full executive-chef conferencing breakfast & lunch packages' }
+      ]
+    },
+    privateOfficeDetails: {
+      title: 'Private Offices',
+      image: 'https://images.unsplash.com/photo-1524758631624-e2822e304c36?auto=format&fit=crop&q=80&w=800',
+      features: [
+        { iconName: 'Armchair', text: 'Bespoke executive leather chairs & massive executive desk' },
+        { iconName: 'Fingerprint', text: 'Military-grade palm-vein biometrics access control' },
+        { iconName: 'Lock', text: 'Dedicated secure enclosed network server racks' },
+        { iconName: 'Wind', text: 'Multi-zone independent microclimate adjustments' },
+        { iconName: 'Sliders', text: 'Double acoustic sound-masking wall layering' },
+        { iconName: 'Tv', text: 'Priority private helicopter helipad booking privilege' }
+      ]
+    }
   },
   {
     id: 'cbd',
@@ -223,15 +329,40 @@ export const locations: LocationData[] = [
     email: 'cbd@seconddesk.co',
     mapEmbedUrl: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3988.8188173426095!2d36.82292491533261!3d-1.2882199990605156!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x182f17218b08cd63%3A0xe54b9f2b8ba3737b!2sNairobi%20CBD!5e0!3m2!1sen!2ske!4v1655112311445!5m2!1sen!2ske',
     startingPrice: 'KES 20,000 / mo',
-    image: 'https://images.unsplash.com/photo-1606857521015-7f9fcf423740?auto=format&fit=crop&q=80&w=1200',
+    image: cbdImg,
     nearbyLandmarks: ['Nairobi Gallery', 'General Post Office (GPO)', 'Central Park', 'Sarova Stanley Hotel'],
     spacesAvailable: ['Coworking Hot Desks', 'Dedicated Desks', 'Private Offices', 'Meeting Rooms'],
     amenities: ['Soundproof interview pods', 'Expansive business address service', 'Central secure public transit access', 'Premium postal mailboxes', 'Daily catering cafeteria'],
     gallery: [
-      'https://images.unsplash.com/photo-1606857521015-7f9fcf423740?auto=format&fit=crop&q=80&w=600',
+      cbdImg,
       'https://images.unsplash.com/photo-1497215728101-856f4ea42174?auto=format&fit=crop&q=80&w=600',
       'https://images.unsplash.com/photo-1542744094-3a31f103e35f?auto=format&fit=crop&q=80&w=600'
-    ]
+    ],
+    meetingRoomDetails: {
+      title: 'Meeting Rooms',
+      image: 'https://images.unsplash.com/photo-1531973576160-7125cd663d86?auto=format&fit=crop&q=80&w=800',
+      features: [
+        { iconName: 'PenTool', text: 'On Demand Stationery' },
+        { iconName: 'Tv', text: 'Smart TVs With Virtual Conferencing System' },
+        { iconName: 'Presentation', text: 'Whiteboards & Flip Charts' },
+        { iconName: 'Coffee', text: 'Gourmet Kenyan tea, coffee & healthy snacks' },
+        { iconName: 'Users', text: 'Central Transit Serviced Reception' },
+        { iconName: 'Wifi', text: 'High-Speed Internet with 4G Failover' },
+        { iconName: 'Utensils', text: 'In-house culinary cafeteria catering options' }
+      ]
+    },
+    privateOfficeDetails: {
+      title: 'Private Offices',
+      image: 'https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&q=80&w=800',
+      features: [
+        { iconName: 'Armchair', text: 'Ergonomic electric height-adjustable sit-to-stand desks' },
+        { iconName: 'Lock', text: 'Soundproof triple-insulated acoustic window glasses' },
+        { iconName: 'Fingerprint', text: 'Secure RFID badge scanning system' },
+        { iconName: 'Wind', text: 'Dedicated high-efficiency personalized air cooling' },
+        { iconName: 'Sliders', text: 'Motorized dynamic sun-shading daylight regulators' },
+        { iconName: 'Wifi', text: 'Unlimited secure high-volume corporate color plotting' }
+      ]
+    }
   }
 ];
 

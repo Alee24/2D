@@ -2,12 +2,19 @@ import React from 'react';
 import { useRouter } from '../context/NavigationContext';
 import { workspaceCategories } from '../data/coworkingData';
 import { Check, ArrowRight, Sparkles, Sliders, Users, DollarSign } from 'lucide-react';
+import { SEO } from '../components/SEO';
+import { Breadcrumbs } from '../components/Breadcrumbs';
 
 export const Workspace: React.FC = () => {
   const { navigate } = useRouter();
 
   return (
     <div className="bg-offwhite text-charcoal pt-20 animate-fade-in">
+      <SEO 
+        title="Workspace Solutions & Private Offices"
+        description="From flexible hot desks and dedicated workstations to premium private offices and enterprise suites tailored for your business."
+      />
+      <Breadcrumbs />
       {/* Editorial Hero */}
       <section className="bg-charcoal text-white py-24 lg:py-32 relative overflow-hidden">
         {/* Subtle grid lines */}

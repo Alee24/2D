@@ -1,6 +1,8 @@
 import React from 'react';
 import { useRouter } from '../context/NavigationContext';
 import { ShieldCheck, Heart, Sparkles, Award, Star, ArrowRight } from 'lucide-react';
+import { SEO } from '../components/SEO';
+import { Breadcrumbs } from '../components/Breadcrumbs';
 
 export const About: React.FC = () => {
   const { navigate } = useRouter();
@@ -44,6 +46,11 @@ export const About: React.FC = () => {
 
   return (
     <div className="bg-offwhite text-charcoal pt-20 animate-fade-in">
+      <SEO 
+        title="About Us | Premium Workspaces in Nairobi"
+        description="Learn about SecondDesk's mission to redefine professional workspaces in Kenya. Merging high-end hospitality, pristine design, and seamless technology."
+      />
+      <Breadcrumbs />
       {/* Editorial Hero */}
       <section className="bg-charcoal text-white py-24 lg:py-32 relative overflow-hidden">
         <div className="absolute inset-0 opacity-10">
