@@ -62,6 +62,30 @@ export const LocationDetail: React.FC = () => {
         title={`${location.name} Coworking & Private Offices`}
         description={`Explore SecondDesk ${location.name} in Nairobi. Premium boutique workspace featuring flexible hot desks, dedicated permanent desks, private office suites, and state-of-the-art meeting rooms. Rates starting from ${location.startingPrice}.`}
         ogImage={location.image}
+        schemaType="CoworkingSpace"
+        schemaData={{
+          '@context': 'https://schema.org',
+          '@type': 'CoworkingSpace',
+          'name': `SecondDesk ${location.name}`,
+          'description': `Premium boutique workspace in ${location.name}, Nairobi featuring flexible hot desks, dedicated permanent desks, private office suites, and state-of-the-art meeting rooms.`,
+          'image': location.image,
+          'url': window.location.origin + window.location.pathname,
+          'telephone': location.phone || '+254 700 120 003',
+          'email': location.email || 'info@seconddesk.co',
+          'priceRange': '$$$',
+          'address': {
+            '@type': 'PostalAddress',
+            'streetAddress': location.address,
+            'addressLocality': 'Nairobi',
+            'addressRegion': 'Nairobi County',
+            'addressCountry': 'KE'
+          },
+          'amenityFeature': location.amenities.map(amenity => ({
+            '@type': 'LocationFeatureSpecification',
+            'name': amenity,
+            'value': true
+          }))
+        }}
       />
       <Breadcrumbs />
 

@@ -42,8 +42,29 @@ export const Insights: React.FC = () => {
   return (
     <div className="bg-offwhite text-charcoal pt-20 animate-fade-in relative min-h-screen">
       <SEO 
-        title="Workspace Insights & Business Trends"
-        description="Read the latest insights on hybrid work models, business trends in East Africa, productivity tips, and updates from the SecondDesk team."
+        title={activePost ? activePost.title : "Workspace Insights & Business Trends"}
+        description={activePost ? activePost.excerpt : "Read the latest insights on hybrid work models, business trends in East Africa, productivity tips, and updates from the SecondDesk team."}
+        ogImage={activePost ? activePost.image : undefined}
+        schemaType={activePost ? "BlogPosting" : undefined}
+        schemaData={activePost ? {
+          '@context': 'https://schema.org',
+          '@type': 'BlogPosting',
+          'headline': activePost.title,
+          'description': activePost.excerpt,
+          'image': activePost.image,
+          'datePublished': activePost.date,
+          'author': {
+            '@type': 'Person',
+            'name': activePost.author.name,
+            'jobTitle': activePost.author.role
+          },
+          'publisher': {
+            '@type': 'Organization',
+            'name': 'SecondDesk',
+            'logo': 'https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=200'
+          },
+          'mainEntityOfPage': window.location.origin + window.location.pathname
+        } : undefined}
       />
       <Breadcrumbs 
         activeSubItem={activePost ? activePost.title : undefined}
