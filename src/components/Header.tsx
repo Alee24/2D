@@ -75,11 +75,13 @@ export const Header: React.FC = () => {
 
   const searchResults = getSearchResults();
 
+  const isSolidHeader = isScrolled || mobileMenuOpen || activeMegaMenu || currentPath !== '/';
+
   return (
     <>
       <header
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-          isScrolled || mobileMenuOpen || activeMegaMenu
+          isSolidHeader
             ? 'bg-white border-b border-concrete shadow-sm text-charcoal'
             : 'bg-transparent text-white'
         }`}
@@ -90,7 +92,7 @@ export const Header: React.FC = () => {
             onClick={() => navigate('/')} 
             className="flex items-center gap-2 cursor-pointer group"
           >
-            <Logo size={40} light={!(isScrolled || mobileMenuOpen || activeMegaMenu)} />
+            <Logo size={40} light={!isSolidHeader} />
             <span className="font-display font-semibold tracking-[0.2em] text-lg uppercase">
               Second Desk
             </span>
@@ -111,7 +113,7 @@ export const Header: React.FC = () => {
                     className={`font-sans text-sm font-medium tracking-wide flex items-center gap-1 transition-colors duration-200 cursor-pointer ${
                       isActive 
                         ? 'text-sand font-semibold' 
-                        : isScrolled || activeMegaMenu 
+                        : isSolidHeader 
                           ? 'text-charcoal/80 hover:text-charcoal' 
                           : 'text-white/80 hover:text-white'
                     }`}
@@ -137,7 +139,7 @@ export const Header: React.FC = () => {
             <button
               onClick={toggleTheme}
               className={`p-2 transition-colors duration-200 cursor-pointer ${
-                isScrolled || activeMegaMenu ? 'text-charcoal hover:text-sand' : 'text-white hover:text-sand'
+                isSolidHeader ? 'text-charcoal hover:text-sand' : 'text-white hover:text-sand'
               }`}
               aria-label="Toggle theme mode"
             >
@@ -148,7 +150,7 @@ export const Header: React.FC = () => {
             <button
               onClick={() => setShowSearchModal(true)}
               className={`p-2 transition-colors duration-200 cursor-pointer ${
-                isScrolled || activeMegaMenu ? 'text-charcoal hover:text-sand' : 'text-white hover:text-sand'
+                isSolidHeader ? 'text-charcoal hover:text-sand' : 'text-white hover:text-sand'
               }`}
               aria-label="Search Second Desk"
             >
@@ -159,7 +161,7 @@ export const Header: React.FC = () => {
             <button
               onClick={() => navigate('/workspace')}
               className={`font-sans text-xs font-semibold uppercase tracking-wider transition-all duration-200 cursor-pointer ${
-                isScrolled || activeMegaMenu
+                isSolidHeader
                   ? 'text-charcoal/80 hover:text-charcoal'
                   : 'text-white/80 hover:text-white'
               }`}
@@ -171,7 +173,7 @@ export const Header: React.FC = () => {
             <button
               onClick={() => navigate('/book-tour')}
               className={`font-sans text-xs font-semibold uppercase tracking-widest px-6 py-3 border transition-all duration-300 cursor-pointer ${
-                isScrolled || activeMegaMenu
+                isSolidHeader
                   ? 'bg-charcoal text-white hover:bg-sand hover:text-charcoal border-charcoal hover:border-sand'
                   : 'bg-white text-charcoal hover:bg-sand hover:border-sand border-white'
               }`}
@@ -186,7 +188,7 @@ export const Header: React.FC = () => {
             <button
               onClick={toggleTheme}
               className={`p-2 transition-colors duration-200 cursor-pointer ${
-                isScrolled || mobileMenuOpen ? 'text-charcoal hover:text-sand' : 'text-white hover:text-sand'
+                isSolidHeader ? 'text-charcoal hover:text-sand' : 'text-white hover:text-sand'
               }`}
               aria-label="Toggle theme mode"
             >
@@ -196,7 +198,7 @@ export const Header: React.FC = () => {
             <button
               onClick={() => setShowSearchModal(true)}
               className={`p-2 transition-colors duration-200 cursor-pointer ${
-                isScrolled || mobileMenuOpen ? 'text-charcoal' : 'text-white'
+                isSolidHeader ? 'text-charcoal hover:text-sand' : 'text-white hover:text-sand'
               }`}
             >
               <Search className="w-5 h-5" />
@@ -204,7 +206,7 @@ export const Header: React.FC = () => {
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               className={`p-2 transition-colors duration-200 cursor-pointer ${
-                isScrolled || mobileMenuOpen ? 'text-charcoal' : 'text-white'
+                isSolidHeader ? 'text-charcoal hover:text-sand' : 'text-white hover:text-sand'
               }`}
               aria-label="Toggle menu"
             >
