@@ -1,0 +1,29 @@
+version: '3.8'
+
+services:
+  webserver:
+    build:
+      context: ..
+      dockerfile: deployment/Dockerfile
+    container_name: sd_webserver
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - certbot_certs:/etc/letsencrypt:ro
+      - certbot_webroot:/var/www/certbot:ro
+    restart: always
+
+  certbot:
+    image: certbot/certbot
+    container_name: sd_certbot
+    volumes:
+      - certbot_certs:/etc/letsencrypt
+      - certbot_webroot:/var/www/certbot
+    # Automatically check for certificate renewal every 12 hours
+    entrypoint: "/bin/sh -c 'trap exit 0 SIGTERM; while :; do certbot renew; sleep 12h & wait $${!}; done;'"
+
+volumes:
+  certbot_certs:
+  certbot_webroot:
+    driver: local
