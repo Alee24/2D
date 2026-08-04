@@ -14,7 +14,7 @@ interface SEOProps {
 export const SEO: React.FC<SEOProps> = ({
   title,
   description,
-  keywords = 'coworking Nairobi, shared offices Westlands, private office Karen, meeting rooms Kilimani, business lounge Nairobi, virtual office Kenya, SecondDesk, boutique workspace East Africa',
+  keywords = 'coworking, shared offices, private office, meeting rooms, business lounge, virtual office, SecondDesk, boutique workspace',
   ogType = 'website',
   ogImage = 'https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=1200',
   canonicalPath,
