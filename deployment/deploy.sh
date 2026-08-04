@@ -7,7 +7,7 @@ set -e
 DOMAIN="www.secondesk.ke"
 ALIAS_DOMAIN="secondesk.ke"
 EMAIL="mettoalex@gmail.com"
-INSTALL_DIR="/var/www/2d"
+INSTALL_DIR="/var/www/sd"
 REPO_URL="https://github.com/Alee24/2D.git"
 
 echo "========================================================="
@@ -74,13 +74,16 @@ if systemctl is-active --quiet apache2 || systemctl is-active --quiet httpd; the
     node:20-alpine \
     sh -c "npm install && npm run build"
 
+  # Ensure webroot acme-challenge directory exists
+  mkdir -p "$INSTALL_DIR/dist/.well-known/acme-challenge"
+
   # Enable mod_rewrite and mod_ssl on host Apache
   echo "[+] Configuring host Apache modules..."
   if [ "$APACHE_SERVICE" = "apache2" ]; then
     a2enmod rewrite ssl headers >/dev/null 2>&1 || true
     
-    # Create virtual host config
-    VHOST_CONF="/etc/apache2/sites-available/2d.conf"
+    # Create HTTP virtual host config with ACME challenge exception
+    VHOST_CONF="/etc/apache2/sites-available/sd.conf"
     echo "[+] Writing host Apache virtual host config to $VHOST_CONF..."
     cat <<EOF > "$VHOST_CONF"
 <VirtualHost *:80>
@@ -93,10 +96,11 @@ if systemctl is-active --quiet apache2 || systemctl is-active --quiet httpd; the
         AllowOverride All
         Require all granted
 
-        # SPA Routing: Fallback all requests to index.html
+        # SPA Routing: Exclude ACME challenges from fallback to index.html
         RewriteEngine On
         RewriteBase /
         RewriteRule ^index\.html$ - [L]
+        RewriteCond %{REQUEST_URI} !^/\.well-known/acme-challenge/ [NC]
         RewriteCond %{REQUEST_FILENAME} !-f
         RewriteCond %{REQUEST_FILENAME} !-d
         RewriteRule . /index.html [L]
@@ -104,11 +108,11 @@ if systemctl is-active --quiet apache2 || systemctl is-active --quiet httpd; the
 </VirtualHost>
 EOF
     # Enable site
-    a2ensite 2d.conf >/dev/null 2>&1 || true
+    a2ensite sd.conf >/dev/null 2>&1 || true
     systemctl reload apache2
   else
     # RedHat-based httpd configuration
-    VHOST_CONF="/etc/httpd/conf.d/2d.conf"
+    VHOST_CONF="/etc/httpd/conf.d/sd.conf"
     echo "[+] Writing host httpd virtual host config to $VHOST_CONF..."
     cat <<EOF > "$VHOST_CONF"
 <VirtualHost *:80>
@@ -121,10 +125,11 @@ EOF
         AllowOverride All
         Require all granted
 
-        # SPA Routing: Fallback all requests to index.html
+        # SPA Routing: Exclude ACME challenges from fallback to index.html
         RewriteEngine On
         RewriteBase /
         RewriteRule ^index\.html$ - [L]
+        RewriteCond %{REQUEST_URI} !^/\.well-known/acme-challenge/ [NC]
         RewriteCond %{REQUEST_FILENAME} !-f
         RewriteCond %{REQUEST_FILENAME} !-d
         RewriteRule . /index.html [L]
@@ -134,30 +139,136 @@ EOF
     systemctl reload httpd
   fi
 
-  # Install Certbot and obtain SSL certificate on host
+  # Install Certbot if not present
   if ! [ -x "$(command -v certbot)" ]; then
     echo "[+] Installing Certbot on host..."
     apt-get update
     apt-get install -y certbot python3-certbot-apache || yum install -y certbot python3-certbot-apache
   fi
 
-  echo "[+] Requesting SSL Certificate using host Certbot..."
+  echo "[+] Requesting SSL Certificate using Certbot webroot mode..."
+  certbot certonly --webroot -w "$INSTALL_DIR/dist" \
+    -d "$DOMAIN" -d "$ALIAS_DOMAIN" \
+    --email "$EMAIL" --agree-tos --no-eff-email --non-interactive || \
   certbot --apache -d "$DOMAIN" -d "$ALIAS_DOMAIN" \
-    --email "$EMAIL" --agree-tos --no-eff-email --non-interactive --reinstall
+    --email "$EMAIL" --agree-tos --no-eff-email --non-interactive
 
-  # Final reload of host Apache
-  systemctl reload "$APACHE_SERVICE"
+  # Configure HTTPS Virtual Host on host Apache
+  if [ "$APACHE_SERVICE" = "apache2" ]; then
+    VHOST_SSL_CONF="/etc/apache2/sites-available/sd-ssl.conf"
+    echo "[+] Writing host Apache HTTPS virtual host config to $VHOST_SSL_CONF..."
+    cat <<EOF > "$VHOST_SSL_CONF"
+<VirtualHost *:443>
+    ServerName $DOMAIN
+    ServerAlias $ALIAS_DOMAIN
+    DocumentRoot $INSTALL_DIR/dist
+
+    SSLEngine on
+    SSLCertificateFile /etc/letsencrypt/live/$DOMAIN/fullchain.pem
+    SSLCertificateKeyFile /etc/letsencrypt/live/$DOMAIN/privkey.pem
+
+    <Directory $INSTALL_DIR/dist>
+        Options Indexes FollowSymLinks
+        AllowOverride All
+        Require all granted
+
+        RewriteEngine On
+        RewriteBase /
+        RewriteRule ^index\.html$ - [L]
+        RewriteCond %{REQUEST_FILENAME} !-f
+        RewriteCond %{REQUEST_FILENAME} !-d
+        RewriteRule . /index.html [L]
+    </Directory>
+
+    Header always set X-Content-Type-Options "nosniff"
+    Header always set X-Frame-Options "SAMEORIGIN"
+    Header always set X-XSS-Protection "1; mode=block"
+    Header always set Strict-Transport-Security "max-age=63072000; includeSubDomains; preload"
+</VirtualHost>
+EOF
+    # Update HTTP config to redirect to HTTPS
+    cat <<EOF > "$VHOST_CONF"
+<VirtualHost *:80>
+    ServerName $DOMAIN
+    ServerAlias $ALIAS_DOMAIN
+    DocumentRoot $INSTALL_DIR/dist
+
+    <Directory $INSTALL_DIR/dist>
+        Options Indexes FollowSymLinks
+        AllowOverride All
+        Require all granted
+    </Directory>
+
+    RewriteEngine On
+    RewriteCond %{REQUEST_URI} !^/\.well-known/acme-challenge/ [NC]
+    RewriteRule ^(.*)$ https://$DOMAIN\$1 [R=301,L]
+</VirtualHost>
+EOF
+    a2ensite sd-ssl.conf >/dev/null 2>&1 || true
+    systemctl reload apache2
+  else
+    VHOST_SSL_CONF="/etc/httpd/conf.d/sd-ssl.conf"
+    echo "[+] Writing host httpd HTTPS virtual host config to $VHOST_SSL_CONF..."
+    cat <<EOF > "$VHOST_SSL_CONF"
+<VirtualHost *:443>
+    ServerName $DOMAIN
+    ServerAlias $ALIAS_DOMAIN
+    DocumentRoot $INSTALL_DIR/dist
+
+    SSLEngine on
+    SSLCertificateFile /etc/letsencrypt/live/$DOMAIN/fullchain.pem
+    SSLCertificateKeyFile /etc/letsencrypt/live/$DOMAIN/privkey.pem
+
+    <Directory $INSTALL_DIR/dist>
+        Options Indexes FollowSymLinks
+        AllowOverride All
+        Require all granted
+
+        RewriteEngine On
+        RewriteBase /
+        RewriteRule ^index\.html$ - [L]
+        RewriteCond %{REQUEST_FILENAME} !-f
+        RewriteCond %{REQUEST_FILENAME} !-d
+        RewriteRule . /index.html [L]
+    </Directory>
+
+    Header always set X-Content-Type-Options "nosniff"
+    Header always set X-Frame-Options "SAMEORIGIN"
+    Header always set X-XSS-Protection "1; mode=block"
+    Header always set Strict-Transport-Security "max-age=63072000; includeSubDomains; preload"
+</VirtualHost>
+EOF
+    # Update HTTP config to redirect to HTTPS
+    cat <<EOF > "$VHOST_CONF"
+<VirtualHost *:80>
+    ServerName $DOMAIN
+    ServerAlias $ALIAS_DOMAIN
+    DocumentRoot $INSTALL_DIR/dist
+
+    <Directory $INSTALL_DIR/dist>
+        Options Indexes FollowSymLinks
+        AllowOverride All
+        Require all granted
+    </Directory>
+
+    RewriteEngine On
+    RewriteCond %{REQUEST_URI} !^/\.well-known/acme-challenge/ [NC]
+    RewriteRule ^(.*)$ https://$DOMAIN\$1 [R=301,L]
+</VirtualHost>
+EOF
+    systemctl reload httpd
+  fi
 
 else
   echo "[+] Apache is not running on host system. Deploying via standalone Docker Compose..."
 
   # Ensure the volumes exist
-  docker volume create 2d_certbot_certs
-  docker volume create 2d_certbot_webroot
+  docker volume create sd_certbot_certs
+  docker volume create sd_certbot_webroot
 
   # Check if Let's Encrypt certificates exist in the docker volume
   echo "[+] Checking for Let's Encrypt SSL certificates..."
-  CERT_EXISTS=$(docker run --rm -v 2d_certbot_certs:/certs alpine sh -c "[ -f /certs/live/$DOMAIN/fullchain.pem ] && echo 'yes' || echo 'no'")
+  CERT_EXISTS=$(docker run --rm -v sd_certbot_certs:/certs alpine sh -c "[ -f /certs/live/$DOMAIN/fullchain.pem ] && echo 'yes' || echo 'no'")
 
   if [ "$CERT_EXISTS" = "yes" ]; then
     echo "[+] Certificates already exist. Skipping initial request."
@@ -168,7 +279,7 @@ else
     echo "[+] Starting temporary web server on port 80 for SSL validation..."
     docker run -d --name temp_http_server \
       -p 80:80 \
-      -v 2d_certbot_webroot:/usr/share/nginx/html \
+      -v sd_certbot_webroot:/usr/share/nginx/html \
       nginx:alpine
 
     # Wait a moment for server to start
@@ -177,8 +288,8 @@ else
     # Run Certbot to request certificates
     echo "[+] Requesting Let's Encrypt certificate..."
     docker run --rm \
-      -v 2d_certbot_certs:/etc/letsencrypt \
-      -v 2d_certbot_webroot:/var/www/certbot \
+      -v sd_certbot_certs:/etc/letsencrypt \
+      -v sd_certbot_webroot:/var/www/certbot \
       certbot/certbot certonly --webroot \
       -w /var/www/certbot \
       -d "$DOMAIN" -d "$ALIAS_DOMAIN" \
@@ -192,8 +303,8 @@ else
 
   # Build and run production containers
   echo "[+] Launching Apache and application container..."
-  docker compose -f deployment/docker-compose.yml -p 2d down --remove-orphans || true
-  docker compose -f deployment/docker-compose.yml -p 2d up -d --build
+  docker compose -f deployment/docker-compose.yml -p sd down --remove-orphans || true
+  docker compose -f deployment/docker-compose.yml -p sd up -d --build
 fi
 
 echo "========================================================="
