@@ -68,11 +68,12 @@ if systemctl is-active --quiet apache2 || systemctl is-active --quiet httpd; the
 
   # Build the application using Docker Node image
   echo "[+] Building React app inside Node Docker container..."
+  rm -rf "$INSTALL_DIR/dist"
   docker run --rm \
     -v "$INSTALL_DIR":/app \
     -w /app \
     node:20-alpine \
-    sh -c "npm install && npm run build"
+    sh -c "npm install && rm -rf dist && npm run build"
 
   # Ensure webroot acme-challenge directory exists
   mkdir -p "$INSTALL_DIR/dist/.well-known/acme-challenge"
