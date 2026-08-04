@@ -4,8 +4,8 @@
 set -e
 
 # Configuration
-DOMAIN="www.sd.kkdes.co.ke"
-ALIAS_DOMAIN="sd.kkdes.co.ke"
+DOMAIN="www.secondesk.ke"
+ALIAS_DOMAIN="secondesk.ke"
 EMAIL="mettoalex@gmail.com"
 INSTALL_DIR="/var/www/2d"
 REPO_URL="https://github.com/Alee24/2D.git"
