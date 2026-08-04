@@ -1,28 +1,24 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useRouter } from '../context/NavigationContext';
 import { locations } from '../data/coworkingData';
-import { MapPin, ArrowRight, Layers, DollarSign, Phone, Mail, Navigation } from 'lucide-react';
+import { MapPin, ArrowRight, Phone, Mail, Clock, Wifi, Shield, Coffee } from 'lucide-react';
 import { SEO } from '../components/SEO';
 import { Breadcrumbs } from '../components/Breadcrumbs';
 
 export const Locations: React.FC = () => {
   const { navigate } = useRouter();
-  const [selectedZone, setSelectedZone] = useState<string>('all');
-
-  const filteredLocations = selectedZone === 'all'
-    ? locations
-    : locations.filter(loc => loc.id === selectedZone);
+  const location = locations[0]; // Single Mombasa location
 
   return (
     <div className="bg-offwhite text-charcoal pt-20 animate-fade-in">
-      <SEO 
-        title="Premium Coworking & Private Office Locations in Mombasa"
-        description="Explore SecondDesk's network of premium workspace locations in Westlands, Kilimani, Karen, Upper Hill, and Mombasa CBD. Find your perfect workspace setup."
+      <SEO
+        title="Our Location | SecondDesk Mombasa"
+        description="SecondDesk Mombasa — Premium coworking spaces, private offices, and meeting rooms in Mombasa, Kenya."
       />
       <Breadcrumbs />
-      {/* Editorial Hero */}
+
+      {/* Hero */}
       <section className="bg-charcoal text-white py-24 lg:py-32 relative overflow-hidden">
-        {/* Subtle background graphics */}
         <div className="absolute right-0 bottom-0 w-80 h-80 bg-sand/5 rounded-full blur-3xl pointer-events-none"></div>
         <div className="absolute inset-0 opacity-5">
           <div className="max-w-[1440px] mx-auto h-full grid grid-cols-12 px-12">
@@ -31,172 +27,167 @@ export const Locations: React.FC = () => {
             ))}
           </div>
         </div>
-
         <div className="max-w-[1440px] mx-auto px-6 lg:px-12 relative z-10">
           <div className="max-w-3xl">
-            <span className="font-sans font-bold text-xs tracking-widest uppercase text-sand block mb-3">Mombasa Commercial Network</span>
+            <span className="font-sans font-bold text-xs tracking-widest uppercase text-sand block mb-3">Our Location</span>
             <h1 className="font-display font-light text-4xl sm:text-5xl lg:text-6xl tracking-tight mb-6">
-              Our Premium <span className="font-serif italic text-sand">Locations.</span>
+              SecondDesk <span className="font-serif italic text-sand">Mombasa.</span>
             </h1>
             <p className="font-sans text-white/75 text-base sm:text-lg leading-relaxed max-w-xl">
-              Establish your professional business footprint in Mombasa’s highly sought-after, central, secure developments. 
+              Premium boutique workspaces in the heart of Mombasa — designed for ambitious professionals and growing teams.
             </p>
           </div>
         </div>
       </section>
 
-      {/* Conceptual Map Area */}
-      <section className="py-16 bg-white border-b border-concrete">
-        <div className="max-w-[1440px] mx-auto px-6 lg:px-12">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-            {/* Map Info Panel */}
-            <div className="lg:col-span-4 space-y-6">
-              <span className="font-sans text-xs font-bold uppercase tracking-widest text-sand">Spatial Coverage</span>
-              <h2 className="font-display font-light text-3xl text-charcoal tracking-tight">
-                Mombasa Hub Map
+      {/* Main Location Feature */}
+      <section className="py-20 max-w-[1440px] mx-auto px-6 lg:px-12">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+
+          {/* Image */}
+          <div className="relative">
+            <div className="aspect-[4/3] overflow-hidden bg-concrete border border-concrete shadow-lg">
+              <img
+                src={location.image}
+                alt="SecondDesk Mombasa"
+                className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
+                referrerPolicy="no-referrer"
+              />
+            </div>
+            {/* Gallery strip */}
+            <div className="grid grid-cols-2 gap-3 mt-3">
+              {location.gallery.slice(1).map((img, i) => (
+                <div key={i} className="aspect-video overflow-hidden bg-concrete border border-concrete">
+                  <img src={img} alt={`SecondDesk Mombasa ${i + 2}`} className="w-full h-full object-cover hover:scale-105 transition-transform duration-700" referrerPolicy="no-referrer" />
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Details */}
+          <div className="space-y-8">
+            <div>
+              <span className="font-sans text-[10px] font-bold uppercase tracking-widest text-sand block mb-2">Mombasa, Kenya</span>
+              <h2 className="font-display font-light text-3xl sm:text-4xl text-charcoal tracking-tight mb-4">
+                Our Flagship Workspace
               </h2>
-              <p className="font-sans text-sm text-charcoal/60 leading-relaxed font-light">
-                Our locations are selected purely based on commercial prestige, power-redundancy integrity, and easy highway connections.
+              <p className="font-sans text-sm text-charcoal/60 leading-relaxed">
+                SecondDesk Mombasa is a premium, design-forward coworking space offering flexible hot desks, dedicated private offices, executive boardrooms, and virtual office packages — all fully managed so you focus on what matters.
               </p>
-              
-              <div className="flex flex-wrap gap-2 pt-2">
-                <button
-                  onClick={() => setSelectedZone('all')}
-                  className={`px-4 py-2 text-xs font-sans border transition-all cursor-pointer ${
-                    selectedZone === 'all'
-                      ? 'bg-charcoal border-charcoal text-white'
-                      : 'bg-white border-concrete text-charcoal hover:border-sand'
-                  }`}
-                >
-                  All Districts ({locations.length})
-                </button>
-                {locations.map((loc) => (
-                  <button
-                    key={loc.id}
-                    onClick={() => setSelectedZone(loc.id)}
-                    className={`px-4 py-2 text-xs font-sans border transition-all cursor-pointer ${
-                      selectedZone === loc.id
-                        ? 'bg-charcoal border-charcoal text-white'
-                        : 'bg-white border-concrete text-charcoal hover:border-sand'
-                    }`}
-                  >
-                    {loc.name}
-                  </button>
+            </div>
+
+            {/* Contact Info */}
+            <div className="space-y-3 pt-2 border-t border-concrete">
+              <div className="flex items-center gap-3 text-sm text-charcoal/70 pt-4">
+                <MapPin className="w-4 h-4 text-sand shrink-0" />
+                <span>{location.address}</span>
+              </div>
+              <div className="flex items-center gap-3 text-sm text-charcoal/70">
+                <Phone className="w-4 h-4 text-sand shrink-0" />
+                <span>{location.phone}</span>
+              </div>
+              <div className="flex items-center gap-3 text-sm text-charcoal/70">
+                <Mail className="w-4 h-4 text-sand shrink-0" />
+                <span>{location.email}</span>
+              </div>
+              <div className="flex items-center gap-3 text-sm text-charcoal/70">
+                <Clock className="w-4 h-4 text-sand shrink-0" />
+                <span>Mon–Fri: 8:00 AM – 8:00 PM &nbsp;|&nbsp; Sat: 9:00 AM – 1:00 PM</span>
+              </div>
+            </div>
+
+            {/* Spaces Available */}
+            <div>
+              <h3 className="font-sans font-bold text-xs uppercase tracking-widest text-charcoal mb-3">Spaces Available</h3>
+              <div className="flex flex-wrap gap-2">
+                {location.spacesAvailable.map((space, i) => (
+                  <span key={i} className="font-sans text-xs px-3 py-1.5 border border-concrete bg-white text-charcoal/70">
+                    {space}
+                  </span>
                 ))}
               </div>
             </div>
 
-            {/* Premium Visual Map Box */}
-            <div className="lg:col-span-8 bg-offwhite border border-concrete p-8 rounded-none relative overflow-hidden min-h-[350px] flex items-center justify-center">
-              {/* Map grid layout */}
-              <div className="absolute inset-0 grid grid-cols-8 grid-rows-8 opacity-25 pointer-events-none">
-                {[...Array(64)].map((_, i) => (
-                  <div key={i} className="border-r border-b border-concrete"></div>
+            {/* Amenities */}
+            <div>
+              <h3 className="font-sans font-bold text-xs uppercase tracking-widest text-charcoal mb-3">Amenities</h3>
+              <div className="grid grid-cols-2 gap-2">
+                {location.amenities.map((a, i) => (
+                  <div key={i} className="flex items-center gap-2 text-xs text-charcoal/70">
+                    <div className="w-1.5 h-1.5 bg-sand rounded-full shrink-0"></div>
+                    <span>{a}</span>
+                  </div>
                 ))}
               </div>
+            </div>
 
-              {/* Central Map Graphic (Minimalist SVG/CSS representing Mombasa nodes) */}
-              <div className="relative w-full max-w-lg aspect-video flex items-center justify-center">
-                {/* Simulated Roads/Accents */}
-                <div className="absolute w-[120%] h-[2px] bg-concrete rotate-12 -translate-y-8 pointer-events-none"></div>
-                <div className="absolute w-[2px] h-[120%] bg-concrete -rotate-45 translate-x-12 pointer-events-none"></div>
-                <div className="absolute w-[120%] h-[1px] bg-sand/30 -rotate-12 translate-y-12 pointer-events-none"></div>
-
-                {/* Interactive Pins on map */}
-                {locations.map((loc, idx) => {
-                  // Coordinate positions on container
-                  const positions = [
-                    { top: '35%', left: '42%', color: 'bg-sand border-charcoal' }, // Westlands
-                    { top: '55%', left: '32%', color: 'bg-forest border-white' }, // Kilimani
-                    { top: '75%', left: '15%', color: 'bg-charcoal border-sand' }, // Karen
-                    { top: '58%', left: '55%', color: 'bg-sand border-charcoal' }, // Upper Hill
-                    { top: '48%', left: '65%', color: 'bg-forest border-white' }  // CBD
-                  ];
-                  const pos = positions[idx] || { top: '50%', left: '50%', color: 'bg-sand' };
-                  const isSelected = selectedZone === 'all' || selectedZone === loc.id;
-
-                  return (
-                    <div
-                      key={loc.id}
-                      style={{ top: pos.top, left: pos.left }}
-                      onClick={() => setSelectedZone(loc.id)}
-                      className={`absolute -translate-x-1/2 -translate-y-1/2 flex flex-col items-center group cursor-pointer transition-all duration-300 z-10 ${
-                        isSelected ? 'scale-110 opacity-100' : 'scale-90 opacity-40 hover:opacity-80'
-                      }`}
-                    >
-                      <div className={`w-8 h-8 rounded-full flex items-center justify-center shadow-lg border-2 transition-all ${pos.color} ${isSelected ? 'ring-4 ring-sand/30' : ''}`}>
-                        <MapPin className="w-4 h-4 text-white" />
-                      </div>
-                      <div className="mt-1 bg-charcoal text-white text-[9px] font-bold uppercase tracking-wider px-2 py-0.5 whitespace-nowrap shadow-md">
-                        {loc.name}
-                      </div>
-                    </div>
-                  );
-                })}
-
-                <div className="absolute bottom-4 right-4 bg-white/95 px-3 py-1.5 border border-concrete text-[9px] font-sans text-charcoal/60 flex items-center gap-1.5 backdrop-blur-xs">
-                  <Navigation className="w-3 h-3 text-sand" /> Conceptual Mombasa Network Overlay
-                </div>
+            {/* Pricing & CTA */}
+            <div className="pt-4 border-t border-concrete flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+              <div>
+                <span className="font-sans text-[10px] text-charcoal/40 uppercase block">Starting from</span>
+                <span className="font-display font-semibold text-charcoal text-lg">{location.startingPrice}</span>
+              </div>
+              <div className="flex gap-3">
+                <button
+                  onClick={() => navigate(`/locations/${location.id}`)}
+                  className="bg-charcoal border border-charcoal hover:bg-sand hover:border-sand text-white hover:text-charcoal font-sans text-xs font-bold uppercase tracking-widest px-6 py-3.5 transition-all cursor-pointer inline-flex items-center gap-2"
+                >
+                  View Full Details <ArrowRight className="w-4 h-4" />
+                </button>
+                <button
+                  onClick={() => navigate('/book-tour')}
+                  className="border border-concrete hover:border-sand bg-white text-charcoal font-sans text-xs font-bold uppercase tracking-widest px-6 py-3.5 transition-all cursor-pointer"
+                >
+                  Book a Tour
+                </button>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Locations Cards List */}
-      <section className="py-24 max-w-[1440px] mx-auto px-6 lg:px-12">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {filteredLocations.map((loc) => (
-            <div
-              key={loc.id}
-              onClick={() => navigate(`/locations/${loc.id}`)}
-              className="bg-white border border-concrete hover:border-sand transition-all duration-500 overflow-hidden group cursor-pointer shadow-xs flex flex-col"
-            >
-              <div className="aspect-[4/3] overflow-hidden relative bg-concrete">
-                <img
-                  src={loc.image}
-                  alt={loc.name}
-                  className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105"
-                  referrerPolicy="no-referrer"
-                />
-                <div className="absolute top-4 left-4 bg-charcoal text-white text-[10px] font-bold uppercase tracking-widest px-3 py-1.5 shadow-md flex items-center gap-1">
-                  <MapPin className="w-3 h-3 text-sand" /> {loc.name}
-                </div>
-              </div>
-              <div className="p-8 flex-1 flex flex-col justify-between">
-                <div>
-                  <span className="font-sans text-[10px] font-bold uppercase tracking-widest text-sand block mb-1">
-                    {loc.neighborhood}
-                  </span>
-                  <h3 className="font-display font-medium text-xl text-charcoal tracking-tight group-hover:text-sand transition-colors mb-3">
-                    {loc.name}
-                  </h3>
-                  <p className="font-sans text-xs text-charcoal/60 line-clamp-2 mb-6 leading-relaxed">
-                    {loc.address}
-                  </p>
+      {/* Map Section */}
+      <section className="py-16 bg-white border-t border-concrete">
+        <div className="max-w-[1440px] mx-auto px-6 lg:px-12">
+          <div className="mb-8">
+            <span className="font-sans font-bold text-xs uppercase tracking-widest text-sand block mb-2">Find Us</span>
+            <h2 className="font-display font-light text-2xl sm:text-3xl text-charcoal tracking-tight">Mombasa Location Map</h2>
+          </div>
+          <div className="border border-concrete overflow-hidden shadow-sm" style={{ height: '420px' }}>
+            <iframe
+              src={location.mapEmbedUrl}
+              width="100%"
+              height="100%"
+              style={{ border: 0 }}
+              allowFullScreen
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              title="SecondDesk Mombasa Map"
+            />
+          </div>
+        </div>
+      </section>
 
-                  <div className="space-y-3 pt-4 border-t border-concrete/40">
-                    <div className="flex items-center gap-2 text-xs text-charcoal/70">
-                      <Phone className="w-3.5 h-3.5 text-sand" />
-                      <span>{loc.phone}</span>
-                    </div>
-                    <div className="flex items-center gap-2 text-xs text-charcoal/70">
-                      <Mail className="w-3.5 h-3.5 text-sand" />
-                      <span>{loc.email}</span>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="pt-6 mt-6 border-t border-concrete/40 flex items-center justify-between">
-                  <div>
-                    <span className="text-[10px] text-charcoal/40 uppercase block">Starting from</span>
-                    <span className="font-display font-semibold text-charcoal text-sm">{loc.startingPrice}</span>
-                  </div>
-                  <span className="text-xs font-bold uppercase tracking-wider text-charcoal group-hover:text-sand inline-flex items-center gap-1 transition-colors">
-                    View Office details <ArrowRight className="w-4 h-4" />
-                  </span>
-                </div>
+      {/* Feature Highlights */}
+      <section className="py-20 max-w-[1440px] mx-auto px-6 lg:px-12 border-t border-concrete">
+        <div className="text-center max-w-2xl mx-auto mb-14">
+          <span className="font-sans font-bold text-xs uppercase tracking-widest text-sand block mb-3">Why SecondDesk Mombasa</span>
+          <h2 className="font-display font-light text-3xl sm:text-4xl text-charcoal tracking-tight">
+            Everything You Need to <span className="font-serif italic text-charcoal/60">Do Your Best Work.</span>
+          </h2>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {[
+            { icon: Wifi, title: 'Uncapped Fiber Internet', desc: '500Mbps redundant fiber with 4G automatic failover. Zero downtime, ever.' },
+            { icon: Shield, title: 'Biometric Security', desc: 'Keyless biometric fingerprint entry with 24/7 CCTV and on-site security team.' },
+            { icon: Coffee, title: 'Artisanal Coffee Bar', desc: 'Unlimited specialty espresso, single-origin pour-overs, and fresh herbal teas.' },
+          ].map((item, i) => (
+            <div key={i} className="p-8 border border-concrete hover:border-sand bg-white transition-all duration-300">
+              <div className="w-12 h-12 flex items-center justify-center border border-concrete bg-offwhite mb-6">
+                <item.icon className="w-5 h-5 text-charcoal" />
               </div>
+              <h3 className="font-display font-semibold text-lg text-charcoal mb-2">{item.title}</h3>
+              <p className="font-sans text-xs text-charcoal/60 leading-relaxed">{item.desc}</p>
             </div>
           ))}
         </div>
@@ -204,4 +195,5 @@ export const Locations: React.FC = () => {
     </div>
   );
 };
+
 export default Locations;

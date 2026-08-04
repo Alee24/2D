@@ -148,7 +148,7 @@ export const workspaceCategories: WorkspaceCategory[] = [
     name: 'Virtual Office',
     tagline: 'Prestigious Business Presence',
     description: 'Professional business address, secure mail handling, and on-demand access to physical workspaces.',
-    longDescription: 'Establish a powerful local presence in premium commercial centers without the cost of full-time office rental. Ideal for remote companies, consultants, and international firms entering the Kenyan market. Our Virtual Office package provides a prestigious commercial street address, secure mail receiving and digital scanning, local phone answering, and on-demand hot desk access.',
+    longDescription: 'Establish a powerful local presence in premium commercial centers without the cost of full-time office rental. Ideal for remote companies, consultants, and international firms entering the Kenyan market.',
     image: 'https://images.unsplash.com/photo-1542744094-3a31f103e35f?auto=format&fit=crop&q=80&w=1200',
     capacity: 'Flexible Remote',
     startingPrice: 'KES 10,000 / mo',
@@ -161,7 +161,7 @@ export const workspaceCategories: WorkspaceCategory[] = [
     name: 'Event Space',
     tagline: 'Elegant Architectural Venues',
     description: 'Spacious, high-end venues designed for panel talks, product launches, workshops, and cocktail mixers.',
-    longDescription: 'Elevate your next event with our visually stunning, fully customizable corporate venues. Host networking mixers, educational workshops, design showcases, or formal presentations in an architectural setting that commands attention. Equipped with cutting-edge sound systems, stage lighting, versatile seating arrangements, and a fully serviced espresso bar and kitchen.',
+    longDescription: 'Elevate your next event with our visually stunning, fully customizable corporate venues. Host networking mixers, educational workshops, design showcases, or formal presentations in an architectural setting that commands attention.',
     image: 'https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&q=80&w=1200',
     capacity: 'Up to 120 People',
     startingPrice: 'KES 15,000 / hr',
@@ -221,18 +221,18 @@ export const workspaceSolutions: WorkspaceSolution[] = [
 
 export const locations: LocationData[] = [
   {
-    id: 'westlands',
-    name: 'Westlands',
-    neighborhood: 'Almont Towers, Westlands',
-    address: '8th & 9th Floor, Almont Towers, Church Road, Westlands, Mombasa',
+    id: 'mombasa',
+    name: 'Mombasa',
+    neighborhood: 'SecondDesk Mombasa',
+    address: 'Mombasa, Kenya',
     phone: '0719688992',
     email: 'info@seconddesk.ke',
-    mapEmbedUrl: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3988.8413693240217!2d36.80211561533261!3d-1.2614539990800635!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x182f1741ca6cc3f1%3A0xd6891cc774fcf373!2sWestlands%2C%20Mombasa!5e0!3m2!1sen!2ske!4v1655112233445!5m2!1sen!2ske',
+    mapEmbedUrl: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d127541.78490390272!2d39.58893155!3d-4.04309415!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x184012e4d0f0a529%3A0xbc8a32e0e79fd17b!2sMombasa!5e0!3m2!1sen!2ske!4v1655112233445!5m2!1sen!2ske',
     startingPrice: 'KES 17,000 / mo',
     image: westlandsImg,
-    nearbyLandmarks: ['Sarit Centre Mall', 'Westgate Shopping Mall', 'GTC Tower', 'Mövenpick Hotel'],
+    nearbyLandmarks: ['Mombasa CBD', 'Fort Jesus', 'Nyali Bridge', 'Mombasa Port'],
     spacesAvailable: ['Coworking Hot Desks', 'Dedicated Desks', 'Private Offices', 'Meeting Rooms', 'Event Spaces'],
-    amenities: ['Artisanal Espresso Bar', 'Dual backup generators', 'Valet parking options', 'Rooftop garden terrace', 'Lactation & wellness room'],
+    amenities: ['Artisanal Espresso Bar', 'Dual backup generators', 'Secure parking', 'Rooftop garden terrace', 'Wellness room'],
     gallery: [
       westlandsImg,
       'https://images.unsplash.com/photo-1497215728101-856f4ea42174?auto=format&fit=crop&q=80&w=600',
@@ -263,182 +263,6 @@ export const locations: LocationData[] = [
         { iconName: 'Wifi', text: 'High-volume secure badge-release cloud printing' }
       ]
     }
-  },
-  {
-    id: 'kilimani',
-    name: 'Kilimani',
-    neighborhood: 'The Pavilion, Kilimani',
-    address: '4th & 5th Floor, The Pavilion, Lenana Road, Kilimani, Mombasa',
-    phone: '0719688992',
-    email: 'info@seconddesk.ke',
-    mapEmbedUrl: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3988.8188173426095!2d36.79092491533261!3d-1.2882199990605156!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x182f17218b08cd63%3A0xe54b9f2b8ba3737b!2sKilimani%2C%20Mombasa!5e0!3m2!1sen!2ske!4v1655112255445!5m2!1sen!2ske',
-    startingPrice: 'KES 17,000 / mo',
-    image: kilimaniImg,
-    nearbyLandmarks: ['Yaya Centre Mall', 'Adlife Plaza', 'Hurlingham Commercial Center', 'French Cultural Center'],
-    spacesAvailable: ['Coworking Hot Desks', 'Dedicated Desks', 'Private Offices', 'Meeting Rooms'],
-    amenities: ['Quiet study library', 'Lush interior plants & air purifiers', 'Dedicated bike racks', 'Organic juice & tea station', 'Outdoor sun deck'],
-    gallery: [
-      kilimaniImg,
-      'https://images.unsplash.com/photo-1606857521015-7f9fcf423740?auto=format&fit=crop&q=80&w=600',
-      'https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&q=80&w=600'
-    ],
-    meetingRoomDetails: {
-      title: 'Meeting Rooms',
-      image: 'https://images.unsplash.com/photo-1542744094-3a31f103e35f?auto=format&fit=crop&q=80&w=800',
-      features: [
-        { iconName: 'PenTool', text: 'On Demand Stationery' },
-        { iconName: 'Tv', text: 'Smart TVs With Virtual Conferencing System' },
-        { iconName: 'Presentation', text: 'Whiteboards & Flip Charts' },
-        { iconName: 'Coffee', text: 'Organic juices, fresh fruit water, loose leaf tea & espresso' },
-        { iconName: 'Users', text: 'Lush Indoor Garden Waiting Rooms' },
-        { iconName: 'Wifi', text: 'High-Speed Internet' },
-        { iconName: 'Utensils', text: 'Catered Conferencing' }
-      ]
-    },
-    privateOfficeDetails: {
-      title: 'Private Offices',
-      image: 'https://images.unsplash.com/photo-1606857521015-7f9fcf423740?auto=format&fit=crop&q=80&w=800',
-      features: [
-        { iconName: 'Armchair', text: 'Solid hardwood custom-milled wooden desks' },
-        { iconName: 'Wind', text: 'Natural floor-to-ceiling solar illumination & purifiers' },
-        { iconName: 'Users', text: 'Direct private sun deck access doors' },
-        { iconName: 'Lock', text: 'Acoustically insulated solid timber framing' },
-        { iconName: 'Tv', text: 'Dedicated direct-dial digital desk phones' },
-        { iconName: 'Fingerprint', text: 'Smart biometric locker storage & personal lockboxes' }
-      ]
-    }
-  },
-  {
-    id: 'karen',
-    name: 'Karen',
-    neighborhood: 'The Greenery, Karen',
-    address: 'Ground & 1st Floor, The Greenery, Ngong Road, Karen, Mombasa',
-    phone: '0719688992',
-    email: 'info@seconddesk.ke',
-    mapEmbedUrl: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3988.751333791053!2d36.70295241533261!3d-1.3256039990326463!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x182f1bc2cc724a87%3A0xe54b9f2b8ba3737b!2sKaren%2C%20Mombasa!5e0!3m2!1sen!2ske!4v1655112277445!5m2!1sen!2ske',
-    startingPrice: 'KES 17,000 / mo',
-    image: karenImg,
-    nearbyLandmarks: ['The Hub Karen Mall', 'Karen Country Club', 'Waterfront Mall Karen', 'Karen Blixen Museum'],
-    spacesAvailable: ['Coworking Hot Desks', 'Dedicated Desks', 'Premium Private Suites', 'Boardrooms', 'Event Spaces'],
-    amenities: ['Extensive private park & gardens', 'On-site premium fitness gym', 'Artistic lounge with fireplace', 'Tesla charging stations', 'Gourmet restaurant partnership'],
-    gallery: [
-      karenImg,
-      'https://images.unsplash.com/photo-1542744094-3a31f103e35f?auto=format&fit=crop&q=80&w=600',
-      'https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&q=80&w=600'
-    ],
-    meetingRoomDetails: {
-      title: 'Meeting Rooms',
-      image: 'https://images.unsplash.com/photo-1517502884422-41eaaced0168?auto=format&fit=crop&q=80&w=800',
-      features: [
-        { iconName: 'PenTool', text: 'On Demand Premium Stationery' },
-        { iconName: 'Tv', text: 'Integrated Pro-Caster Wireless Presentation Screens' },
-        { iconName: 'Presentation', text: 'Porcelain Magnetic Whiteboards' },
-        { iconName: 'Coffee', text: 'Artisanal cold-brew, fresh herbal tea & pastry basket' },
-        { iconName: 'Users', text: 'Fireside Serviced Waiting Lounges' },
-        { iconName: 'Wifi', text: 'Ultra-Fast Dedicated Fiber Uplinks' },
-        { iconName: 'Utensils', text: 'Gourmet Estate-to-Table Catering Partnerships' }
-      ]
-    },
-    privateOfficeDetails: {
-      title: 'Private Offices',
-      image: 'https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&q=80&w=800',
-      features: [
-        { iconName: 'Armchair', text: 'Chesterfield leather armchair lounge seats & solid walnut tables' },
-        { iconName: 'Lock', text: 'Private secure safe and lockable filing credenza' },
-        { iconName: 'Wind', text: 'Whisper-quiet medical-grade HEPA air filtration' },
-        { iconName: 'Users', text: 'Direct private French-door access to garden lawns' },
-        { iconName: 'Sliders', text: 'Exclusive on-site administrative secretarial support' },
-        { iconName: 'Fingerprint', text: 'Keycard-controlled access doors with logs' }
-      ]
-    }
-  },
-  {
-    id: 'upper-hill',
-    name: 'Upper Hill',
-    neighborhood: 'Altitude Corporate Tower, Upper Hill',
-    address: '15th & 16th Floor, Altitude Corporate Tower, Hospital Road, Upper Hill, Mombasa',
-    phone: '+254 700 120 004',
-    email: 'upperhill@seconddesk.co',
-    mapEmbedUrl: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3988.8091823426095!2d36.81592491533261!3d-1.2982199990605156!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x182f17218b08cd63%3A0xe54b9f2b8ba3737b!2sUpper%20Hill%2C%20Mombasa!5e0!3m2!1sen!2ske!4v1655112299445!5m2!1sen!2ske',
-    startingPrice: 'KES 28,000 / mo',
-    image: upperHillImg,
-    nearbyLandmarks: ['Britam Tower', 'KCB Towers', 'Radisson Blu Hotel Upper Hill', 'Mombasa Club'],
-    spacesAvailable: ['Executive Offices', 'Enterprise Suites', 'Boardrooms', 'Private Desks'],
-    amenities: ['Skyline panorama business lounge', 'Dedicated server-room racks', 'Secured fingerprint biometric access', 'Helipad accessibility', 'Premium leather boardroom interiors'],
-    gallery: [
-      upperHillImg,
-      'https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=600',
-      'https://images.unsplash.com/photo-1606857521015-7f9fcf423740?auto=format&fit=crop&q=80&w=600'
-    ],
-    meetingRoomDetails: {
-      title: 'Meeting Rooms',
-      image: 'https://images.unsplash.com/photo-1431540015161-0bf868a2d407?auto=format&fit=crop&q=80&w=800',
-      features: [
-        { iconName: 'PenTool', text: 'On Demand Corporate Stationery' },
-        { iconName: 'Tv', text: 'Multi-Screen 4K Video Wall & Telepresence Hub' },
-        { iconName: 'Presentation', text: 'Interactive Smart Whiteboards' },
-        { iconName: 'Coffee', text: 'Premium imported mineral waters, espresso bars' },
-        { iconName: 'Users', text: 'Skyline Panorama Executive Waiting Lounge' },
-        { iconName: 'Wifi', text: 'Symmetrical Gigabit Fiber with microwave backup' },
-        { iconName: 'Utensils', text: 'Full executive-chef conferencing breakfast & lunch packages' }
-      ]
-    },
-    privateOfficeDetails: {
-      title: 'Private Offices',
-      image: 'https://images.unsplash.com/photo-1524758631624-e2822e304c36?auto=format&fit=crop&q=80&w=800',
-      features: [
-        { iconName: 'Armchair', text: 'Bespoke executive leather chairs & massive executive desk' },
-        { iconName: 'Fingerprint', text: 'Military-grade palm-vein biometrics access control' },
-        { iconName: 'Lock', text: 'Dedicated secure enclosed network server racks' },
-        { iconName: 'Wind', text: 'Multi-zone independent microclimate adjustments' },
-        { iconName: 'Sliders', text: 'Double acoustic sound-masking wall layering' },
-        { iconName: 'Tv', text: 'Priority private helicopter helipad booking privilege' }
-      ]
-    }
-  },
-  {
-    id: 'cbd',
-    name: 'CBD',
-    neighborhood: 'Legacy Plaza, CBD',
-    address: '3rd & 4th Floor, Legacy Plaza, Kenyatta Avenue, Mombasa',
-    phone: '+254 700 120 005',
-    email: 'cbd@seconddesk.co',
-    mapEmbedUrl: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3988.8188173426095!2d36.82292491533261!3d-1.2882199990605156!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x182f17218b08cd63%3A0xe54b9f2b8ba3737b!2sMombasa%20CBD!5e0!3m2!1sen!2ske!4v1655112311445!5m2!1sen!2ske',
-    startingPrice: 'KES 20,000 / mo',
-    image: cbdImg,
-    nearbyLandmarks: ['Mombasa Gallery', 'General Post Office (GPO)', 'Central Park', 'Sarova Stanley Hotel'],
-    spacesAvailable: ['Coworking Hot Desks', 'Dedicated Desks', 'Private Offices', 'Meeting Rooms'],
-    amenities: ['Soundproof interview pods', 'Expansive business address service', 'Central secure public transit access', 'Premium postal mailboxes', 'Daily catering cafeteria'],
-    gallery: [
-      cbdImg,
-      'https://images.unsplash.com/photo-1497215728101-856f4ea42174?auto=format&fit=crop&q=80&w=600',
-      'https://images.unsplash.com/photo-1542744094-3a31f103e35f?auto=format&fit=crop&q=80&w=600'
-    ],
-    meetingRoomDetails: {
-      title: 'Meeting Rooms',
-      image: 'https://images.unsplash.com/photo-1531973576160-7125cd663d86?auto=format&fit=crop&q=80&w=800',
-      features: [
-        { iconName: 'PenTool', text: 'On Demand Stationery' },
-        { iconName: 'Tv', text: 'Smart TVs With Virtual Conferencing System' },
-        { iconName: 'Presentation', text: 'Whiteboards & Flip Charts' },
-        { iconName: 'Coffee', text: 'Gourmet Kenyan tea, coffee & healthy snacks' },
-        { iconName: 'Users', text: 'Central Transit Serviced Reception' },
-        { iconName: 'Wifi', text: 'High-Speed Internet with 4G Failover' },
-        { iconName: 'Utensils', text: 'In-house culinary cafeteria catering options' }
-      ]
-    },
-    privateOfficeDetails: {
-      title: 'Private Offices',
-      image: 'https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&q=80&w=800',
-      features: [
-        { iconName: 'Armchair', text: 'Ergonomic electric height-adjustable sit-to-stand desks' },
-        { iconName: 'Lock', text: 'Soundproof triple-insulated acoustic window glasses' },
-        { iconName: 'Fingerprint', text: 'Secure RFID badge scanning system' },
-        { iconName: 'Wind', text: 'Dedicated high-efficiency personalized air cooling' },
-        { iconName: 'Sliders', text: 'Motorized dynamic sun-shading daylight regulators' },
-        { iconName: 'Wifi', text: 'Unlimited secure high-volume corporate color plotting' }
-      ]
-    }
   }
 ];
 
@@ -453,7 +277,7 @@ export const testimonials: Testimonial[] = [
   },
   {
     id: 't2',
-    quote: "With a growing distributed remote team, maintaining a sense of culture is hard. The hybrid office suites we rent at Second Desk Westlands give us an incredible base to connect and align.",
+    quote: "With a growing distributed remote team, maintaining a sense of culture is hard. The hybrid office suites we rent at Second Desk give us an incredible base to connect and align.",
     author: "Amir Osei",
     role: "VP of Engineering",
     company: "FintechOne East Africa",
@@ -474,7 +298,7 @@ export const blogPosts: BlogPost[] = [
     id: 'b1',
     title: 'The Future of Shared Workspaces: Designing for Privacy & Collaboration',
     excerpt: 'Explore how top-tier spatial designers are blending open lounge acoustics with private office modularity to boost productivity.',
-    content: 'The workspace landscape is undergoing a silent revolution. Long gone are the days of fluorescent-lit rows of identical cubicles, but so are the days of the chaotic open-plan startup playroom. Today, ambitious businesses require architectural integrity. They need spaces that foster quiet focus when desired, and structured collaboration when teams need to align.\n\nAt Second Desk, our architectural team spends months studying spatial density. We have found that the optimal layout utilizes a 60/40 design rule: 60% of square footage dedicated to enclosed, high-acoustic privacy suites and dedicated desks, and 40% curated as beautiful public lobbies, libraries, coffee stations, and garden terraces. This dualism allows professionals to transition smoothly from head-down work to high-energy community events.',
+    content: 'The workspace landscape is undergoing a silent revolution. Long gone are the days of fluorescent-lit rows of identical cubicles, but so are the days of the chaotic open-plan startup playroom. Today, ambitious businesses require architectural integrity. They need spaces that foster quiet focus when desired, and structured collaboration when teams need to align.\n\nAt Second Desk, our architectural team spends months studying spatial density. We have found that the optimal layout utilizes a 60/40 design rule: 60% of square footage dedicated to enclosed, high-acoustic privacy suites and dedicated desks, and 40% curated as beautiful public lobbies, libraries, coffee stations, and garden terraces.',
     category: 'Workspace Design',
     author: {
       name: 'Elena Rostova',
@@ -489,8 +313,8 @@ export const blogPosts: BlogPost[] = [
   {
     id: 'b2',
     title: 'How Startups Can Utilize Hybrid Office Models to Minimize Runways',
-    excerpt: 'Commercial real estate commitments shouldn’t kill your startup. Discover how flexible monthly office models are helping scale-ups survive.',
-    content: 'One of the largest liabilities on a growing startup balance sheet is long-term commercial lease commitments. When you commit to a 5-year office lease, you are gambling on your growth rate being linear. If you grow faster, you outgrow the space and pay breaking fees. If you scale back, you pay for empty desks.\n\nOur startup members utilize Private Office Suites as an operational strategy. Under a single monthly billing line, they receive a fully configured, high-security glass office that can scale from 5 to 20 seats overnight. Operational overhead like water, security, electricity, and premium reception are completely managed, allowing founders to run lean and redirect core capital into active product R&D.',
+    excerpt: 'Commercial real estate commitments should not kill your startup. Discover how flexible monthly office models are helping scale-ups survive.',
+    content: 'One of the largest liabilities on a growing startup balance sheet is long-term commercial lease commitments. When you commit to a 5-year office lease, you are gambling on your growth rate being linear.\n\nOur startup members utilize Private Office Suites as an operational strategy. Under a single monthly billing line, they receive a fully configured, high-security glass office that can scale from 5 to 20 seats overnight.',
     category: 'Startups',
     author: {
       name: 'David Mwangi',
@@ -505,7 +329,7 @@ export const blogPosts: BlogPost[] = [
     id: 'b3',
     title: 'Solitude vs. Focus: Cultivating Mental Clarity in Modern Workflows',
     excerpt: 'The psychological toll of home isolation can sap creative juices. How micro-interactions in architectural spaces restore mental stamina.',
-    content: 'Work from home was sold as a perfect utopia of pajamas and zero commute. However, four years into the mass remote work experiment, the cracks are widening. Solitary work at home often leads to cognitive fatigue, blurred lines between work and life, and deep professional isolation.\n\nHuman brains are wired to perform better under low-stakes social presence. Known as "social facilitation", working alongside other focused individuals—even if you are not actively speaking to them—naturally boosts motivation and attention span. A curated, aesthetic environment like Second Desk acts as an outer container for focus. The gentle low hum of the espresso bar, the sight of others creating, and the physical transition of "going to work" restore a crisp psychological structure to your daily workflow.',
+    content: 'Work from home was sold as a perfect utopia of pajamas and zero commute. However, four years into the mass remote work experiment, the cracks are widening.\n\nHuman brains are wired to perform better under low-stakes social presence. A curated, aesthetic environment like Second Desk acts as an outer container for focus.',
     category: 'Productivity',
     author: {
       name: 'Dr. Clara Patel',
@@ -520,7 +344,7 @@ export const blogPosts: BlogPost[] = [
     id: 'b4',
     title: 'The Digital Nomad Trend in East Africa: Mombasa as the Central Hub',
     excerpt: 'Why international tech leaders, creators, and entrepreneurs are selecting Mombasa as their central headquarters.',
-    content: 'Mombasa has earned its title as the "Silicon Savannah" through continuous tech innovation and business leadership. In recent years, a new wave of international creators, digital nomads, and global tech executives are migrating to the city. Mombasa offers unparalleled access to dynamic talent, a central geographical time zone for European and US markets, and incredible natural lifestyle features.\n\nSecond Desk acts as a physical landing pad for this global cohort. With multi-point locations across Westlands, Kilimani, and Karen, international teams can deploy high-spec secure nodes instantly, connecting directly to the local business elite via our structured investor breakfasts and workshop sessions.',
+    content: 'Mombasa is rapidly emerging as a premier destination for global professionals, digital nomads, and tech executives seeking a dynamic coastal business environment.\n\nSecond Desk acts as a physical landing pad for this global cohort, providing high-spec secure workspaces and direct access to the local business elite via structured investor breakfasts and workshop sessions.',
     category: 'Remote Work',
     author: {
       name: 'Kamau Gicheru',
@@ -537,7 +361,7 @@ export const communityEvents: CommunityEvent[] = [
   {
     id: 'e1',
     title: 'Founder Talk: Navigating Seed-to-Series-A in Africa',
-    description: 'An intimate fireside chat with two of Mombasa’s prominent tech founders sharing hard-won lessons on scaling, market expansion, and regional venture fundraising.',
+    description: 'An intimate fireside chat with prominent tech founders sharing hard-won lessons on scaling, market expansion, and regional venture fundraising.',
     date: 'July 15, 2026',
     time: '08:30 AM - 10:30 AM',
     type: 'Founder Talks',
@@ -547,7 +371,7 @@ export const communityEvents: CommunityEvent[] = [
   {
     id: 'e2',
     title: 'Monthly Investor Pitch Breakfast',
-    description: 'A closed-door, curated pitch session connecting three high-growth startups from the Second Desk ecosystem with leading regional angel networks and VC funds.',
+    description: 'A closed-door, curated pitch session connecting high-growth startups from the Second Desk ecosystem with leading regional angel networks and VC funds.',
     date: 'July 22, 2026',
     time: '08:00 AM - 11:00 AM',
     type: 'Investor Meetups',
@@ -598,7 +422,7 @@ export const faqs: FAQItem[] = [
     answer: "Yes, our high-spec meeting rooms, boardrooms, and event spaces are open for external booking by non-members on an hourly or daily rate. Members enjoy significant discounts and priority reservation via the Second Desk platform using their monthly included credits."
   },
   {
-    question: "Is there secure parking available at Second Desk locations?",
-    answer: "Yes. All our host properties (such as Almont Towers and Legacy Plaza) feature multi-level secure parking garages with 24/7 CCTV monitoring, automated ticketing, and dedicated security guards. We offer both casual visitor parking and discounted monthly parking passes for members."
+    question: "Is there secure parking available at Second Desk?",
+    answer: "Yes. Our host property features multi-level secure parking with 24/7 CCTV monitoring, automated ticketing, and dedicated security guards. We offer both casual visitor parking and discounted monthly parking passes for members."
   }
 ];
