@@ -32,7 +32,7 @@ export const PrivacyTerms: React.FC = () => {
             {isPrivacy ? 'Privacy Policy & Data Ethics' : 'Terms & Conditions of Membership'}
           </h1>
           <p className="font-sans text-xs text-charcoal/50">
-            Last Updated: July 05, 2026. Effective for all multi-point Nairobi nodes and digital memberships.
+            Last Updated: July 05, 2026. Effective for all multi-point Mombasa nodes and digital memberships.
           </p>
         </div>
 

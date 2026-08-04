@@ -60,14 +60,14 @@ export const LocationDetail: React.FC = () => {
     <div className="bg-offwhite text-charcoal pt-20 animate-fade-in">
       <SEO 
         title={`${location.name} Coworking & Private Offices`}
-        description={`Explore SecondDesk ${location.name} in Nairobi. Premium boutique workspace featuring flexible hot desks, dedicated permanent desks, private office suites, and state-of-the-art meeting rooms. Rates starting from ${location.startingPrice}.`}
+        description={`Explore SecondDesk ${location.name} in Mombasa. Premium boutique workspace featuring flexible hot desks, dedicated permanent desks, private office suites, and state-of-the-art meeting rooms. Rates starting from ${location.startingPrice}.`}
         ogImage={location.image}
         schemaType="CoworkingSpace"
         schemaData={{
           '@context': 'https://schema.org',
           '@type': 'CoworkingSpace',
           'name': `SecondDesk ${location.name}`,
-          'description': `Premium boutique workspace in ${location.name}, Nairobi featuring flexible hot desks, dedicated permanent desks, private office suites, and state-of-the-art meeting rooms.`,
+          'description': `Premium boutique workspace in ${location.name}, Mombasa featuring flexible hot desks, dedicated permanent desks, private office suites, and state-of-the-art meeting rooms.`,
           'image': location.image,
           'url': window.location.origin + window.location.pathname,
           'telephone': location.phone || '0719688992',
@@ -76,8 +76,8 @@ export const LocationDetail: React.FC = () => {
           'address': {
             '@type': 'PostalAddress',
             'streetAddress': location.address,
-            'addressLocality': 'Nairobi',
-            'addressRegion': 'Nairobi County',
+            'addressLocality': 'Mombasa',
+            'addressRegion': 'Mombasa County',
             'addressCountry': 'KE'
           },
           'amenityFeature': location.amenities.map(amenity => ({
@@ -278,7 +278,7 @@ export const LocationDetail: React.FC = () => {
               Neighborhood & Landmarks
             </h2>
             <p className="font-sans text-xs text-charcoal/60 leading-relaxed font-light">
-              Situated in Nairobi's prime districts, our office footprints are immediately adjacent to high-end dining, shopping centers, hotels, and central transport access.
+              Situated in Mombasa's prime districts, our office footprints are immediately adjacent to high-end dining, shopping centers, hotels, and central transport access.
             </p>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               {location.nearbyLandmarks.map((landmark, idx) => (

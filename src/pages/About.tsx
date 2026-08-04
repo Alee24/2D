@@ -9,7 +9,7 @@ export const About: React.FC = () => {
   return (
     <div className="bg-offwhite text-charcoal pt-20 animate-fade-in">
       <SEO 
-        title="About Us | Premium Workspaces in Nairobi"
+        title="About Us | Premium Workspaces in Mombasa"
         description="Learn about SecondDesk's mission to redefine professional workspaces in Kenya. Merging high-end hospitality, pristine design, and seamless technology."
       />
       <Breadcrumbs />
@@ -56,13 +56,13 @@ export const About: React.FC = () => {
           </h2>
           <div className="space-y-4 font-sans text-sm text-charcoal/70 leading-relaxed font-light">
             <p>
-              Second Desk was conceived inside a noisy, cramped coffee shop in Nairobi. Our founders, Wainaina and Elena, were trying to finalize design blueprints for a new commercial block. They realized that Nairobi’s ambitious startups, remote tech units, and agencies faced a binary choice: sign rigid, cash-draining 5-year commercial leases and manage cleanups, security, and power setups themselves; or work out of chaotic cafes or low-prestige shared structures that fail to signal trust.
+              Second Desk was conceived inside a noisy, cramped coffee shop in Mombasa. Our founders, Wainaina and Elena, were trying to finalize design blueprints for a new commercial block. They realized that Mombasa’s ambitious startups, remote tech units, and agencies faced a binary choice: sign rigid, cash-draining 5-year commercial leases and manage cleanups, security, and power setups themselves; or work out of chaotic cafes or low-prestige shared structures that fail to signal trust.
             </p>
             <p>
               They believed there had to be a better container for focus. They resolved to combine <strong>world-class modular architecture</strong>, rock-solid infrastructure (generators and fiber optic networks), and premium executive hospitality under a streamlined monthly pass. 
             </p>
             <p>
-              Today, Second Desk hosts over 500 active professional members across Nairobi. We handle everything—operation, security, reception, and coffee—so creators can focus fully on doing what they do best.
+              Today, Second Desk hosts over 500 active professional members across Mombasa. We handle everything—operation, security, reception, and coffee—so creators can focus fully on doing what they do best.
             </p>
           </div>
 

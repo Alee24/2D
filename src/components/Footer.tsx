@@ -44,7 +44,7 @@ export const Footer: React.FC = () => {
               </span>
             </div>
             <p className="font-sans text-sm text-white/60 mb-6 max-w-sm leading-relaxed">
-              Where Great Work Finds Its Place. Premium flexible workspaces, private office suites, and meeting facilities in Nairobi.
+              Where Great Work Finds Its Place. Premium flexible workspaces, private office suites, and meeting facilities in Mombasa.
             </p>
             <div className="space-y-2 mb-6 text-xs text-white/80 font-sans border-l-2 border-[#E31B23] pl-3 py-1 bg-white/5 rounded-r">
               <p className="font-medium text-white flex items-center gap-2">

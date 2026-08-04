@@ -14,7 +14,7 @@ interface SEOProps {
 export const SEO: React.FC<SEOProps> = ({
   title,
   description,
-  keywords = 'coworking, shared offices, private office, meeting rooms, business lounge, virtual office, SecondDesk, boutique workspace',
+  keywords = 'coworking Mombasa, shared offices Mombasa, private office Mombasa, meeting rooms, business lounge, virtual office Kenya, SecondDesk, flexible workspace',
   ogType = 'website',
   ogImage = 'https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=1200',
   canonicalPath,
@@ -23,7 +23,7 @@ export const SEO: React.FC<SEOProps> = ({
 }) => {
   useEffect(() => {
     // 1. Update document title
-    const fullTitle = `${title} | SecondDesk`;
+    const fullTitle = title === 'SecondDesk' ? 'SecondDesk' : `${title} | SecondDesk`;
     document.title = fullTitle;
 
     // Helper function to update or create meta tags
@@ -111,7 +111,7 @@ export const SEO: React.FC<SEOProps> = ({
           'datePublished': new Date().toISOString().split('T')[0], // Fallback date
           'mainEntityOfPage': currentUrl,
         };
-      } else if (path.includes('/locations/') || title.includes('SecondDesk ') || (title.includes('Location') && title !== 'Premium Coworking & Private Office Locations in Nairobi')) {
+      } else if (path.includes('/locations/') || title.includes('SecondDesk ') || (title.includes('Location') && title !== 'Premium Coworking & Private Office Locations in Mombasa')) {
         // Looks like an individual location detail page
         resolvedSchema = {
           '@context': 'https://schema.org',
@@ -120,12 +120,12 @@ export const SEO: React.FC<SEOProps> = ({
           'description': description,
           'image': ogImage,
           'url': currentUrl,
-          'telephone': '0719688992', // general office phone
+          'telephone': '0719688992',
           'priceRange': '$$$',
           'address': {
             '@type': 'PostalAddress',
-            'streetAddress': title.includes('Westlands') ? 'Westlands Road' : title.includes('Karen') ? 'Ngong Road' : 'Nairobi',
-            'addressLocality': 'Nairobi',
+            'streetAddress': 'Mombasa',
+            'addressLocality': 'Mombasa',
             'addressCountry': 'KE',
           },
         };
@@ -144,8 +144,8 @@ export const SEO: React.FC<SEOProps> = ({
           'priceRange': '$$$',
           'address': {
             '@type': 'PostalAddress',
-            'streetAddress': 'Nairobi Commercial Hubs',
-            'addressLocality': 'Nairobi',
+            'streetAddress': 'Mombasa Business Hub',
+            'addressLocality': 'Mombasa',
             'addressCountry': 'KE',
           },
           'geo': {

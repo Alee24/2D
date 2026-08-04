@@ -80,7 +80,7 @@ export const Home: React.FC = () => {
     { title: 'Printing Services', icon: FileText, desc: 'Secure, high-volume document scanning and industrial black & white or color printing.' },
     { title: 'Reception Services', icon: Users, desc: 'Our front-of-house team welcomes guests, manages mail, and assists with administrative requests.' },
     { title: 'Coffee & Refreshments', icon: Coffee, desc: 'Unlimited fresh hot espresso and specialty local teas brewed by professional baristas.' },
-    { title: 'Networking Events', icon: Calendar, desc: 'Curated breakfast mixers, panels, and investor roundtables tailored to Nairobi professionals.' },
+    { title: 'Networking Events', icon: Calendar, desc: 'Curated breakfast mixers, panels, and investor roundtables tailored to Mombasa professionals.' },
     { title: 'Community Support', icon: Sparkles, desc: 'Our local managers keep operations running seamlessly so you focus on results.' },
   ];
 

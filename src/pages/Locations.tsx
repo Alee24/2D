@@ -16,8 +16,8 @@ export const Locations: React.FC = () => {
   return (
     <div className="bg-offwhite text-charcoal pt-20 animate-fade-in">
       <SEO 
-        title="Premium Coworking & Private Office Locations in Nairobi"
-        description="Explore SecondDesk's network of premium workspace locations in Westlands, Kilimani, Karen, Upper Hill, and Nairobi CBD. Find your perfect workspace setup."
+        title="Premium Coworking & Private Office Locations in Mombasa"
+        description="Explore SecondDesk's network of premium workspace locations in Westlands, Kilimani, Karen, Upper Hill, and Mombasa CBD. Find your perfect workspace setup."
       />
       <Breadcrumbs />
       {/* Editorial Hero */}
@@ -34,12 +34,12 @@ export const Locations: React.FC = () => {
 
         <div className="max-w-[1440px] mx-auto px-6 lg:px-12 relative z-10">
           <div className="max-w-3xl">
-            <span className="font-sans font-bold text-xs tracking-widest uppercase text-sand block mb-3">Nairobi Commercial Network</span>
+            <span className="font-sans font-bold text-xs tracking-widest uppercase text-sand block mb-3">Mombasa Commercial Network</span>
             <h1 className="font-display font-light text-4xl sm:text-5xl lg:text-6xl tracking-tight mb-6">
               Our Premium <span className="font-serif italic text-sand">Locations.</span>
             </h1>
             <p className="font-sans text-white/75 text-base sm:text-lg leading-relaxed max-w-xl">
-              Establish your professional business footprint in Nairobi’s highly sought-after, central, secure developments. 
+              Establish your professional business footprint in Mombasa’s highly sought-after, central, secure developments. 
             </p>
           </div>
         </div>
@@ -53,7 +53,7 @@ export const Locations: React.FC = () => {
             <div className="lg:col-span-4 space-y-6">
               <span className="font-sans text-xs font-bold uppercase tracking-widest text-sand">Spatial Coverage</span>
               <h2 className="font-display font-light text-3xl text-charcoal tracking-tight">
-                Nairobi Hub Map
+                Mombasa Hub Map
               </h2>
               <p className="font-sans text-sm text-charcoal/60 leading-relaxed font-light">
                 Our locations are selected purely based on commercial prestige, power-redundancy integrity, and easy highway connections.
@@ -95,7 +95,7 @@ export const Locations: React.FC = () => {
                 ))}
               </div>
 
-              {/* Central Map Graphic (Minimalist SVG/CSS representing Nairobi nodes) */}
+              {/* Central Map Graphic (Minimalist SVG/CSS representing Mombasa nodes) */}
               <div className="relative w-full max-w-lg aspect-video flex items-center justify-center">
                 {/* Simulated Roads/Accents */}
                 <div className="absolute w-[120%] h-[2px] bg-concrete rotate-12 -translate-y-8 pointer-events-none"></div>
@@ -135,7 +135,7 @@ export const Locations: React.FC = () => {
                 })}
 
                 <div className="absolute bottom-4 right-4 bg-white/95 px-3 py-1.5 border border-concrete text-[9px] font-sans text-charcoal/60 flex items-center gap-1.5 backdrop-blur-xs">
-                  <Navigation className="w-3 h-3 text-sand" /> Conceptual Nairobi Network Overlay
+                  <Navigation className="w-3 h-3 text-sand" /> Conceptual Mombasa Network Overlay
                 </div>
               </div>
             </div>

@@ -268,8 +268,8 @@ export const Header: React.FC = () => {
                   <>
                     <div className="col-span-1 border-r border-concrete pr-8">
                       <span className="text-xs font-semibold tracking-widest uppercase text-sand block mb-2">Locations</span>
-                      <h3 className="font-display text-2xl font-semibold text-charcoal leading-tight mb-4">Nairobi Hub Network</h3>
-                      <p className="font-sans text-sm text-charcoal/60 mb-6">Select your primary premium business node across Nairobi’s most prestigious central commercial neighborhoods.</p>
+                      <h3 className="font-display text-2xl font-semibold text-charcoal leading-tight mb-4">Mombasa Hub Network</h3>
+                      <p className="font-sans text-sm text-charcoal/60 mb-6">Select your primary premium business node across Mombasa’s most prestigious central commercial neighborhoods.</p>
                       <button 
                         onClick={() => { navigate('/locations'); setActiveMegaMenu(null); }}
                         className="text-xs font-semibold uppercase tracking-wider text-charcoal hover:text-sand inline-flex items-center gap-2 group cursor-pointer"

@@ -107,7 +107,7 @@ export const generateBrochurePDF = () => {
   doc.setTextColor(150, 150, 150);
   doc.setFont('helvetica', 'normal');
   doc.setFontSize(8);
-  doc.text('NAIROBI, KENYA  |  WWW.SECONDDESK.COM', 105, 265, { align: 'center' });
+  doc.text('Mombasa, KENYA  |  WWW.SECONDDESK.COM', 105, 265, { align: 'center' });
 
 
   // ==========================================
@@ -259,7 +259,7 @@ export const generateBrochurePDF = () => {
   doc.setTextColor(colors.charcoal.r, colors.charcoal.g, colors.charcoal.b);
   doc.setFont('helvetica', 'normal');
   doc.setFontSize(10);
-  doc.text('Establish your presence in Nairobi\'s most prestigious, fully connected business districts.', 15, 52);
+  doc.text('Establish your presence in Mombasa\'s most prestigious, fully connected business districts.', 15, 52);
 
   // Locations Box grid
   const locationsData = [
