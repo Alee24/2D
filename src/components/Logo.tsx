@@ -7,10 +7,9 @@ interface LogoProps {
 }
 
 export const Logo: React.FC<LogoProps> = ({ className = '', size = 32, light = false }) => {
-  // We use the exact colors: charcoal (#1D1D1D) and sand (#D8C3A5)
-  // For light backgrounds, S is #1D1D1D. For dark backgrounds, S is #FAFAF8 (offwhite)
+  // We use the exact brand colors: charcoal (#1D1D1D) or offwhite, and red (#E31B23) for 'D'
   const sColor = light ? '#FAFAF8' : '#1D1D1D';
-  const dColor = '#D8C3A5';
+  const dColor = '#E31B23';
 
   // We design a beautiful vector layout where "S" and "D" are beautifully nested.
   // The 'Playfair Display' font is already imported globally in index.css.
@@ -31,9 +30,13 @@ export const Logo: React.FC<LogoProps> = ({ className = '', size = 32, light = f
           x="35"
           y="78"
           fontFamily="'Playfair Display', Georgia, serif"
-          fontSize="72"
-          fontWeight="600"
+          fontSize="75"
+          fontWeight="900"
           fill={dColor}
+          stroke={dColor}
+          strokeWidth="3"
+          strokeLinejoin="round"
+          style={{ paintOrder: 'stroke fill' }}
           letterSpacing="-0.05em"
         >
           D
@@ -41,12 +44,16 @@ export const Logo: React.FC<LogoProps> = ({ className = '', size = 32, light = f
 
         {/* 'S' is placed on the left, rendered second so its curves gracefully overlap the 'D' */}
         <text
-          x="5"
+          x="3"
           y="72"
           fontFamily="'Playfair Display', Georgia, serif"
-          fontSize="72"
-          fontWeight="600"
+          fontSize="75"
+          fontWeight="900"
           fill={sColor}
+          stroke={sColor}
+          strokeWidth="3"
+          strokeLinejoin="round"
+          style={{ paintOrder: 'stroke fill' }}
           letterSpacing="-0.05em"
         >
           S

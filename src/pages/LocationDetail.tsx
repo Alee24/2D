@@ -70,8 +70,8 @@ export const LocationDetail: React.FC = () => {
           'description': `Premium boutique workspace in ${location.name}, Nairobi featuring flexible hot desks, dedicated permanent desks, private office suites, and state-of-the-art meeting rooms.`,
           'image': location.image,
           'url': window.location.origin + window.location.pathname,
-          'telephone': location.phone || '+254 700 120 003',
-          'email': location.email || 'info@seconddesk.co',
+          'telephone': location.phone || '0719688992',
+          'email': location.email || 'info@seconddesk.ke',
           'priceRange': '$$$',
           'address': {
             '@type': 'PostalAddress',

@@ -71,17 +71,27 @@ export const Contact: React.FC = () => {
           {/* Company contact points */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 border-b border-concrete pb-10">
             <div className="space-y-4">
-              <h3 className="font-display font-semibold text-lg text-charcoal">General Sales</h3>
-              <div className="space-y-2 text-xs font-sans text-charcoal/70">
-                <p className="flex items-center gap-2">
-                  <Phone className="w-4 h-4 text-sand shrink-0" /> +254 700 120 000
+              <h3 className="font-display font-semibold text-lg text-charcoal">General Sales & Support</h3>
+              <div className="space-y-2.5 text-xs font-sans text-charcoal/80">
+                <p className="flex items-center gap-2 font-medium">
+                  <Phone className="w-4 h-4 text-[#E31B23] shrink-0" /> 
+                  <span>0719688992</span> <span className="text-charcoal/40">|</span> <span>+254 719 688 992</span>
                 </p>
                 <p className="flex items-center gap-2">
-                  <Mail className="w-4 h-4 text-sand shrink-0" /> info@seconddesk.co
+                  <Mail className="w-4 h-4 text-[#E31B23] shrink-0" /> info@seconddesk.ke
                 </p>
-                <p className="flex items-center gap-2">
-                  <Clock className="w-4 h-4 text-sand shrink-0" /> Mon - Fri, 08:00 AM - 06:00 PM
-                </p>
+                <div className="pt-1 space-y-1">
+                  <p className="flex items-center gap-2">
+                    <Clock className="w-4 h-4 text-[#E31B23] shrink-0" /> 
+                    <span><strong>Mon - Fri:</strong> 8:00 AM - 8:00 PM</span>
+                  </p>
+                  <p className="pl-6 text-charcoal/70">
+                    <strong>Saturday:</strong> 9:00 AM - 1:00 PM
+                  </p>
+                  <p className="pl-6 text-charcoal/50">
+                    <strong>Sunday:</strong> Closed
+                  </p>
+                </div>
               </div>
             </div>
 

@@ -39,11 +39,8 @@ export const Header: React.FC = () => {
   const navLinks = [
     { label: 'Home', path: '/' },
     { label: 'Workspace', path: '/workspace', hasMega: 'workspace' },
-    { label: 'Solutions', path: '/solutions', hasMega: 'solutions' },
     { label: 'Locations', path: '/locations', hasMega: 'locations' },
-    { label: 'Community', path: '/community' },
     { label: 'About', path: '/about' },
-    { label: 'Insights', path: '/insights' },
     { label: 'Contact', path: '/contact' },
   ];
 
@@ -92,9 +89,10 @@ export const Header: React.FC = () => {
             onClick={() => navigate('/')} 
             className="flex items-center gap-2 cursor-pointer group"
           >
-            <Logo size={40} light={!isSolidHeader} />
-            <span className="font-display font-semibold tracking-[0.2em] text-lg uppercase">
-              Second Desk
+            <Logo size={42} light={!isSolidHeader} />
+            <span className="font-display text-xl uppercase flex items-center tracking-[0.12em] font-black" style={{ fontWeight: 900 }}>
+              <span className={isSolidHeader ? 'text-charcoal' : 'text-white'}>SECOND</span>
+              <span className="text-[#E31B23]">DESK</span>
             </span>
           </div>
 
@@ -262,48 +260,6 @@ export const Header: React.FC = () => {
                           <p className="font-sans text-xs text-charcoal/60 line-clamp-2 mt-1">{space.description}</p>
                         </div>
                       ))}
-                    </div>
-                  </>
-                )}
-
-                {activeMegaMenu === 'solutions' && (
-                  <>
-                    <div className="col-span-1 border-r border-concrete pr-8">
-                      <span className="text-xs font-semibold tracking-widest uppercase text-sand block mb-2">Solutions</span>
-                      <h3 className="font-display text-2xl font-semibold text-charcoal leading-tight mb-4">Tailored Workspace Strategies</h3>
-                      <p className="font-sans text-sm text-charcoal/60 mb-6">Discover space strategies calibrated perfectly for independent creators, scaling startups, agencies, and regional corporate hubs.</p>
-                      <button 
-                        onClick={() => { navigate('/solutions'); setActiveMegaMenu(null); }}
-                        className="text-xs font-semibold uppercase tracking-wider text-charcoal hover:text-sand inline-flex items-center gap-2 group cursor-pointer"
-                      >
-                        View All Solutions <ArrowRight className="w-4 h-4 transition-transform duration-200 group-hover:translate-x-1" />
-                      </button>
-                    </div>
-                    <div className="col-span-3 grid grid-cols-3 gap-6">
-                      <div 
-                        onClick={() => { navigate('/solutions'); setActiveMegaMenu(null); }}
-                        className="p-6 border border-concrete hover:border-sand transition-all duration-300 cursor-pointer"
-                      >
-                        <Compass className="w-6 h-6 text-sand mb-4" />
-                        <h4 className="font-display font-medium text-charcoal text-base mb-2">Freelancers & Solopreneurs</h4>
-                        <p className="font-sans text-xs text-charcoal/60">Shatter the isolation of working from home. Tap into robust fiber internet, artisanal coffees, and dynamic networking events.</p>
-                      </div>
-                      <div 
-                        onClick={() => { navigate('/solutions'); setActiveMegaMenu(null); }}
-                        className="p-6 border border-concrete hover:border-sand transition-all duration-300 cursor-pointer"
-                      >
-                        <Layers className="w-6 h-6 text-sand mb-4" />
-                        <h4 className="font-display font-medium text-charcoal text-base mb-2">Startups & Hybrid Teams</h4>
-                        <p className="font-sans text-xs text-charcoal/60">Scale your desks seamlessly up or down. Keep your capital agile and bypass complex long-term commercial lease lines.</p>
-                      </div>
-                      <div 
-                        onClick={() => { navigate('/solutions'); setActiveMegaMenu(null); }}
-                        className="p-6 border border-concrete hover:border-sand transition-all duration-300 cursor-pointer"
-                      >
-                        <Calendar className="w-6 h-6 text-sand mb-4" />
-                        <h4 className="font-display font-medium text-charcoal text-base mb-2">Agencies & SMEs</h4>
-                        <p className="font-sans text-xs text-charcoal/60">Secure private glass suites, custom branding, executive receptionist greetings, and enterprise power/fiber stability.</p>
-                      </div>
                     </div>
                   </>
                 )}

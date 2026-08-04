@@ -14,18 +14,94 @@ import karenImg from '../assets/images/nairobi_karen_greenery_1783253669175.jpg'
 import upperHillImg from '../assets/images/nairobi_upper_hill_office_1783253682757.jpg';
 import cbdImg from '../assets/images/nairobi_cbd_coworking_1783253697927.jpg';
 
+export const companyInfo = {
+  name: 'SecondDesk',
+  phone: '0719688992',
+  phoneFormatted: '+254 719 688 992',
+  email: 'info@seconddesk.ke',
+  website: 'www.seconddesk.ke',
+  hours: {
+    weekdays: 'Mon - Fri: 8:00 AM - 8:00 PM',
+    saturday: 'Saturday: 9:00 AM - 1:00 PM',
+    sunday: 'Sunday: Closed'
+  }
+};
+
+export const officialPriceList = {
+  title: 'PRICE LIST',
+  subtitle: 'CO-WORKING SPACES | OFFICE SUITES | MEETING FACILITIES',
+  vatNotice: 'ALL RATES EXCLUDE 16% VAT',
+  contact: {
+    phone: '0719688992',
+    email: 'info@seconddesk.ke',
+    website: 'www.seconddesk.ke'
+  },
+  sections: [
+    {
+      id: 'office-suites',
+      title: 'OFFICE SUITES',
+      rates: [
+        { name: 'Small Suite', period: 'MONTHLY', price: 'KES 45,000' },
+        { name: 'Medium Suite', period: 'MONTHLY', price: 'KES 55,000' },
+        { name: 'Large Suite', period: 'MONTHLY', price: 'KES 65,000' },
+      ]
+    },
+    {
+      id: 'boardroom',
+      title: 'BOARDROOM',
+      rates: [
+        { name: 'Full Day', period: 'DAY', price: 'KES 12,000' },
+        { name: 'Half Day', period: 'HALF DAY', price: 'KES 8,000' },
+        { name: 'Hourly', period: 'HOURLY', price: 'KES 2,000' },
+      ]
+    },
+    {
+      id: 'shared-desks',
+      title: 'SHARED DESKS',
+      rates: [
+        { name: 'Monthly', period: 'MONTHLY', price: 'KES 17,000' },
+        { name: 'Day Pass', period: '8 HOURS', price: 'KES 1,700' },
+        { name: 'Half-Day Pass', period: '4 HOURS', price: 'KES 1,200' },
+        { name: 'Hourly Pass', period: 'HOURLY', price: 'KES 500' },
+      ]
+    },
+    {
+      id: 'meeting-room',
+      title: 'MEETING ROOM',
+      rates: [
+        { name: 'Hourly Rate', period: 'HOURLY', price: 'KES 1,500' },
+      ]
+    },
+    {
+      id: 'printing',
+      title: 'PRINTING / COPYING / SCANNING',
+      rates: [
+        { name: 'Black and White', period: 'PER PAGE', price: 'KES 10' },
+        { name: 'Colour', period: 'PER PAGE', price: 'KES 15' },
+      ]
+    },
+    {
+      id: 'zoom-rooms',
+      title: 'ZOOM ROOMS',
+      rates: [
+        { name: 'Hourly Rate', period: 'HOURLY', price: 'KES 1,000' },
+      ]
+    }
+  ]
+};
+
 export const workspaceCategories: WorkspaceCategory[] = [
   {
     id: 'coworking',
-    name: 'Coworking',
-    tagline: 'Flexible Hot Desks',
+    name: 'Shared Desks / Coworking',
+    tagline: 'Flexible Hot Desks & Passes',
     description: 'Flexible desks for freelancers, remote workers, and entrepreneurs who value community and adaptability.',
-    longDescription: 'Our open-plan coworking spaces are designed to inspire focus and collaboration. Step into a dynamic ecosystem of like-minded professionals, where hot desking allows you to choose your ideal spot every single day. Framed by expansive floor-to-ceiling windows, bespoke ergonomic seating, and vibrant greenery, it is the ultimate environment for deep work or creative brainstorming.',
+    longDescription: 'Our open-plan coworking spaces are designed to inspire focus and collaboration. Step into a dynamic ecosystem of like-minded professionals, where hot desking allows you to choose your ideal spot every single day.',
     image: 'https://images.unsplash.com/photo-1497215728101-856f4ea42174?auto=format&fit=crop&q=80&w=1200',
     capacity: 'Single Desk (Flexible)',
-    startingPrice: 'KES 25,000 / mo',
+    startingPrice: 'KES 17,000 / mo',
     amenities: ['24/7 Secure Access', 'High-Speed Wi-Fi 6', 'Premium Coffee & Teas', 'Phone Booth Access', 'Daily Cleaning'],
-    features: ['Access to shared lounge areas', 'Credits for meeting rooms', 'Invitations to networking events', 'Flexible day-to-day seat selection'],
+    features: ['Monthly Rate: KES 17,000', 'Day Pass (8 Hours): KES 1,700', 'Half-Day Pass (4 Hours): KES 1,200', 'Hourly Pass: KES 500'],
     slug: 'coworking',
   },
   {
@@ -33,38 +109,38 @@ export const workspaceCategories: WorkspaceCategory[] = [
     name: 'Dedicated Desk',
     tagline: 'Your Permanent Desk',
     description: 'A permanent workspace with secure storage and premium access in a shared professional environment.',
-    longDescription: 'Establish your professional base with a desk that is yours and yours alone. Located in a secured, quieter zone of the building, each dedicated desk features premium ergonomic setups, locking storage drawer cabinets, and personalized power strips. You get all the benefits of our active community with the stability of a permanent, quiet, and consistent daily workstation.',
+    longDescription: 'Establish your professional base with a desk that is yours and yours alone. Located in a secured, quieter zone of the building, each dedicated desk features premium ergonomic setups.',
     image: 'https://images.unsplash.com/photo-1524758631624-e2822e304c36?auto=format&fit=crop&q=80&w=1200',
     capacity: '1 Person',
-    startingPrice: 'KES 38,000 / mo',
+    startingPrice: 'KES 17,000 / mo',
     amenities: ['Permanent Desk & Ergonomic Chair', 'Lockable Storage Cabinet', 'Business Address Registration', '24/7 Premium Access', 'Free B&W Printing'],
-    features: ['Personalized mail handling', 'Higher monthly meeting room credits', 'Permanent Ethernet/Wi-Fi connection', 'Dedicated storage safety'],
+    features: ['Personalized mail handling', 'Meeting room access', 'High-speed internet', 'Dedicated storage safety'],
     slug: 'dedicated-desks',
   },
   {
     id: 'private-office',
-    name: 'Private Offices',
+    name: 'Office Suites',
     tagline: 'Move-In-Ready Office Suites',
     description: 'Enclosed, fully furnished offices for teams of every size with customized layouts and high security.',
-    longDescription: 'Designed for startups, established businesses, and remote corporate hubs who require privacy, security, and prestige. Our private office suites are premium glass-enclosed structures that offer physical confidentiality without isolating you from the energy of the wider community. Fully furnished with modular desks and premium task chairs, they can be customized to match your company branding.',
+    longDescription: 'Designed for startups, established businesses, and remote corporate hubs who require privacy, security, and prestige. Available in Small (KES 45k), Medium (KES 55k), and Large (KES 65k) configurations.',
     image: 'https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=1200',
     capacity: '2 to 50+ People',
-    startingPrice: 'KES 95,000 / mo',
-    amenities: ['Fully Furnished Lockable Suite', 'Customizable Layout & Branding', 'Dedicated Ethernet Line', 'Executive Reception Services', 'Daily Dedicated Office Cleaning'],
-    features: ['High-volume meeting room credits', 'Individual Climate Control (AC)', 'Logo on office door and directory board', 'Access to premium boardrooms'],
+    startingPrice: 'KES 45,000 / mo',
+    amenities: ['Fully Furnished Lockable Suite', 'Customizable Layout & Branding', 'Dedicated Ethernet Line', 'Executive Reception Services', 'Daily Office Cleaning'],
+    features: ['Small Suite: KES 45,000 / mo', 'Medium Suite: KES 55,000 / mo', 'Large Suite: KES 65,000 / mo', 'Individual Climate Control'],
     slug: 'private-offices',
   },
   {
     id: 'meeting-rooms',
-    name: 'Meeting Rooms',
+    name: 'Boardrooms & Meeting Rooms',
     tagline: 'Design-Led Collaborative Spaces',
-    description: 'Professional boardrooms and meeting spaces equipped for presentations, interviews, and client pitches.',
-    longDescription: 'Leave a lasting impression on clients, investors, or your own team with our professionally curated conference and meeting rooms. Outfitted with high-resolution video conferencing bars, dynamic acoustic panels, whiteboards, and high-speed presentations screens. Fully supported by our hospitality staff, refreshments and printing needs are handled seamlessly.',
+    description: 'Professional boardrooms, meeting rooms, and Zoom rooms equipped for presentations, interviews, and client pitches.',
+    longDescription: 'Leave a lasting impression on clients or your team. Choose from Boardrooms (KES 12k Full Day / KES 8k Half Day / KES 2k Hourly), Meeting Rooms (KES 1,500/hr), and Zoom Rooms (KES 1,000/hr).',
     image: 'https://images.unsplash.com/photo-1606857521015-7f9fcf423740?auto=format&fit=crop&q=80&w=1200',
     capacity: '4 to 20 People',
-    startingPrice: 'KES 2,500 / hr',
-    amenities: ['4K Interactive Presentation Screens', 'Studio-Grade Video Bars', 'Magnetic Whiteboards', 'Premium Mineral Water', 'High-Speed Fiber Connectivity'],
-    features: ['Comfortable task seating', 'Catering service available upon request', 'Dimmable mood lighting', 'Soundproof architectural glass'],
+    startingPrice: 'KES 1,500 / hr',
+    amenities: ['4K Interactive Presentation Screens', 'Studio-Grade Video Bars', 'Magnetic Whiteboards', 'Premium Kenyan Coffee & Tea', 'High-Speed Fiber'],
+    features: ['Boardroom Hourly: KES 2,000 / Full Day: KES 12,000', 'Meeting Room Hourly: KES 1,500', 'Zoom Room Hourly: KES 1,000', 'Printing & Copying Services'],
     slug: 'meeting-rooms',
   },
   {
@@ -149,10 +225,10 @@ export const locations: LocationData[] = [
     name: 'Westlands',
     neighborhood: 'Almont Towers, Westlands',
     address: '8th & 9th Floor, Almont Towers, Church Road, Westlands, Nairobi',
-    phone: '+254 700 120 001',
-    email: 'westlands@seconddesk.co',
+    phone: '0719688992',
+    email: 'info@seconddesk.ke',
     mapEmbedUrl: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3988.8413693240217!2d36.80211561533261!3d-1.2614539990800635!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x182f1741ca6cc3f1%3A0xd6891cc774fcf373!2sWestlands%2C%20Nairobi!5e0!3m2!1sen!2ske!4v1655112233445!5m2!1sen!2ske',
-    startingPrice: 'KES 25,000 / mo',
+    startingPrice: 'KES 17,000 / mo',
     image: westlandsImg,
     nearbyLandmarks: ['Sarit Centre Mall', 'Westgate Shopping Mall', 'GTC Tower', 'Mövenpick Hotel'],
     spacesAvailable: ['Coworking Hot Desks', 'Dedicated Desks', 'Private Offices', 'Meeting Rooms', 'Event Spaces'],
@@ -193,10 +269,10 @@ export const locations: LocationData[] = [
     name: 'Kilimani',
     neighborhood: 'The Pavilion, Kilimani',
     address: '4th & 5th Floor, The Pavilion, Lenana Road, Kilimani, Nairobi',
-    phone: '+254 700 120 002',
-    email: 'kilimani@seconddesk.co',
+    phone: '0719688992',
+    email: 'info@seconddesk.ke',
     mapEmbedUrl: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3988.8188173426095!2d36.79092491533261!3d-1.2882199990605156!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x182f17218b08cd63%3A0xe54b9f2b8ba3737b!2sKilimani%2C%20Nairobi!5e0!3m2!1sen!2ske!4v1655112255445!5m2!1sen!2ske',
-    startingPrice: 'KES 22,000 / mo',
+    startingPrice: 'KES 17,000 / mo',
     image: kilimaniImg,
     nearbyLandmarks: ['Yaya Centre Mall', 'Adlife Plaza', 'Hurlingham Commercial Center', 'French Cultural Center'],
     spacesAvailable: ['Coworking Hot Desks', 'Dedicated Desks', 'Private Offices', 'Meeting Rooms'],
@@ -237,10 +313,10 @@ export const locations: LocationData[] = [
     name: 'Karen',
     neighborhood: 'The Greenery, Karen',
     address: 'Ground & 1st Floor, The Greenery, Ngong Road, Karen, Nairobi',
-    phone: '+254 700 120 003',
-    email: 'karen@seconddesk.co',
+    phone: '0719688992',
+    email: 'info@seconddesk.ke',
     mapEmbedUrl: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3988.751333791053!2d36.70295241533261!3d-1.3256039990326463!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x182f1bc2cc724a87%3A0xe54b9f2b8ba3737b!2sKaren%2C%20Nairobi!5e0!3m2!1sen!2ske!4v1655112277445!5m2!1sen!2ske',
-    startingPrice: 'KES 30,000 / mo',
+    startingPrice: 'KES 17,000 / mo',
     image: karenImg,
     nearbyLandmarks: ['The Hub Karen Mall', 'Karen Country Club', 'Waterfront Mall Karen', 'Karen Blixen Museum'],
     spacesAvailable: ['Coworking Hot Desks', 'Dedicated Desks', 'Premium Private Suites', 'Boardrooms', 'Event Spaces'],

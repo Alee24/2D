@@ -37,14 +37,29 @@ export const Footer: React.FC = () => {
           {/* Brand Info */}
           <div className="lg:col-span-4">
             <div className="flex items-center gap-2 mb-6 cursor-pointer" onClick={() => navigate('/')}>
-              <Logo size={40} light={true} />
-              <span className="font-display font-semibold tracking-[0.2em] text-lg uppercase text-white">
-                Second Desk
+              <Logo size={42} light={true} />
+              <span className="font-display text-xl uppercase flex items-center tracking-[0.12em] font-black" style={{ fontWeight: 900 }}>
+                <span className="text-white">SECOND</span>
+                <span className="text-[#E31B23]">DESK</span>
               </span>
             </div>
-            <p className="font-sans text-sm text-white/60 mb-8 max-w-sm leading-relaxed">
-              Where Great Work Finds Its Place. Premium flexible workspaces designed for ambitious professionals and remote teams.
+            <p className="font-sans text-sm text-white/60 mb-6 max-w-sm leading-relaxed">
+              Where Great Work Finds Its Place. Premium flexible workspaces, private office suites, and meeting facilities in Nairobi.
             </p>
+            <div className="space-y-2 mb-6 text-xs text-white/80 font-sans border-l-2 border-[#E31B23] pl-3 py-1 bg-white/5 rounded-r">
+              <p className="font-medium text-white flex items-center gap-2">
+                <span className="text-[#E31B23] font-bold">Call:</span> 0719688992 / +254 719 688 992
+              </p>
+              <p className="text-white/70">
+                <span className="text-white font-medium">Mon - Fri:</span> 8:00 AM - 8:00 PM
+              </p>
+              <p className="text-white/70">
+                <span className="text-white font-medium">Saturday:</span> 9:00 AM - 1:00 PM | <span className="text-white/50">Sunday: Closed</span>
+              </p>
+              <p className="text-white/70">
+                <span className="text-white font-medium">Email:</span> info@seconddesk.ke
+              </p>
+            </div>
             <div className="flex items-center space-x-4">
               <a 
                 href="https://linkedin.com" 
@@ -129,9 +144,6 @@ export const Footer: React.FC = () => {
             <ul className="space-y-3">
               {[
                 { name: 'About Us', path: '/about' },
-                { name: 'Community Hub', path: '/community' },
-                { name: 'Insights & Blog', path: '/insights' },
-                { name: 'Careers', path: '/about' },
                 { name: 'Book a Tour', path: '/book-tour' },
                 { name: 'Contact Sales', path: '/contact' },
                 { name: 'Download Brochure', path: 'download_pdf_brochure' },

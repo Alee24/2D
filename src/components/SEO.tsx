@@ -120,7 +120,7 @@ export const SEO: React.FC<SEOProps> = ({
           'description': description,
           'image': ogImage,
           'url': currentUrl,
-          'telephone': '+254 700 120 003', // general office phone
+          'telephone': '0719688992', // general office phone
           'priceRange': '$$$',
           'address': {
             '@type': 'PostalAddress',
@@ -134,13 +134,13 @@ export const SEO: React.FC<SEOProps> = ({
         resolvedSchema = {
           '@context': 'https://schema.org',
           '@type': 'CoworkingSpace',
-          '@id': 'https://seconddesk.co/#organization',
+          '@id': 'https://seconddesk.ke/#organization',
           'name': 'SecondDesk',
-          'url': 'https://seconddesk.co',
+          'url': 'https://seconddesk.ke',
           'logo': 'https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=200',
           'image': 'https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=1200',
           'description': description,
-          'telephone': '+254 700 120 003',
+          'telephone': '0719688992',
           'priceRange': '$$$',
           'address': {
             '@type': 'PostalAddress',
@@ -153,18 +153,26 @@ export const SEO: React.FC<SEOProps> = ({
             'latitude': '-1.2921',
             'longitude': '36.8219',
           },
-          'openingHoursSpecification': {
-            '@type': 'OpeningHoursSpecification',
-            'dayOfWeek': [
-              'Monday',
-              'Tuesday',
-              'Wednesday',
-              'Thursday',
-              'Friday',
-            ],
-            'opens': '07:30',
-            'closes': '19:00',
-          },
+          'openingHoursSpecification': [
+            {
+              '@type': 'OpeningHoursSpecification',
+              'dayOfWeek': [
+                'Monday',
+                'Tuesday',
+                'Wednesday',
+                'Thursday',
+                'Friday',
+              ],
+              'opens': '08:00',
+              'closes': '20:00',
+            },
+            {
+              '@type': 'OpeningHoursSpecification',
+              'dayOfWeek': ['Saturday'],
+              'opens': '09:00',
+              'closes': '13:00',
+            }
+          ],
         };
       }
     }

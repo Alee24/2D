@@ -10,6 +10,7 @@ import {
 } from 'lucide-react';
 import { generateBrochurePDF } from '../utils/pdfGenerator';
 import { motion, AnimatePresence } from 'motion/react';
+import { PriceListBoard } from '../components/PriceListBoard';
 
 export const Home: React.FC = () => {
   const { navigate } = useRouter();
@@ -229,6 +230,20 @@ export const Home: React.FC = () => {
         </div>
       </section>
 
+      {/* Official Price List Section */}
+      <section className="py-20 bg-offwhite border-b border-concrete px-6 lg:px-12">
+        <div className="max-w-[1440px] mx-auto text-center mb-6">
+          <span className="font-sans font-bold text-xs tracking-widest uppercase text-[#E31B23]">Official Pricing Schedule</span>
+          <h2 className="font-display font-light text-3xl sm:text-5xl text-charcoal tracking-tight mt-1">
+            Official Price List
+          </h2>
+          <p className="font-sans text-sm text-charcoal/60 mt-3 max-w-xl mx-auto">
+            Clear, transparent rates for co-working spaces, private office suites, and meeting facilities.
+          </p>
+        </div>
+        <PriceListBoard />
+      </section>
+
       {/* 4. WHY SECOND DESK SECTION */}
       <section className="py-24 bg-white border-b border-concrete">
         <div className="max-w-[1440px] mx-auto px-6 lg:px-12">
@@ -263,78 +278,7 @@ export const Home: React.FC = () => {
         </div>
       </section>
 
-      {/* 5. FEATURED LOCATIONS */}
-      <section className="py-24 max-w-[1440px] mx-auto px-6 lg:px-12 border-b border-concrete">
-        <div className="flex flex-col lg:flex-row lg:items-end justify-between mb-16 gap-4">
-          <div>
-            <span className="font-sans font-bold text-xs tracking-widest uppercase text-sand block mb-3">Our Nodes</span>
-            <h2 className="font-display font-light text-3xl sm:text-5xl text-charcoal tracking-tight">
-              Featured Locations across <br/><span className="font-serif italic text-charcoal/60">Nairobi.</span>
-            </h2>
-          </div>
-          <p className="font-sans text-sm text-charcoal/60 max-w-sm leading-relaxed">
-            Beautifully situated workspaces inside high-prestige commercial developments with outstanding public transit access, secure parking, and adjacent dining.
-          </p>
-        </div>
 
-        {/* Location cards grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-          {locations.slice(0, 3).map((loc) => (
-            <div 
-              key={loc.id}
-              onClick={() => navigate(`/locations/${loc.id}`)}
-              className="bg-white border border-concrete hover:border-sand transition-all duration-500 overflow-hidden group cursor-pointer shadow-xs flex flex-col"
-            >
-              <div className="aspect-[4/3] overflow-hidden relative bg-concrete">
-                <img 
-                  src={loc.image} 
-                  alt={loc.name} 
-                  className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105"
-                  referrerPolicy="no-referrer"
-                />
-                <div className="absolute top-4 left-4 bg-charcoal text-white text-[10px] font-bold uppercase tracking-widest px-3 py-1.5 shadow-md flex items-center gap-1">
-                  <MapPin className="w-3 h-3 text-sand" /> {loc.name}
-                </div>
-              </div>
-              <div className="p-8 flex-1 flex flex-col justify-between">
-                <div>
-                  <span className="font-sans text-[10px] font-bold uppercase tracking-widest text-sand block mb-1">
-                    {loc.neighborhood.split(',')[1] || loc.name}
-                  </span>
-                  <h3 className="font-display font-medium text-xl text-charcoal tracking-tight group-hover:text-sand transition-colors mb-3">
-                    {loc.name}
-                  </h3>
-                  <p className="font-sans text-xs text-charcoal/60 line-clamp-2 mb-6 leading-relaxed">
-                    {loc.address}
-                  </p>
-                  
-                  {/* Spaces available indicators */}
-                  <div className="mb-6">
-                    <span className="text-[10px] font-bold tracking-wider text-charcoal/40 uppercase block mb-2">Available Options:</span>
-                    <div className="flex flex-wrap gap-1.5">
-                      {loc.spacesAvailable.slice(0, 3).map((space, sidx) => (
-                        <span key={sidx} className="bg-offwhite text-charcoal/80 text-[10px] font-sans px-2.5 py-1 border border-concrete/50">
-                          {space}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-
-                <div className="pt-6 border-t border-concrete/60 flex items-center justify-between">
-                  <div>
-                    <span className="text-[10px] text-charcoal/40 uppercase block">Starting from</span>
-                    <span className="font-display font-semibold text-charcoal text-sm">{loc.startingPrice}</span>
-                  </div>
-                  <span className="text-xs font-bold uppercase tracking-wider text-charcoal group-hover:text-sand inline-flex items-center gap-1 transition-colors">
-                    View Details <ArrowRight className="w-4 h-4" />
-                  </span>
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
 
       {/* 6. MEMBER EXPERIENCE / TESTIMONIAL CAROUSEL */}
       <section className="py-24 bg-white border-b border-concrete overflow-hidden">

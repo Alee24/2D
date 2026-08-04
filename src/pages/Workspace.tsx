@@ -4,6 +4,7 @@ import { workspaceCategories } from '../data/coworkingData';
 import { Check, ArrowRight, Sparkles, Sliders, Users, DollarSign } from 'lucide-react';
 import { SEO } from '../components/SEO';
 import { Breadcrumbs } from '../components/Breadcrumbs';
+import { PriceListBoard } from '../components/PriceListBoard';
 
 export const Workspace: React.FC = () => {
   const { navigate } = useRouter();
@@ -37,6 +38,17 @@ export const Workspace: React.FC = () => {
             </p>
           </div>
         </div>
+      </section>
+
+      {/* Official Price List Section */}
+      <section className="py-12 bg-offwhite px-6 lg:px-12">
+        <div className="max-w-[1440px] mx-auto text-center mb-4">
+          <span className="font-sans font-bold text-xs tracking-widest uppercase text-[#E31B23]">Official Rates</span>
+          <h2 className="font-display font-light text-3xl sm:text-4xl text-charcoal tracking-tight mt-1">
+            Transparent Membership & Facility Pricing
+          </h2>
+        </div>
+        <PriceListBoard />
       </section>
 
       {/* Categories Listing - Editorial Alternating Split Layout */}
