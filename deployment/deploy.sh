@@ -91,6 +91,13 @@ if systemctl is-active --quiet apache2 || systemctl is-active --quiet httpd; the
     ServerAlias $ALIAS_DOMAIN
     DocumentRoot $INSTALL_DIR/dist
 
+    Alias /.well-known/acme-challenge/ $INSTALL_DIR/dist/.well-known/acme-challenge/
+    <Directory "$INSTALL_DIR/dist/.well-known/acme-challenge/">
+        Options None
+        AllowOverride None
+        Require all granted
+    </Directory>
+
     <Directory $INSTALL_DIR/dist>
         Options Indexes FollowSymLinks
         AllowOverride All
@@ -119,6 +126,13 @@ EOF
     ServerName $DOMAIN
     ServerAlias $ALIAS_DOMAIN
     DocumentRoot $INSTALL_DIR/dist
+
+    Alias /.well-known/acme-challenge/ $INSTALL_DIR/dist/.well-known/acme-challenge/
+    <Directory "$INSTALL_DIR/dist/.well-known/acme-challenge/">
+        Options None
+        AllowOverride None
+        Require all granted
+    </Directory>
 
     <Directory $INSTALL_DIR/dist>
         Options Indexes FollowSymLinks
