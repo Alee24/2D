@@ -4,6 +4,7 @@ import { faqs, locations } from '../data/coworkingData';
 import { Mail, Phone, Clock, MapPin, Check, ChevronDown, MessageSquare } from 'lucide-react';
 import { SEO } from '../components/SEO';
 import { Breadcrumbs } from '../components/Breadcrumbs';
+import { dispatchEmail } from '../utils/emailService';
 
 export const Contact: React.FC = () => {
   const { navigate } = useRouter();
@@ -31,43 +32,17 @@ export const Contact: React.FC = () => {
     e.preventDefault();
     if (formData.name && formData.email && formData.message) {
       setIsSubmitting(true);
-      const payload = {
-        type: 'General Contact Inquiry',
-        subject: `SECONDDESK — New Contact Inquiry from ${formData.name}`,
-        name: formData.name,
-        email: formData.email,
-        phone: formData.phone || 'N/A',
-        company: formData.company || 'N/A',
-        message: formData.message,
-      };
-
       try {
-        await Promise.allSettled([
-          // 1. Host PHP Custom HTML Email
-          fetch('/api/contact.php', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(payload),
-          }),
-          // 2. FormSubmit Redundancy
-          fetch('https://formsubmit.co/ajax/info@secondesk.ke', {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-              'Accept': 'application/json',
-            },
-            body: JSON.stringify({
-              _subject: `SECONDDESK — New Contact Inquiry from ${formData.name}`,
-              _template: 'table',
-              _captcha: 'false',
-              'Full Name': formData.name,
-              'Business Email': formData.email,
-              'Phone Number': formData.phone || 'N/A',
-              'Company Name': formData.company || 'N/A',
-              'Message Details': formData.message,
-            }),
-          }),
-        ]);
+        await dispatchEmail({
+          subject: `SECONDDESK — New Contact Inquiry from ${formData.name}`,
+          fields: {
+            'Full Name': formData.name,
+            'Business Email': formData.email,
+            'Phone Number': formData.phone || 'N/A',
+            'Company Name': formData.company || 'N/A',
+            'Inquiry Details': formData.message,
+          },
+        });
       } catch (err) {
         console.error('Failed to submit contact form', err);
       } finally {

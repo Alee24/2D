@@ -4,6 +4,7 @@ import { locations } from '../data/coworkingData';
 import { MapPin, Calendar, Users, Check, Clock, Phone, Mail, Award, ArrowLeft } from 'lucide-react';
 import { SEO } from '../components/SEO';
 import { Breadcrumbs } from '../components/Breadcrumbs';
+import { dispatchEmail } from '../utils/emailService';
 
 export const BookTour: React.FC = () => {
   const { navigate } = useRouter();
@@ -29,49 +30,20 @@ export const BookTour: React.FC = () => {
     e.preventDefault();
     if (formData.name && formData.email && formData.date) {
       setIsSubmitting(true);
-      const payload = {
-        type: 'Spatial Tour Booking',
-        subject: `SECONDDESK — Tour Booking Request: ${formData.name}`,
-        name: formData.name,
-        company: formData.company || 'N/A',
-        email: formData.email,
-        phone: formData.phone || 'N/A',
-        location: formData.location,
-        teamSize: formData.teamSize,
-        date: formData.date,
-        message: formData.message || 'None',
-      };
-
       try {
-        await Promise.allSettled([
-          // 1. Host PHP Custom HTML Email
-          fetch('/api/contact.php', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(payload),
-          }),
-          // 2. FormSubmit Redundancy
-          fetch('https://formsubmit.co/ajax/info@secondesk.ke', {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-              'Accept': 'application/json',
-            },
-            body: JSON.stringify({
-              _subject: `SECONDDESK — Tour Booking Request: ${formData.name}`,
-              _template: 'table',
-              _captcha: 'false',
-              'Full Name': formData.name,
-              'Company Name': formData.company || 'N/A',
-              'Business Email': formData.email,
-              'Phone Number': formData.phone || 'N/A',
-              'Preferred Node': `Secondesk ${formData.location.toUpperCase()}`,
-              'Team Footprint': formData.teamSize,
-              'Preferred Tour Date': formData.date,
-              'Special Notes': formData.message || 'None',
-            }),
-          }),
-        ]);
+        await dispatchEmail({
+          subject: `SECONDDESK — Tour Booking Request: ${formData.name}`,
+          fields: {
+            'Full Name': formData.name,
+            'Company Name': formData.company || 'N/A',
+            'Business Email': formData.email,
+            'Phone Number': formData.phone || 'N/A',
+            'Preferred Node': `Secondesk ${formData.location.toUpperCase()}`,
+            'Team Footprint': formData.teamSize,
+            'Preferred Tour Date': formData.date,
+            'Special Notes': formData.message || 'None',
+          },
+        });
       } catch (err) {
         console.error('Failed to submit tour booking', err);
       } finally {

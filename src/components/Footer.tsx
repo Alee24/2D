@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useRouter } from '../context/NavigationContext';
 import { Mail, ArrowUp, Linkedin, Instagram, Facebook, ArrowRight } from 'lucide-react';
 import { generateBrochurePDF } from '../utils/pdfGenerator';
+import { dispatchEmail } from '../utils/emailService';
 import { Logo } from './Logo';
 
 export const Footer: React.FC = () => {
@@ -14,38 +15,14 @@ export const Footer: React.FC = () => {
     e.preventDefault();
     if (email) {
       setIsSubmitting(true);
-      const payload = {
-        type: 'Insights Dispatch Subscription',
-        subject: `SECONDDESK — New Newsletter Subscription: ${email}`,
-        name: 'Subscriber',
-        email: email,
-        message: 'Monthly Insights Dispatch Subscription',
-      };
-
       try {
-        await Promise.allSettled([
-          // 1. Host PHP Custom HTML Email
-          fetch('/api/contact.php', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(payload),
-          }),
-          // 2. FormSubmit Redundancy
-          fetch('https://formsubmit.co/ajax/info@secondesk.ke', {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-              'Accept': 'application/json',
-            },
-            body: JSON.stringify({
-              _subject: `SECONDDESK — New Newsletter Subscription: ${email}`,
-              _template: 'table',
-              _captcha: 'false',
-              'Subscriber Email': email,
-              'Subscription Type': 'Monthly Insights Dispatch',
-            }),
-          }),
-        ]);
+        await dispatchEmail({
+          subject: `SECONDDESK — New Newsletter Subscription: ${email}`,
+          fields: {
+            'Subscriber Email': email,
+            'Subscription Type': 'Monthly Insights Dispatch',
+          },
+        });
       } catch (err) {
         console.error('Failed to subscribe', err);
       } finally {
