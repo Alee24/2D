@@ -14,19 +14,39 @@ export const Footer: React.FC = () => {
     e.preventDefault();
     if (email) {
       setIsSubmitting(true);
+      const payload = {
+        type: 'Insights Dispatch Subscription',
+        subject: `SECONDDESK — New Newsletter Subscription: ${email}`,
+        name: 'Subscriber',
+        email: email,
+        message: 'Monthly Insights Dispatch Subscription',
+      };
+
       try {
-        await fetch('https://formsubmit.co/ajax/info@secondesk.ke', {
+        const phpRes = await fetch('/api/contact.php', {
           method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            'Accept': 'application/json'
-          },
-          body: JSON.stringify({
-            _subject: `New Insights Dispatch Subscription: ${email}`,
-            email: email,
-            subscription_type: 'Monthly Insights Dispatch'
-          })
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload),
         });
+
+        const phpData = await phpRes.json().catch(() => null);
+
+        if (!phpData || !phpData.success) {
+          await fetch('https://formsubmit.co/ajax/info@secondesk.ke', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              'Accept': 'application/json',
+            },
+            body: JSON.stringify({
+              _subject: `SECONDDESK — New Newsletter Subscription: ${email}`,
+              _template: 'table',
+              _captcha: 'false',
+              'Subscriber Email': email,
+              'Subscription Type': 'Monthly Insights Dispatch',
+            }),
+          });
+        }
       } catch (err) {
         console.error('Failed to subscribe', err);
       } finally {

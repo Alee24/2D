@@ -31,25 +31,47 @@ export const Contact: React.FC = () => {
     e.preventDefault();
     if (formData.name && formData.email && formData.message) {
       setIsSubmitting(true);
+      const payload = {
+        type: 'General Contact Inquiry',
+        subject: `SECONDDESK — New Contact Inquiry from ${formData.name}`,
+        name: formData.name,
+        email: formData.email,
+        phone: formData.phone || 'N/A',
+        company: formData.company || 'N/A',
+        message: formData.message,
+      };
+
       try {
-        await fetch('https://formsubmit.co/ajax/info@secondesk.ke', {
+        const phpRes = await fetch('/api/contact.php', {
           method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            'Accept': 'application/json'
-          },
-          body: JSON.stringify({
-            _subject: `New Secondesk Inquiry from ${formData.name}`,
-            _template: 'table',
-            name: formData.name,
-            email: formData.email,
-            phone: formData.phone || 'N/A',
-            company: formData.company || 'N/A',
-            message: formData.message
-          })
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload),
         });
+
+        const phpData = await phpRes.json().catch(() => null);
+
+        if (!phpData || !phpData.success) {
+          // FormSubmit Fallback with clean formatted capital labels
+          await fetch('https://formsubmit.co/ajax/info@secondesk.ke', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              'Accept': 'application/json',
+            },
+            body: JSON.stringify({
+              _subject: `SECONDDESK — New Contact Inquiry from ${formData.name}`,
+              _template: 'table',
+              _captcha: 'false',
+              'Full Name': formData.name,
+              'Business Email': formData.email,
+              'Phone Number': formData.phone || 'N/A',
+              'Company Name': formData.company || 'N/A',
+              'Message Details': formData.message,
+            }),
+          });
+        }
       } catch (err) {
-        console.error('Failed to submit form', err);
+        console.error('Failed to submit contact form', err);
       } finally {
         setIsSubmitting(false);
         setSubmitted(true);
