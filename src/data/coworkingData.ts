@@ -8,11 +8,17 @@ import {
   WorkspaceSolution,
 } from '../types';
 
-import westlandsImg from '../assets/images/nairobi_westlands_coworking_1783253639262.jpg';
-import kilimaniImg from '../assets/images/nairobi_kilimani_workspace_1783253654765.jpg';
-import karenImg from '../assets/images/nairobi_karen_greenery_1783253669175.jpg';
-import upperHillImg from '../assets/images/nairobi_upper_hill_office_1783253682757.jpg';
-import cbdImg from '../assets/images/nairobi_cbd_coworking_1783253697927.jpg';
+import mombasaOffice1 from '../assets/images/mombasa_office_1.jpg';
+import mombasaOffice2 from '../assets/images/mombasa_office_2.jpg';
+import mombasaOffice3 from '../assets/images/mombasa_office_3.jpg';
+import mombasaOffice4 from '../assets/images/mombasa_office_4.jpg';
+import mombasaOffice5 from '../assets/images/mombasa_office_5.jpg';
+
+import mombasaReception1 from '../assets/images/mombasa_reception_1.jpg';
+import mombasaReception2 from '../assets/images/mombasa_reception_2.jpg';
+import mombasaReception3 from '../assets/images/mombasa_reception_3.jpg';
+import mombasaWorkspaceMain from '../assets/images/mombasa_workspace_main.jpg';
+import mombasaReception4 from '../assets/images/mombasa_reception_4.jpg';
 
 export const companyInfo = {
   name: 'SecondDesk',
@@ -97,7 +103,7 @@ export const workspaceCategories: WorkspaceCategory[] = [
     tagline: 'Flexible Hot Desks & Passes',
     description: 'Flexible desks for freelancers, remote workers, and entrepreneurs who value community and adaptability.',
     longDescription: 'Our open-plan coworking spaces are designed to inspire focus and collaboration. Step into a dynamic ecosystem of like-minded professionals, where hot desking allows you to choose your ideal spot every single day.',
-    image: 'https://images.unsplash.com/photo-1497215728101-856f4ea42174?auto=format&fit=crop&q=80&w=1200',
+    image: mombasaWorkspaceMain,
     capacity: 'Single Desk (Flexible)',
     startingPrice: 'KES 17,000 / mo',
     amenities: ['24/7 Secure Access', 'High-Speed Wi-Fi 6', 'Premium Coffee & Teas', 'Phone Booth Access', 'Daily Cleaning'],
@@ -110,7 +116,7 @@ export const workspaceCategories: WorkspaceCategory[] = [
     tagline: 'Your Permanent Desk',
     description: 'A permanent workspace with secure storage and premium access in a shared professional environment.',
     longDescription: 'Establish your professional base with a desk that is yours and yours alone. Located in a secured, quieter zone of the building, each dedicated desk features premium ergonomic setups.',
-    image: 'https://images.unsplash.com/photo-1524758631624-e2822e304c36?auto=format&fit=crop&q=80&w=1200',
+    image: mombasaOffice1,
     capacity: '1 Person',
     startingPrice: 'KES 17,000 / mo',
     amenities: ['Permanent Desk & Ergonomic Chair', 'Lockable Storage Cabinet', 'Business Address Registration', '24/7 Premium Access', 'Free B&W Printing'],
@@ -123,7 +129,7 @@ export const workspaceCategories: WorkspaceCategory[] = [
     tagline: 'Move-In-Ready Office Suites',
     description: 'Enclosed, fully furnished offices for teams of every size with customized layouts and high security.',
     longDescription: 'Designed for startups, established businesses, and remote corporate hubs who require privacy, security, and prestige. Available in Small (KES 45k), Medium (KES 55k), and Large (KES 65k) configurations.',
-    image: 'https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=1200',
+    image: mombasaOffice4,
     capacity: '2 to 50+ People',
     startingPrice: 'KES 45,000 / mo',
     amenities: ['Fully Furnished Lockable Suite', 'Customizable Layout & Branding', 'Dedicated Ethernet Line', 'Executive Reception Services', 'Daily Office Cleaning'],
@@ -136,7 +142,7 @@ export const workspaceCategories: WorkspaceCategory[] = [
     tagline: 'Design-Led Collaborative Spaces',
     description: 'Professional boardrooms, meeting rooms, and Zoom rooms equipped for presentations, interviews, and client pitches.',
     longDescription: 'Leave a lasting impression on clients or your team. Choose from Boardrooms (KES 12k Full Day / KES 8k Half Day / KES 2k Hourly), Meeting Rooms (KES 1,500/hr), and Zoom Rooms (KES 1,000/hr).',
-    image: 'https://images.unsplash.com/photo-1606857521015-7f9fcf423740?auto=format&fit=crop&q=80&w=1200',
+    image: mombasaOffice3,
     capacity: '4 to 20 People',
     startingPrice: 'KES 1,500 / hr',
     amenities: ['4K Interactive Presentation Screens', 'Studio-Grade Video Bars', 'Magnetic Whiteboards', 'Premium Kenyan Coffee & Tea', 'High-Speed Fiber'],
@@ -149,7 +155,7 @@ export const workspaceCategories: WorkspaceCategory[] = [
     tagline: 'Prestigious Business Presence',
     description: 'Professional business address, secure mail handling, and on-demand access to physical workspaces.',
     longDescription: 'Establish a powerful local presence in premium commercial centers without the cost of full-time office rental. Ideal for remote companies, consultants, and international firms entering the Kenyan market. Our Virtual Office package provides a prestigious commercial street address, secure mail receiving and digital scanning, local phone answering, and on-demand hot desk access.',
-    image: 'https://images.unsplash.com/photo-1542744094-3a31f103e35f?auto=format&fit=crop&q=80&w=1200',
+    image: mombasaReception1,
     capacity: 'Flexible Remote',
     startingPrice: 'KES 10,000 / mo',
     amenities: ['Prestigious Business Address', 'Digital Mail Scanning & Forwarding', 'Local Phone Number (Optional)', 'Lobby Directory Listing', 'Discounts on Daily Passes'],
@@ -162,7 +168,7 @@ export const workspaceCategories: WorkspaceCategory[] = [
     tagline: 'Elegant Architectural Venues',
     description: 'Spacious, high-end venues designed for panel talks, product launches, workshops, and cocktail mixers.',
     longDescription: 'Elevate your next event with our visually stunning, fully customizable corporate venues. Host networking mixers, educational workshops, design showcases, or formal presentations in an architectural setting that commands attention. Equipped with cutting-edge sound systems, stage lighting, versatile seating arrangements, and a fully serviced espresso bar and kitchen.',
-    image: 'https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&q=80&w=1200',
+    image: mombasaReception3,
     capacity: 'Up to 120 People',
     startingPrice: 'KES 15,000 / hr',
     amenities: ['Pro-Grade Audio System & Mics', 'Full-Scale HD Projectors', 'Serviced Coffee & Wine Bar', 'Versatile Seating & Podiums', 'Dedicated Event Coordinator'],
@@ -179,7 +185,7 @@ export const workspaceSolutions: WorkspaceSolution[] = [
     solution: 'We offer an inspiring, community-driven hot desking network that provides standard-setting enterprise facilities, premium printing, and beautiful open lounges.',
     recommendation: 'Coworking Hot Desk or Dedicated Desk with flexible monthly commitments.',
     benefits: ['Collaborative networking', 'Premium coffee & espresso bar', 'Professional presentation environments', 'Low overhead expenses'],
-    image: 'https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&q=80&w=600'
+    image: mombasaWorkspaceMain
   },
   {
     id: 'startups',
@@ -188,7 +194,7 @@ export const workspaceSolutions: WorkspaceSolution[] = [
     solution: 'Second Desk handles everything—high-speed internet, security, printing, cleaning, and guest reception—so you can focus 100% on building your product.',
     recommendation: 'Private Office Suites with flexible month-to-month contracts.',
     benefits: ['Ultra-flexible scaling', 'Full operational support', 'Access to investor and mentorship meetups', 'Talent-attracting architectural design'],
-    image: 'https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&q=80&w=600'
+    image: mombasaOffice1
   },
   {
     id: 'remote-teams',
@@ -197,7 +203,7 @@ export const workspaceSolutions: WorkspaceSolution[] = [
     solution: 'Establish a central workspace hub where remote team members can gather, conduct whiteboarding sessions, and work together in beautiful glass-enclosed spaces.',
     recommendation: 'Hybrid Private Office or Team Coworking Passes.',
     benefits: ['Dedicated secure Ethernet lines', 'Boosted collaboration and synergy', 'Prestigious business physical base', 'Access to high-spec meeting rooms'],
-    image: 'https://images.unsplash.com/photo-1542744094-3a31f103e35f?auto=format&fit=crop&q=80&w=600'
+    image: mombasaOffice4
   },
   {
     id: 'smes-agencies',
@@ -206,7 +212,7 @@ export const workspaceSolutions: WorkspaceSolution[] = [
     solution: 'Second Desk provides ready-to-use, premium glass-fronted offices supported by 100% stable generator power, modern server rooms, and client-facing reception services.',
     recommendation: 'Premium Office Suites (5 to 15 person layouts).',
     benefits: ['Zero capital expenditure for office buildout', 'Uninterrupted power and water backup', 'Receptionists greeting your clients', 'Branded directory placement'],
-    image: 'https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=600'
+    image: mombasaReception1
   },
   {
     id: 'enterprise',
@@ -215,38 +221,40 @@ export const workspaceSolutions: WorkspaceSolution[] = [
     solution: 'We customize high-security corporate wings with dedicated executive suites, separate printing stations, and priority access to boardroom facilities.',
     recommendation: 'Custom Enterprise Wings or Full-Floor Corporate Suites.',
     benefits: ['Enterprise-grade IT firewalls', 'Dedicated receptionist & custom secure access control', 'Pre-vetted regional team compliance', 'Global reciprocal network access'],
-    image: 'https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&q=80&w=600'
+    image: mombasaReception3
   }
 ];
 
 export const locations: LocationData[] = [
   {
-    id: 'nyali',
-    name: 'Nyali Executive Hub',
-    neighborhood: 'Links Road, Nyali, Mombasa',
-    address: '3rd & 4th Floor, Nyali Executive Centre, Links Road, Nyali, Mombasa',
+    id: 'mombasa',
+    name: 'Mombasa',
+    neighborhood: 'SecondDesk Mombasa',
+    address: 'Mombasa, Kenya',
     phone: '0719688992',
-    email: 'mombasa@seconddesk.ke',
-    mapEmbedUrl: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3979.882195289944!2d39.68351541533261!3d-4.041453999080063!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x184012e5c0000000%3A0xd6891cc774fcf373!2sNyali%2C%20Mombasa!5e0!3m2!1sen!2ske!4v1655112233445!5m2!1sen!2ske',
+    email: 'info@seconddesk.ke',
+    mapEmbedUrl: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d127541.78490390272!2d39.58893155!3d-4.04309415!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x184012e4d0f0a529%3A0xbc8a32e0e79fd17b!2sMombasa!5e0!3m2!1sen!2ske!4v1655112233445!5m2!1sen!2ske',
     startingPrice: 'KES 17,000 / mo',
-    image: westlandsImg,
-    nearbyLandmarks: ['Nyali Centre Mall', 'City Mall Nyali', 'Nyali Golf & Country Club', 'Mona Lisa Restaurant', 'Nyali Beach'],
-    spacesAvailable: ['Coworking Hot Desks', 'Dedicated Desks', 'Private Office Suites', 'Executive Boardrooms', 'Event Spaces'],
-    amenities: ['Ocean Breeze Balcony', 'Dual Backup Generators', 'Secured Parking Garage', 'Rooftop Coastal Lounge', 'Lactation & Wellness Room', '500Mbps High-Speed Fiber', 'Barista Coffee Bar'],
+    image: mombasaReception1,
+    nearbyLandmarks: ['Mombasa CBD', 'Fort Jesus', 'Nyali Bridge', 'Mombasa Port'],
+    spacesAvailable: ['Coworking Hot Desks', 'Dedicated Desks', 'Private Offices', 'Meeting Rooms', 'Event Spaces'],
+    amenities: ['Artisanal Espresso Bar', 'Dual backup generators', 'Secure parking', 'Rooftop garden terrace', 'Wellness room'],
     gallery: [
-      westlandsImg,
-      'https://images.unsplash.com/photo-1497215728101-856f4ea42174?auto=format&fit=crop&q=80&w=600',
-      'https://images.unsplash.com/photo-1524758631624-e2822e304c36?auto=format&fit=crop&q=80&w=600',
-      'https://images.unsplash.com/photo-1606857521015-7f9fcf423740?auto=format&fit=crop&q=80&w=600'
+      mombasaReception1,
+      mombasaWorkspaceMain,
+      mombasaOffice1,
+      mombasaReception3,
+      mombasaOffice4,
+      mombasaReception4
     ],
     meetingRoomDetails: {
       title: 'Meeting Rooms',
-      image: 'https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=800',
+      image: mombasaOffice3,
       features: [
         { iconName: 'PenTool', text: 'On Demand Stationery' },
         { iconName: 'Tv', text: '75" 4K Smart TV with Polycom Video conferencing' },
         { iconName: 'Presentation', text: 'Acoustic Whiteboards & Flip Charts' },
-        { iconName: 'Coffee', text: 'Complimentary Single-Origin Coffee & Coastal Teas' },
+        { iconName: 'Coffee', text: 'Complimentary Single-Origin Kenyan Coffee & Tea' },
         { iconName: 'Users', text: 'Spacious Serviced Reception Lounge' },
         { iconName: 'Wifi', text: 'Uncapped 500Mbps High-Speed Fiber' },
         { iconName: 'Utensils', text: 'Gourmet Catered lunch services on-demand' }
@@ -254,7 +262,7 @@ export const locations: LocationData[] = [
     },
     privateOfficeDetails: {
       title: 'Private Offices',
-      image: 'https://images.unsplash.com/photo-1497215728101-856f4ea42174?auto=format&fit=crop&q=80&w=800',
+      image: mombasaOffice4,
       features: [
         { iconName: 'Armchair', text: 'Ergonomic Steelcase chairs & custom solid-oak desks' },
         { iconName: 'Lock', text: 'Acoustically sound-masked glass partitions' },
@@ -274,15 +282,15 @@ export const testimonials: Testimonial[] = [
     author: "Wanjiku Njoroge",
     role: "Founder & Creative Director",
     company: "Sura Creative",
-    image: "https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?auto=format&fit=crop&q=80&w=150"
+    image: mombasaReception2
   },
   {
     id: 't2',
-    quote: "With a growing distributed remote team, maintaining a sense of culture is hard. The hybrid office suites we rent at Second Desk Nyali give us an incredible base to connect and align.",
+    quote: "With a growing distributed remote team, maintaining a sense of culture is hard. The hybrid office suites we rent at Second Desk give us an incredible base to connect and align.",
     author: "Amir Osei",
     role: "VP of Engineering",
     company: "FintechOne East Africa",
-    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=150"
+    image: mombasaReception4
   },
   {
     id: 't3',
@@ -290,7 +298,7 @@ export const testimonials: Testimonial[] = [
     author: "Sarah Welime",
     role: "Co-Founder",
     company: "SokoFlow",
-    image: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=150"
+    image: mombasaReception3
   }
 ];
 
@@ -299,85 +307,85 @@ export const blogPosts: BlogPost[] = [
     id: 'b1',
     title: 'The Future of Shared Workspaces: Designing for Privacy & Collaboration',
     excerpt: 'Explore how top-tier spatial designers are blending open lounge acoustics with private office modularity to boost productivity.',
-    content: 'The workspace landscape is undergoing a silent revolution. Long gone are the days of fluorescent-lit rows of identical cubicles, but so are the days of the chaotic open-plan startup playroom. Today, ambitious businesses require architectural integrity. They need spaces that foster quiet focus when desired, and structured collaboration when teams need to align.\n\nAt Second Desk, our architectural team spends months studying spatial density. We have found that the optimal layout utilizes a 60/40 design rule: 60% of square footage dedicated to enclosed, high-acoustic privacy suites and dedicated desks, and 40% curated as beautiful public lobbies, libraries, coffee stations, and garden terraces. This dualism allows professionals to transition smoothly from head-down work to high-energy community events.',
+    content: 'The workspace landscape is undergoing a silent revolution. Long gone are the days of fluorescent-lit rows of identical cubicles, but so are the days of the chaotic open-plan startup playroom. Today, ambitious businesses require architectural integrity. They need spaces that foster quiet focus when desired, and structured collaboration when teams need to align.\n\nAt Second Desk, our architectural team spends months studying spatial density. We have found that the optimal layout utilizes a 60/40 design rule: 60% of square footage dedicated to enclosed, high-acoustic privacy suites and dedicated desks, and 40% curated as beautiful public lobbies, libraries, coffee stations, and garden terraces.',
     category: 'Workspace Design',
     author: {
       name: 'Elena Rostova',
       role: 'Head of Architectural Design',
-      avatar: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&q=80&w=100'
+      avatar: mombasaReception2
     },
     date: 'June 28, 2026',
     readTime: '5 min read',
-    image: 'https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=600',
+    image: mombasaOffice1,
     featured: true
   },
   {
     id: 'b2',
     title: 'How Startups Can Utilize Hybrid Office Models to Minimize Runways',
-    excerpt: 'Commercial real estate commitments shouldn’t kill your startup. Discover how flexible monthly office models are helping scale-ups survive.',
-    content: 'One of the largest liabilities on a growing startup balance sheet is long-term commercial lease commitments. When you commit to a 5-year office lease, you are gambling on your growth rate being linear. If you grow faster, you outgrow the space and pay breaking fees. If you scale back, you pay for empty desks.\n\nOur startup members utilize Private Office Suites as an operational strategy. Under a single monthly billing line, they receive a fully configured, high-security glass office that can scale from 5 to 20 seats overnight. Operational overhead like water, security, electricity, and premium reception are completely managed, allowing founders to run lean and redirect core capital into active product R&D.',
+    excerpt: 'Commercial real estate commitments should not kill your startup. Discover how flexible monthly office models are helping scale-ups survive.',
+    content: 'One of the largest liabilities on a growing startup balance sheet is long-term commercial lease commitments. When you commit to a 5-year office lease, you are gambling on your growth rate being linear.\n\nOur startup members utilize Private Office Suites as an operational strategy. Under a single monthly billing line, they receive a fully configured, high-security glass office that can scale from 5 to 20 seats overnight.',
     category: 'Startups',
     author: {
       name: 'David Mwangi',
       role: 'Business Strategy Advisor',
-      avatar: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&q=80&w=100'
+      avatar: mombasaReception4
     },
     date: 'June 14, 2026',
     readTime: '4 min read',
-    image: 'https://images.unsplash.com/photo-1542744094-3a31f103e35f?auto=format&fit=crop&q=80&w=600'
+    image: mombasaOffice4
   },
   {
     id: 'b3',
     title: 'Solitude vs. Focus: Cultivating Mental Clarity in Modern Workflows',
     excerpt: 'The psychological toll of home isolation can sap creative juices. How micro-interactions in architectural spaces restore mental stamina.',
-    content: 'Work from home was sold as a perfect utopia of pajamas and zero commute. However, four years into the mass remote work experiment, the cracks are widening. Solitary work at home often leads to cognitive fatigue, blurred lines between work and life, and deep professional isolation.\n\nHuman brains are wired to perform better under low-stakes social presence. Known as "social facilitation", working alongside other focused individuals—even if you are not actively speaking to them—naturally boosts motivation and attention span. A curated, aesthetic environment like Second Desk acts as an outer container for focus. The gentle low hum of the espresso bar, the sight of others creating, and the physical transition of "going to work" restore a crisp psychological structure to your daily workflow.',
+    content: 'Work from home was sold as a perfect utopia of pajamas and zero commute. However, four years into the mass remote work experiment, the cracks are widening.\n\nHuman brains are wired to perform better under low-stakes social presence. A curated, aesthetic environment like Second Desk acts as an outer container for focus.',
     category: 'Productivity',
     author: {
       name: 'Dr. Clara Patel',
       role: 'Occupational Psychologist',
-      avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=100'
+      avatar: mombasaReception3
     },
     date: 'May 29, 2026',
     readTime: '7 min read',
-    image: 'https://images.unsplash.com/photo-1497215728101-856f4ea42174?auto=format&fit=crop&q=80&w=600'
+    image: mombasaWorkspaceMain
   },
   {
     id: 'b4',
-    title: 'The Digital Nomad Trend in Coastal East Africa: Mombasa as the Hub',
-    excerpt: 'Why international tech leaders, creators, and entrepreneurs are selecting Mombasa as their coastal headquarters.',
-    content: 'Mombasa has earned its title as Kenya’s coastal commercial titan through continuous trade innovation and business leadership. In recent years, a new wave of international creators, digital nomads, and global tech executives are migrating to the coastal city. Mombasa offers unparalleled lifestyle benefits, coastal breeze work environments, and direct access to maritime commerce.\n\nSecond Desk acts as a physical landing pad for this global cohort. With multi-point locations across Nyali, Mombasa CBD, and Tudor, international teams can deploy high-spec secure nodes instantly, connecting directly to the local business elite via our structured investor breakfasts and workshop sessions.',
+    title: 'The Digital Nomad Trend in East Africa: Mombasa as the Central Hub',
+    excerpt: 'Why international tech leaders, creators, and entrepreneurs are selecting Mombasa as their central headquarters.',
+    content: 'Mombasa is rapidly emerging as a premier destination for global professionals, digital nomads, and tech executives seeking a dynamic coastal business environment.\n\nSecond Desk acts as a physical landing pad for this global cohort, providing high-spec secure workspaces and direct access to the local business elite via structured investor breakfasts and workshop sessions.',
     category: 'Remote Work',
     author: {
       name: 'Kamau Gicheru',
       role: 'East Africa Technology Reporter',
-      avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=100'
+      avatar: mombasaReception1
     },
     date: 'May 10, 2026',
     readTime: '6 min read',
-    image: 'https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&q=80&w=600'
+    image: mombasaOffice2
   }
 ];
 
 export const communityEvents: CommunityEvent[] = [
   {
     id: 'e1',
-    title: 'Founder Talk: Navigating Seed-to-Series-A in Coastal Markets',
-    description: 'An intimate fireside chat with two of Mombasa’s prominent tech founders sharing hard-won lessons on scaling, market expansion, and regional venture fundraising.',
+    title: 'Founder Talk: Navigating Seed-to-Series-A in Africa',
+    description: 'An intimate fireside chat with prominent tech founders sharing hard-won lessons on scaling, market expansion, and regional venture fundraising.',
     date: 'July 15, 2026',
     time: '08:30 AM - 10:30 AM',
     type: 'Founder Talks',
     speaker: 'Nelly Nduta & Patrick Korir',
-    image: 'https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&q=80&w=600'
+    image: mombasaOffice1
   },
   {
     id: 'e2',
     title: 'Monthly Investor Pitch Breakfast',
-    description: 'A closed-door, curated pitch session connecting three high-growth startups from the Second Desk ecosystem with leading regional angel networks and VC funds.',
+    description: 'A closed-door, curated pitch session connecting high-growth startups from the Second Desk ecosystem with leading regional angel networks and VC funds.',
     date: 'July 22, 2026',
     time: '08:00 AM - 11:00 AM',
     type: 'Investor Meetups',
     speaker: 'Featured VC Panelists',
-    image: 'https://images.unsplash.com/photo-1542744094-3a31f103e35f?auto=format&fit=crop&q=80&w=600'
+    image: mombasaOffice4
   },
   {
     id: 'e3',
@@ -387,7 +395,7 @@ export const communityEvents: CommunityEvent[] = [
     time: '02:00 PM - 05:00 PM',
     type: 'Workshops',
     speaker: 'Elena Rostova & Guest Designers',
-    image: 'https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=600'
+    image: mombasaWorkspaceMain
   },
   {
     id: 'e4',
@@ -397,7 +405,7 @@ export const communityEvents: CommunityEvent[] = [
     time: '07:00 PM - 10:00 PM',
     type: 'Community Dinners',
     speaker: 'Invite Only',
-    image: 'https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&q=80&w=600'
+    image: mombasaReception1
   }
 ];
 
@@ -423,7 +431,7 @@ export const faqs: FAQItem[] = [
     answer: "Yes, our high-spec meeting rooms, boardrooms, and event spaces are open for external booking by non-members on an hourly or daily rate. Members enjoy significant discounts and priority reservation via the Second Desk platform using their monthly included credits."
   },
   {
-    question: "Is there secure parking available at Second Desk locations?",
-    answer: "Yes. All our host properties (such as Almont Towers and Legacy Plaza) feature multi-level secure parking garages with 24/7 CCTV monitoring, automated ticketing, and dedicated security guards. We offer both casual visitor parking and discounted monthly parking passes for members."
+    question: "Is there secure parking available at Second Desk?",
+    answer: "Yes. Our host property features multi-level secure parking with 24/7 CCTV monitoring, automated ticketing, and dedicated security guards. We offer both casual visitor parking and discounted monthly parking passes for members."
   }
 ];

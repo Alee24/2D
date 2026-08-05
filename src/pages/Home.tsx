@@ -15,6 +15,8 @@ import mombasaOffice2 from '../assets/images/mombasa_office_2.jpg';
 import mombasaOffice3 from '../assets/images/mombasa_office_3.jpg';
 import mombasaOffice4 from '../assets/images/mombasa_office_4.jpg';
 import mombasaOffice5 from '../assets/images/mombasa_office_5.jpg';
+import mombasaReception1 from '../assets/images/mombasa_reception_1.jpg';
+import mombasaWorkspaceMain from '../assets/images/mombasa_workspace_main.jpg';
 
 export const Home: React.FC = () => {
   const { navigate } = useRouter();
@@ -115,8 +117,8 @@ export const Home: React.FC = () => {
         {/* Parallax background image */}
         <div className="absolute inset-0 z-0">
           <img 
-            src={mombasaOffice1} 
-            alt="Second Desk Coworking Environment" 
+            src={mombasaReception1} 
+            alt="SecondDesk Mombasa Reception Workspace" 
             className="w-full h-full object-cover opacity-45 scale-105 transition-transform duration-1000"
             referrerPolicy="no-referrer"
           />
@@ -291,7 +293,7 @@ export const Home: React.FC = () => {
           <div className="lg:col-span-5 relative">
             <div className="aspect-[3/4] overflow-hidden bg-concrete border border-concrete shadow-lg relative">
               <img 
-                src={mombasaOffice2} 
+                src={mombasaWorkspaceMain} 
                 alt="Professionals in high-focus architectural workspace" 
                 className="w-full h-full object-cover"
                 referrerPolicy="no-referrer"
@@ -406,10 +408,10 @@ export const Home: React.FC = () => {
         {/* Beautiful visual gallery row */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 overflow-hidden">
           {[
-            mombasaOffice2,
-            mombasaOffice3,
-            mombasaOffice4,
-            mombasaOffice5
+            mombasaReception1,
+            mombasaWorkspaceMain,
+            mombasaOffice1,
+            mombasaOffice3
           ].map((img, i) => (
             <div key={i} className="aspect-[4/3] bg-concrete overflow-hidden border border-concrete hover-zoom-container">
               <img 
