@@ -92,7 +92,7 @@ export const BookTour: React.FC = () => {
                     <div className="w-6 h-6 border border-charcoal bg-charcoal text-white font-display font-extrabold text-[10px] flex items-center justify-center tracking-widest">
                       SD
                     </div>
-                    <span className="font-display font-bold tracking-widest text-xs uppercase">Secondesk</span>
+                    <span className="font-display font-bold tracking-widest text-xs uppercase">Second Desk</span>
                   </div>
                   <span className="font-mono text-[9px] text-charcoal/40 uppercase tracking-widest">Itinerary Pass</span>
                 </div>
@@ -102,7 +102,7 @@ export const BookTour: React.FC = () => {
                   <div className="space-y-1">
                     <span className="text-charcoal/40 uppercase block text-[9px] font-bold tracking-widest">Host Node</span>
                     <span className="font-display font-semibold text-charcoal text-sm">
-                      Secondesk {selectedLocDetails.name}
+                      Second Desk {selectedLocDetails.name}
                     </span>
                     <span className="text-charcoal/60 block leading-relaxed pr-4">
                       {selectedLocDetails.address}
@@ -283,7 +283,7 @@ export const BookTour: React.FC = () => {
                     >
                       {locations.map((loc) => (
                         <option key={loc.id} value={loc.id}>
-                          Secondesk {loc.name} ({loc.neighborhood.split(',')[1] || loc.name})
+                          Second Desk {loc.name} ({loc.neighborhood.split(',')[1] || loc.name})
                         </option>
                       ))}
                     </select>

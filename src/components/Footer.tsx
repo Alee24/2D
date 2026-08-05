@@ -37,9 +37,9 @@ export const Footer: React.FC = () => {
           {/* Brand Info */}
           <div className="lg:col-span-4">
             <div className="flex items-center gap-2 mb-6 cursor-pointer" onClick={() => navigate('/')}>
-              <Logo size={42} light={false} />
+              <Logo size={42} light={true} />
               <span className="font-display text-xl uppercase flex items-center tracking-[0.12em] font-black" style={{ fontWeight: 900 }}>
-                <span className="text-[#00468b]">SECOND</span>
+                <span className="text-white">SECOND</span>
                 <span className="text-[#E31B23]">DESK</span>
               </span>
             </div>
@@ -140,6 +140,7 @@ export const Footer: React.FC = () => {
             <ul className="space-y-3">
               {[
                 { name: 'About Us', path: '/about' },
+                { name: 'Official Price List', path: '/pricing' },
                 { name: 'Book a Tour', path: '/book-tour' },
                 { name: 'Contact Sales', path: '/contact' },
                 { name: 'Download Brochure', path: 'download_pdf_brochure' },
@@ -198,7 +199,7 @@ export const Footer: React.FC = () => {
         <div className="pt-8 border-t border-white/10 flex flex-col md:flex-row items-center justify-between gap-4">
           <div className="flex flex-wrap items-center gap-6">
             <span className="font-sans text-xs text-white/40">
-              © {new Date().getFullYear()} Secondesk Ltd. All Rights Reserved.
+              © {new Date().getFullYear()} Second Desk Ltd. All Rights Reserved.
             </span>
             <span className="font-sans text-xs text-white/40">
               Developed by <a href="https://wa.me/254724454757" target="_blank" rel="noreferrer" className="text-sand/90 underline hover:text-white transition-colors">KKDES</a>

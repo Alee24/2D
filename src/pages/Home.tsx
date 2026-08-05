@@ -11,13 +11,6 @@ import {
 import { generateBrochurePDF } from '../utils/pdfGenerator';
 import { motion, AnimatePresence } from 'motion/react';
 import { PriceListBoard } from '../components/PriceListBoard';
-import mombasaOffice1 from '../assets/images/mombasa_office_1.jpg';
-import mombasaOffice2 from '../assets/images/mombasa_office_2.jpg';
-import mombasaOffice3 from '../assets/images/mombasa_office_3.jpg';
-import mombasaOffice4 from '../assets/images/mombasa_office_4.jpg';
-import mombasaOffice5 from '../assets/images/mombasa_office_5.jpg';
-import mombasaReception1 from '../assets/images/mombasa_reception_1.jpg';
-import mombasaWorkspaceMain from '../assets/images/mombasa_workspace_main.jpg';
 
 export const Home: React.FC = () => {
   const { navigate } = useRouter();
@@ -78,7 +71,7 @@ export const Home: React.FC = () => {
     setActiveTestimonial((prev) => (prev - 1 + testimonials.length) % testimonials.length);
   };
 
-  // Why Secondesk array
+  // Why Second Desk array
   const coreAmenities = [
     { title: 'Flexible Membership', icon: Compass, desc: 'Agile month-to-month contracts designed to scale with your team.' },
     { title: '24/7 Secure Access', icon: Shield, desc: 'State-of-the-art secure biometric access to keep you creating round the clock.' },
@@ -97,7 +90,7 @@ export const Home: React.FC = () => {
     { title: 'Professional networking', desc: 'Settle beside top founders, software engineers, and global consultants in collaborative workspaces.' },
     { title: 'Exclusive discounts & perks', desc: 'Pre-negotiated partner perks spanning premium cloud credits, legal filings, and lifestyle wellness hubs.' },
     { title: 'Priority event access', desc: 'Complimentary reserved slots at all masterclasses, founder fireside panels, and seasonal social dinners.' },
-    { title: 'Reciprocal global network', desc: 'Enjoy full hot desk booking access in any Secondesk location globally during your business travel.' },
+    { title: 'Reciprocal global network', desc: 'Enjoy full hot desk booking access in any Second Desk location globally during your business travel.' },
     { title: 'Premium mail handling', desc: 'Digital scanning, cataloging, and mail arrival push-text alerts handled securely by reception.' },
     { title: 'Mentorship connection', desc: 'Participate in our peer-led masterminds and connect with veteran capital leads and industry specialists.' },
     { title: 'Seamless operations', desc: 'Dedicated cleaning, high-speed power redundancy, and on-site hospitality managers handling the heavy lifting.' },
@@ -118,8 +111,8 @@ export const Home: React.FC = () => {
         {/* Parallax background image */}
         <div className="absolute inset-0 z-0">
           <img 
-            src={mombasaReception1} 
-            alt="SecondDesk Mombasa Reception Workspace" 
+            src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=1920" 
+            alt="Second Desk Coworking Environment" 
             className="w-full h-full object-cover opacity-45 scale-105 transition-transform duration-1000"
             referrerPolicy="no-referrer"
           />
@@ -130,7 +123,7 @@ export const Home: React.FC = () => {
         <div className="relative z-10 max-w-[1440px] mx-auto px-6 lg:px-12 w-full text-center md:text-left pt-20">
           <div className="max-w-4xl">
             <span className="font-sans font-semibold text-xs tracking-[0.3em] uppercase text-sand inline-block mb-4 animate-slide-up">
-              Secondesk — Mombasa, Kenya
+              Second Desk — Mombasa, Kenya
             </span>
             <h1 className="font-display font-light text-4xl sm:text-6xl lg:text-7xl tracking-tight text-white mb-6 leading-[1.05] animate-slide-up animate-delay-100">
               Your Best Work <br className="hidden md:block"/>
@@ -255,7 +248,7 @@ export const Home: React.FC = () => {
       <section className="py-24 bg-white border-b border-concrete">
         <div className="max-w-[1440px] mx-auto px-6 lg:px-12">
           <div className="text-center max-w-2xl mx-auto mb-20">
-            <span className="font-sans font-bold text-xs tracking-widest uppercase text-sand block mb-3">Why Secondesk</span>
+            <span className="font-sans font-bold text-xs tracking-widest uppercase text-sand block mb-3">Why Second Desk</span>
             <h2 className="font-display font-light text-3xl sm:text-4xl text-charcoal tracking-tight">
               Designed for Uninterrupted Focus
             </h2>
@@ -294,8 +287,8 @@ export const Home: React.FC = () => {
           <div className="lg:col-span-5 relative">
             <div className="aspect-[3/4] overflow-hidden bg-concrete border border-concrete shadow-lg relative">
               <img 
-                src={mombasaWorkspaceMain} 
-                alt="Professionals in high-focus architectural workspace" 
+                src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&q=80&w=800" 
+                alt="Professionals in high-focus architectural lobby" 
                 className="w-full h-full object-cover"
                 referrerPolicy="no-referrer"
               />
@@ -303,7 +296,7 @@ export const Home: React.FC = () => {
               <div className="absolute bottom-8 left-8 right-8 text-white">
                 <span className="font-serif italic text-sand text-lg block mb-2">Pristine Architecture</span>
                 <p className="font-sans text-xs text-white/80 leading-relaxed">
-                  Every Secondesk environment is crafted to maximize natural sunlight, acoustic isolation, and visual order.
+                  Every Second Desk environment is crafted to maximize natural sunlight, acoustic isolation, and visual order.
                 </p>
               </div>
             </div>
@@ -409,10 +402,10 @@ export const Home: React.FC = () => {
         {/* Beautiful visual gallery row */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 overflow-hidden">
           {[
-            mombasaReception1,
-            mombasaWorkspaceMain,
-            mombasaOffice1,
-            mombasaOffice3
+            'https://images.unsplash.com/photo-1497215728101-856f4ea42174?auto=format&fit=crop&q=80&w=400',
+            'https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=400',
+            'https://images.unsplash.com/photo-1606857521015-7f9fcf423740?auto=format&fit=crop&q=80&w=400',
+            'https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&q=80&w=400'
           ].map((img, i) => (
             <div key={i} className="aspect-[4/3] bg-concrete overflow-hidden border border-concrete hover-zoom-container">
               <img 
@@ -636,7 +629,7 @@ export const Home: React.FC = () => {
           <div className="max-w-2xl mx-auto">
             <span className="font-sans font-bold text-xs tracking-widest uppercase text-sand block mb-4">Secure your space</span>
             <h2 className="font-display font-light text-4xl sm:text-5xl text-charcoal tracking-tight mb-6 leading-tight">
-              Ready for your <span className="font-serif italic text-charcoal/60">Secondesk?</span>
+              Ready for your <span className="font-serif italic text-charcoal/60">Second Desk?</span>
             </h2>
             <p className="font-sans text-sm text-charcoal/60 mb-10 leading-relaxed max-w-lg mx-auto">
               Book a tour today and experience a workspace built from the ground up around focus, productivity, and regional business trust.

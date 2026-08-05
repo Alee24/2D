@@ -100,7 +100,7 @@ export const Contact: React.FC = () => {
               <div className="space-y-1 text-xs font-sans text-charcoal/60 leading-normal">
                 {locations.slice(0, 3).map((loc) => (
                   <p key={loc.id}>
-                    <strong>Secondesk {loc.name}:</strong> {loc.phone}
+                    <strong>Second Desk {loc.name}:</strong> {loc.phone}
                   </p>
                 ))}
               </div>
@@ -112,8 +112,8 @@ export const Contact: React.FC = () => {
             <h3 className="font-display font-semibold text-xl text-charcoal tracking-tight">Main Mombasa Node Map</h3>
             <div className="aspect-video w-full bg-concrete border border-concrete">
               <iframe
-                title="Google Map location representation of Secondesk Nyali HQ"
-                src="https://maps.google.com/maps?q=-4.027881,39.717015&z=17&output=embed"
+                title="Google Map location representation of Second Desk Nyali HQ"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3979.882195289944!2d39.68351541533261!3d-4.041453999080063!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x184012e5c0000000%3A0xd6891cc774fcf373!2sNyali%2C%20Mombasa!5e0!3m2!1sen!2ske!4v1655112233445!5m2!1sen!2ske"
                 className="w-full h-full border-0"
                 allowFullScreen={false}
                 loading="lazy"
@@ -165,7 +165,7 @@ export const Contact: React.FC = () => {
               </div>
               <h4 className="font-display font-semibold text-emerald-950 text-base">Message Sent Successfully</h4>
               <p className="font-sans text-xs text-emerald-800 leading-relaxed">
-                Thank you for reaching out. A Secondesk customer success executive has received your inquiry and will follow up within 2 business hours.
+                Thank you for reaching out. A Second Desk customer success executive has received your inquiry and will follow up within 2 business hours.
               </p>
               <button
                 onClick={() => setSubmitted(false)}

@@ -11,6 +11,7 @@ import About from './pages/About';
 import Contact from './pages/Contact';
 import BookTour from './pages/BookTour';
 import PrivacyTerms from './pages/PrivacyTerms';
+import Pricing from './pages/Pricing';
 
 const AppContent: React.FC = () => {
   const { currentPath } = useRouter();
@@ -22,6 +23,9 @@ const AppContent: React.FC = () => {
     }
     if (currentPath === '/workspace') {
       return <Workspace />;
+    }
+    if (currentPath === '/pricing' || currentPath === '/price-list') {
+      return <Pricing />;
     }
     if (currentPath === '/locations') {
       return <Locations />;

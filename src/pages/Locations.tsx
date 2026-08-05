@@ -191,7 +191,7 @@ export const Locations: React.FC = () => {
               </div>
               <div className="pt-6 mt-6 border-t border-concrete/60">
                 <a 
-                  href="https://maps.app.goo.gl/E7pmtHixaKbRkN6D9" 
+                  href="https://maps.google.com/?q=Nyali+Executive+Centre+Mombasa" 
                   target="_blank" 
                   rel="noopener noreferrer"
                   className="text-xs font-bold uppercase tracking-wider text-charcoal hover:text-sand inline-flex items-center gap-1.5 transition-colors"
@@ -347,7 +347,7 @@ export const Locations: React.FC = () => {
             <div className="lg:col-span-7">
               <div className="aspect-video w-full bg-concrete border border-concrete shadow-lg relative overflow-hidden">
                 <iframe
-                  title="Google Map location representation of Secondesk Nyali Hub"
+                  title="Google Map location representation of Second Desk Nyali Hub"
                   src={location.mapEmbedUrl}
                   className="w-full h-full border-0"
                   allowFullScreen={false}

@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react';
-import mombasaReception1 from '../assets/images/mombasa_reception_1.jpg';
 
 interface SEOProps {
   title: string;
@@ -17,7 +16,7 @@ export const SEO: React.FC<SEOProps> = ({
   description,
   keywords = 'coworking Mombasa, shared offices Nyali, private office Tudor, meeting rooms Mombasa CBD, business lounge Mombasa, virtual office Kenya, SecondDesk, boutique workspace Coast',
   ogType = 'website',
-  ogImage = mombasaReception1,
+  ogImage = 'https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=1200',
   canonicalPath,
   schemaType,
   schemaData,
