@@ -40,7 +40,7 @@ export const PrivacyTerms: React.FC = () => {
           /* PRIVACY CONTENT */
           <div className="font-sans text-sm text-charcoal/75 leading-relaxed font-light space-y-6">
             <p>
-              At Second Desk, we hold our members' data security and visual confidentiality to standard-setting operational principles. This policy explains how we collect, process, and secure corporate data across our physical sites and digital reservation dashboards.
+              At Secondesk, we hold our members' data security and visual confidentiality to standard-setting operational principles. This policy explains how we collect, process, and secure corporate data across our physical sites and digital reservation dashboards.
             </p>
 
             <h3 className="font-display font-semibold text-lg text-charcoal pt-4">1. Data Collected Inside Nodes</h3>
@@ -71,7 +71,7 @@ export const PrivacyTerms: React.FC = () => {
           /* TERMS OF SERVICE CONTENT */
           <div className="font-sans text-sm text-charcoal/75 leading-relaxed font-light space-y-6">
             <p>
-              By executing a Second Desk membership agreement or booking a conference pass, you agree to comply with the standard site rules defined below.
+              By executing a Secondesk membership agreement or booking a conference pass, you agree to comply with the standard site rules defined below.
             </p>
 
             <h3 className="font-display font-semibold text-lg text-charcoal pt-4">1. Respectful Shared Use</h3>
@@ -81,7 +81,7 @@ export const PrivacyTerms: React.FC = () => {
 
             <h3 className="font-display font-semibold text-lg text-charcoal pt-4">2. Redundant Power & Internet</h3>
             <p>
-              We maintain automatic generators and redundant fiber lines to guarantee 99.9% uptime. In the highly unlikely event of a combined system outage, Second Desk's liability is capped at the pro-rated value of the affected day's lease pass.
+              We maintain automatic generators and redundant fiber lines to guarantee 99.9% uptime. In the highly unlikely event of a combined system outage, Secondesk's liability is capped at the pro-rated value of the affected day's lease pass.
             </p>
 
             <h3 className="font-display font-semibold text-lg text-charcoal pt-4">3. Cancellation & Commitments</h3>

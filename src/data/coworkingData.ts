@@ -191,7 +191,7 @@ export const workspaceSolutions: WorkspaceSolution[] = [
     id: 'startups',
     targetAudience: 'Startups & Scaleups',
     challenge: 'Unpredictable team growth, lack of capital for long-term commercial leases, and time wasted managing operations.',
-    solution: 'Second Desk handles everything—high-speed internet, security, printing, cleaning, and guest reception—so you can focus 100% on building your product.',
+    solution: 'Secondesk handles everything—high-speed internet, security, printing, cleaning, and guest reception—so you can focus 100% on building your product.',
     recommendation: 'Private Office Suites with flexible month-to-month contracts.',
     benefits: ['Ultra-flexible scaling', 'Full operational support', 'Access to investor and mentorship meetups', 'Talent-attracting architectural design'],
     image: mombasaOffice1
@@ -209,7 +209,7 @@ export const workspaceSolutions: WorkspaceSolution[] = [
     id: 'smes-agencies',
     targetAudience: 'SMEs & Agencies',
     challenge: 'High cost of commercial fit-outs, maintenance staff recruitment, and utility backup solutions.',
-    solution: 'Second Desk provides ready-to-use, premium glass-fronted offices supported by 100% stable generator power, modern server rooms, and client-facing reception services.',
+    solution: 'Secondesk provides ready-to-use, premium glass-fronted offices supported by 100% stable generator power, modern server rooms, and client-facing reception services.',
     recommendation: 'Premium Office Suites (5 to 15 person layouts).',
     benefits: ['Zero capital expenditure for office buildout', 'Uninterrupted power and water backup', 'Receptionists greeting your clients', 'Branded directory placement'],
     image: mombasaReception1
@@ -278,7 +278,7 @@ export const locations: LocationData[] = [
 export const testimonials: Testimonial[] = [
   {
     id: 't1',
-    quote: "Second Desk completely elevated our agency. The beautiful, architectural environment signals trust and high capability to every client we host here, and the facilities are flawlessly managed.",
+    quote: "Secondesk completely elevated our agency. The beautiful, architectural environment signals trust and high capability to every client we host here, and the facilities are flawlessly managed.",
     author: "Wanjiku Njoroge",
     role: "Founder & Creative Director",
     company: "Sura Creative",
@@ -286,7 +286,7 @@ export const testimonials: Testimonial[] = [
   },
   {
     id: 't2',
-    quote: "With a growing distributed remote team, maintaining a sense of culture is hard. The hybrid office suites we rent at Second Desk give us an incredible base to connect and align.",
+    quote: "With a growing distributed remote team, maintaining a sense of culture is hard. The hybrid office suites we rent at Secondesk give us an incredible base to connect and align.",
     author: "Amir Osei",
     role: "VP of Engineering",
     company: "FintechOne East Africa",
@@ -307,7 +307,7 @@ export const blogPosts: BlogPost[] = [
     id: 'b1',
     title: 'The Future of Shared Workspaces: Designing for Privacy & Collaboration',
     excerpt: 'Explore how top-tier spatial designers are blending open lounge acoustics with private office modularity to boost productivity.',
-    content: 'The workspace landscape is undergoing a silent revolution. Long gone are the days of fluorescent-lit rows of identical cubicles, but so are the days of the chaotic open-plan startup playroom. Today, ambitious businesses require architectural integrity. They need spaces that foster quiet focus when desired, and structured collaboration when teams need to align.\n\nAt Second Desk, our architectural team spends months studying spatial density. We have found that the optimal layout utilizes a 60/40 design rule: 60% of square footage dedicated to enclosed, high-acoustic privacy suites and dedicated desks, and 40% curated as beautiful public lobbies, libraries, coffee stations, and garden terraces.',
+    content: 'The workspace landscape is undergoing a silent revolution. Long gone are the days of fluorescent-lit rows of identical cubicles, but so are the days of the chaotic open-plan startup playroom. Today, ambitious businesses require architectural integrity. They need spaces that foster quiet focus when desired, and structured collaboration when teams need to align.\n\nAt Secondesk, our architectural team spends months studying spatial density. We have found that the optimal layout utilizes a 60/40 design rule: 60% of square footage dedicated to enclosed, high-acoustic privacy suites and dedicated desks, and 40% curated as beautiful public lobbies, libraries, coffee stations, and garden terraces.',
     category: 'Workspace Design',
     author: {
       name: 'Elena Rostova',
@@ -338,7 +338,7 @@ export const blogPosts: BlogPost[] = [
     id: 'b3',
     title: 'Solitude vs. Focus: Cultivating Mental Clarity in Modern Workflows',
     excerpt: 'The psychological toll of home isolation can sap creative juices. How micro-interactions in architectural spaces restore mental stamina.',
-    content: 'Work from home was sold as a perfect utopia of pajamas and zero commute. However, four years into the mass remote work experiment, the cracks are widening.\n\nHuman brains are wired to perform better under low-stakes social presence. A curated, aesthetic environment like Second Desk acts as an outer container for focus.',
+    content: 'Work from home was sold as a perfect utopia of pajamas and zero commute. However, four years into the mass remote work experiment, the cracks are widening.\n\nHuman brains are wired to perform better under low-stakes social presence. A curated, aesthetic environment like Secondesk acts as an outer container for focus.',
     category: 'Productivity',
     author: {
       name: 'Dr. Clara Patel',
@@ -353,7 +353,7 @@ export const blogPosts: BlogPost[] = [
     id: 'b4',
     title: 'The Digital Nomad Trend in East Africa: Mombasa as the Central Hub',
     excerpt: 'Why international tech leaders, creators, and entrepreneurs are selecting Mombasa as their central headquarters.',
-    content: 'Mombasa is rapidly emerging as a premier destination for global professionals, digital nomads, and tech executives seeking a dynamic coastal business environment.\n\nSecond Desk acts as a physical landing pad for this global cohort, providing high-spec secure workspaces and direct access to the local business elite via structured investor breakfasts and workshop sessions.',
+    content: 'Mombasa is rapidly emerging as a premier destination for global professionals, digital nomads, and tech executives seeking a dynamic coastal business environment.\n\nSecondesk acts as a physical landing pad for this global cohort, providing high-spec secure workspaces and direct access to the local business elite via structured investor breakfasts and workshop sessions.',
     category: 'Remote Work',
     author: {
       name: 'Kamau Gicheru',
@@ -380,7 +380,7 @@ export const communityEvents: CommunityEvent[] = [
   {
     id: 'e2',
     title: 'Monthly Investor Pitch Breakfast',
-    description: 'A closed-door, curated pitch session connecting high-growth startups from the Second Desk ecosystem with leading regional angel networks and VC funds.',
+    description: 'A closed-door, curated pitch session connecting high-growth startups from the Secondesk ecosystem with leading regional angel networks and VC funds.',
     date: 'July 22, 2026',
     time: '08:00 AM - 11:00 AM',
     type: 'Investor Meetups',
@@ -424,14 +424,14 @@ export const faqs: FAQItem[] = [
   },
   {
     question: "How do you guarantee power and internet stability?",
-    answer: "We understand that constant connectivity is non-negotiable for business. All Second Desk locations are fully equipped with automatic dual-diesel generators that kick in within 3 seconds of a power disruption. Additionally, we use redundant high-speed fiber internet backbones from separate Tier-1 service providers to ensure 99.9% uptime."
+    answer: "We understand that constant connectivity is non-negotiable for business. All Secondesk locations are fully equipped with automatic dual-diesel generators that kick in within 3 seconds of a power disruption. Additionally, we use redundant high-speed fiber internet backbones from separate Tier-1 service providers to ensure 99.9% uptime."
   },
   {
     question: "Are meeting rooms accessible to non-members?",
-    answer: "Yes, our high-spec meeting rooms, boardrooms, and event spaces are open for external booking by non-members on an hourly or daily rate. Members enjoy significant discounts and priority reservation via the Second Desk platform using their monthly included credits."
+    answer: "Yes, our high-spec meeting rooms, boardrooms, and event spaces are open for external booking by non-members on an hourly or daily rate. Members enjoy significant discounts and priority reservation via the Secondesk platform using their monthly included credits."
   },
   {
-    question: "Is there secure parking available at Second Desk?",
+    question: "Is there secure parking available at Secondesk?",
     answer: "Yes. Our host property features multi-level secure parking with 24/7 CCTV monitoring, automated ticketing, and dedicated security guards. We offer both casual visitor parking and discounted monthly parking passes for members."
   }
 ];

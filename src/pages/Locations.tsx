@@ -347,7 +347,7 @@ export const Locations: React.FC = () => {
             <div className="lg:col-span-7">
               <div className="aspect-video w-full bg-concrete border border-concrete shadow-lg relative overflow-hidden">
                 <iframe
-                  title="Google Map location representation of Second Desk Nyali Hub"
+                  title="Google Map location representation of Secondesk Nyali Hub"
                   src={location.mapEmbedUrl}
                   className="w-full h-full border-0"
                   allowFullScreen={false}

@@ -107,7 +107,7 @@ export const LocationDetail: React.FC = () => {
               {location.neighborhood}
             </span>
             <h1 className="font-display font-light text-4xl sm:text-5xl lg:text-6xl text-white tracking-tight leading-none mb-4">
-              Second Desk <span className="font-serif italic text-sand">{location.name}</span>
+              Secondesk <span className="font-serif italic text-sand">{location.name}</span>
             </h1>
             <p className="font-sans text-white/80 text-sm sm:text-base max-w-xl">
               {location.address}
@@ -128,7 +128,7 @@ export const LocationDetail: React.FC = () => {
               Workspace Availability
             </h2>
             <p className="font-sans text-xs text-charcoal/60 leading-relaxed font-light">
-              Current space availability indices at Second Desk {location.name}. Reach out to lock in standard pricing before seasonal volume caps are triggered.
+              Current space availability indices at Secondesk {location.name}. Reach out to lock in standard pricing before seasonal volume caps are triggered.
             </p>
             
             <div className="border border-concrete divide-y divide-concrete bg-white">
@@ -262,7 +262,7 @@ export const LocationDetail: React.FC = () => {
             </h2>
             <div className="aspect-video w-full bg-concrete border border-concrete relative">
               <iframe
-                title={`Map layout of Second Desk ${location.name}`}
+                title={`Map layout of Secondesk ${location.name}`}
                 src={location.mapEmbedUrl}
                 className="w-full h-full"
                 allowFullScreen={false}
@@ -390,7 +390,7 @@ export const LocationDetail: React.FC = () => {
             <div className="flex flex-col gap-1">
               <span className="font-sans text-[10px] font-bold uppercase tracking-widest text-charcoal/40">Selected Node</span>
               <span className="font-display font-semibold text-charcoal text-sm bg-offwhite px-3 py-2 border border-concrete flex items-center gap-1.5">
-                <MapPin className="w-3.5 h-3.5 text-sand" /> Second Desk {location.name}
+                <MapPin className="w-3.5 h-3.5 text-sand" /> Secondesk {location.name}
               </span>
             </div>
 

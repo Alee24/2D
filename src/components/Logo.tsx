@@ -7,8 +7,8 @@ interface LogoProps {
 }
 
 export const Logo: React.FC<LogoProps> = ({ className = '', size = 32, light = false }) => {
-  // We use the exact brand colors: charcoal (#1D1D1D) or offwhite, and red (#E31B23) for 'D'
-  const sColor = light ? '#FAFAF8' : '#1D1D1D';
+  // We use the exact brand colors: blue (#00468b) or offwhite, and red (#E31B23) for 'D'
+  const sColor = light ? '#FAFAF8' : '#00468b';
   const dColor = '#E31B23';
 
   // We design a beautiful vector layout where "S" and "D" are beautifully nested.

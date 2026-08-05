@@ -91,7 +91,7 @@ export const Header: React.FC = () => {
           >
             <Logo size={42} light={!isSolidHeader} />
             <span className="font-display text-xl uppercase flex items-center tracking-[0.12em] font-black" style={{ fontWeight: 900 }}>
-              <span className={isSolidHeader ? 'text-charcoal' : 'text-white'}>SECOND</span>
+              <span className={isSolidHeader ? 'text-[#00468b]' : 'text-white'}>SECOND</span>
               <span className="text-[#E31B23]">DESK</span>
             </span>
           </div>
@@ -150,7 +150,7 @@ export const Header: React.FC = () => {
               className={`p-2 transition-colors duration-200 cursor-pointer ${
                 isSolidHeader ? 'text-charcoal hover:text-sand' : 'text-white hover:text-sand'
               }`}
-              aria-label="Search Second Desk"
+              aria-label="Search Secondesk"
             >
               <Search className="w-5 h-5" />
             </button>
@@ -357,7 +357,7 @@ export const Header: React.FC = () => {
                 >
                   <Logo size={36} light={false} />
                   <span className="font-display font-semibold tracking-[0.15em] text-base uppercase text-charcoal">
-                    Second Desk
+                    Secondesk
                   </span>
                 </div>
                 <div className="flex items-center gap-2">
@@ -559,7 +559,7 @@ export const Header: React.FC = () => {
                     </div>
                   </div>
                   <div>
-                    <h4 className="text-white/40 font-sans text-xs font-bold uppercase tracking-widest mb-4">Second Desk Concept</h4>
+                    <h4 className="text-white/40 font-sans text-xs font-bold uppercase tracking-widest mb-4">Secondesk Concept</h4>
                     <p className="font-sans text-xs text-white/50 leading-relaxed">
                       Enter any keyword to locate active workspaces, corporate suites, boardrooms, community calendar events, or blog articles on the platform. Click on a result to navigate instantly.
                     </p>
