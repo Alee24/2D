@@ -13,8 +13,6 @@ import kilimaniImg from '../assets/images/nairobi_kilimani_workspace_17832536547
 import karenImg from '../assets/images/nairobi_karen_greenery_1783253669175.jpg';
 import upperHillImg from '../assets/images/nairobi_upper_hill_office_1783253682757.jpg';
 import cbdImg from '../assets/images/nairobi_cbd_coworking_1783253697927.jpg';
-import boardroomImg from '../assets/images/seconddesk_boardroom_1785943475917.jpg';
-import meetingRoomImg from '../assets/images/seconddesk_meeting_room_1785943538070.jpg';
 
 export const companyInfo = {
   name: 'SecondDesk',
@@ -138,7 +136,7 @@ export const workspaceCategories: WorkspaceCategory[] = [
     tagline: 'Design-Led Collaborative Spaces',
     description: 'Professional executive boardrooms, meeting rooms, and Zoom rooms equipped for client pitches, presentations, and team workshops.',
     longDescription: 'Leave a lasting impression on clients or your team. Choose from Executive Boardrooms (KES 12k Full Day / KES 8k Half Day / KES 2k Hourly), Meeting Rooms (KES 1,500/hr), and Zoom Rooms (KES 1,000/hr).',
-    image: boardroomImg,
+    image: westlandsImg,
     capacity: '4 to 20 People',
     startingPrice: 'KES 1,500 / hr',
     amenities: ['4K Interactive Presentation Screens', 'Studio-Grade Video Bars', 'Magnetic Whiteboards', 'Premium Kenyan Coffee & Tea', 'High-Speed Fiber'],
@@ -231,19 +229,19 @@ export const locations: LocationData[] = [
     email: 'mombasa@seconddesk.ke',
     mapEmbedUrl: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3979.882195289944!2d39.68351541533261!3d-4.041453999080063!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x184012e5c0000000%3A0xd6891cc774fcf373!2sSecond%20Cup%20Mombasa!5e0!3m2!1sen!2ske!4v1655112233445!5m2!1sen!2ske',
     startingPrice: 'KES 17,000 / mo',
-    image: boardroomImg,
+    image: westlandsImg,
     nearbyLandmarks: ['Second Cup Nyali (Ground Floor)', 'Nyali Centre Mall', 'City Mall Nyali', 'Nyali Golf & Country Club', 'Nyali Beach'],
     spacesAvailable: ['Executive Boardrooms', 'Meeting Rooms', 'Private Office Suites', 'Coworking Hot Desks', 'Dedicated Desks'],
     amenities: ['Ocean Breeze Balcony', 'Dual Backup Generators', 'Secured Parking Garage', 'Rooftop Coastal Lounge', 'Lactation & Wellness Room', '500Mbps High-Speed Fiber', 'Barista Coffee Bar'],
     gallery: [
-      boardroomImg,
-      meetingRoomImg,
       westlandsImg,
+      kilimaniImg,
+      karenImg,
       'https://images.unsplash.com/photo-1524758631624-e2822e304c36?auto=format&fit=crop&q=80&w=600'
     ],
     meetingRoomDetails: {
       title: 'Executive Boardrooms & Meeting Rooms',
-      image: boardroomImg,
+      image: kilimaniImg,
       features: [
         { iconName: 'PenTool', text: 'On Demand Executive Stationery' },
         { iconName: 'Tv', text: '75" 4K Smart TV with Polycom Video conferencing' },
