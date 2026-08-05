@@ -75,6 +75,9 @@ if systemctl is-active --quiet apache2 || systemctl is-active --quiet httpd; the
     node:20-alpine \
     sh -c "npm install && rm -rf dist && npm run build"
 
+  # Ensure dist has correct webserver read permissions
+  chmod -R 755 "$INSTALL_DIR/dist"
+
   # Ensure webroot acme-challenge directory exists
   mkdir -p "$INSTALL_DIR/dist/.well-known/acme-challenge"
 
