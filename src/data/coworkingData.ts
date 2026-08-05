@@ -233,7 +233,7 @@ export const locations: LocationData[] = [
     address: 'Mombasa, Kenya',
     phone: '0719688992',
     email: 'info@seconddesk.ke',
-    mapEmbedUrl: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d127541.78490390272!2d39.58893155!3d-4.04309415!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x184012e4d0f0a529%3A0xbc8a32e0e79fd17b!2sMombasa!5e0!3m2!1sen!2ske!4v1655112233445!5m2!1sen!2ske',
+    mapEmbedUrl: 'https://maps.google.com/maps?q=-4.027881,39.717015&z=17&output=embed',
     startingPrice: 'KES 17,000 / mo',
     image: mombasaReception1,
     nearbyLandmarks: ['Mombasa CBD', 'Fort Jesus', 'Nyali Bridge', 'Mombasa Port'],
