@@ -222,6 +222,7 @@ EOF
         RewriteRule . /index.html [L]
     </Directory>
 
+    Header always set Content-Security-Policy "default-src 'self' https: http: data: blob: 'unsafe-inline' 'unsafe-eval'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https: http: blob:; style-src 'self' 'unsafe-inline' https: fonts.googleapis.com; font-src 'self' data: fonts.gstatic.com; img-src 'self' data: blob: https: http:; connect-src 'self' https: http: ws: wss:;"
     Header always set X-Content-Type-Options "nosniff"
     Header always set X-Frame-Options "SAMEORIGIN"
     Header always set X-XSS-Protection "1; mode=block"

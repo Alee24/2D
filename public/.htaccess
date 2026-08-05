@@ -10,6 +10,11 @@
     Header set Cache-Control "max-age=31536000, immutable"
 </FilesMatch>
 
+# Content Security Policy - Permissive for React, Motion & PDF canvas libraries
+<IfModule mod_headers.c>
+    Header set Content-Security-Policy "default-src 'self' https: http: data: blob: 'unsafe-inline' 'unsafe-eval'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https: http: blob:; style-src 'self' 'unsafe-inline' https: fonts.googleapis.com; font-src 'self' data: fonts.gstatic.com; img-src 'self' data: blob: https: http:; connect-src 'self' https: http: ws: wss:;"
+</IfModule>
+
 # Single Page Application fallback routing
 <IfModule mod_rewrite.c>
     RewriteEngine On
