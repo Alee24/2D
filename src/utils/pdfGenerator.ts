@@ -107,11 +107,11 @@ export const generateBrochurePDF = () => {
   doc.setTextColor(150, 150, 150);
   doc.setFont('helvetica', 'normal');
   doc.setFontSize(8);
-  doc.text('NAIROBI, KENYA  |  WWW.SECONDDESK.COM', 105, 265, { align: 'center' });
+  doc.text('MOMBASA, KENYA  |  LINKS ROAD, NYALI (ABOVE SECOND CUP)  |  WWW.SECONDDESK.KE', 105, 265, { align: 'center' });
 
 
   // ==========================================
-  // PAGE 2: DETAILED OFFICE SOLUTIONS
+  // PAGE 2: OFFICIAL PRICE LIST & WORKSPACE PACKAGES
   // ==========================================
   doc.addPage();
 
@@ -131,64 +131,65 @@ export const generateBrochurePDF = () => {
   doc.setTextColor(colors.sand.r, colors.sand.g, colors.sand.b);
   doc.setFont('helvetica', 'bold');
   doc.setFontSize(14);
-  doc.text('WORKSPACE SOLUTIONS & OFFICE CONFIGURATIONS', 25, 31);
+  doc.text('OFFICIAL PRICE LIST & AVAILABLE PACKAGES', 25, 31);
 
-  // Description under Header
+  // Sub-header under Header
   doc.setTextColor(colors.charcoal.r, colors.charcoal.g, colors.charcoal.b);
   doc.setFont('helvetica', 'normal');
-  doc.setFontSize(10);
+  doc.setFontSize(9.5);
   doc.text(
-    'Explore flexible options tailored for solo executives, remote agencies, or scaling enterprise teams.',
+    'All rates listed below exclude 16% VAT. Flexible terms available for individuals, startups, and corporate teams.',
     15,
-    52
+    50
   );
 
   // Solutions Grid / Rows
-  const solutions = [
+  const packages = [
     {
-      title: '01. Executive Private Offices',
-      rate: 'Starting from KES 45,000 / month',
+      title: '01. Private Office Suites',
+      badge: 'MONTHLY RATES',
       details: [
-        'Acoustically sound-insulated glass partitioning for total speech privacy.',
-        'Ergonomic Steelcase gesture chairs & custom solid hardwood desks.',
-        'Private smart storage, personal safe box, and bespoke climate controls.',
-        'Complimentary corporate high-volume secure cloud printing.'
+        'Small Office Suite (up to 4 desks) — KES 45,000 / month',
+        'Medium Office Suite (up to 8 desks) — KES 55,000 / month',
+        'Large Office Suite (up to 12+ desks) — KES 65,000 / month',
+        'Includes: Sound-insulated partitions, Steelcase chairs, solid oak desks, 24/7 access, and private keycard entry.'
       ]
     },
     {
-      title: '02. Tailored Enterprise Suites',
-      rate: 'Custom Pricing (On demand)',
+      title: '02. Executive Boardrooms & Meeting Rooms',
+      badge: 'HOURLY / HALF-DAY / FULL-DAY',
       details: [
-        'Entire private wings or dedicated floors customized to your corporate layout.',
-        'Bespoke brand integration, secure isolated server racks & access control.',
-        'Integrated private meeting rooms, executive lounges, and phone booths.',
-        'Dedicated administrative and facilities team supporting your company.'
+        'Executive Boardroom (Full Day) — KES 12,000  |  (Half Day) — KES 8,000  |  (Hourly) — KES 2,000',
+        'Meeting Room (Hourly) — KES 1,500 / hr',
+        'Zoom Room (Acoustic Video Pod) — KES 1,000 / hr',
+        'Includes: 75" 4K presentation screens, video conferencing bars, whiteboards, complimentary coffee & tea service.'
       ]
     },
     {
-      title: '03. Premium Boardrooms & Meeting Spaces',
-      rate: 'Starting from KES 3,500 / hour',
+      title: '03. Shared Desks & Coworking Packages',
+      badge: 'FLEXIBLE PASSES',
       details: [
-        '75" 4K Smart Screens with high-definition telepresence configurations.',
-        'Professional acoustical treatments, magnetic glass boards & writable walls.',
-        'Dedicated reception concierge greeting your business guests on arrival.',
-        'Gourmet catering and catering beverage setups supplied on demand.'
+        'Monthly Unlimited Membership — KES 17,000 / month',
+        'Full Day Coworking Pass — KES 1,700 / day',
+        'Half Day Coworking Pass — KES 1,200 / half-day',
+        'Includes: High-speed 500Mbps fiber wifi, ergonomic seating, ocean-view terrace access, lounge & power outlets.'
       ]
     },
     {
-      title: '04. Dedicated Coworking Workstations',
-      rate: 'Starting from KES 25,000 / month',
+      title: '04. Printing, Copying & Add-on Services',
+      badge: 'DOCUMENT SERVICES',
       details: [
-        'Assigned, secure spacious desk workspace with locker access.',
-        'Uncapped 500Mbps fiber internet with full redundancy failover systems.',
-        'Access to multiple business lounges and outdoor landscaped sun decks.'
+        'Black & White Printing / Copying — KES 15 / page',
+        'Color Printing / Copying — KES 50 / page',
+        'High-Resolution Document Scanning — Complimentary for all registered members',
+        'Operating Hours: Mon - Fri (8:00 AM - 8:00 PM), Sat (9:00 AM - 6:00 PM), Sun (Closed / 24-7 Member Keycard Access)'
       ]
     }
   ];
 
-  let solY = 65;
-  solutions.forEach((sol) => {
-    // Draw top line separator for each solution
+  let solY = 60;
+  packages.forEach((pkg) => {
+    // Top separator line
     doc.setDrawColor(colors.concrete.r, colors.concrete.g, colors.concrete.b);
     doc.setLineWidth(0.5);
     doc.line(15, solY, 195, solY);
@@ -197,43 +198,42 @@ export const generateBrochurePDF = () => {
     doc.setTextColor(colors.charcoal.r, colors.charcoal.g, colors.charcoal.b);
     doc.setFont('helvetica', 'bold');
     doc.setFontSize(11);
-    doc.text(sol.title, 15, solY + 6);
+    doc.text(pkg.title, 15, solY + 6);
 
-    // Rate
+    // Badge
     doc.setTextColor(colors.forest.r, colors.forest.g, colors.forest.b);
     doc.setFont('helvetica', 'bold');
-    doc.setFontSize(9);
-    doc.text(sol.rate, 195, solY + 6, { align: 'right' });
+    doc.setFontSize(8.5);
+    doc.text(pkg.badge, 195, solY + 6, { align: 'right' });
 
     // Details Bullet List
-    doc.setTextColor(90, 90, 90);
+    doc.setTextColor(70, 70, 70);
     doc.setFont('helvetica', 'normal');
     doc.setFontSize(8.5);
 
     let bulletY = solY + 12;
-    sol.details.forEach((bullet) => {
-      // Draw custom minimal dash
+    pkg.details.forEach((bullet) => {
+      // Dash icon
       doc.setFillColor(colors.sand.r, colors.sand.g, colors.sand.b);
       doc.rect(17, bulletY - 2, 2, 0.5, 'F');
       
-      // Text wrap to handle multi-line elegantly
       const splitBullet = doc.splitTextToSize(bullet, 170);
       doc.text(splitBullet, 22, bulletY);
-      bulletY += (splitBullet.length * 4);
+      bulletY += (splitBullet.length * 4.2);
     });
 
-    solY = bulletY + 2;
+    solY = bulletY + 3;
   });
 
   // Page 2 Footer
   doc.setTextColor(150, 150, 150);
   doc.setFont('helvetica', 'normal');
   doc.setFontSize(7.5);
-  doc.text('PAGE 2  |  SECONDDESK CORPORATE PORTFOLIO', 15, 282);
+  doc.text('PAGE 2  |  SECONDDESK OFFICIAL RATES & PACKAGES', 15, 282);
 
 
   // ==========================================
-  // PAGE 3: LOCATIONS & PREMIUM HOSPITALITY
+  // PAGE 3: LOCATION & BOOKING INFORMATION
   // ==========================================
   doc.addPage();
 
@@ -253,46 +253,71 @@ export const generateBrochurePDF = () => {
   doc.setTextColor(colors.sand.r, colors.sand.g, colors.sand.b);
   doc.setFont('helvetica', 'bold');
   doc.setFontSize(14);
-  doc.text('OUR ELITE LOCATIONS & HOSPITALITY METRICS', 25, 31);
+  doc.text('HEADQUARTERS LOCATION & CONTACT DETAILS', 25, 31);
 
   // Description
   doc.setTextColor(colors.charcoal.r, colors.charcoal.g, colors.charcoal.b);
   doc.setFont('helvetica', 'normal');
-  doc.setFontSize(10);
-  doc.text('Establish your presence in Mombasa\'s most prestigious, fully connected business districts.', 15, 52);
+  doc.setFontSize(9.5);
+  doc.text('Visit our flagship center situated directly above Second Cup on Links Road, Nyali, Mombasa.', 15, 50);
 
   // Locations Box grid
-  const locationsData = [
-    { name: 'SecondDesk Nyali', desc: 'The hub of coastal innovation & tech. Premium ocean views, Links Road access, and dual generators.' },
-    { name: 'SecondDesk Mombasa CBD', desc: 'Trade Winds Plaza on Nkrumah Road. Maritime, banking, and legal business headquarters.' },
-    { name: 'SecondDesk Tudor Bay', desc: 'Waterfront office sanctuary with tranquil creek views, outdoor lawn gazebos, and high-speed fiber.' },
-  ];
+  const locationCard = {
+    title: 'Mombasa Headquarters — Second Cup Nyali',
+    address: '3rd Floor, Second Cup Terrace, Links Road, Nyali, Mombasa, Kenya',
+    phone: '0719688992',
+    email: 'info@seconddesk.ke / mombasa@seconddesk.ke',
+    landmarks: 'Located directly above Second Cup Coffee House, near Nyali Centre and City Mall.',
+    features: [
+      'Prime location on Links Road with immediate access to cafes and coastal amenities.',
+      'Dedicated executive boardrooms, soundproof meeting rooms, and office suites.',
+      'Uninterrupted 500Mbps fiber internet with dual backup generators.',
+      'Coastal ocean-breeze lounge and outdoor balcony workstations.'
+    ]
+  };
 
-  let locY = 62;
-  locationsData.forEach((loc) => {
-    // Fill subtle gray box
-    doc.setFillColor(245, 245, 242);
-    doc.rect(15, locY, 180, 17, 'F');
-    doc.setDrawColor(colors.concrete.r, colors.concrete.g, colors.concrete.b);
-    doc.rect(15, locY, 180, 17, 'S');
+  let locY = 58;
+  
+  // Fill subtle gray box
+  doc.setFillColor(245, 245, 242);
+  doc.rect(15, locY, 180, 105, 'F');
+  doc.setDrawColor(colors.concrete.r, colors.concrete.g, colors.concrete.b);
+  doc.rect(15, locY, 180, 105, 'S');
 
-    // Accent left strip
+  // Accent left strip
+  doc.setFillColor(colors.sand.r, colors.sand.g, colors.sand.b);
+  doc.rect(15, locY, 2.5, 105, 'F');
+
+  // Title inside box
+  doc.setTextColor(colors.charcoal.r, colors.charcoal.g, colors.charcoal.b);
+  doc.setFont('helvetica', 'bold');
+  doc.setFontSize(11);
+  doc.text(locationCard.title, 22, locY + 10);
+
+  // Address line
+  doc.setFont('helvetica', 'normal');
+  doc.setFontSize(9);
+  doc.setTextColor(80, 80, 80);
+  doc.text(`Address: ${locationCard.address}`, 22, locY + 17);
+  doc.text(`Phone: ${locationCard.phone}  |  Email: ${locationCard.email}`, 22, locY + 23);
+  doc.text(`Landmark: ${locationCard.landmarks}`, 22, locY + 29);
+
+  // Features inside location box
+  doc.setFont('helvetica', 'bold');
+  doc.setFontSize(9);
+  doc.setTextColor(colors.charcoal.r, colors.charcoal.g, colors.charcoal.b);
+  doc.text('Key Amenities & Location Benefits:', 22, locY + 39);
+
+  doc.setFont('helvetica', 'normal');
+  doc.setFontSize(8.5);
+  doc.setTextColor(70, 70, 70);
+  let locFeatureY = locY + 46;
+  locationCard.features.forEach((feat) => {
     doc.setFillColor(colors.sand.r, colors.sand.g, colors.sand.b);
-    doc.rect(15, locY, 1.5, 17, 'F');
-
-    // Title
-    doc.setTextColor(colors.charcoal.r, colors.charcoal.g, colors.charcoal.b);
-    doc.setFont('helvetica', 'bold');
-    doc.setFontSize(10);
-    doc.text(loc.name, 20, locY + 6);
-
-    // Description
-    doc.setTextColor(110, 110, 110);
-    doc.setFont('helvetica', 'normal');
-    doc.setFontSize(8);
-    doc.text(loc.desc, 20, locY + 12);
-
-    locY += 21;
+    doc.rect(23, locFeatureY - 2, 2, 0.5, 'F');
+    const splitFeat = doc.splitTextToSize(feat, 160);
+    doc.text(splitFeat, 28, locFeatureY);
+    locFeatureY += (splitFeat.length * 4.5);
   });
 
   // Hospitality & Infrastructure block
@@ -308,11 +333,11 @@ export const generateBrochurePDF = () => {
   doc.setFont('helvetica', 'normal');
   doc.setFontSize(8.5);
   const infrastructureBullets = [
-    '• Uncapped 500Mbps Fibre internet with symmetrical microwave backup arrays.',
-    '• 100% full electricity backup generator systems with instant ATS failovers.',
-    '• Biometric smart card security integration and 24/7 CCTV system tracking.',
-    '• Eco-conscious HEPA clean air filtration units with personalized micro-climates.',
-    '• Fully-stocked espresso bars serving single-origin specialty Kenyan coffee.'
+    '• Uncapped 500Mbps Fibre internet with symmetrical redundant backup array.',
+    '• 100% full electricity backup generator systems with automatic ATS failover.',
+    '• Biometric keycard security integration and 24/7 CCTV surveillance.',
+    '• Fully-serviced reception lounge, high-end boardrooms, and Zoom video pods.',
+    '• Fresh coffee & tea bar with direct service from Second Cup downstairs.'
   ];
   doc.text(infrastructureBullets, 22, 192, { lineHeightFactor: 1.5 });
 
@@ -324,23 +349,23 @@ export const generateBrochurePDF = () => {
   doc.setTextColor(colors.charcoal.r, colors.charcoal.g, colors.charcoal.b);
   doc.setFont('helvetica', 'bold');
   doc.setFontSize(10);
-  doc.text('SCHEDULE A PERSONALIZED CONSULTATION', 22, 241);
+  doc.text('BOOK A SPATIAL TOUR OR RESERVE YOUR SPACE', 22, 241);
 
   doc.setFont('helvetica', 'normal');
   doc.setFontSize(8.5);
   doc.setTextColor(90, 90, 90);
   doc.text([
-    'Contact our enterprise team to receive standard floorplans, custom modular desk layouts,',
-    'or bespoke pricing portfolios tailored to your organizational team footprint.'
+    'Call our Mombasa community team directly to book a site inspection, test a day pass,',
+    'or request a customized enterprise office package for your business team.'
   ], 22, 246, { lineHeightFactor: 1.3 });
 
-  // WhatsApp CTA text right aligned inside box
+  // Contact CTA text right aligned inside box
   doc.setTextColor(colors.charcoal.r, colors.charcoal.g, colors.charcoal.b);
   doc.setFont('helvetica', 'bold');
   doc.setFontSize(9.5);
-  doc.text('WhatsApp: +254 724 454757', 22, 261);
+  doc.text('Phone / WhatsApp: 0719688992  |  Email: info@seconddesk.ke', 22, 261);
 
-  // Developer credit inside PDF as requested in guidelines (Developed by KKDES)
+  // Developer credit inside PDF
   doc.setTextColor(160, 160, 160);
   doc.setFont('helvetica', 'normal');
   doc.setFontSize(7.5);
@@ -353,5 +378,5 @@ export const generateBrochurePDF = () => {
   doc.text('PAGE 3  |  SECONDDESK CORPORATE PORTFOLIO', 15, 282);
 
   // Save / Download PDF
-  doc.save('SecondDesk_Premium_Workspace_Brochure.pdf');
+  doc.save('SecondDesk_Official_Brochure_PriceList.pdf');
 };

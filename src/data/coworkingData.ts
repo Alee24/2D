@@ -13,6 +13,8 @@ import kilimaniImg from '../assets/images/nairobi_kilimani_workspace_17832536547
 import karenImg from '../assets/images/nairobi_karen_greenery_1783253669175.jpg';
 import upperHillImg from '../assets/images/nairobi_upper_hill_office_1783253682757.jpg';
 import cbdImg from '../assets/images/nairobi_cbd_coworking_1783253697927.jpg';
+import boardroomImg from '../assets/images/seconddesk_boardroom_1785943475917.jpg';
+import meetingRoomImg from '../assets/images/seconddesk_meeting_room_1785943538070.jpg';
 
 export const companyInfo = {
   name: 'SecondDesk',

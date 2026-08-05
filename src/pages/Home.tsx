@@ -96,10 +96,12 @@ export const Home: React.FC = () => {
     { title: 'Seamless operations', desc: 'Dedicated cleaning, high-speed power redundancy, and on-site hospitality managers handling the heavy lifting.' },
   ];
 
-  const trustLogos = ['SAFARICOM', 'EQUITY BANK', 'STANBIC', 'MAERSK', 'KCB GROUP', 'COCA-COLA'];
+  const trustLogos = [
+    'METRIC', 'LUMEN.AI', 'TECTONIC', 'APEX LABS', 'VERDANT', 'COBALT CO', 'KINETIC', 'SURAGE'
+  ];
 
   return (
-    <div className="bg-offwhite text-charcoal min-h-screen">
+    <div className="bg-offwhite text-charcoal animate-fade-in">
       <SEO 
         title="Bespoke Coworking & Private Offices in Mombasa"
         description="Experience premier, design-led coworking spaces, executive private offices, and state-of-the-art meeting rooms across Mombasa's most prestigious commercial districts."
