@@ -1,7 +1,7 @@
 import React from 'react';
 import { useRouter } from '../context/NavigationContext';
 import { workspaceCategories } from '../data/coworkingData';
-import { Check, ArrowRight, Sparkles, Sliders, Users, DollarSign } from 'lucide-react';
+import { SEO } from '../components/SEO';
 import { Breadcrumbs } from '../components/Breadcrumbs';
 
 export const Workspace: React.FC = () => {
