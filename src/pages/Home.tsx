@@ -9,6 +9,7 @@ import {
   Download
 } from 'lucide-react';
 import { generateBrochurePDF } from '../utils/pdfGenerator';
+import { motion, AnimatePresence } from 'motion/react';
 import { PriceListBoard } from '../components/PriceListBoard';
 import mombasaOffice1 from '../assets/images/mombasa_office_1.jpg';
 import mombasaOffice2 from '../assets/images/mombasa_office_2.jpg';
