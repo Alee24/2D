@@ -8,9 +8,7 @@ import {
   ChevronLeft, ChevronRight, HelpCircle, Activity, Award,
   Download
 } from 'lucide-react';
-import { generateBrochurePDF } from '../utils/pdfGenerator';
 import { motion, AnimatePresence } from 'motion/react';
-import { PriceListBoard } from '../components/PriceListBoard';
 
 export const Home: React.FC = () => {
   const { navigate } = useRouter();
@@ -228,20 +226,6 @@ export const Home: React.FC = () => {
             </div>
           ))}
         </div>
-      </section>
-
-      {/* Official Price List Section */}
-      <section className="py-20 bg-offwhite border-b border-concrete px-6 lg:px-12">
-        <div className="max-w-[1440px] mx-auto text-center mb-6">
-          <span className="font-sans font-bold text-xs tracking-widest uppercase text-[#E31B23]">Official Pricing Schedule</span>
-          <h2 className="font-display font-light text-3xl sm:text-5xl text-charcoal tracking-tight mt-1">
-            Official Price List
-          </h2>
-          <p className="font-sans text-sm text-charcoal/60 mt-3 max-w-xl mx-auto">
-            Clear, transparent rates for co-working spaces, private office suites, and meeting facilities.
-          </p>
-        </div>
-        <PriceListBoard />
       </section>
 
       {/* 4. WHY SECOND DESK SECTION */}
