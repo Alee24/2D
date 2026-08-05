@@ -1,6 +1,7 @@
 import React from 'react';
 import { useRouter } from '../context/NavigationContext';
 import { workspaceCategories } from '../data/coworkingData';
+import { Check, Users, Sliders } from 'lucide-react';
 import { SEO } from '../components/SEO';
 import { Breadcrumbs } from '../components/Breadcrumbs';
 
