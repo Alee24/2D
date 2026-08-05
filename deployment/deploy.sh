@@ -183,12 +183,17 @@ EOF
     apt-get install -y certbot python3-certbot-apache || yum install -y certbot python3-certbot-apache
   fi
 
-  echo "[+] Requesting SSL Certificate using Certbot webroot mode..."
-  certbot certonly --webroot -w "$INSTALL_DIR/dist" \
-    -d "$DOMAIN" -d "$ALIAS_DOMAIN" \
-    --email "$EMAIL" --agree-tos --no-eff-email --non-interactive || \
-  certbot --apache -d "$DOMAIN" -d "$ALIAS_DOMAIN" \
-    --email "$EMAIL" --agree-tos --no-eff-email --non-interactive
+  echo "[+] Checking SSL Certificate..."
+  if [ -f "/etc/letsencrypt/live/$DOMAIN/fullchain.pem" ]; then
+    echo "[+] SSL Certificate already exists at /etc/letsencrypt/live/$DOMAIN/fullchain.pem"
+  else
+    echo "[+] Requesting SSL Certificate using Certbot webroot mode..."
+    certbot certonly --webroot -w "$INSTALL_DIR/dist" \
+      -d "$DOMAIN" -d "$ALIAS_DOMAIN" \
+      --email "$EMAIL" --agree-tos --no-eff-email --non-interactive || \
+    certbot --apache -d "$DOMAIN" -d "$ALIAS_DOMAIN" \
+      --email "$EMAIL" --agree-tos --no-eff-email --non-interactive || true
+  fi
 
   # Configure HTTPS Virtual Host on host Apache
   if [ "$APACHE_SERVICE" = "apache2" ]; then
