@@ -79,9 +79,10 @@ if systemctl is-active --quiet apache2 || systemctl is-active --quiet httpd; the
   mkdir -p "$INSTALL_DIR/dist/.well-known/acme-challenge"
 
   # Enable mod_rewrite and mod_ssl on host Apache
-  echo "[+] Configuring host Apache modules..."
+  echo "[+] Configuring host Apache modules and disabling legacy sites..."
   if [ "$APACHE_SERVICE" = "apache2" ]; then
     a2enmod rewrite ssl headers >/dev/null 2>&1 || true
+    a2dissite 000-default.conf 000-default-le-ssl.conf 2d.conf 2d-le-ssl.conf default-ssl.conf >/dev/null 2>&1 || true
     
     # Create HTTP virtual host config with ACME challenge exception
     VHOST_CONF="/etc/apache2/sites-available/sd.conf"
@@ -115,8 +116,26 @@ if systemctl is-active --quiet apache2 || systemctl is-active --quiet httpd; the
     </Directory>
 </VirtualHost>
 EOF
+    # Also overwrite 000-default.conf so any fallback requests hit our app
+    cat <<EOF > "/etc/apache2/sites-available/000-default.conf"
+<VirtualHost *:80>
+    ServerName $DOMAIN
+    ServerAlias $ALIAS_DOMAIN
+    DocumentRoot $INSTALL_DIR/dist
+    <Directory $INSTALL_DIR/dist>
+        Options Indexes FollowSymLinks
+        AllowOverride All
+        Require all granted
+    </Directory>
+    RewriteEngine On
+    RewriteCond %{REQUEST_URI} !^/\.well-known/acme-challenge/ [NC]
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule . /index.html [L]
+</VirtualHost>
+EOF
     # Enable site
-    a2ensite sd.conf >/dev/null 2>&1 || true
+    a2ensite sd.conf 000-default.conf >/dev/null 2>&1 || true
     systemctl reload apache2
   else
     # RedHat-based httpd configuration
@@ -201,6 +220,61 @@ EOF
     Header always set Strict-Transport-Security "max-age=63072000; includeSubDomains; preload"
 </VirtualHost>
 EOF
+    # Also overwrite 000-default-le-ssl.conf if present so it doesn't point to deleted /var/www/2d
+    if [ -f "/etc/apache2/sites-available/000-default-le-ssl.conf" ]; then
+      cat <<EOF > "/etc/apache2/sites-available/000-default-le-ssl.conf"
+<VirtualHost *:443>
+    ServerName $DOMAIN
+    ServerAlias $ALIAS_DOMAIN
+    DocumentRoot $INSTALL_DIR/dist
+
+    SSLEngine on
+    SSLCertificateFile /etc/letsencrypt/live/$DOMAIN/fullchain.pem
+    SSLCertificateKeyFile /etc/letsencrypt/live/$DOMAIN/privkey.pem
+
+    <Directory $INSTALL_DIR/dist>
+        Options Indexes FollowSymLinks
+        AllowOverride All
+        Require all granted
+
+        RewriteEngine On
+        RewriteBase /
+        RewriteRule ^index\.html$ - [L]
+        RewriteCond %{REQUEST_FILENAME} !-f
+        RewriteCond %{REQUEST_FILENAME} !-d
+        RewriteRule . /index.html [L]
+    </Directory>
+</VirtualHost>
+EOF
+    fi
+    # Also overwrite 2d-le-ssl.conf if present
+    if [ -f "/etc/apache2/sites-available/2d-le-ssl.conf" ]; then
+      cat <<EOF > "/etc/apache2/sites-available/2d-le-ssl.conf"
+<VirtualHost *:443>
+    ServerName $DOMAIN
+    ServerAlias $ALIAS_DOMAIN
+    DocumentRoot $INSTALL_DIR/dist
+
+    SSLEngine on
+    SSLCertificateFile /etc/letsencrypt/live/$DOMAIN/fullchain.pem
+    SSLCertificateKeyFile /etc/letsencrypt/live/$DOMAIN/privkey.pem
+
+    <Directory $INSTALL_DIR/dist>
+        Options Indexes FollowSymLinks
+        AllowOverride All
+        Require all granted
+
+        RewriteEngine On
+        RewriteBase /
+        RewriteRule ^index\.html$ - [L]
+        RewriteCond %{REQUEST_FILENAME} !-f
+        RewriteCond %{REQUEST_FILENAME} !-d
+        RewriteRule . /index.html [L]
+    </Directory>
+</VirtualHost>
+EOF
+    fi
+
     # Update HTTP config to redirect to HTTPS
     cat <<EOF > "$VHOST_CONF"
 <VirtualHost *:80>
@@ -219,7 +293,7 @@ EOF
     RewriteRule ^(.*)$ https://$DOMAIN\$1 [R=301,L]
 </VirtualHost>
 EOF
-    a2ensite sd-ssl.conf >/dev/null 2>&1 || true
+    a2ensite sd-ssl.conf sd.conf >/dev/null 2>&1 || true
     systemctl reload apache2
   else
     VHOST_SSL_CONF="/etc/httpd/conf.d/sd-ssl.conf"
