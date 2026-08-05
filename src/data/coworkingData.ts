@@ -254,7 +254,7 @@ export const locations: LocationData[] = [
     },
     privateOfficeDetails: {
       title: 'Private Office Suites',
-      image: meetingRoomImg,
+      image: kilimaniImg,
       features: [
         { iconName: 'Armchair', text: 'Ergonomic Steelcase chairs & custom solid-oak desks' },
         { iconName: 'Lock', text: 'Acoustically sound-masked glass partitions' },
