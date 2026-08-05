@@ -43,17 +43,15 @@ export const BookTour: React.FC = () => {
       };
 
       try {
-        const phpRes = await fetch('/api/contact.php', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(payload),
-        });
-
-        const phpData = await phpRes.json().catch(() => null);
-
-        if (!phpData || !phpData.success) {
-          // FormSubmit Fallback with clean formatted capital labels
-          await fetch('https://formsubmit.co/ajax/info@secondesk.ke', {
+        await Promise.allSettled([
+          // 1. Host PHP Custom HTML Email
+          fetch('/api/contact.php', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload),
+          }),
+          // 2. FormSubmit Redundancy
+          fetch('https://formsubmit.co/ajax/info@secondesk.ke', {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',
@@ -72,8 +70,8 @@ export const BookTour: React.FC = () => {
               'Preferred Tour Date': formData.date,
               'Special Notes': formData.message || 'None',
             }),
-          });
-        }
+          }),
+        ]);
       } catch (err) {
         console.error('Failed to submit tour booking', err);
       } finally {

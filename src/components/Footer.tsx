@@ -23,16 +23,15 @@ export const Footer: React.FC = () => {
       };
 
       try {
-        const phpRes = await fetch('/api/contact.php', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(payload),
-        });
-
-        const phpData = await phpRes.json().catch(() => null);
-
-        if (!phpData || !phpData.success) {
-          await fetch('https://formsubmit.co/ajax/info@secondesk.ke', {
+        await Promise.allSettled([
+          // 1. Host PHP Custom HTML Email
+          fetch('/api/contact.php', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload),
+          }),
+          // 2. FormSubmit Redundancy
+          fetch('https://formsubmit.co/ajax/info@secondesk.ke', {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',
@@ -45,8 +44,8 @@ export const Footer: React.FC = () => {
               'Subscriber Email': email,
               'Subscription Type': 'Monthly Insights Dispatch',
             }),
-          });
-        }
+          }),
+        ]);
       } catch (err) {
         console.error('Failed to subscribe', err);
       } finally {
