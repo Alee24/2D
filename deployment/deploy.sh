@@ -81,10 +81,12 @@ if systemctl is-active --quiet apache2 || systemctl is-active --quiet httpd; the
   # Ensure webroot acme-challenge directory exists
   mkdir -p "$INSTALL_DIR/dist/.well-known/acme-challenge"
 
-  # Enable mod_rewrite and mod_ssl on host Apache
-  echo "[+] Configuring host Apache modules and disabling legacy sites..."
+  # Enable mod_rewrite, mod_ssl, and PHP on host Apache
+  echo "[+] Configuring host Apache modules, PHP engine, and mailer..."
   if [ "$APACHE_SERVICE" = "apache2" ]; then
-    a2enmod rewrite ssl headers >/dev/null 2>&1 || true
+    apt-get update -y >/dev/null 2>&1 || true
+    apt-get install -y php libapache2-mod-php sendmail >/dev/null 2>&1 || true
+    a2enmod rewrite ssl headers php* >/dev/null 2>&1 || true
     a2dissite 000-default.conf 000-default-le-ssl.conf 2d.conf 2d-le-ssl.conf default-ssl.conf >/dev/null 2>&1 || true
     
     # Create HTTP virtual host config with ACME challenge exception
@@ -112,6 +114,7 @@ if systemctl is-active --quiet apache2 || systemctl is-active --quiet httpd; the
         RewriteEngine On
         RewriteBase /
         RewriteRule ^index\.html$ - [L]
+        RewriteCond %{REQUEST_URI} !^/api/ [NC]
         RewriteCond %{REQUEST_URI} !^/\.well-known/acme-challenge/ [NC]
         RewriteCond %{REQUEST_FILENAME} !-f
         RewriteCond %{REQUEST_FILENAME} !-d
@@ -166,6 +169,7 @@ EOF
         RewriteEngine On
         RewriteBase /
         RewriteRule ^index\.html$ - [L]
+        RewriteCond %{REQUEST_URI} !^/api/ [NC]
         RewriteCond %{REQUEST_URI} !^/\.well-known/acme-challenge/ [NC]
         RewriteCond %{REQUEST_FILENAME} !-f
         RewriteCond %{REQUEST_FILENAME} !-d
@@ -217,6 +221,8 @@ EOF
         RewriteEngine On
         RewriteBase /
         RewriteRule ^index\.html$ - [L]
+        RewriteCond %{REQUEST_URI} !^/api/ [NC]
+        RewriteCond %{REQUEST_URI} !^/\.well-known/acme-challenge/ [NC]
         RewriteCond %{REQUEST_FILENAME} !-f
         RewriteCond %{REQUEST_FILENAME} !-d
         RewriteRule . /index.html [L]
@@ -250,6 +256,8 @@ EOF
         RewriteEngine On
         RewriteBase /
         RewriteRule ^index\.html$ - [L]
+        RewriteCond %{REQUEST_URI} !^/api/ [NC]
+        RewriteCond %{REQUEST_URI} !^/\.well-known/acme-challenge/ [NC]
         RewriteCond %{REQUEST_FILENAME} !-f
         RewriteCond %{REQUEST_FILENAME} !-d
         RewriteRule . /index.html [L]
@@ -284,6 +292,8 @@ EOF
         RewriteEngine On
         RewriteBase /
         RewriteRule ^index\.html$ - [L]
+        RewriteCond %{REQUEST_URI} !^/api/ [NC]
+        RewriteCond %{REQUEST_URI} !^/\.well-known/acme-challenge/ [NC]
         RewriteCond %{REQUEST_FILENAME} !-f
         RewriteCond %{REQUEST_FILENAME} !-d
         RewriteRule . /index.html [L]
