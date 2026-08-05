@@ -103,8 +103,8 @@ export const Home: React.FC = () => {
   return (
     <div className="bg-offwhite text-charcoal animate-fade-in">
       <SEO 
-        title="Bespoke Coworking & Private Offices"
-        description="Experience premier, design-led coworking spaces, executive private offices, and state-of-the-art meeting rooms."
+        title="Bespoke Coworking & Private Offices in Mombasa"
+        description="Experience premier, design-led coworking spaces, executive private offices, and state-of-the-art meeting rooms across Mombasa's most prestigious commercial districts."
       />
       {/* 1. HERO SECTION */}
       <section className="relative h-screen flex items-center justify-center overflow-hidden bg-charcoal">
@@ -123,7 +123,7 @@ export const Home: React.FC = () => {
         <div className="relative z-10 max-w-[1440px] mx-auto px-6 lg:px-12 w-full text-center md:text-left pt-20">
           <div className="max-w-4xl">
             <span className="font-sans font-semibold text-xs tracking-[0.3em] uppercase text-sand inline-block mb-4 animate-slide-up">
-              Second Desk
+              Second Desk — Mombasa, Kenya
             </span>
             <h1 className="font-display font-light text-4xl sm:text-6xl lg:text-7xl tracking-tight text-white mb-6 leading-[1.05] animate-slide-up animate-delay-100">
               Your Best Work <br className="hidden md:block"/>
@@ -477,7 +477,7 @@ export const Home: React.FC = () => {
                 Download Our <span className="font-serif italic text-charcoal/60">Premium Brochure.</span>
               </h2>
               <p className="font-sans text-sm text-charcoal/70 leading-relaxed max-w-xl">
-                Get an instant, high-fidelity corporate overview of SecondDesk's workspace designs and configurations. Our comprehensive A4 portfolio booklet details architectural layouts, secure fiber infrastructure setups, executive boardroom pricing packages, and customized enterprise branding models for your teams in Westlands, Kilimani, Karen, Upper Hill, and CBD.
+                Get an instant, high-fidelity corporate overview of SecondDesk's workspace designs and configurations. Our comprehensive A4 portfolio booklet details architectural layouts, secure fiber infrastructure setups, executive boardroom pricing packages, and customized enterprise branding models for your teams in Nyali, Mombasa CBD, and Tudor Bay.
               </p>
               
               {/* Premium Specs list */}

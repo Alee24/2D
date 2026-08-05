@@ -107,7 +107,7 @@ export const generateBrochurePDF = () => {
   doc.setTextColor(150, 150, 150);
   doc.setFont('helvetica', 'normal');
   doc.setFontSize(8);
-  doc.text('Mombasa, KENYA  |  WWW.SECONDDESK.COM', 105, 265, { align: 'center' });
+  doc.text('NAIROBI, KENYA  |  WWW.SECONDDESK.COM', 105, 265, { align: 'center' });
 
 
   // ==========================================
@@ -263,11 +263,9 @@ export const generateBrochurePDF = () => {
 
   // Locations Box grid
   const locationsData = [
-    { name: 'SecondDesk Westlands', desc: 'The hub of innovation & tech. Premium high-altitude views and direct highway connectivity.' },
-    { name: 'SecondDesk Karen', desc: 'Boutique office sanctuary surrounded by tranquil landscaped gardens and absolute privacy.' },
-    { name: 'SecondDesk Kilimani', desc: 'Creative epicentre with abundant natural light, glass boardrooms, and organic cafes.' },
-    { name: 'SecondDesk Upper Hill', desc: 'State-of-the-art corporate skyscraper spaces with fully secure dedicated server racks.' },
-    { name: 'SecondDesk CBD', desc: 'Highly central transport hubs. Optimal for financial consultancies and legal firms.' }
+    { name: 'SecondDesk Nyali', desc: 'The hub of coastal innovation & tech. Premium ocean views, Links Road access, and dual generators.' },
+    { name: 'SecondDesk Mombasa CBD', desc: 'Trade Winds Plaza on Nkrumah Road. Maritime, banking, and legal business headquarters.' },
+    { name: 'SecondDesk Tudor Bay', desc: 'Waterfront office sanctuary with tranquil creek views, outdoor lawn gazebos, and high-speed fiber.' },
   ];
 
   let locY = 62;

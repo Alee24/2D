@@ -14,7 +14,7 @@ interface SEOProps {
 export const SEO: React.FC<SEOProps> = ({
   title,
   description,
-  keywords = 'coworking Mombasa, shared offices Mombasa, private office Mombasa, meeting rooms, business lounge, virtual office Kenya, SecondDesk, flexible workspace',
+  keywords = 'coworking Mombasa, shared offices Nyali, private office Tudor, meeting rooms Mombasa CBD, business lounge Mombasa, virtual office Kenya, SecondDesk, boutique workspace Coast',
   ogType = 'website',
   ogImage = 'https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=1200',
   canonicalPath,
@@ -23,7 +23,7 @@ export const SEO: React.FC<SEOProps> = ({
 }) => {
   useEffect(() => {
     // 1. Update document title
-    const fullTitle = title === 'SecondDesk' ? 'SecondDesk' : `${title} | SecondDesk`;
+    const fullTitle = `${title} | SecondDesk`;
     document.title = fullTitle;
 
     // Helper function to update or create meta tags
@@ -120,11 +120,11 @@ export const SEO: React.FC<SEOProps> = ({
           'description': description,
           'image': ogImage,
           'url': currentUrl,
-          'telephone': '0719688992',
+          'telephone': '0719688992', // general office phone
           'priceRange': '$$$',
           'address': {
             '@type': 'PostalAddress',
-            'streetAddress': 'Mombasa',
+            'streetAddress': title.includes('Nyali') ? 'Links Road' : title.includes('CBD') ? 'Nkrumah Road' : 'Mombasa',
             'addressLocality': 'Mombasa',
             'addressCountry': 'KE',
           },
@@ -144,14 +144,14 @@ export const SEO: React.FC<SEOProps> = ({
           'priceRange': '$$$',
           'address': {
             '@type': 'PostalAddress',
-            'streetAddress': 'Mombasa Business Hub',
+            'streetAddress': 'Mombasa Commercial Hubs',
             'addressLocality': 'Mombasa',
             'addressCountry': 'KE',
           },
           'geo': {
             '@type': 'GeoCoordinates',
-            'latitude': '-1.2921',
-            'longitude': '36.8219',
+            'latitude': '-4.0435',
+            'longitude': '39.6682',
           },
           'openingHoursSpecification': [
             {

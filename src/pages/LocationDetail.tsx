@@ -28,9 +28,9 @@ const iconMap: Record<string, LucideIcon> = {
 export const LocationDetail: React.FC = () => {
   const { currentPath, navigate } = useRouter();
 
-  // Extract location ID from current path (e.g. /locations/westlands -> westlands)
+  // Extract location ID from current path (e.g. /locations/nyali -> nyali)
   const pathParts = currentPath.split('/');
-  const locationId = pathParts[pathParts.length - 1] || 'westlands';
+  const locationId = pathParts[pathParts.length - 1] || 'nyali';
 
   const location = locations.find((l) => l.id === locationId) || locations[0];
 
@@ -278,7 +278,7 @@ export const LocationDetail: React.FC = () => {
               Neighborhood & Landmarks
             </h2>
             <p className="font-sans text-xs text-charcoal/60 leading-relaxed font-light">
-              Situated in Mombasa's prime districts, our office footprints are immediately adjacent to high-end dining, shopping centers, hotels, and central transport access.
+              Situated in Mombasa's prime commercial districts, our office footprints are immediately adjacent to high-end dining, shopping centers, hotels, and coastal transport links.
             </p>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               {location.nearbyLandmarks.map((landmark, idx) => (

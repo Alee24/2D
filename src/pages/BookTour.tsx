@@ -12,7 +12,7 @@ export const BookTour: React.FC = () => {
     company: '',
     email: '',
     phone: '',
-    location: 'westlands',
+    location: 'nyali',
     teamSize: '1-5',
     date: '',
     message: ''
@@ -37,7 +37,7 @@ export const BookTour: React.FC = () => {
     <div className="bg-offwhite text-charcoal pt-20 animate-fade-in min-h-screen">
       <SEO 
         title="Schedule a Private Tour | SecondDesk Mombasa"
-        description="Book a personalized tour of our boutique coworking and office spaces in Westlands, Karen, Kilimani, Upper Hill, or CBD."
+        description="Book a personalized tour of our boutique coworking and office spaces in Nyali, Mombasa CBD, or Tudor."
       />
       <Breadcrumbs />
       {/* Editorial Hero */}

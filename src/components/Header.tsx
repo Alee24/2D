@@ -267,22 +267,22 @@ export const Header: React.FC = () => {
                 {activeMegaMenu === 'locations' && (
                   <>
                     <div className="col-span-1 border-r border-concrete pr-8">
-                      <span className="text-xs font-semibold tracking-widest uppercase text-sand block mb-2">Locations</span>
-                      <h3 className="font-display text-2xl font-semibold text-charcoal leading-tight mb-4">Mombasa Hub Network</h3>
-                      <p className="font-sans text-sm text-charcoal/60 mb-6">Select your primary premium business node across Mombasa’s most prestigious central commercial neighborhoods.</p>
+                      <span className="text-xs font-semibold tracking-widest uppercase text-sand block mb-2">Location</span>
+                      <h3 className="font-display text-2xl font-semibold text-charcoal leading-tight mb-4">Mombasa Headquarters</h3>
+                      <p className="font-sans text-sm text-charcoal/60 mb-6">Explore SecondDesk Nyali Executive Hub — our premier coastal workspace with ocean view balconies and 24/7 power redundancy.</p>
                       <button 
                         onClick={() => { navigate('/locations'); setActiveMegaMenu(null); }}
                         className="text-xs font-semibold uppercase tracking-wider text-charcoal hover:text-sand inline-flex items-center gap-2 group cursor-pointer"
                       >
-                        Browse Interactive Map <ArrowRight className="w-4 h-4 transition-transform duration-200 group-hover:translate-x-1" />
+                        Explore Flagship Location <ArrowRight className="w-4 h-4 transition-transform duration-200 group-hover:translate-x-1" />
                       </button>
                     </div>
-                    <div className="col-span-3 grid grid-cols-3 gap-6">
-                      {locations.slice(0, 3).map((loc) => (
+                    <div className="col-span-3 grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
+                      {locations.map((loc) => (
                         <div 
                           key={loc.id} 
                           onClick={() => { navigate(`/locations/${loc.id}`); setActiveMegaMenu(null); }}
-                          className="group cursor-pointer hover-zoom-container"
+                          className="group cursor-pointer hover-zoom-container bg-offwhite p-4 border border-concrete hover:border-sand transition-all"
                         >
                           <div className="aspect-video relative mb-3 bg-concrete overflow-hidden">
                             <img 
@@ -292,13 +292,30 @@ export const Header: React.FC = () => {
                               referrerPolicy="no-referrer"
                             />
                             <div className="absolute bottom-2 left-2 bg-white/95 text-charcoal text-[10px] font-semibold uppercase tracking-wider px-2.5 py-1 backdrop-blur-xs flex items-center gap-1">
-                              <MapPin className="w-3 h-3 text-sand" /> {loc.neighborhood.split(',')[1] || loc.name}
+                              <MapPin className="w-3 h-3 text-sand" /> {loc.name}
                             </div>
                           </div>
                           <h4 className="font-display font-medium text-charcoal text-base group-hover:text-sand transition-colors duration-200">{loc.name}</h4>
-                          <p className="font-sans text-xs text-charcoal/60 line-clamp-1 mt-1">{loc.address}</p>
+                          <p className="font-sans text-xs text-charcoal/60 line-clamp-2 mt-1">{loc.address}</p>
                         </div>
                       ))}
+                      <div className="bg-sand/10 border border-sand/30 p-6 flex flex-col justify-between h-full">
+                        <div>
+                          <span className="text-[10px] font-bold uppercase tracking-widest text-sand block mb-1">Mombasa Operating Hours</span>
+                          <h4 className="font-display font-medium text-charcoal text-lg mb-2">24/7 Member Access</h4>
+                          <p className="font-sans text-xs text-charcoal/70 leading-relaxed">
+                            Front desk serviced Monday – Friday, 8:00 AM – 6:00 PM. Dedicated members enjoy 24/7 biometric keycard access.
+                          </p>
+                        </div>
+                        <div className="pt-4">
+                          <button
+                            onClick={() => { navigate('/book-tour'); setActiveMegaMenu(null); }}
+                            className="bg-charcoal text-white text-xs font-bold uppercase tracking-wider px-4 py-2 hover:bg-sand hover:text-charcoal transition-all w-full text-center"
+                          >
+                            Book a Tour
+                          </button>
+                        </div>
+                      </div>
                     </div>
                   </>
                 )}
@@ -523,14 +540,14 @@ export const Header: React.FC = () => {
               ) : localSearch ? (
                 <div className="text-center py-12">
                   <p className="text-white/50 font-sans">No matching workspaces or locations found for "{localSearch}"</p>
-                  <p className="text-sand/80 text-xs mt-2 font-sans">Try searching for "Westlands", "Private", "Desk", or "Meeting".</p>
+                  <p className="text-sand/80 text-xs mt-2 font-sans">Try searching for "Nyali", "Private", "Desk", or "Meeting".</p>
                 </div>
               ) : (
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8 text-white/70">
                   <div>
                     <h4 className="text-white/40 font-sans text-xs font-bold uppercase tracking-widest mb-4">Popular Queries</h4>
                     <div className="flex flex-wrap gap-2">
-                      {['Westlands', 'Private Offices', 'Hot Desks', 'Karen', 'Meeting Rooms', 'Kilimani'].map((term) => (
+                      {['Nyali', 'Private Offices', 'Hot Desks', 'Mombasa CBD', 'Meeting Rooms', 'Tudor Bay'].map((term) => (
                         <button
                           key={term}
                           onClick={() => setLocalSearch(term)}

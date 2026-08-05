@@ -117,14 +117,10 @@ export const Footer: React.FC = () => {
 
           {/* Locations Column */}
           <div className="lg:col-span-2">
-            <h4 className="font-display text-xs font-semibold uppercase tracking-widest text-sand mb-6">Locations</h4>
+            <h4 className="font-display text-xs font-semibold uppercase tracking-widest text-sand mb-6">Location</h4>
             <ul className="space-y-3">
               {[
-                { name: 'Westlands', id: 'westlands' },
-                { name: 'Kilimani', id: 'kilimani' },
-                { name: 'Karen', id: 'karen' },
-                { name: 'Upper Hill', id: 'upper-hill' },
-                { name: 'CBD', id: 'cbd' },
+                { name: 'Nyali Executive Hub', id: 'nyali' },
               ].map((loc) => (
                 <li key={loc.id}>
                   <button
