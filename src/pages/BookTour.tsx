@@ -18,16 +18,43 @@ export const BookTour: React.FC = () => {
     message: ''
   });
   const [booked, setBooked] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleBook = (e: React.FormEvent) => {
+  const handleBook = async (e: React.FormEvent) => {
     e.preventDefault();
     if (formData.name && formData.email && formData.date) {
-      setBooked(true);
+      setIsSubmitting(true);
+      try {
+        await fetch('https://formsubmit.co/ajax/info@secondesk.ke', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+          },
+          body: JSON.stringify({
+            _subject: `New Tour Booking Request from ${formData.name}`,
+            _template: 'table',
+            name: formData.name,
+            company: formData.company || 'N/A',
+            email: formData.email,
+            phone: formData.phone || 'N/A',
+            preferred_node: formData.location,
+            team_size: formData.teamSize,
+            preferred_date: formData.date,
+            custom_message: formData.message || 'None'
+          })
+        });
+      } catch (err) {
+        console.error('Failed to submit tour booking', err);
+      } finally {
+        setIsSubmitting(false);
+        setBooked(true);
+      }
     }
   };
 
@@ -336,9 +363,10 @@ export const BookTour: React.FC = () => {
 
                 <button
                   type="submit"
-                  className="w-full bg-charcoal border border-charcoal hover:bg-sand hover:border-sand hover:text-charcoal text-white font-sans text-xs font-bold uppercase tracking-widest py-4.5 transition-all cursor-pointer shadow-md text-center"
+                  disabled={isSubmitting}
+                  className="w-full bg-charcoal border border-charcoal hover:bg-sand hover:border-sand hover:text-charcoal text-white font-sans text-xs font-bold uppercase tracking-widest py-4.5 transition-all cursor-pointer shadow-md text-center disabled:opacity-50"
                 >
-                  Generate Confirmed Tour Pass
+                  {isSubmitting ? 'Sending Tour Request to info@seconddesk.ke...' : 'Generate Confirmed Tour Pass'}
                 </button>
               </form>
             </div>

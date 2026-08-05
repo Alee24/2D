@@ -15,6 +15,7 @@ export const Contact: React.FC = () => {
     message: ''
   });
   const [submitted, setSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [openFaq, setOpenFaq] = useState<number | null>(null);
 
   const toggleFaq = (idx: number) => {
@@ -26,11 +27,34 @@ export const Contact: React.FC = () => {
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (formData.name && formData.email && formData.message) {
-      setSubmitted(true);
-      setFormData({ name: '', email: '', phone: '', company: '', message: '' });
+      setIsSubmitting(true);
+      try {
+        await fetch('https://formsubmit.co/ajax/info@secondesk.ke', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+          },
+          body: JSON.stringify({
+            _subject: `New Secondesk Inquiry from ${formData.name}`,
+            _template: 'table',
+            name: formData.name,
+            email: formData.email,
+            phone: formData.phone || 'N/A',
+            company: formData.company || 'N/A',
+            message: formData.message
+          })
+        });
+      } catch (err) {
+        console.error('Failed to submit form', err);
+      } finally {
+        setIsSubmitting(false);
+        setSubmitted(true);
+        setFormData({ name: '', email: '', phone: '', company: '', message: '' });
+      }
     }
   };
 
@@ -256,9 +280,10 @@ export const Contact: React.FC = () => {
 
               <button
                 type="submit"
-                className="w-full bg-charcoal border border-charcoal hover:bg-sand hover:border-sand hover:text-charcoal text-white font-sans text-xs font-bold uppercase tracking-widest py-4.5 transition-all cursor-pointer shadow-md text-center"
+                disabled={isSubmitting}
+                className="w-full bg-charcoal border border-charcoal hover:bg-sand hover:border-sand hover:text-charcoal text-white font-sans text-xs font-bold uppercase tracking-widest py-4.5 transition-all cursor-pointer shadow-md text-center disabled:opacity-50"
               >
-                Send Inquiry Message
+                {isSubmitting ? 'Sending Message to info@seconddesk.ke...' : 'Send Inquiry Message'}
               </button>
             </form>
           )}

@@ -8,12 +8,32 @@ export const Footer: React.FC = () => {
   const { navigate } = useRouter();
   const [email, setEmail] = useState('');
   const [subscribed, setSubscribed] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleSubscribe = (e: React.FormEvent) => {
+  const handleSubscribe = async (e: React.FormEvent) => {
     e.preventDefault();
     if (email) {
-      setSubscribed(true);
-      setEmail('');
+      setIsSubmitting(true);
+      try {
+        await fetch('https://formsubmit.co/ajax/info@secondesk.ke', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+          },
+          body: JSON.stringify({
+            _subject: `New Insights Dispatch Subscription: ${email}`,
+            email: email,
+            subscription_type: 'Monthly Insights Dispatch'
+          })
+        });
+      } catch (err) {
+        console.error('Failed to subscribe', err);
+      } finally {
+        setIsSubmitting(false);
+        setSubscribed(true);
+        setEmail('');
+      }
     }
   };
 
