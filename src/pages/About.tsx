@@ -2,6 +2,7 @@ import React from 'react';
 import { useRouter } from '../context/NavigationContext';
 import { SEO } from '../components/SEO';
 import { Breadcrumbs } from '../components/Breadcrumbs';
+import mombasaOffice1 from '../assets/images/mombasa_office_1.jpg';
 
 export const About: React.FC = () => {
   const { navigate } = useRouter();
@@ -41,8 +42,8 @@ export const About: React.FC = () => {
         <div className="lg:col-span-5 hover-zoom-container bg-concrete border border-concrete shadow-sm">
           <div className="aspect-[3/4] overflow-hidden">
             <img 
-              src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=800" 
-              alt="Architectural boardroom interior" 
+              src={mombasaOffice1} 
+              alt="SecondDesk Mombasa physical workspace" 
               className="w-full h-full object-cover hover-zoom-image"
               referrerPolicy="no-referrer"
             />

@@ -9,8 +9,12 @@ import {
   Download
 } from 'lucide-react';
 import { generateBrochurePDF } from '../utils/pdfGenerator';
-import { motion, AnimatePresence } from 'motion/react';
 import { PriceListBoard } from '../components/PriceListBoard';
+import mombasaOffice1 from '../assets/images/mombasa_office_1.jpg';
+import mombasaOffice2 from '../assets/images/mombasa_office_2.jpg';
+import mombasaOffice3 from '../assets/images/mombasa_office_3.jpg';
+import mombasaOffice4 from '../assets/images/mombasa_office_4.jpg';
+import mombasaOffice5 from '../assets/images/mombasa_office_5.jpg';
 
 export const Home: React.FC = () => {
   const { navigate } = useRouter();
@@ -111,7 +115,7 @@ export const Home: React.FC = () => {
         {/* Parallax background image */}
         <div className="absolute inset-0 z-0">
           <img 
-            src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=1920" 
+            src={mombasaOffice1} 
             alt="Second Desk Coworking Environment" 
             className="w-full h-full object-cover opacity-45 scale-105 transition-transform duration-1000"
             referrerPolicy="no-referrer"
@@ -287,8 +291,8 @@ export const Home: React.FC = () => {
           <div className="lg:col-span-5 relative">
             <div className="aspect-[3/4] overflow-hidden bg-concrete border border-concrete shadow-lg relative">
               <img 
-                src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&q=80&w=800" 
-                alt="Professionals in high-focus architectural lobby" 
+                src={mombasaOffice2} 
+                alt="Professionals in high-focus architectural workspace" 
                 className="w-full h-full object-cover"
                 referrerPolicy="no-referrer"
               />
@@ -402,10 +406,10 @@ export const Home: React.FC = () => {
         {/* Beautiful visual gallery row */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 overflow-hidden">
           {[
-            'https://images.unsplash.com/photo-1497215728101-856f4ea42174?auto=format&fit=crop&q=80&w=400',
-            'https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=400',
-            'https://images.unsplash.com/photo-1606857521015-7f9fcf423740?auto=format&fit=crop&q=80&w=400',
-            'https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&q=80&w=400'
+            mombasaOffice2,
+            mombasaOffice3,
+            mombasaOffice4,
+            mombasaOffice5
           ].map((img, i) => (
             <div key={i} className="aspect-[4/3] bg-concrete overflow-hidden border border-concrete hover-zoom-container">
               <img 
