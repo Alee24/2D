@@ -13,6 +13,10 @@ import kilimaniImg from '../assets/images/nairobi_kilimani_workspace_17832536547
 import karenImg from '../assets/images/nairobi_karen_greenery_1783253669175.jpg';
 import upperHillImg from '../assets/images/nairobi_upper_hill_office_1783253682757.jpg';
 import cbdImg from '../assets/images/nairobi_cbd_coworking_1783253697927.jpg';
+import boardroomImg from '../assets/images/seconddesk_boardroom.jpg';
+import reception1Img from '../assets/images/seconddesk_reception_1.jpg';
+import reception2Img from '../assets/images/seconddesk_reception_2.jpg';
+import workspaceMainImg from '../assets/images/seconddesk_workspace_main.jpg';
 
 export const companyInfo = {
   name: 'SecondDesk',
@@ -97,7 +101,7 @@ export const workspaceCategories: WorkspaceCategory[] = [
     tagline: 'Flexible Hot Desks & Passes',
     description: 'Flexible desks for freelancers, remote workers, and entrepreneurs who value community and adaptability.',
     longDescription: 'Our open-plan coworking spaces are designed to inspire focus and collaboration. Step into a dynamic ecosystem of like-minded professionals, where hot desking allows you to choose your ideal spot every single day.',
-    image: 'https://images.unsplash.com/photo-1497215728101-856f4ea42174?auto=format&fit=crop&q=80&w=1200',
+    image: workspaceMainImg,
     capacity: 'Single Desk (Flexible)',
     startingPrice: 'KES 17,000 / mo',
     amenities: ['24/7 Secure Access', 'High-Speed Wi-Fi 6', 'Premium Coffee & Teas', 'Phone Booth Access', 'Daily Cleaning'],
@@ -110,7 +114,7 @@ export const workspaceCategories: WorkspaceCategory[] = [
     tagline: 'Your Permanent Desk',
     description: 'A permanent workspace with secure storage and premium access in a shared professional environment.',
     longDescription: 'Establish your professional base with a desk that is yours and yours alone. Located in a secured, quieter zone of the building, each dedicated desk features premium ergonomic setups.',
-    image: 'https://images.unsplash.com/photo-1524758631624-e2822e304c36?auto=format&fit=crop&q=80&w=1200',
+    image: workspaceMainImg,
     capacity: '1 Person',
     startingPrice: 'KES 17,000 / mo',
     amenities: ['Permanent Desk & Ergonomic Chair', 'Lockable Storage Cabinet', 'Business Address Registration', '24/7 Premium Access', 'Free B&W Printing'],
@@ -123,7 +127,7 @@ export const workspaceCategories: WorkspaceCategory[] = [
     tagline: 'Move-In-Ready Office Suites',
     description: 'Enclosed, fully furnished offices for teams of every size with customized layouts and high security.',
     longDescription: 'Designed for startups, established businesses, and remote corporate hubs who require privacy, security, and prestige. Available in Small (KES 45k), Medium (KES 55k), and Large (KES 65k) configurations.',
-    image: 'https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=1200',
+    image: reception1Img,
     capacity: '2 to 50+ People',
     startingPrice: 'KES 45,000 / mo',
     amenities: ['Fully Furnished Lockable Suite', 'Customizable Layout & Branding', 'Dedicated Ethernet Line', 'Executive Reception Services', 'Daily Office Cleaning'],
@@ -136,7 +140,7 @@ export const workspaceCategories: WorkspaceCategory[] = [
     tagline: 'Design-Led Collaborative Spaces',
     description: 'Professional executive boardrooms, meeting rooms, and Zoom rooms equipped for client pitches, presentations, and team workshops.',
     longDescription: 'Leave a lasting impression on clients or your team. Choose from Executive Boardrooms (KES 12k Full Day / KES 8k Half Day / KES 2k Hourly), Meeting Rooms (KES 1,500/hr), and Zoom Rooms (KES 1,000/hr).',
-    image: westlandsImg,
+    image: boardroomImg,
     capacity: '4 to 20 People',
     startingPrice: 'KES 1,500 / hr',
     amenities: ['4K Interactive Presentation Screens', 'Studio-Grade Video Bars', 'Magnetic Whiteboards', 'Premium Kenyan Coffee & Tea', 'High-Speed Fiber'],
@@ -229,19 +233,19 @@ export const locations: LocationData[] = [
     email: 'mombasa@seconddesk.ke',
     mapEmbedUrl: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3979.882195289944!2d39.68351541533261!3d-4.041453999080063!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x184012e5c0000000%3A0xd6891cc774fcf373!2sSecond%20Cup%20Mombasa!5e0!3m2!1sen!2ske!4v1655112233445!5m2!1sen!2ske',
     startingPrice: 'KES 17,000 / mo',
-    image: westlandsImg,
+    image: workspaceMainImg,
     nearbyLandmarks: ['Second Cup Nyali (Ground Floor)', 'Nyali Centre Mall', 'City Mall Nyali', 'Nyali Golf & Country Club', 'Nyali Beach'],
     spacesAvailable: ['Executive Boardrooms', 'Meeting Rooms', 'Private Office Suites', 'Coworking Hot Desks', 'Dedicated Desks'],
     amenities: ['Ocean Breeze Balcony', 'Dual Backup Generators', 'Secured Parking Garage', 'Rooftop Coastal Lounge', 'Lactation & Wellness Room', '500Mbps High-Speed Fiber', 'Barista Coffee Bar'],
     gallery: [
-      westlandsImg,
-      kilimaniImg,
-      karenImg,
-      'https://images.unsplash.com/photo-1524758631624-e2822e304c36?auto=format&fit=crop&q=80&w=600'
+      workspaceMainImg,
+      boardroomImg,
+      reception1Img,
+      reception2Img
     ],
     meetingRoomDetails: {
       title: 'Executive Boardrooms & Meeting Rooms',
-      image: kilimaniImg,
+      image: boardroomImg,
       features: [
         { iconName: 'PenTool', text: 'On Demand Executive Stationery' },
         { iconName: 'Tv', text: '75" 4K Smart TV with Polycom Video conferencing' },
@@ -254,7 +258,7 @@ export const locations: LocationData[] = [
     },
     privateOfficeDetails: {
       title: 'Private Office Suites',
-      image: kilimaniImg,
+      image: reception1Img,
       features: [
         { iconName: 'Armchair', text: 'Ergonomic Steelcase chairs & custom solid-oak desks' },
         { iconName: 'Lock', text: 'Acoustically sound-masked glass partitions' },
