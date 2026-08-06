@@ -17,6 +17,10 @@ import boardroomImg from '../assets/images/seconddesk_boardroom.jpg';
 import reception1Img from '../assets/images/seconddesk_reception_1.jpg';
 import reception2Img from '../assets/images/seconddesk_reception_2.jpg';
 import workspaceMainImg from '../assets/images/seconddesk_workspace_main.jpg';
+import pinpoint6Img from '../assets/images/pinpoint_studios_6.jpg';
+import pinpoint17Img from '../assets/images/pinpoint_studios_17.jpg';
+import pinpoint5Img from '../assets/images/pinpoint_studios_5.jpg';
+import pinpoint15Img from '../assets/images/pinpoint_studios_15.jpg';
 
 export const companyInfo = {
   name: 'SecondDesk',
@@ -101,7 +105,7 @@ export const workspaceCategories: WorkspaceCategory[] = [
     tagline: 'Flexible Hot Desks & Passes',
     description: 'Flexible desks for freelancers, remote workers, and entrepreneurs who value community and adaptability.',
     longDescription: 'Our open-plan coworking spaces are designed to inspire focus and collaboration. Step into a dynamic ecosystem of like-minded professionals, where hot desking allows you to choose your ideal spot every single day.',
-    image: workspaceMainImg,
+    image: pinpoint6Img,
     capacity: 'Single Desk (Flexible)',
     startingPrice: 'KES 17,000 / mo',
     amenities: ['24/7 Secure Access', 'High-Speed Wi-Fi 6', 'Premium Coffee & Teas', 'Phone Booth Access', 'Daily Cleaning'],
@@ -114,7 +118,7 @@ export const workspaceCategories: WorkspaceCategory[] = [
     tagline: 'Your Permanent Desk',
     description: 'A permanent workspace with secure storage and premium access in a shared professional environment.',
     longDescription: 'Establish your professional base with a desk that is yours and yours alone. Located in a secured, quieter zone of the building, each dedicated desk features premium ergonomic setups.',
-    image: workspaceMainImg,
+    image: pinpoint17Img,
     capacity: '1 Person',
     startingPrice: 'KES 17,000 / mo',
     amenities: ['Permanent Desk & Ergonomic Chair', 'Lockable Storage Cabinet', 'Business Address Registration', '24/7 Premium Access', 'Free B&W Printing'],
@@ -127,7 +131,7 @@ export const workspaceCategories: WorkspaceCategory[] = [
     tagline: 'Move-In-Ready Office Suites',
     description: 'Enclosed, fully furnished offices for teams of every size with customized layouts and high security.',
     longDescription: 'Designed for startups, established businesses, and remote corporate hubs who require privacy, security, and prestige. Available in Small (KES 45k), Medium (KES 55k), and Large (KES 65k) configurations.',
-    image: reception1Img,
+    image: pinpoint5Img,
     capacity: '2 to 50+ People',
     startingPrice: 'KES 45,000 / mo',
     amenities: ['Fully Furnished Lockable Suite', 'Customizable Layout & Branding', 'Dedicated Ethernet Line', 'Executive Reception Services', 'Daily Office Cleaning'],
@@ -140,7 +144,7 @@ export const workspaceCategories: WorkspaceCategory[] = [
     tagline: 'Design-Led Collaborative Spaces',
     description: 'Professional executive boardrooms, meeting rooms, and Zoom rooms equipped for client pitches, presentations, and team workshops.',
     longDescription: 'Leave a lasting impression on clients or your team. Choose from Executive Boardrooms (KES 12k Full Day / KES 8k Half Day / KES 2k Hourly), Meeting Rooms (KES 1,500/hr), and Zoom Rooms (KES 1,000/hr).',
-    image: boardroomImg,
+    image: pinpoint15Img,
     capacity: '4 to 20 People',
     startingPrice: 'KES 1,500 / hr',
     amenities: ['4K Interactive Presentation Screens', 'Studio-Grade Video Bars', 'Magnetic Whiteboards', 'Premium Kenyan Coffee & Tea', 'High-Speed Fiber'],
