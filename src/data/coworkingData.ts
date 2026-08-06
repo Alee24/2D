@@ -150,32 +150,6 @@ export const workspaceCategories: WorkspaceCategory[] = [
     amenities: ['4K Interactive Presentation Screens', 'Studio-Grade Video Bars', 'Magnetic Whiteboards', 'Premium Kenyan Coffee & Tea', 'High-Speed Fiber'],
     features: ['Boardroom Hourly: KES 2,000 / Full Day: KES 12,000', 'Meeting Room Hourly: KES 1,500', 'Zoom Room Hourly: KES 1,000', 'Printing & Copying Services'],
     slug: 'meeting-rooms',
-  },
-  {
-    id: 'virtual-office',
-    name: 'Virtual Office',
-    tagline: 'Prestigious Business Presence',
-    description: 'Professional business address, secure mail handling, and on-demand access to physical workspaces.',
-    longDescription: 'Establish a powerful local presence in premium commercial centers without the cost of full-time office rental. Ideal for remote companies, consultants, and international firms entering the Kenyan market. Our Virtual Office package provides a prestigious commercial street address, secure mail receiving and digital scanning, local phone answering, and on-demand hot desk access.',
-    image: 'https://images.unsplash.com/photo-1542744094-3a31f103e35f?auto=format&fit=crop&q=80&w=1200',
-    capacity: 'Flexible Remote',
-    startingPrice: 'KES 10,000 / mo',
-    amenities: ['Prestigious Business Address', 'Digital Mail Scanning & Forwarding', 'Local Phone Number (Optional)', 'Lobby Directory Listing', 'Discounts on Daily Passes'],
-    features: ['Use of address for legal & tax filings', 'Mail arrival text notifications', 'Secure cloud storage for digital scans', 'Professional reception presence'],
-    slug: 'virtual-offices',
-  },
-  {
-    id: 'event-space',
-    name: 'Event Space',
-    tagline: 'Elegant Architectural Venues',
-    description: 'Spacious, high-end venues designed for panel talks, product launches, workshops, and cocktail mixers.',
-    longDescription: 'Elevate your next event with our visually stunning, fully customizable corporate venues. Host networking mixers, educational workshops, design showcases, or formal presentations in an architectural setting that commands attention. Equipped with cutting-edge sound systems, stage lighting, versatile seating arrangements, and a fully serviced espresso bar and kitchen.',
-    image: 'https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&q=80&w=1200',
-    capacity: 'Up to 120 People',
-    startingPrice: 'KES 15,000 / hr',
-    amenities: ['Pro-Grade Audio System & Mics', 'Full-Scale HD Projectors', 'Serviced Coffee & Wine Bar', 'Versatile Seating & Podiums', 'Dedicated Event Coordinator'],
-    features: ['Flexible layout configurations', 'Pre-event setup and post-event cleanup', 'Assistance with external caterers', 'Warm minimalist ambient lighting'],
-    slug: 'event-spaces',
   }
 ];
 
