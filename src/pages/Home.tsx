@@ -9,6 +9,7 @@ import {
   Download
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
+import heroBgImg from '../assets/images/secondesk_hero_bg.jpg';
 
 export const Home: React.FC = () => {
   const { navigate } = useRouter();
@@ -109,12 +110,11 @@ export const Home: React.FC = () => {
         {/* Parallax background image */}
         <div className="absolute inset-0 z-0">
           <img 
-            src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=1920" 
-            alt="Second Desk Coworking Environment" 
-            className="w-full h-full object-cover opacity-45 scale-105 transition-transform duration-1000"
-            referrerPolicy="no-referrer"
+            src={heroBgImg} 
+            alt="Secondesk Coworking Environment" 
+            className="w-full h-full object-cover opacity-55 scale-105 transition-transform duration-1000"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-charcoal via-transparent to-charcoal/50"></div>
+          <div className="absolute inset-0 bg-gradient-to-t from-charcoal via-charcoal/40 to-charcoal/60"></div>
         </div>
 
         {/* Hero Content */}
