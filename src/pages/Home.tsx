@@ -10,6 +10,7 @@ import {
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import heroBgImg from '../assets/images/secondesk_hero_bg.jpg';
+import reception1Img from '../assets/images/secondesk_reception_1.jpg';
 
 export const Home: React.FC = () => {
   const { navigate } = useRouter();
@@ -251,16 +252,15 @@ export const Home: React.FC = () => {
           <div className="lg:col-span-5 relative">
             <div className="aspect-[3/4] overflow-hidden bg-concrete border border-concrete shadow-lg relative">
               <img 
-                src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&q=80&w=800" 
-                alt="Professionals in high-focus architectural lobby" 
+                src={reception1Img} 
+                alt="SECONDESK Reception & Lounge Area" 
                 className="w-full h-full object-cover"
-                referrerPolicy="no-referrer"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-charcoal/80 via-transparent to-transparent"></div>
               <div className="absolute bottom-8 left-8 right-8 text-white">
                 <span className="font-serif italic text-sand text-lg block mb-2">Pristine Architecture</span>
                 <p className="font-sans text-xs text-white/80 leading-relaxed">
-                  Every Secondesk environment is crafted to maximize natural sunlight, acoustic isolation, and visual order.
+                  Every SECONDESK environment is crafted to maximize natural sunlight, acoustic isolation, and visual order.
                 </p>
               </div>
             </div>
