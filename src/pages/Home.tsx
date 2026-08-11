@@ -344,24 +344,24 @@ export const Home: React.FC = () => {
             {/* Left Column: Context & Detail */}
             <div className="lg:col-span-7 space-y-6">
               <span className="font-sans font-bold text-xs tracking-widest uppercase text-sand block">
-                Portfolio & Floorplans
+                Executive Workspace Portfolio
               </span>
               <h2 className="font-display font-light text-3xl sm:text-5xl text-charcoal tracking-tight leading-[1.1]">
-                Download Our <span className="font-serif italic text-charcoal/60">Premium Brochure.</span>
+                Explore Our <span className="font-serif italic text-charcoal/60">Official Brochure & Pricing.</span>
               </h2>
               <p className="font-sans text-sm text-charcoal/70 leading-relaxed max-w-xl">
-                Get an instant, high-fidelity corporate overview of SECONDESK's workspace designs and configurations. Our comprehensive A4 portfolio booklet details architectural layouts, secure fiber infrastructure setups, executive boardroom pricing packages, and customized enterprise branding models for your teams in Nyali, Mombasa CBD, and Tudor Bay.
+                Get a complete overview of SECONDESK's boutique coworking environments, lockable unfurnished private office suites, meeting rooms (Max 4), and executive boardrooms (Max 10). Discover flexible membership terms, transparent pricing, and enterprise-grade infrastructure on Links Road, Nyali.
               </p>
               
-              {/* Premium Specs list */}
+              {/* Premium Business Offerings list */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4">
                 {[
-                  'Architectural Floorplans & Specs',
-                  'Fibre Uplink & redundant power failovers',
-                  'Custom corporate layouts & branding',
-                  'Premium tea & single-origin coffee menu',
-                  'Workspace dimension & capacity metrics',
-                  'Dedicated executive support services'
+                  'Unfurnished private office suites (Min 6-Mo)',
+                  'Fast dedicated internet & dual generator backup',
+                  'Shared co-working space at long common tables',
+                  'One complimentary hot beverage per guest',
+                  'Meeting Room (Max 4) & Boardroom (Max 10)',
+                  'Prime business address on Links Road, Nyali'
                 ].map((spec, i) => (
                   <div key={i} className="flex items-center gap-2.5">
                     <div className="w-1.5 h-1.5 bg-sand rounded-full"></div>
@@ -380,17 +380,16 @@ export const Home: React.FC = () => {
                 <div className="space-y-6 relative z-10">
                   <div className="flex items-center justify-between border-b border-concrete pb-4">
                     <div>
-                      <span className="font-mono text-[9px] uppercase tracking-widest text-sand font-bold block mb-1">Document Format</span>
-                      <span className="font-sans text-xs font-bold text-charcoal">High-Quality Vector PDF</span>
+                      <span className="font-mono text-[9px] uppercase tracking-widest text-sand font-bold block mb-1">Official Document</span>
+                      <span className="font-sans text-xs font-bold text-charcoal">SECONDESK Brochure & Rates</span>
                     </div>
                     <div className="text-right">
-                      <span className="font-mono text-[9px] uppercase tracking-widest text-white/0 block mb-1">Pages</span>
-                      <span className="font-mono text-[10px] font-bold bg-charcoal text-white px-2 py-0.5">3 PAGES</span>
+                      <span className="font-mono text-[9px] font-bold bg-charcoal text-white px-2.5 py-1 uppercase tracking-wider">MOMBASA</span>
                     </div>
                   </div>
 
                   <p className="font-sans text-xs text-charcoal/60 leading-relaxed">
-                    Designed for real estate heads, corporate directors, remote company managers, and founders looking to establish premier presences in Kenya.
+                    Designed for corporate directors, regional company leads, remote professionals, and growing teams seeking operational excellence in Nyali, Mombasa.
                   </p>
 
                   {/* Dynamic feedback CTA button */}
@@ -409,7 +408,7 @@ export const Home: React.FC = () => {
                       {isDownloading ? (
                         <>
                           <div className="w-4 h-4 border-2 border-charcoal/20 border-t-charcoal animate-spin rounded-full"></div>
-                          <span>Generating Portfolio...</span>
+                          <span>Generating Brochure...</span>
                         </>
                       ) : downloadSuccess ? (
                         <>
@@ -430,10 +429,6 @@ export const Home: React.FC = () => {
                       Check your download folder for "SECONDESK_Official_Brochure_PriceList.pdf"!
                     </p>
                   )}
-
-                  <p className="text-center font-mono text-[9px] text-charcoal/40 uppercase tracking-widest">
-                    Developed by KKDES
-                  </p>
                 </div>
               </div>
             </div>
