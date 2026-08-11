@@ -145,7 +145,7 @@ export const LocationDetail: React.FC = () => {
                   </div>
                   <div className="flex items-center justify-between sm:justify-end gap-6">
                     <div className="text-right">
-                      <span className="font-mono text-[10px] text-charcoal/40 block uppercase">Standard Rate</span>
+                      <span className="font-mono text-[10px] text-charcoal/40 block uppercase">Standard Rate (Excl. 16% VAT)</span>
                       <span className="font-display font-medium text-xs text-charcoal">{row.rate}</span>
                     </div>
                     <div className="flex items-center justify-between sm:justify-end gap-6">

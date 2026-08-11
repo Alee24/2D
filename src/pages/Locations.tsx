@@ -167,7 +167,7 @@ export const Locations: React.FC = () => {
                 </div>
               </div>
               <div className="pt-6 mt-6 border-t border-concrete/60">
-                <span className="text-[10px] text-charcoal/50 uppercase block">All-inclusive Desk Plans From</span>
+                <span className="text-[10px] text-charcoal/50 uppercase block">Desk Plans From (Excl. 16% VAT)</span>
                 <span className="font-display font-semibold text-2xl text-charcoal">{location.startingPrice}</span>
               </div>
             </div>

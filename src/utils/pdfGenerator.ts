@@ -336,7 +336,7 @@ export const generateBrochurePDF = () => {
     '• Fast dedicated internet with symmetrical redundant backup array.',
     '• 100% full electricity backup generator systems with automatic ATS failover.',
     '• Biometric keycard security integration and 24/7 CCTV surveillance.',
-    '• Fully-serviced reception lounge, high-end boardrooms, and Zoom video pods.',
+    '• Fully-serviced reception lounge, high-end boardrooms, and executive facilities.',
     '• Fresh coffee & tea bar with direct service from Second Cup downstairs.'
   ];
   doc.text(infrastructureBullets, 22, 192, { lineHeightFactor: 1.5 });

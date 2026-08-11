@@ -55,7 +55,7 @@ export const PrivacyTerms: React.FC = () => {
 
             <h3 className="font-display font-semibold text-lg text-charcoal pt-4">3. CCTV & Physical Security</h3>
             <p>
-              CCTV surveillance networks operate round-the-clock inside public corridors, entry lines, lift lobbies, and server-room cages. No cameras are installed inside private offices, boardrooms, phone booths, or wellness stations. Access to video logs is strictly restricted to secure operations directors.
+              CCTV surveillance networks operate round-the-clock inside public corridors, entry lines, lift lobbies, and server-room cages. No cameras are installed inside private offices or boardrooms. Access to video logs is strictly restricted to secure operations directors.
             </p>
 
             <div className="p-6 bg-white border border-concrete space-y-2">
@@ -76,7 +76,7 @@ export const PrivacyTerms: React.FC = () => {
 
             <h3 className="font-display font-semibold text-lg text-charcoal pt-4">1. Respectful Shared Use</h3>
             <p>
-              Our workspaces are engineered to support focus. Members must maintain sensible noise thresholds inside shared lounges and common areas. Long phone calls must be conducted inside private, acoustically isolated phone booths, never at shared co-working space tables.
+              Our workspaces are engineered to support focus. Members must maintain sensible noise thresholds inside shared lounges and common areas. Phone calls must be kept at moderate levels, never disturbing others at shared co-working space tables.
             </p>
 
             <h3 className="font-display font-semibold text-lg text-charcoal pt-4">2. Redundant Power & Internet</h3>

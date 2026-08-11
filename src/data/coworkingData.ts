@@ -108,7 +108,7 @@ export const workspaceCategories: WorkspaceCategory[] = [
     image: pinpoint6Img,
     capacity: 'Single Seat (Common Area)',
     startingPrice: 'KES 17,000 / mo',
-    amenities: ['24/7 Secure Access', 'High-Speed Wi-Fi 6', 'One Complimentary Hot Beverage', 'Phone Booth Access', 'Daily Cleaning'],
+    amenities: ['24/7 Secure Access', 'High-Speed Wi-Fi 6', 'One Complimentary Hot Beverage', 'Daily Cleaning'],
     features: ['Monthly Rate: KES 17,000', 'Day Pass (8 Hours): KES 1,700', 'Half-Day Pass (4 Hours): KES 1,200', 'Hourly Pass: KES 500'],
     slug: 'coworking',
   },
@@ -386,7 +386,7 @@ export const communityEvents: CommunityEvent[] = [
 export const faqs: FAQItem[] = [
   {
     question: "What is included in a Shared Co-Working Space membership?",
-    answer: "Our Shared Co-Working Space membership includes a reserved seat at our long tables in the open common area, 24/7 access, ultra-fast Wi-Fi, one complimentary hot beverage per guest during their stay, use of private phone booths for confidential calls, full utility backups, and access to all standard community networking events."
+    answer: "Our Shared Co-Working Space membership includes a reserved seat at our long tables in the open common area, 24/7 access, ultra-fast Wi-Fi, one complimentary hot beverage per guest during their stay, full utility backups, and access to all standard community networking events."
   },
   {
     question: "Can I try out the space before committing to a membership?",

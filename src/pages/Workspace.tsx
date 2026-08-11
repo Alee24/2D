@@ -33,7 +33,7 @@ export const Workspace: React.FC = () => {
               Find Your Ideal <span className="font-serif italic text-sand">Workspace.</span>
             </h1>
             <p className="font-sans text-white/75 text-base sm:text-lg leading-relaxed max-w-xl">
-              From shared co-working space at long common tables to enclosed private office suites (Small 11 sqm, Medium 14 sqm, Large 25 sqm).
+              From shared co-working space at long common tables to enclosed private office suites (Small 11 sqm, Medium 14 sqm, Large 25 sqm). All rates listed exclude 16% VAT.
             </p>
           </div>
         </div>
@@ -102,7 +102,7 @@ export const Workspace: React.FC = () => {
                     </ul>
                   </div>
                   <div>
-                    <h4 className="text-[10px] font-bold tracking-widest text-charcoal/40 uppercase mb-3">Key Membership Benefits:</h4>
+                    <h4 className="text-[10px] font-bold tracking-widest text-charcoal/40 uppercase mb-3">Key Membership Benefits (Excl. 16% VAT):</h4>
                     <ul className="space-y-2">
                       {category.features.map((feature, fidx) => (
                         <li key={fidx} className="flex items-start gap-2 text-xs font-sans text-charcoal/70">
