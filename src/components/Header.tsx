@@ -88,11 +88,11 @@ export const Header: React.FC = () => {
           {/* Logo */}
           <div 
             onClick={() => navigate('/')} 
-            className="flex items-center gap-2 cursor-pointer group"
+            className={`flex items-center gap-2.5 cursor-pointer group ${isSolidHeader ? '' : 'bg-white/95 backdrop-blur-md px-3.5 py-1.5 rounded-full border border-white/20 shadow-xs'}`}
           >
-            <Logo size={42} light={!isSolidHeader} />
+            <Logo size={isSolidHeader ? 42 : 36} light={false} />
             <span className="font-display text-xl uppercase flex items-center tracking-[0.12em] font-black" style={{ fontWeight: 900 }}>
-              <span className={isSolidHeader ? 'text-charcoal' : 'text-white'}>SECON</span>
+              <span className="text-charcoal">SECON</span>
               <span className="text-[#E31B23]">DESK</span>
             </span>
           </div>

@@ -52,10 +52,10 @@ export const Footer: React.FC = () => {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 mb-20">
           {/* Brand Info */}
           <div className="lg:col-span-4">
-            <div className="flex items-center gap-2 mb-6 cursor-pointer" onClick={() => navigate('/')}>
-              <Logo size={42} light={true} />
+            <div className="inline-flex items-center gap-2.5 mb-6 cursor-pointer bg-white px-4 py-2 rounded-xl shadow-xs border border-white/20" onClick={() => navigate('/')}>
+              <Logo size={36} light={false} />
               <span className="font-display text-xl uppercase flex items-center tracking-[0.12em] font-black" style={{ fontWeight: 900 }}>
-                <span className="text-white">SECON</span>
+                <span className="text-charcoal">SECON</span>
                 <span className="text-[#E31B23]">DESK</span>
               </span>
             </div>
