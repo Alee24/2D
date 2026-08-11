@@ -240,7 +240,7 @@ export const Locations: React.FC = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {[
             {
               title: 'Shared Co-Working Space',
@@ -255,10 +255,16 @@ export const Locations: React.FC = () => {
               features: ['Unfurnished Private Rooms', 'Custom Door Branding', 'Private Nest AC Controls', 'Dedicated Server Rack Option']
             },
             {
-              title: 'Executive Boardrooms',
-              desc: 'State-of-the-art meeting rooms with 75" 4K Polycom screens, acoustic whiteboards, and catered service.',
-              price: 'From KES 1,500 / hr',
-              features: ['75" 4K Polycom Video Screen', 'Porcelain Whiteboards', 'Catered Refreshments', 'Acoustic Privacy Walls']
+              title: 'Meeting Room',
+              desc: 'Intimate round-table meeting space for up to 4 guests, equipped for presentations and client syncs.',
+              price: 'KES 1,500 / hr',
+              features: ['Max 4 Guests Capacity', 'Round Wooden Table', '4K Presentation Screen', 'Studio Video Bar']
+            },
+            {
+              title: 'Executive Boardroom',
+              desc: 'State-of-the-art conference boardroom for up to 10 guests with 75" 4K Polycom screens and catered service.',
+              price: 'KES 2,000 / hr',
+              features: ['Max 10 Guests Capacity', '75" 4K Polycom Screen', 'Porcelain Whiteboards', 'Catered Refreshments On Demand']
             }
           ].map((space, idx) => (
             <div 

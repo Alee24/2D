@@ -156,17 +156,25 @@ export const generateBrochurePDF = () => {
       ]
     },
     {
-      title: '02. Meeting Rooms & Executive Boardrooms',
-      badge: 'HOURLY / HALF-DAY / FULL-DAY',
+      title: '02. Meeting Room (Max 4 Guests)',
+      badge: 'HOURLY PASSES',
       details: [
-        'Meeting Room (Max 4 Guests) — KES 1,500 / hr',
-        'Executive Boardroom (Max 10 Guests) — Full Day: KES 12,000 | Half Day: KES 8,000 | Hourly: KES 2,000',
-        'Zoom Room (Acoustic Video Pod) — KES 1,000 / hr',
-        'Includes: 4K presentation screens, video conferencing bars, whiteboards, one complimentary hot beverage per guest.'
+        'Hourly Rate — KES 1,500 / hr',
+        'Half Day Pass — KES 5,000 | Full Day Pass — KES 8,000',
+        'Includes: 4K presentation screen, studio video bar, magnetic whiteboard, one complimentary hot beverage per guest.'
       ]
     },
     {
-      title: '03. Shared Co-Working Space',
+      title: '03. Executive Boardroom (Max 10 Guests)',
+      badge: 'HOURLY / HALF-DAY / FULL-DAY',
+      details: [
+        'Hourly Rate — KES 2,000 / hr',
+        'Half Day — KES 8,000 | Full Day — KES 12,000',
+        'Includes: 75" 4K Smart TV, Polycom video conferencing, whiteboards, gourmet catering on demand.'
+      ]
+    },
+    {
+      title: '04. Shared Co-Working Space',
       badge: 'FLEXIBLE PASSES',
       details: [
         'Monthly Shared Seat — KES 17,000 / month',
@@ -176,7 +184,7 @@ export const generateBrochurePDF = () => {
       ]
     },
     {
-      title: '04. Printing, Copying & Add-on Services',
+      title: '05. Printing, Copying & Add-on Services',
       badge: 'DOCUMENT SERVICES',
       details: [
         'Black & White Printing / Copying — KES 15 / page',
