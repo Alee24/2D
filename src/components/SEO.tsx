@@ -22,8 +22,8 @@ export const SEO: React.FC<SEOProps> = ({
   schemaData,
 }) => {
   useEffect(() => {
-    // 1. Update document title
-    const fullTitle = `${title} | SECONDESK`;
+    // 1. Update document title (SECONDESK always placed first for browser tab legibility)
+    const fullTitle = title && title.toUpperCase() !== 'SECONDESK' ? `SECONDESK | ${title}` : 'SECONDESK';
     document.title = fullTitle;
 
     // Helper function to update or create meta tags

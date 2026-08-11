@@ -103,7 +103,7 @@ export const Home: React.FC = () => {
   return (
     <div className="bg-offwhite text-charcoal animate-fade-in">
       <SEO 
-        title="Bespoke Coworking & Private Offices in Mombasa"
+        title="SECONDESK"
         description="Experience premier, design-led coworking spaces, executive private offices, and state-of-the-art meeting rooms across Mombasa's most prestigious commercial districts."
       />
       {/* 1. HERO SECTION */}
