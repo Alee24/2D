@@ -410,10 +410,10 @@ export const faqs: FAQItem[] = [
   },
   {
     question: "Are meeting rooms accessible to non-members?",
-    answer: "Yes, our high-spec meeting rooms, boardrooms, and event spaces are open for external booking by non-members on an hourly or daily rate. Members enjoy significant discounts and priority reservation via the Secondesk platform using their monthly included credits."
+    answer: "Yes, our high-spec meeting rooms and boardrooms are open for external booking by non-members on an hourly or daily rate."
   },
   {
-    question: "Where is Secondesk Nyali located?",
-    answer: "Our flagship location is located on the 2nd Floor, Links Road, Nyali, Mombasa (Located above Second Cup Cafe)."
+    question: "Where is SECONDESK Nyali located?",
+    answer: "Our flagship location is situated on Links Road, Nyali (located above Second Cup Cafe on the 2nd floor)."
   }
 ];
