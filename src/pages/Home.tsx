@@ -90,7 +90,7 @@ export const Home: React.FC = () => {
     { title: 'Exclusive discounts & perks', desc: 'Pre-negotiated partner perks spanning premium cloud credits, legal filings, and lifestyle wellness hubs.' },
     { title: 'Priority event access', desc: 'Complimentary reserved slots at all masterclasses, founder fireside panels, and seasonal social dinners.' },
     { title: 'Reciprocal global network', desc: 'Enjoy full shared co-working space access in any Secondesk location globally during your business travel.' },
-    { title: 'Premium mail handling', desc: 'Digital scanning, cataloging, and mail arrival push-text alerts handled securely by reception.' },
+    { title: 'Concierge reception', desc: 'Warm reception greeting, client hosting, and on-site hospitality management for all your guests.' },
     { title: 'Mentorship connection', desc: 'Participate in our peer-led masterminds and connect with veteran capital leads and industry specialists.' },
     { title: 'Seamless operations', desc: 'Dedicated cleaning, high-speed power redundancy, and on-site hospitality managers handling the heavy lifting.' },
   ];

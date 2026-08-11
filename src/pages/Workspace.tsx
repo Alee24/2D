@@ -146,15 +146,13 @@ export const Workspace: React.FC = () => {
             We operate fully serviced environments designed to let you plug and play from day one with absolutely zero setup friction.
           </p>
 
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-4xl mx-auto text-left">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 max-w-4xl mx-auto text-left">
             {[
               { title: 'Redundant Power Backups', desc: 'Auto-transfer diesel generators activate within 3 seconds of grid disruption.' },
               { title: 'Secure Enterprise Fiber', desc: 'Symmetrical high-speed bandwidth from separate top tier ISPs.' },
-              { title: 'Mail Handling', desc: 'Secure sorting, scanning, and reception pickup alerts.' },
               { title: 'Hot Beverages', desc: 'One complimentary hot beverage per guest during their stay.' },
               { title: 'Premium Cleaning', desc: 'Daily dedicated sanitation of all shared facilities, desks, and suites.' },
               { title: 'Community Events', desc: 'Monthly investor breakfasts, networking mixers, and masterclasses.' },
-              { title: 'Dedicated App', desc: 'Instantly reserve meeting rooms, print files, or register guests.' },
               { title: '24/7 Security Controls', desc: 'CCTV networks, physical security guards, and biometric access keys.' }
             ].map((amen, idx) => (
               <div key={idx} className="border-l border-sand pl-4 py-2">

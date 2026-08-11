@@ -135,8 +135,8 @@ export const LocationDetail: React.FC = () => {
               {[
                 { name: 'Shared Co-Working Space', capacity: 'Common Area Seats', rate: 'KES 17,000 / mo', status: 'Immediate Opening' },
                 { name: 'Private Office Suites', capacity: 'Self-Allocated Space (Small 11 sqm, Medium 14 sqm, Large 25 sqm)', rate: 'From KES 45,000 / mo', status: 'Low Availability' },
-                { name: 'Meeting Room', capacity: 'Max 4 Guests (Round Table)', rate: 'KES 1,500 / hr', status: 'Reserve on App' },
-                { name: 'Executive Boardroom', capacity: 'Max 10 Guests (Conference Setup)', rate: 'KES 2,000 / hr (KES 12k Day)', status: 'Reserve on App' },
+                { name: 'Meeting Room', capacity: 'Max 4 Guests (Round Table)', rate: 'KES 1,500 / hr', status: 'Reserve Online' },
+                { name: 'Executive Boardroom', capacity: 'Max 10 Guests (Conference Setup)', rate: 'KES 2,000 / hr (KES 12k Day)', status: 'Reserve Online' },
               ].map((row, idx) => (
                 <div key={idx} className="p-5 flex flex-col sm:flex-row sm:items-center justify-between gap-3 hover:bg-offwhite/50 transition-colors">
                   <div>
