@@ -71,7 +71,7 @@ export const Home: React.FC = () => {
     setActiveTestimonial((prev) => (prev - 1 + testimonials.length) % testimonials.length);
   };
 
-  // Why Secondesk array
+  // Why SECONDESK array
   const coreAmenities = [
     { title: 'Flexible Membership', icon: Compass, desc: 'Agile month-to-month contracts designed to scale with your team.' },
     { title: '24/7 Secure Access', icon: Shield, desc: 'State-of-the-art secure biometric access to keep you creating round the clock.' },
@@ -90,7 +90,7 @@ export const Home: React.FC = () => {
     { title: 'Professional networking', desc: 'Settle beside top founders, software engineers, and global consultants in collaborative workspaces.' },
     { title: 'Exclusive discounts & perks', desc: 'Pre-negotiated partner perks spanning premium cloud credits, legal filings, and lifestyle wellness hubs.' },
     { title: 'Priority event access', desc: 'Complimentary reserved slots at all masterclasses, founder fireside panels, and seasonal social dinners.' },
-    { title: 'Reciprocal global network', desc: 'Enjoy full shared co-working space access in any Secondesk location globally during your business travel.' },
+    { title: 'Reciprocal global network', desc: 'Enjoy full shared co-working space access in any SECONDESK location globally during your business travel.' },
     { title: 'Concierge reception', desc: 'Warm reception greeting, client hosting, and on-site hospitality management for all your guests.' },
     { title: 'Mentorship connection', desc: 'Participate in our peer-led masterminds and connect with veteran capital leads and industry specialists.' },
     { title: 'Seamless operations', desc: 'Dedicated cleaning, high-speed power redundancy, and on-site hospitality managers handling the heavy lifting.' },
@@ -112,7 +112,7 @@ export const Home: React.FC = () => {
         <div className="absolute inset-0 z-0">
           <img 
             src={heroBgImg} 
-            alt="Secondesk Coworking Environment" 
+            alt="SECONDESK Coworking Environment" 
             className="w-full h-full object-cover opacity-55 scale-105 transition-transform duration-1000"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-charcoal via-charcoal/40 to-charcoal/60"></div>
@@ -350,7 +350,7 @@ export const Home: React.FC = () => {
                 Download Our <span className="font-serif italic text-charcoal/60">Premium Brochure.</span>
               </h2>
               <p className="font-sans text-sm text-charcoal/70 leading-relaxed max-w-xl">
-                Get an instant, high-fidelity corporate overview of Secondesk's workspace designs and configurations. Our comprehensive A4 portfolio booklet details architectural layouts, secure fiber infrastructure setups, executive boardroom pricing packages, and customized enterprise branding models for your teams in Nyali, Mombasa CBD, and Tudor Bay.
+                Get an instant, high-fidelity corporate overview of SECONDESK's workspace designs and configurations. Our comprehensive A4 portfolio booklet details architectural layouts, secure fiber infrastructure setups, executive boardroom pricing packages, and customized enterprise branding models for your teams in Nyali, Mombasa CBD, and Tudor Bay.
               </p>
               
               {/* Premium Specs list */}
@@ -427,7 +427,7 @@ export const Home: React.FC = () => {
 
                   {downloadSuccess && (
                     <p className="text-center font-sans text-[11px] text-emerald-600 animate-fade-in font-medium">
-                      Check your download folder for "Secondesk_Official_Brochure_PriceList.pdf"!
+                      Check your download folder for "SECONDESK_Official_Brochure_PriceList.pdf"!
                     </p>
                   )}
 

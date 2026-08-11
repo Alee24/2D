@@ -183,7 +183,7 @@ export const Footer: React.FC = () => {
         <div className="pt-8 border-t border-white/10 flex flex-col md:flex-row items-center justify-between gap-4">
           <div className="flex flex-wrap items-center gap-6">
             <span className="font-sans text-xs text-white/40">
-              © {new Date().getFullYear()} Secondesk Ltd. All Rights Reserved.
+              © {new Date().getFullYear()} SECONDESK Ltd. All Rights Reserved.
             </span>
             <span className="font-sans text-xs text-white/40">
               Developed by <a href="https://wa.me/254724454757" target="_blank" rel="noreferrer" className="text-sand/90 underline hover:text-white transition-colors">KKDES</a>

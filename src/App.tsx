@@ -32,7 +32,7 @@ class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundaryState> {
   }
 
   public componentDidCatch(error: Error, errorInfo: ErrorInfo) {
-    console.error('Uncaught error in Secondesk App:', error, errorInfo);
+    console.error('Uncaught error in SECONDESK App:', error, errorInfo);
   }
 
   public render() {
@@ -40,7 +40,7 @@ class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundaryState> {
       return (
         <div className="min-h-screen bg-[#FAFAF8] text-[#1D1D1D] flex flex-col items-center justify-center p-6 text-center">
           <div className="max-w-md bg-white border border-[#E7E7E7] p-8 rounded-xl shadow-lg space-y-4">
-            <h2 className="font-display font-bold text-2xl text-[#00468b]">Secondesk Workspace</h2>
+            <h2 className="font-display font-bold text-2xl text-[#00468b]">SECONDESK Workspace</h2>
             <p className="font-sans text-sm text-charcoal/70">
               An unexpected issue occurred while rendering this page.
             </p>

@@ -150,7 +150,7 @@ export const Header: React.FC = () => {
               className={`p-2 transition-colors duration-200 cursor-pointer ${
                 isSolidHeader ? 'text-charcoal hover:text-sand' : 'text-white hover:text-sand'
               }`}
-              aria-label="Search Secondesk"
+              aria-label="Search SECONDESK"
             >
               <Search className="w-5 h-5" />
             </button>
@@ -269,7 +269,7 @@ export const Header: React.FC = () => {
                     <div className="col-span-1 border-r border-concrete pr-8">
                       <span className="text-xs font-semibold tracking-widest uppercase text-sand block mb-2">Location</span>
                       <h3 className="font-display text-2xl font-semibold text-charcoal leading-tight mb-4">Mombasa Headquarters</h3>
-                      <p className="font-sans text-sm text-charcoal/60 mb-6">Explore Secondesk Nyali Executive Hub — our premier coastal workspace with ocean view balconies and 24/7 power redundancy.</p>
+                      <p className="font-sans text-sm text-charcoal/60 mb-6">Explore SECONDESK Nyali Executive Hub — our premier coastal workspace with ocean view balconies and 24/7 power redundancy.</p>
                       <button 
                         onClick={() => { navigate('/locations'); setActiveMegaMenu(null); }}
                         className="text-xs font-semibold uppercase tracking-wider text-charcoal hover:text-sand inline-flex items-center gap-2 group cursor-pointer"
@@ -357,7 +357,7 @@ export const Header: React.FC = () => {
                 >
                   <Logo size={36} light={false} />
                   <span className="font-display font-semibold tracking-[0.15em] text-base uppercase text-charcoal">
-                    Secondesk
+                    SECONDESK
                   </span>
                 </div>
                 <div className="flex items-center gap-2">
@@ -451,13 +451,13 @@ export const Header: React.FC = () => {
                   <div className="space-y-3 bg-concrete/20 p-4 rounded-sm">
                     <span className="font-mono text-[9px] uppercase tracking-widest text-charcoal/40 font-bold block">Contact Desk</span>
                     <a 
-                      href="https://wa.me/254724454757" 
+                      href="https://wa.me/254719688992" 
                       target="_blank" 
                       rel="noreferrer" 
                       className="flex items-center gap-2 text-xs font-sans text-charcoal/80 hover:text-charcoal transition-colors font-medium"
                     >
                       <MessageSquare className="w-3.5 h-3.5 text-sand" />
-                      <span>WhatsApp: +254 724 454757</span>
+                      <span>WhatsApp: +254 719 688992</span>
                     </a>
                   </div>
 
@@ -559,7 +559,7 @@ export const Header: React.FC = () => {
                     </div>
                   </div>
                   <div>
-                    <h4 className="text-white/40 font-sans text-xs font-bold uppercase tracking-widest mb-4">Secondesk Concept</h4>
+                    <h4 className="text-white/40 font-sans text-xs font-bold uppercase tracking-widest mb-4">SECONDESK Concept</h4>
                     <p className="font-sans text-xs text-white/50 leading-relaxed">
                       Enter any keyword to locate active workspaces, corporate suites, boardrooms, community calendar events, or blog articles on the platform. Click on a result to navigate instantly.
                     </p>

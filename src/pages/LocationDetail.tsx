@@ -7,8 +7,9 @@ import {
   MapPin, Phone, Mail, Check, Compass, Sliders, Users, 
   ArrowLeft, ArrowRight, ShieldCheck, Heart, Map, HelpCircle, ChevronDown,
   PenTool, Tv, Presentation, Coffee, Wifi, Utensils, Armchair, Lock, Fingerprint, Wind,
-  LucideIcon
+  Download, LucideIcon
 } from 'lucide-react';
+import { generateBrochurePDF } from '../utils/pdfGenerator';
 
 const iconMap: Record<string, LucideIcon> = {
   PenTool,
@@ -60,13 +61,13 @@ export const LocationDetail: React.FC = () => {
     <div className="bg-offwhite text-charcoal pt-20 animate-fade-in">
       <SEO 
         title={`${location.name} Shared Co-Working Space & Private Offices`}
-        description={`Explore Secondesk ${location.name} in Mombasa. Featuring shared co-working space at long common tables, private office suites, meeting rooms (Max 4), and boardrooms (Max 10).`}
+        description={`Explore SECONDESK ${location.name} in Mombasa. Featuring shared co-working space at long common tables, private office suites, meeting rooms (Max 4), and boardrooms (Max 10).`}
         ogImage={location.image}
         schemaType="CoworkingSpace"
         schemaData={{
           '@context': 'https://schema.org',
           '@type': 'CoworkingSpace',
-          'name': `Secondesk ${location.name}`,
+          'name': `SECONDESK ${location.name}`,
           'description': `Premium boutique workspace in ${location.name}, Mombasa featuring shared co-working space, private office suites, and meeting rooms.`,
           'image': location.image,
           'url': window.location.origin + window.location.pathname,
@@ -261,7 +262,7 @@ export const LocationDetail: React.FC = () => {
             </h2>
             <div className="aspect-video w-full bg-concrete border border-concrete relative">
               <iframe
-                title={`Map layout of Secondesk ${location.name}`}
+                title={`Map layout of SECONDESK ${location.name}`}
                 src={location.mapEmbedUrl}
                 className="w-full h-full"
                 allowFullScreen={false}
@@ -406,7 +407,15 @@ export const LocationDetail: React.FC = () => {
             onClick={() => navigate('/book-tour')}
             className="w-full bg-charcoal border border-charcoal hover:bg-sand hover:border-sand hover:text-charcoal text-white font-sans text-xs font-bold uppercase tracking-widest py-4 transition-all cursor-pointer shadow-md text-center inline-block uppercase"
           >
-            Schedule Tour Now
+            Book a Tour
+          </button>
+
+          <button
+            onClick={generateBrochurePDF}
+            className="w-full border border-charcoal/30 hover:border-charcoal text-charcoal bg-white font-sans text-xs font-bold uppercase tracking-widest py-3.5 flex items-center justify-center gap-2 transition-all cursor-pointer shadow-xs"
+          >
+            <Download className="w-4 h-4" />
+            Download Brochure
           </button>
 
           <div className="pt-4 border-t border-concrete/60 text-center">

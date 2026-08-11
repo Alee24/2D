@@ -29,8 +29,8 @@ export const Locations: React.FC = () => {
   return (
     <div className="bg-offwhite text-charcoal pt-20 animate-fade-in min-h-screen">
       <SEO 
-        title="Secondesk Mombasa | Nyali Executive Hub Workspace"
-        description="Explore Secondesk's flagship location in Mombasa: Nyali Executive Hub. Featuring fast dedicated internet, backup generators, and private office suites."
+        title="SECONDESK Mombasa | Nyali Executive Hub Workspace"
+        description="Explore SECONDESK's flagship location in Mombasa: Nyali Executive Hub. Featuring fast dedicated internet, backup generators, and private office suites."
       />
       <Breadcrumbs />
 
@@ -347,7 +347,7 @@ export const Locations: React.FC = () => {
             <div className="lg:col-span-7">
               <div className="aspect-video w-full bg-concrete border border-concrete shadow-lg relative overflow-hidden">
                 <iframe
-                  title="Google Map location representation of Secondesk Nyali Hub"
+                  title="Google Map location representation of SECONDESK Nyali Hub"
                   src={location.mapEmbedUrl}
                   className="w-full h-full border-0"
                   allowFullScreen={false}

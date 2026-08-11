@@ -172,7 +172,7 @@ export const workspaceSolutions: WorkspaceSolution[] = [
     id: 'startups',
     targetAudience: 'Startups & Scaleups',
     challenge: 'Unpredictable team growth, lack of capital for long-term commercial leases, and time wasted managing operations.',
-    solution: 'Secondesk handles everything—high-speed internet, security, printing, cleaning, and guest reception—so you can focus 100% on building your product.',
+    solution: 'SECONDESK handles everything—high-speed internet, security, printing, cleaning, and guest reception—so you can focus 100% on building your product.',
     recommendation: 'Hybrid Private Office or Shared Co-Working Space Passes.',
     benefits: ['Dedicated secure Ethernet lines', 'Boosted collaboration and synergy', 'Prestigious business physical base', 'Access to high-spec meeting rooms'],
     image: 'https://images.unsplash.com/photo-1542744094-3a31f103e35f?auto=format&fit=crop&q=80&w=600'
@@ -190,7 +190,7 @@ export const workspaceSolutions: WorkspaceSolution[] = [
     id: 'smes-agencies',
     targetAudience: 'SMEs & Agencies',
     challenge: 'High cost of commercial fit-outs, maintenance staff recruitment, and utility backup solutions.',
-    solution: 'Secondesk provides ready-to-use, premium glass-fronted offices supported by 100% stable generator power, modern server rooms, and client-facing reception services.',
+    solution: 'SECONDESK provides ready-to-use, premium glass-fronted offices supported by 100% stable generator power, modern server rooms, and client-facing reception services.',
     recommendation: 'Unfurnished Private Office Suites.',
     benefits: ['Zero capital expenditure for office buildout', 'Uninterrupted power and water backup', 'Receptionists greeting your clients', 'Branded directory placement'],
     image: 'https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=600'
@@ -260,7 +260,7 @@ export const locations: LocationData[] = [
 export const testimonials: Testimonial[] = [
   {
     id: 't1',
-    quote: "Secondesk completely elevated our agency. The beautiful, architectural environment signals trust and high capability to every client we host here, and the facilities are flawlessly managed.",
+    quote: "SECONDESK completely elevated our agency. The beautiful, architectural environment signals trust and high capability to every client we host here, and the facilities are flawlessly managed.",
     author: "Wanjiku Njoroge",
     role: "Founder & Creative Director",
     company: "Sura Creative",
@@ -268,7 +268,7 @@ export const testimonials: Testimonial[] = [
   },
   {
     id: 't2',
-    quote: "With a growing distributed remote team, maintaining a sense of culture is hard. The hybrid office suites we rent at Secondesk Nyali give us an incredible base to connect and align.",
+    quote: "With a growing distributed remote team, maintaining a sense of culture is hard. The hybrid office suites we rent at SECONDESK Nyali give us an incredible base to connect and align.",
     author: "Amir Osei",
     role: "VP of Engineering",
     company: "FintechOne East Africa",
@@ -289,7 +289,7 @@ export const blogPosts: BlogPost[] = [
     id: 'b1',
     title: 'The Future of Shared Workspaces: Designing for Privacy & Collaboration',
     excerpt: 'Explore how top-tier spatial designers are blending open lounge acoustics with private office modularity to boost productivity.',
-    content: 'The workspace landscape is undergoing a silent revolution. Long gone are the days of fluorescent-lit rows of identical cubicles, but so are the days of the chaotic open-plan startup playroom. Today, ambitious businesses require architectural integrity. They need spaces that foster quiet focus when desired, and structured collaboration when teams need to align.\n\nAt Secondesk, our architectural team spends months studying spatial density. We have found that the optimal layout utilizes a 60/40 design rule: 60% of square footage dedicated to enclosed, high-acoustic privacy suites, and 40% curated as beautiful public lobbies, libraries, coffee stations, and garden terraces. This dualism allows professionals to transition smoothly from head-down work to high-energy community events.',
+    content: 'The workspace landscape is undergoing a silent revolution. Long gone are the days of fluorescent-lit rows of identical cubicles, but so are the days of the chaotic open-plan startup playroom. Today, ambitious businesses require architectural integrity. They need spaces that foster quiet focus when desired, and structured collaboration when teams need to align.\n\nAt SECONDESK, our architectural team spends months studying spatial density. We have found that the optimal layout utilizes a 60/40 design rule: 60% of square footage dedicated to enclosed, high-acoustic privacy suites, and 40% curated as beautiful public lobbies, libraries, coffee stations, and garden terraces. This dualism allows professionals to transition smoothly from head-down work to high-energy community events.',
     category: 'Workspace Design',
     author: {
       name: 'Elena Rostova',
@@ -320,7 +320,7 @@ export const blogPosts: BlogPost[] = [
     id: 'b3',
     title: 'Solitude vs. Focus: Cultivating Mental Clarity in Modern Workflows',
     excerpt: 'The psychological toll of home isolation can sap creative juices. How micro-interactions in architectural spaces restore mental stamina.',
-    content: 'Work from home was sold as a perfect utopia of pajamas and zero commute. However, four years into the mass remote work experiment, the cracks are widening. Solitary work at home often leads to cognitive fatigue, blurred lines between work and life, and deep professional isolation.\n\nHuman brains are wired to perform better under low-stakes social presence. Known as "social facilitation", working alongside other focused individuals—even if you are not actively speaking to them—naturally boosts motivation and attention span. A curated, aesthetic environment like Secondesk acts as an outer container for focus. The gentle low hum of the espresso bar, the sight of others creating, and the physical transition of "going to work" restore a crisp psychological structure to your daily workflow.',
+    content: 'Work from home was sold as a perfect utopia of pajamas and zero commute. However, four years into the mass remote work experiment, the cracks are widening. Solitary work at home often leads to cognitive fatigue, blurred lines between work and life, and deep professional isolation.\n\nHuman brains are wired to perform better under low-stakes social presence. Known as "social facilitation", working alongside other focused individuals—even if you are not actively speaking to them—naturally boosts motivation and attention span. A curated, aesthetic environment like SECONDESK acts as an outer container for focus. The gentle low hum of the espresso bar, the sight of others creating, and the physical transition of "going to work" restore a crisp psychological structure to your daily workflow.',
     category: 'Productivity',
     author: {
       name: 'Dr. Clara Patel',
@@ -335,7 +335,7 @@ export const blogPosts: BlogPost[] = [
     id: 'b4',
     title: 'The Digital Nomad Trend in Coastal East Africa: Mombasa as the Hub',
     excerpt: 'Why international tech leaders, creators, and entrepreneurs are selecting Mombasa as their coastal headquarters.',
-    content: 'Mombasa has earned its title as Kenya’s coastal commercial titan through continuous trade innovation and business leadership. In recent years, a new wave of international creators, digital nomads, and global tech executives are migrating to the coastal city. Mombasa offers unparalleled lifestyle benefits, coastal breeze work environments, and direct access to maritime commerce.\n\nSecondesk acts as a physical landing pad for this global cohort. With multi-point locations across Nyali, Mombasa CBD, and Tudor, international teams can deploy high-spec secure nodes instantly, connecting directly to the local business elite via our structured investor breakfasts and workshop sessions.',
+    content: 'Mombasa has earned its title as Kenya’s coastal commercial titan through continuous trade innovation and business leadership. In recent years, a new wave of international creators, digital nomads, and global tech executives are migrating to the coastal city. Mombasa offers unparalleled lifestyle benefits, coastal breeze work environments, and direct access to maritime commerce.\n\nSECONDESK acts as a physical landing pad for this global cohort. With multi-point locations across Nyali, Mombasa CBD, and Tudor, international teams can deploy high-spec secure nodes instantly, connecting directly to the local business elite via our structured investor breakfasts and workshop sessions.',
     category: 'Remote Work',
     author: {
       name: 'Kamau Gicheru',
@@ -362,7 +362,7 @@ export const communityEvents: CommunityEvent[] = [
   {
     id: 'e2',
     title: 'Monthly Investor Pitch Breakfast',
-    description: 'A closed-door, curated pitch session connecting three high-growth startups from the Secondesk ecosystem with leading regional angel networks and VC funds.',
+    description: 'A closed-door, curated pitch session connecting three high-growth startups from the SECONDESK ecosystem with leading regional angel networks and VC funds.',
     date: 'July 22, 2026',
     time: '08:00 AM - 11:00 AM',
     type: 'Investor Meetups',
@@ -406,7 +406,7 @@ export const faqs: FAQItem[] = [
   },
   {
     question: "How do you guarantee power and internet stability?",
-    answer: "We understand that constant connectivity is non-negotiable for business. All Secondesk locations are fully equipped with automatic dual-diesel generators that kick in within 3 seconds of a power disruption. Additionally, we use redundant high-speed fiber internet backbones from separate Tier-1 service providers to ensure 99.9% uptime."
+    answer: "We understand that constant connectivity is non-negotiable for business. All SECONDESK locations are fully equipped with automatic dual-diesel generators that kick in within 3 seconds of a power disruption. Additionally, we use redundant high-speed fiber internet backbones from separate Tier-1 service providers to ensure 99.9% uptime."
   },
   {
     question: "Are meeting rooms accessible to non-members?",

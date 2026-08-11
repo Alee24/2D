@@ -385,5 +385,5 @@ export const generateBrochurePDF = () => {
   doc.text('PAGE 3  |  SECONDESK CORPORATE PORTFOLIO', 15, 282);
 
   // Save / Download PDF
-  doc.save('Secondesk_Official_Brochure_PriceList.pdf');
+  doc.save('SECONDESK_Official_Brochure_PriceList.pdf');
 };

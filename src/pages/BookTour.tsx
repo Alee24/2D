@@ -39,7 +39,7 @@ export const BookTour: React.FC = () => {
             'Company Name': formData.company || 'N/A',
             'Business Email': formData.email,
             'Phone Number': formData.phone || 'N/A',
-            'Preferred Node': `Secondesk ${formData.location.toUpperCase()}`,
+            'Preferred Node': `SECONDESK ${formData.location.toUpperCase()}`,
             'Team Footprint': formData.teamSize,
             'Preferred Tour Date': formData.date,
             'Special Notes': formData.message || 'None',
@@ -59,7 +59,7 @@ export const BookTour: React.FC = () => {
   return (
     <div className="bg-offwhite text-charcoal pt-20 animate-fade-in min-h-screen">
       <SEO 
-        title="Schedule a Private Tour | Secondesk Mombasa"
+        title="Schedule a Private Tour | SECONDESK Mombasa"
         description="Book a personalized tour of our boutique coworking and office spaces in Nyali, Mombasa CBD, or Tudor."
       />
       <Breadcrumbs />

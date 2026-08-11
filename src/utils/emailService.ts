@@ -1,5 +1,5 @@
 /**
- * Multi-Channel High-Availability Form Email Dispatcher for Secondesk
+ * Multi-Channel High-Availability Form Email Dispatcher for SECONDESK
  * Dispatches form submissions to info@secondesk.ke via multiple parallel gateways.
  */
 
@@ -71,7 +71,7 @@ export const dispatchEmail = async (payload: EmailPayload): Promise<void> => {
           access_key: '00000000-0000-0000-0000-000000000000', // Web3Forms endpoint handler
           subject: payload.subject,
           to_email: 'info@secondesk.ke',
-          from_name: 'Secondesk Web',
+          from_name: 'SECONDESK Web',
           ...payload.fields,
         }),
       }).catch(() => null);

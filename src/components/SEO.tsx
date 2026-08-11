@@ -14,7 +14,7 @@ interface SEOProps {
 export const SEO: React.FC<SEOProps> = ({
   title,
   description,
-  keywords = 'coworking Mombasa, shared offices Nyali, private office Tudor, meeting rooms Mombasa CBD, business lounge Mombasa, virtual office Kenya, Secondesk, boutique workspace Coast',
+  keywords = 'coworking Mombasa, shared offices Nyali, private office Tudor, meeting rooms Mombasa CBD, business lounge Mombasa, virtual office Kenya, SECONDESK, boutique workspace Coast',
   ogType = 'website',
   ogImage = 'https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=1200',
   canonicalPath,
@@ -23,7 +23,7 @@ export const SEO: React.FC<SEOProps> = ({
 }) => {
   useEffect(() => {
     // 1. Update document title
-    const fullTitle = `${title} | Secondesk`;
+    const fullTitle = `${title} | SECONDESK`;
     document.title = fullTitle;
 
     // Helper function to update or create meta tags
@@ -98,11 +98,11 @@ export const SEO: React.FC<SEOProps> = ({
           'image': ogImage,
           'author': {
             '@type': 'Organization',
-            'name': 'Secondesk Team',
+            'name': 'SECONDESK Team',
           },
           'publisher': {
             '@type': 'Organization',
-            'name': 'Secondesk',
+            'name': 'SECONDESK',
             'logo': {
               '@type': 'ImageObject',
               'url': 'https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=200',
@@ -111,12 +111,12 @@ export const SEO: React.FC<SEOProps> = ({
           'datePublished': new Date().toISOString().split('T')[0], // Fallback date
           'mainEntityOfPage': currentUrl,
         };
-      } else if (path.includes('/locations/') || title.includes('Secondesk ') || (title.includes('Location') && title !== 'Premium Coworking & Private Office Locations in Mombasa')) {
+      } else if (path.includes('/locations/') || title.includes('SECONDESK ') || (title.includes('Location') && title !== 'Premium Coworking & Private Office Locations in Mombasa')) {
         // Looks like an individual location detail page
         resolvedSchema = {
           '@context': 'https://schema.org',
           '@type': 'CoworkingSpace',
-          'name': `${title} | Secondesk`,
+          'name': `${title} | SECONDESK`,
           'description': description,
           'image': ogImage,
           'url': currentUrl,
@@ -135,7 +135,7 @@ export const SEO: React.FC<SEOProps> = ({
           '@context': 'https://schema.org',
           '@type': 'CoworkingSpace',
           '@id': 'https://secondesk.ke/#organization',
-          'name': 'Secondesk',
+          'name': 'SECONDESK',
           'url': 'https://secondesk.ke',
           'logo': 'https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=200',
           'image': 'https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=1200',
