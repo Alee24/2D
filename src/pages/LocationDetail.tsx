@@ -260,12 +260,20 @@ export const LocationDetail: React.FC = () => {
             <h2 className="font-display font-light text-2xl sm:text-3xl tracking-tight text-charcoal">
               Interactive Google Map
             </h2>
-            <div className="aspect-video w-full bg-concrete border border-concrete relative">
+            <div className="aspect-video w-full bg-concrete border border-concrete relative overflow-hidden group">
+              <a 
+                href="https://maps.google.com/?q=Second+Cup+Nyali+Links+Road+Mombasa" 
+                target="_blank" 
+                rel="noreferrer" 
+                className="absolute top-4 right-4 bg-charcoal/90 hover:bg-sand text-white hover:text-charcoal text-[11px] font-bold uppercase tracking-wider px-4 py-2.5 rounded-sm shadow-lg flex items-center gap-2 transition-all cursor-pointer z-10 backdrop-blur-xs"
+              >
+                <Compass className="w-4 h-4" /> Open Directions in Google Maps
+              </a>
               <iframe
                 title={`Map layout of SECONDESK ${location.name}`}
                 src={location.mapEmbedUrl}
-                className="w-full h-full"
-                allowFullScreen={false}
+                className="w-full h-full border-0"
+                allowFullScreen={true}
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
               />

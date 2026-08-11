@@ -316,14 +316,14 @@ export const Locations: React.FC = () => {
                 Visit Nyali Executive Hub
               </h2>
               <p className="font-sans text-sm text-charcoal/60 leading-relaxed font-light">
-                Located on Links Road in Nyali, Mombasa. Easily accessible from Mombasa CBD, City Mall, and Nyali Golf Club.
+                Located on Links Road in Nyali, Mombasa (above Second Cup Cafe on 2nd Floor). Easily accessible from Mombasa CBD, City Mall, and Nyali Golf Club.
               </p>
               <div className="space-y-3 font-sans text-xs text-charcoal/80">
                 <div className="flex items-start gap-3">
                   <MapPin className="w-4 h-4 text-sand shrink-0 mt-0.5" />
                   <div>
                     <strong className="block text-charcoal">Physical Address:</strong>
-                    2nd Floor, Nyali Executive Centre, Links Road, Nyali, Mombasa
+                    2nd Floor, Links Road, Nyali (located above Second Cup Cafe), Mombasa
                   </div>
                 </div>
                 <div className="flex items-start gap-3">
@@ -353,12 +353,20 @@ export const Locations: React.FC = () => {
             </div>
 
             <div className="lg:col-span-7">
-              <div className="aspect-video w-full bg-concrete border border-concrete shadow-lg relative overflow-hidden">
+              <div className="aspect-video w-full bg-concrete border border-concrete shadow-lg relative overflow-hidden group">
+                <a 
+                  href="https://maps.google.com/?q=Second+Cup+Nyali+Links+Road+Mombasa" 
+                  target="_blank" 
+                  rel="noreferrer" 
+                  className="absolute top-4 right-4 bg-charcoal/90 hover:bg-sand text-white hover:text-charcoal text-[11px] font-bold uppercase tracking-wider px-4 py-2.5 rounded-sm shadow-lg flex items-center gap-2 transition-all cursor-pointer z-10 backdrop-blur-xs"
+                >
+                  <Compass className="w-4 h-4" /> Open Directions in Google Maps
+                </a>
                 <iframe
                   title="Google Map location representation of SECONDESK Nyali Hub"
                   src={location.mapEmbedUrl}
                   className="w-full h-full border-0"
-                  allowFullScreen={false}
+                  allowFullScreen={true}
                   loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"
                 ></iframe>
