@@ -55,7 +55,7 @@ export const Locations: React.FC = () => {
               </div>
 
               <h1 className="font-display font-light text-4xl sm:text-5xl lg:text-6xl tracking-tight text-white leading-tight">
-                Secondesk <span className="font-serif italic text-sand">Nyali Executive Hub</span>
+                SECONDESK <span className="font-serif italic text-sand">Nyali Executive Hub</span>
               </h1>
 
               <p className="font-sans text-white/80 text-base sm:text-lg leading-relaxed max-w-2xl font-light">

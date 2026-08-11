@@ -37,7 +37,7 @@ export const Pricing: React.FC = () => {
         {/* Page Header */}
         <div className="text-center max-w-3xl mx-auto mb-10">
           <span className="font-sans font-semibold text-xs tracking-[0.25em] uppercase text-sand inline-block mb-3">
-            Secondesk Official Rates
+            SECONDESK Official Rates
           </span>
           <h1 className="font-display font-light text-4xl sm:text-5xl tracking-tight mb-4">
             Transparent <span className="font-serif italic font-normal text-sand">Membership & Facility Pricing</span>

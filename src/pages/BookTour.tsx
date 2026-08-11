@@ -126,7 +126,7 @@ export const BookTour: React.FC = () => {
                   <div className="space-y-1">
                     <span className="text-charcoal/40 uppercase block text-[9px] font-bold tracking-widest">Host Node</span>
                     <span className="font-display font-semibold text-charcoal text-sm">
-                      Secondesk {selectedLocDetails.name}
+                      SECONDESK {selectedLocDetails.name}
                     </span>
                     <span className="text-charcoal/60 block leading-relaxed pr-4">
                       {selectedLocDetails.address}
@@ -300,7 +300,7 @@ export const BookTour: React.FC = () => {
                   <div className="flex flex-col gap-1.5">
                     <span className="font-sans text-[10px] font-bold uppercase tracking-widest text-charcoal/40">Location</span>
                     <div className="w-full bg-offwhite border border-concrete px-4 py-3.5 text-xs text-charcoal font-medium flex items-center gap-1.5">
-                      <MapPin className="w-3.5 h-3.5 text-sand" /> Secondesk Nyali Executive Hub
+                      <MapPin className="w-3.5 h-3.5 text-sand" /> SECONDESK Nyali Executive Hub
                     </div>
                   </div>
 

@@ -121,7 +121,7 @@ export const Home: React.FC = () => {
         <div className="relative z-10 max-w-[1440px] mx-auto px-6 lg:px-12 w-full text-center md:text-left pt-20">
           <div className="max-w-4xl">
             <span className="font-sans font-semibold text-xs tracking-[0.3em] uppercase text-sand inline-block mb-4 animate-slide-up">
-              Secondesk — Mombasa, Kenya
+              SECONDESK — Mombasa, Kenya
             </span>
             <h1 className="font-display font-light text-4xl sm:text-6xl lg:text-7xl tracking-tight text-white mb-6 leading-[1.05] animate-slide-up animate-delay-100">
               Your Best Work <br className="hidden md:block"/>
@@ -232,7 +232,7 @@ export const Home: React.FC = () => {
       <section className="py-24 bg-white border-b border-concrete">
         <div className="max-w-[1440px] mx-auto px-6 lg:px-12">
           <div className="text-center max-w-2xl mx-auto mb-20">
-            <span className="font-sans font-bold text-xs tracking-widest uppercase text-sand block mb-3">Why Secondesk</span>
+            <span className="font-sans font-bold text-xs tracking-widest uppercase text-sand block mb-3">Why SECONDESK</span>
             <h2 className="font-display font-light text-3xl sm:text-4xl text-charcoal tracking-tight">
               Designed for Uninterrupted Focus
             </h2>
@@ -613,7 +613,7 @@ export const Home: React.FC = () => {
           <div className="max-w-2xl mx-auto">
             <span className="font-sans font-bold text-xs tracking-widest uppercase text-sand block mb-4">Secure your space</span>
             <h2 className="font-display font-light text-4xl sm:text-5xl text-charcoal tracking-tight mb-6 leading-tight">
-              Ready for your <span className="font-serif italic text-charcoal/60">Secondesk?</span>
+              Ready for your <span className="font-serif italic text-charcoal/60">SECONDESK?</span>
             </h2>
             <p className="font-sans text-sm text-charcoal/60 mb-10 leading-relaxed max-w-lg mx-auto">
               Book a tour today and experience a workspace built from the ground up around focus, productivity, and regional business trust.

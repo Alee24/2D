@@ -271,7 +271,7 @@ export const generateBrochurePDF = () => {
 
   // Locations Box grid
   const locationCard = {
-    title: 'Secondesk Nyali Executive Hub',
+    title: 'SECONDESK Nyali Executive Hub',
     address: 'Links Road, Nyali (located above Second Cup Cafe on the 2nd floor)',
     phone: '0719688992',
     email: 'info@secondesk.ke',

@@ -23,7 +23,7 @@ import pinpoint5Img from '../assets/images/pinpoint_studios_5.jpg';
 import pinpoint15Img from '../assets/images/pinpoint_studios_15.jpg';
 
 export const companyInfo = {
-  name: 'Secondesk',
+  name: 'SECONDESK',
   phone: '0719688992',
   phoneFormatted: '+254 719 688 992',
   email: 'info@secondesk.ke',

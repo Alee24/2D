@@ -107,7 +107,7 @@ export const LocationDetail: React.FC = () => {
               {location.neighborhood}
             </span>
             <h1 className="font-display font-light text-4xl sm:text-5xl lg:text-6xl text-white tracking-tight leading-none mb-4">
-              Secondesk <span className="font-serif italic text-sand">{location.name}</span>
+              SECONDESK <span className="font-serif italic text-sand">{location.name}</span>
             </h1>
             <p className="font-sans text-white/80 text-sm sm:text-base max-w-xl">
               {location.address}
@@ -128,13 +128,13 @@ export const LocationDetail: React.FC = () => {
               Workspace Availability
             </h2>
             <p className="font-sans text-xs text-charcoal/60 leading-relaxed font-light">
-              Current space availability indices at Secondesk {location.name}. Reach out to lock in standard pricing before seasonal volume caps are triggered.
+              Current space availability indices at SECONDESK {location.name}. Reach out to lock in standard pricing before seasonal volume caps are triggered.
             </p>
             
             <div className="border border-concrete divide-y divide-concrete bg-white">
               {[
                 { name: 'Shared Co-Working Space', capacity: 'Common Area Seats', rate: 'KES 17,000 / mo', status: 'Immediate Opening' },
-                { name: 'Private Office Suites', capacity: 'Self-Allocated Space (Small 11 sqm, Medium 14 sqm, Large 25 sqm)', rate: 'From KES 45,000 / mo', status: 'Low Availability' },
+                { name: 'Private Office Suites', capacity: 'Flexible Layout (Self-Allocated Space)', rate: 'From KES 45,000 / mo', status: 'Low Availability' },
                 { name: 'Meeting Room', capacity: 'Max 4 Guests (Round Table)', rate: 'KES 1,500 / hr', status: 'Reserve Online' },
                 { name: 'Executive Boardroom', capacity: 'Max 10 Guests (Conference Setup)', rate: 'KES 2,000 / hr (KES 12k Day)', status: 'Reserve Online' },
               ].map((row, idx) => (

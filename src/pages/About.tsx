@@ -25,7 +25,7 @@ export const About: React.FC = () => {
 
         <div className="max-w-[1440px] mx-auto px-6 lg:px-12 relative z-10">
           <div className="max-w-3xl">
-            <span className="font-sans font-bold text-xs tracking-widest uppercase text-sand block mb-3">About Secondesk</span>
+            <span className="font-sans font-bold text-xs tracking-widest uppercase text-sand block mb-3">About SECONDESK</span>
             <h1 className="font-display font-light text-4xl sm:text-5xl lg:text-6xl tracking-tight mb-6">
               Our Mission & <span className="font-serif italic text-sand">Origin Story.</span>
             </h1>
