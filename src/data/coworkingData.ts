@@ -14,6 +14,9 @@ import karenImg from '../assets/images/nairobi_karen_greenery_1783253669175.jpg'
 import upperHillImg from '../assets/images/nairobi_upper_hill_office_1783253682757.jpg';
 import cbdImg from '../assets/images/nairobi_cbd_coworking_1783253697927.jpg';
 import boardroomImg from '../assets/images/secondesk_boardroom.jpg';
+import boardroom1Img from '../assets/images/secondesk_boardroom_1.jpg';
+import boardroom2Img from '../assets/images/secondesk_boardroom_2.jpg';
+import boardroom3Img from '../assets/images/secondesk_boardroom_3.jpg';
 import reception1Img from '../assets/images/secondesk_reception_1.jpg';
 import reception2Img from '../assets/images/secondesk_reception_2.jpg';
 import workspaceMainImg from '../assets/images/secondesk_workspace_main.jpg';
@@ -34,6 +37,8 @@ export const companyInfo = {
     sunday: 'Sunday: Closed'
   }
 };
+
+export { boardroom1Img, boardroom2Img, boardroom3Img };
 
 export const officialPriceList = {
   title: 'PRICE LIST',
@@ -217,7 +222,9 @@ export const locations: LocationData[] = [
     amenities: ['Dual Backup Generators', 'Fast Dedicated Internet', 'One Complimentary Hot Beverage Per Stay'],
     gallery: [
       workspaceMainImg,
-      boardroomImg,
+      boardroom1Img,
+      boardroom2Img,
+      boardroom3Img,
       pinpoint17Img,
       reception1Img,
       reception2Img

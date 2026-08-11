@@ -1,12 +1,19 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useRouter } from '../context/NavigationContext';
-import { workspaceCategories } from '../data/coworkingData';
-import { Check, Users, Sliders } from 'lucide-react';
+import { workspaceCategories, boardroom1Img, boardroom2Img, boardroom3Img } from '../data/coworkingData';
+import { Check, Users, Sliders, X } from 'lucide-react';
 import { SEO } from '../components/SEO';
 import { Breadcrumbs } from '../components/Breadcrumbs';
 
 export const Workspace: React.FC = () => {
   const { navigate } = useRouter();
+  const [selectedImage, setSelectedImage] = useState<string | null>(null);
+
+  const galleryImages = [
+    { src: boardroom1Img, title: 'Executive Boardroom Setup' },
+    { src: boardroom2Img, title: 'Executive Boardroom Layout' },
+    { src: boardroom3Img, title: 'Executive Boardroom TV Screen' },
+  ];
 
   return (
     <div className="bg-offwhite text-charcoal pt-20 animate-fade-in">
@@ -134,6 +141,60 @@ export const Workspace: React.FC = () => {
           );
         })}
       </section>
+
+      {/* Workspace Gallery Section */}
+      <section className="bg-offwhite border-t border-concrete py-20">
+        <div className="max-w-[1440px] mx-auto px-6 lg:px-12">
+          <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4">
+            <div>
+              <span className="font-sans font-bold text-xs tracking-widest uppercase text-sand block mb-2">Architectural Visuals</span>
+              <h2 className="font-display font-light text-3xl sm:text-4xl text-charcoal tracking-tight">
+                Workspace Gallery
+              </h2>
+            </div>
+            <span className="font-sans text-xs text-charcoal/50">Click any image to expand</span>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {galleryImages.map((img, idx) => (
+              <div 
+                key={idx} 
+                onClick={() => setSelectedImage(img.src)}
+                className="aspect-4/3 overflow-hidden border border-concrete/60 cursor-pointer group hover-zoom-container bg-white shadow-xs hover:border-charcoal/40 transition-all"
+              >
+                <img 
+                  src={img.src} 
+                  alt={img.title} 
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  referrerPolicy="no-referrer"
+                />
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Lightbox Modal */}
+      {selectedImage && (
+        <div 
+          className="fixed inset-0 z-50 bg-black/90 flex items-center justify-center p-4"
+          onClick={() => setSelectedImage(null)}
+        >
+          <button 
+            className="absolute top-6 right-6 text-white hover:text-sand cursor-pointer transition-colors"
+            onClick={() => setSelectedImage(null)}
+          >
+            <X className="w-8 h-8" />
+          </button>
+          <img 
+            src={selectedImage} 
+            alt="Expanded Gallery View" 
+            className="max-w-full max-h-[90vh] object-contain rounded"
+            onClick={(e) => e.stopPropagation()}
+            referrerPolicy="no-referrer"
+          />
+        </div>
+      )}
 
       {/* Global Amenities Grid */}
       <section className="bg-white border-t border-concrete py-24">
