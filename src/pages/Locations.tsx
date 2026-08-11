@@ -16,7 +16,8 @@ import {
   Users, 
   Building2, 
   CheckCircle2, 
-  ExternalLink 
+  ExternalLink,
+  Compass
 } from 'lucide-react';
 import { SEO } from '../components/SEO';
 import { Breadcrumbs } from '../components/Breadcrumbs';
