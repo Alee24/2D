@@ -117,7 +117,7 @@ export const workspaceCategories: WorkspaceCategory[] = [
     name: 'Office Suites (Private)',
     tagline: 'Enclosed Unfurnished Office Suites',
     description: 'Enclosed, unfurnished private office suites for teams requiring total confidentiality and security.',
-    longDescription: 'Only office suites are private enclosed spaces. Designed for teams requiring total confidentiality and security. Provided as unfurnished spaces ready for your custom corporate setup.',
+    longDescription: 'Only office suites are private enclosed spaces. Designed for teams requiring total confidentiality and security.',
     image: pinpoint5Img,
     capacity: 'Flexible Layout (Self-Allocated Space)',
     startingPrice: 'KES 45,000 / mo',
