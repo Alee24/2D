@@ -115,9 +115,9 @@ export const workspaceCategories: WorkspaceCategory[] = [
   {
     id: 'private-office',
     name: 'Office Suites (Private)',
-    tagline: 'Enclosed Unfurnished Office Suites',
-    description: 'Enclosed, unfurnished private office suites for teams requiring total confidentiality and security.',
-    longDescription: 'Only office suites are private enclosed spaces. Designed for teams requiring total confidentiality and security.',
+    tagline: 'Enclosed Unfurnished Lockable Office Suites',
+    description: 'Enclosed, unfurnished, lockable private office suites for teams requiring total confidentiality and security.',
+    longDescription: 'Only office suites are private enclosed, lockable spaces. Designed for teams requiring total confidentiality and security.',
     image: pinpoint5Img,
     capacity: 'Flexible Layout (Self-Allocated Space)',
     startingPrice: 'KES 45,000 / mo',
@@ -144,7 +144,7 @@ export const workspaceCategories: WorkspaceCategory[] = [
     tagline: 'High-Level Presentations & Conferences (Max 10 Guests)',
     description: 'Executive boardroom accommodating up to 10 guests for board meetings, strategic planning, and corporate presentations.',
     longDescription: 'Host executive board meetings and high-stakes corporate presentations in our flagship Boardroom accommodating up to 10 guests. Features 75" 4K Polycom video conferencing tools, high-speed fiber, and gourmet catering options on demand.',
-    image: pinpoint5Img,
+    image: boardroomImg,
     capacity: 'Max 10 Guests',
     startingPrice: 'KES 2,000 / hr',
     amenities: ['75" 4K Smart TV', 'Polycom Studio Video Conferencing', 'Magnetic Whiteboard', 'One Complimentary Hot Beverage Per Guest', 'Fast Dedicated Internet'],
@@ -217,6 +217,7 @@ export const locations: LocationData[] = [
     amenities: ['Dual Backup Generators', 'Fast Dedicated Internet', 'One Complimentary Hot Beverage Per Stay'],
     gallery: [
       workspaceMainImg,
+      boardroomImg,
       pinpoint17Img,
       reception1Img,
       reception2Img
