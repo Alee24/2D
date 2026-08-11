@@ -83,7 +83,7 @@ export const Pricing: React.FC = () => {
             </div>
             <h3 className="font-display font-bold text-base mb-2">No Long Commitments</h3>
             <p className="font-sans text-xs text-charcoal/70 leading-relaxed">
-              Enjoy flexible month-to-month contracts on shared co-working space and private office suites with 30-day flexibility.
+              Enjoy flexible month-to-month arrangements for shared co-working space in our common area.
             </p>
           </div>
 

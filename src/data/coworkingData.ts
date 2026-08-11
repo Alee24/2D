@@ -54,9 +54,9 @@ export const officialPriceList = {
       id: 'office-suites',
       title: 'OFFICE SUITES (PRIVATE)',
       rates: [
-        { name: 'Small Suite (11 sqm)', period: 'MONTHLY', price: 'KES 45,000' },
-        { name: 'Medium Suite (14 sqm)', period: 'MONTHLY', price: 'KES 55,000' },
-        { name: 'Large Suite (25 sqm)', period: 'MONTHLY', price: 'KES 65,000' },
+        { name: 'Small Suite (11 sqm)', period: 'MIN 6 MO', price: 'KES 45,000' },
+        { name: 'Medium Suite (14 sqm)', period: 'MIN 6 MO', price: 'KES 55,000' },
+        { name: 'Large Suite (25 sqm)', period: 'MIN 6 MO', price: 'KES 65,000' },
       ]
     },
     {
@@ -120,14 +120,14 @@ export const workspaceCategories: WorkspaceCategory[] = [
   {
     id: 'private-office',
     name: 'Office Suites (Private)',
-    tagline: 'Enclosed Unfurnished Lockable Office Suites',
-    description: 'Enclosed, unfurnished, lockable private office suites for teams requiring total confidentiality and security.',
-    longDescription: 'Only office suites are private enclosed, lockable spaces. Designed for teams requiring total confidentiality and security.',
+    tagline: 'Enclosed Unfurnished Lockable Office Suites (Min 6-Month Term)',
+    description: 'Enclosed, unfurnished, lockable private office suites for teams requiring total confidentiality and security (Minimum 6-month rental term).',
+    longDescription: 'Only office suites are private enclosed, lockable spaces. Designed for teams requiring total confidentiality and security. Requires a minimum 6-month rental duration.',
     image: pinpoint5Img,
     capacity: 'Flexible Layout (Self-Allocated Space)',
     startingPrice: 'KES 45,000 / mo',
     amenities: ['Unfurnished Private Lockable Suite', 'Customizable Layout & Branding', 'Dedicated Ethernet Line', 'Executive Reception Services', 'Daily Office Cleaning'],
-    features: ['Small Office Suite (11 sqm): KES 45,000 / mo', 'Medium Office Suite (14 sqm): KES 55,000 / mo', 'Large Office Suite (25 sqm): KES 65,000 / mo', 'Individual Climate Control'],
+    features: ['Minimum 6-Month Rental Duration', 'Small Office Suite (11 sqm): KES 45,000 / mo', 'Medium Office Suite (14 sqm): KES 55,000 / mo', 'Large Office Suite (25 sqm): KES 65,000 / mo', 'Individual Climate Control'],
     slug: 'private-offices',
   },
   {
@@ -402,7 +402,7 @@ export const faqs: FAQItem[] = [
   },
   {
     question: "How do flexible monthly workspace commitments work?",
-    answer: "Most of our memberships—including Shared Co-Working Space and select Private Office configurations—are billed on a convenient month-to-month basis. There are no heavy lock-in commitments. If your team needs change, simply provide us with a 30-day notice prior to your next billing cycle."
+    answer: "Our Shared Co-Working Space memberships for common area seats are billed on a convenient, flexible month-to-month basis. There are no long-term lease commitments, giving you full flexibility to scale your desk access."
   },
   {
     question: "How do you guarantee power and internet stability?",

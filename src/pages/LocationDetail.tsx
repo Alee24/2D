@@ -134,7 +134,7 @@ export const LocationDetail: React.FC = () => {
             <div className="border border-concrete divide-y divide-concrete bg-white">
               {[
                 { name: 'Shared Co-Working Space', capacity: 'Common Area Seats', rate: 'KES 17,000 / mo', status: 'Immediate Opening' },
-                { name: 'Private Office Suites', capacity: 'Flexible Layout (Self-Allocated Space)', rate: 'From KES 45,000 / mo', status: 'Low Availability' },
+                { name: 'Private Office Suites', capacity: 'Self-Allocated Space (Minimum 6-Month Term)', rate: 'From KES 45,000 / mo', status: 'Low Availability' },
                 { name: 'Meeting Room', capacity: 'Max 4 Guests (Round Table)', rate: 'KES 1,500 / hr', status: 'Reserve Online' },
                 { name: 'Executive Boardroom', capacity: 'Max 10 Guests (Conference Setup)', rate: 'KES 2,000 / hr (KES 12k Day)', status: 'Reserve Online' },
               ].map((row, idx) => (

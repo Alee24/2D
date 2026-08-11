@@ -138,7 +138,7 @@ export const generateBrochurePDF = () => {
   doc.setFont('helvetica', 'normal');
   doc.setFontSize(9.5);
   doc.text(
-    'All rates listed below exclude 16% VAT. Flexible terms available for individuals, startups, and corporate teams.',
+    'All rates listed below exclude 16% VAT. Shared Co-Working Space available on flexible terms; Private Office Suites require a minimum 6-month rental duration.',
     15,
     50
   );
@@ -147,8 +147,9 @@ export const generateBrochurePDF = () => {
   const packages = [
     {
       title: '01. Private Office Suites (Only Private Spaces)',
-      badge: 'MONTHLY RATES',
+      badge: 'MIN 6-MONTH TERM',
       details: [
+        'Minimum Rental Duration: 6 Months (Mandatory Management Policy)',
         'Small Office Suite (11 sqm) — KES 45,000 / month',
         'Medium Office Suite (14 sqm) — KES 55,000 / month',
         'Large Office Suite (25 sqm) — KES 65,000 / month',

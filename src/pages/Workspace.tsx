@@ -91,7 +91,7 @@ export const Workspace: React.FC = () => {
                   </div>
                   <div className="flex items-center gap-2">
                     <Sliders className="w-4 h-4 text-sand" />
-                    <span><strong>Access:</strong> Flexible Terms</span>
+                    <span><strong>Access:</strong> {category.id === 'private-office' ? 'Minimum 6 Months' : category.id === 'coworking' ? 'Flexible Terms' : 'Hourly / Daily'}</span>
                   </div>
                 </div>
 
