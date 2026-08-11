@@ -7,8 +7,8 @@ interface LogoProps {
 }
 
 export const Logo: React.FC<LogoProps> = ({ className = '', size = 32, light = false }) => {
-  // Brand colors: charcoal (#1D1D1D) or offwhite (#FAFAF8), and vibrant red (#E31B23)
-  const sColor = light ? '#FAFAF8' : '#1D1D1D';
+  // Brand emblem colors: strictly Black (#111111) and Vibrant Red (#E31B23)
+  const sColor = '#111111';
   const dColor = '#E31B23';
 
   return (
@@ -20,9 +20,12 @@ export const Logo: React.FC<LogoProps> = ({ className = '', size = 32, light = f
         viewBox="0 0 100 100"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
-        className="w-full h-full"
+        className="w-full h-full rounded-full"
       >
-        {/* Left half outer ring arc (Charcoal/White) */}
+        {/* White background disc so black & red logo retains high contrast on all dark & light backgrounds */}
+        <circle cx="50" cy="50" r="46" fill="#FFFFFF" />
+
+        {/* Left half outer ring arc (Black) */}
         <path
           d="M 47 7.5 A 42.5 42.5 0 0 0 47 92.5"
           stroke={sColor}
@@ -38,7 +41,7 @@ export const Logo: React.FC<LogoProps> = ({ className = '', size = 32, light = f
           strokeLinecap="round"
         />
 
-        {/* 'S' in bold geometric sans-serif */}
+        {/* 'S' in bold geometric sans-serif (Black) */}
         <text
           x="33"
           y="66"
@@ -51,7 +54,7 @@ export const Logo: React.FC<LogoProps> = ({ className = '', size = 32, light = f
           S
         </text>
 
-        {/* 'D' in bold geometric sans-serif */}
+        {/* 'D' in bold geometric sans-serif (Red) */}
         <text
           x="67"
           y="66"
