@@ -41,7 +41,6 @@ export const Header: React.FC = () => {
     { label: 'Workspace', path: '/workspace', hasMega: 'workspace' },
     { label: 'Pricing', path: '/pricing' },
     { label: 'Locations', path: '/locations', hasMega: 'locations' },
-    { label: 'About', path: '/about' },
     { label: 'Contact', path: '/contact' },
   ];
 

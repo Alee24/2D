@@ -7,7 +7,6 @@ import Home from './pages/Home';
 import Workspace from './pages/Workspace';
 import Locations from './pages/Locations';
 import LocationDetail from './pages/LocationDetail';
-import About from './pages/About';
 import Contact from './pages/Contact';
 import BookTour from './pages/BookTour';
 import PrivacyTerms from './pages/PrivacyTerms';
@@ -84,9 +83,6 @@ const AppContent: React.FC = () => {
     }
     if (currentPath.startsWith('/locations/')) {
       return <LocationDetail />;
-    }
-    if (currentPath === '/about') {
-      return <About />;
     }
     if (currentPath === '/contact') {
       return <Contact />;

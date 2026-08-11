@@ -381,7 +381,7 @@ export const LocationDetail: React.FC = () => {
             <span className="font-sans text-[10px] font-bold uppercase tracking-widest text-sand block mb-1">Schedule a Visit</span>
             <h3 className="font-display font-semibold text-xl text-charcoal">Book an Architectural Tour</h3>
             <p className="font-sans text-xs text-charcoal/60 mt-1 leading-normal">
-              Tour our modern interiors, check desk setups, test high-speed fiber internet, and consult on custom layouts.
+              Tour our modern interiors, check seating setups, test high-speed fiber internet, and consult on custom layouts.
             </p>
           </div>
 

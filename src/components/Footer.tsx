@@ -155,7 +155,6 @@ export const Footer: React.FC = () => {
             <h4 className="font-display text-xs font-semibold uppercase tracking-widest text-sand mb-6">Company</h4>
             <ul className="space-y-3">
               {[
-                { name: 'About Us', path: '/about' },
                 { name: 'Official Price List', path: '/pricing' },
                 { name: 'Book a Tour', path: '/book-tour' },
                 { name: 'Contact Sales', path: '/contact' },

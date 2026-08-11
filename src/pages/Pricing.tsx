@@ -30,7 +30,7 @@ export const Pricing: React.FC = () => {
     <div className="bg-offwhite min-h-screen pt-28 pb-20 text-charcoal animate-fade-in">
       <SEO
         title="Official Price List & Rates — Secondesk Mombasa"
-        description="Official transparent rates for office suites, executive boardrooms, meeting rooms, coworking desks, printing, and Zoom rooms at Secondesk."
+        description="Official transparent rates for office suites, executive boardrooms, meeting rooms, shared co-working space, printing, and Zoom rooms at SECONDESK."
       />
 
       <div className="max-w-[1440px] mx-auto px-6 lg:px-12">
