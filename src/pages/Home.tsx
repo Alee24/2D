@@ -156,26 +156,6 @@ export const Home: React.FC = () => {
         </div>
       </section>
 
-      {/* 2. TRUST LOGOS */}
-      <section className="bg-white border-b border-concrete py-10 overflow-hidden relative">
-        <div className="max-w-[1440px] mx-auto px-6 lg:px-12 flex flex-col md:flex-row items-center gap-6 md:gap-12 justify-between">
-          <span className="font-sans text-[11px] font-bold uppercase tracking-wider text-charcoal/40 whitespace-nowrap">
-            COMPANIES WORKING FROM SECONDESK:
-          </span>
-          {/* Logo Strip ticker marquee style */}
-          <div className="flex items-center space-x-12 overflow-x-auto scrollbar-none py-2 w-full md:w-auto justify-start md:justify-end">
-            {trustLogos.map((logo, idx) => (
-              <span 
-                key={idx} 
-                className="font-display font-black text-sm tracking-[0.25em] text-charcoal/30 hover:text-charcoal/70 transition-colors whitespace-nowrap"
-              >
-                {logo}
-              </span>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* 3. WORKSPACE SOLUTIONS SECTION */}
       <section className="py-24 max-w-[1440px] mx-auto px-6 lg:px-12 border-b border-concrete">
         <div className="flex flex-col lg:flex-row lg:items-end justify-between mb-16 gap-4">

@@ -51,7 +51,7 @@ export const Footer: React.FC = () => {
       <div className="max-w-[1440px] mx-auto px-6 lg:px-12 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 mb-20">
           {/* Brand Info */}
-          <div className="lg:col-span-4">
+          <div className="lg:col-span-5">
             <div className="inline-flex items-center gap-2.5 mb-6 cursor-pointer bg-white px-4 py-2 rounded-xl shadow-xs border border-white/20" onClick={() => navigate('/')}>
               <Logo size={36} light={false} />
               <span className="font-display text-xl uppercase flex items-center tracking-[0.12em] font-black" style={{ fontWeight: 900 }}>
@@ -110,7 +110,7 @@ export const Footer: React.FC = () => {
           </div>
 
           {/* Quick Links Column */}
-          <div className="lg:col-span-2">
+          <div className="lg:col-span-3">
             <h4 className="font-display text-xs font-semibold uppercase tracking-widest text-sand mb-6">Workspace</h4>
             <ul className="space-y-3">
               {[
@@ -176,37 +176,6 @@ export const Footer: React.FC = () => {
                 </li>
               ))}
             </ul>
-          </div>
-
-          {/* Newsletter signup */}
-          <div className="lg:col-span-2 flex flex-col justify-start">
-            <h4 className="font-display text-xs font-semibold uppercase tracking-widest text-sand mb-6">Insights Dispatch</h4>
-            <p className="font-sans text-xs text-white/60 mb-4 leading-relaxed">
-              Receive architectural insights, local entrepreneur profiles, and regional networking schedules monthly.
-            </p>
-            {subscribed ? (
-              <div className="p-4 bg-white/5 border border-sand/30 rounded-lg text-xs text-sand">
-                Thank you for subscribing. We will keep you updated.
-              </div>
-            ) : (
-              <form onSubmit={handleSubscribe} className="relative mt-2">
-                <input
-                  type="email"
-                  required
-                  placeholder="Your professional email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  className="w-full bg-white/5 border border-white/10 focus:border-sand rounded-none px-4 py-3 text-xs text-white placeholder-white/30 focus:outline-hidden transition-colors"
-                />
-                <button
-                  type="submit"
-                  className="absolute right-1.5 top-1/2 -translate-y-1/2 p-2 text-white/60 hover:text-sand transition-colors cursor-pointer"
-                  aria-label="Submit newsletter"
-                >
-                  <ArrowRight className="w-4 h-4" />
-                </button>
-              </form>
-            )}
           </div>
         </div>
 
