@@ -13,7 +13,7 @@ export const PriceListBoard: React.FC = () => {
           <Logo size={48} light={false} />
           <div>
             <span className="font-display text-2xl uppercase flex items-center tracking-[0.15em] font-black" style={{ fontWeight: 900 }}>
-              <span className="text-charcoal">SECOND</span>
+              <span className="text-charcoal">SECON</span>
               <span className="text-[#E31B23]">DESK</span>
             </span>
             <span className="text-[10px] tracking-widest text-charcoal/50 uppercase block font-sans font-semibold">
@@ -26,10 +26,10 @@ export const PriceListBoard: React.FC = () => {
         <div className="text-right text-xs font-sans text-charcoal/80 space-y-1">
           <p className="flex items-center justify-end gap-2 font-medium">
             <Mail className="w-3.5 h-3.5 text-[#E31B23]" />
-            <a href="mailto:info@seconddesk.ke" className="hover:underline">info@seconddesk.ke</a>
+            <a href="mailto:info@secondesk.ke" className="hover:underline">info@secondesk.ke</a>
             <span className="text-charcoal/30">|</span>
             <Globe className="w-3.5 h-3.5 text-[#E31B23]" />
-            <a href="https://www.seconddesk.ke" target="_blank" rel="noreferrer" className="hover:underline">www.seconddesk.ke</a>
+            <a href="https://www.secondesk.ke" target="_blank" rel="noreferrer" className="hover:underline">www.secondesk.ke</a>
           </p>
           <p className="flex items-center justify-end gap-2 font-bold text-charcoal">
             <Phone className="w-3.5 h-3.5 text-[#E31B23]" />

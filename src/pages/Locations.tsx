@@ -29,8 +29,8 @@ export const Locations: React.FC = () => {
   return (
     <div className="bg-offwhite text-charcoal pt-20 animate-fade-in min-h-screen">
       <SEO 
-        title="SecondDesk Mombasa | Nyali Executive Hub Workspace"
-        description="Explore SecondDesk's flagship location in Mombasa: Nyali Executive Hub. Featuring ocean breeze balconies, 500Mbps dual fiber, backup generators, and private office suites."
+        title="Secondesk Mombasa | Nyali Executive Hub Workspace"
+        description="Explore Secondesk's flagship location in Mombasa: Nyali Executive Hub. Featuring fast dedicated internet, backup generators, and private office suites."
       />
       <Breadcrumbs />
 
@@ -55,11 +55,11 @@ export const Locations: React.FC = () => {
               </div>
 
               <h1 className="font-display font-light text-4xl sm:text-5xl lg:text-6xl tracking-tight text-white leading-tight">
-                SecondDesk <span className="font-serif italic text-sand">Nyali Executive Hub</span>
+                Secondesk <span className="font-serif italic text-sand">Nyali Executive Hub</span>
               </h1>
 
               <p className="font-sans text-white/80 text-base sm:text-lg leading-relaxed max-w-2xl font-light">
-                Positioned on Links Road in the heart of Nyali, our Mombasa headquarters blends high-performance corporate infrastructure with coastal serenity, ocean breeze balconies, and 24/7 power reliability.
+                Positioned on Links Road in the heart of Nyali, our Mombasa headquarters blends high-performance corporate infrastructure with fast dedicated internet and 24/7 power reliability.
               </p>
 
               {/* Key Quick Badges */}
@@ -82,7 +82,7 @@ export const Locations: React.FC = () => {
                   <Wifi className="w-4 h-4 text-sand shrink-0" />
                   <div>
                     <span className="block text-white/40 text-[10px] uppercase">Connectivity</span>
-                    <span className="font-semibold text-white">500Mbps Fiber</span>
+                    <span className="font-semibold text-white">Fast Dedicated Internet</span>
                   </div>
                 </div>
               </div>
@@ -162,7 +162,7 @@ export const Locations: React.FC = () => {
                   </div>
                   <div className="flex items-center gap-3">
                     <Building2 className="w-4 h-4 text-sand shrink-0" />
-                    <span>3rd & 4th Floor, Nyali Executive Centre</span>
+                    <span>2nd Floor, Links Road, Nyali</span>
                   </div>
                 </div>
               </div>
@@ -236,17 +236,17 @@ export const Locations: React.FC = () => {
             Available Spaces at <span className="font-serif italic text-sand">Nyali Hub.</span>
           </h2>
           <p className="font-sans text-sm text-charcoal/60 leading-relaxed font-light">
-            Whether you need a flexible hot desk for the day or a customized 20-person corporate suite, our Mombasa location offers ready-to-use professional environments.
+            Whether you need a seat in our shared co-working space for the day or a private office suite (Small 11 sqm, Medium 14 sqm, Large 25 sqm), our Mombasa location offers ready-to-use professional environments.
           </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {[
             {
-              title: 'Coworking Hot Desks',
-              desc: 'Flexible seating in our sunlit ocean-view lounge with unlimited high-speed fiber and barista coffee.',
-              price: 'KES 1,500 / day',
-              features: ['Uncapped 500Mbps WiFi', 'Barista Coffee & Tea', 'Community Lounge Access', 'Power Outlets at Every Seat']
+              title: 'Shared Co-Working Space',
+              desc: 'Book a seat at our long tables in the open common area with high-speed fiber and one complimentary hot beverage per stay.',
+              price: 'KES 1,700 / day',
+              features: ['Fast Dedicated Internet', 'One Complimentary Hot Beverage', 'Common Area Seating', 'Power Outlets at Every Seat']
             },
             {
               title: 'Dedicated Desks',
@@ -323,7 +323,7 @@ export const Locations: React.FC = () => {
                   <MapPin className="w-4 h-4 text-sand shrink-0 mt-0.5" />
                   <div>
                     <strong className="block text-charcoal">Physical Address:</strong>
-                    3rd & 4th Floor, Nyali Executive Centre, Links Road, Nyali, Mombasa
+                    2nd Floor, Nyali Executive Centre, Links Road, Nyali, Mombasa
                   </div>
                 </div>
                 <div className="flex items-start gap-3">
@@ -347,7 +347,7 @@ export const Locations: React.FC = () => {
             <div className="lg:col-span-7">
               <div className="aspect-video w-full bg-concrete border border-concrete shadow-lg relative overflow-hidden">
                 <iframe
-                  title="Google Map location representation of Second Desk Nyali Hub"
+                  title="Google Map location representation of Secondesk Nyali Hub"
                   src={location.mapEmbedUrl}
                   className="w-full h-full border-0"
                   allowFullScreen={false}

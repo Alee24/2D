@@ -70,7 +70,7 @@ export const Home: React.FC = () => {
     setActiveTestimonial((prev) => (prev - 1 + testimonials.length) % testimonials.length);
   };
 
-  // Why Second Desk array
+  // Why Secondesk array
   const coreAmenities = [
     { title: 'Flexible Membership', icon: Compass, desc: 'Agile month-to-month contracts designed to scale with your team.' },
     { title: '24/7 Secure Access', icon: Shield, desc: 'State-of-the-art secure biometric access to keep you creating round the clock.' },
@@ -78,7 +78,7 @@ export const Home: React.FC = () => {
     { title: 'Business Address', icon: MapPin, desc: 'A prestigious physical address for mail receiving, local registration and brand prestige.' },
     { title: 'Printing Services', icon: FileText, desc: 'Secure, high-volume document scanning and industrial black & white or color printing.' },
     { title: 'Reception Services', icon: Users, desc: 'Our front-of-house team welcomes guests, manages mail, and assists with administrative requests.' },
-    { title: 'Coffee & Refreshments', icon: Coffee, desc: 'Unlimited fresh hot espresso and specialty local teas brewed by professional baristas.' },
+    { title: 'Coffee & Refreshments', icon: Coffee, desc: 'One complimentary hot beverage per guest during their stay.' },
     { title: 'Networking Events', icon: Calendar, desc: 'Curated breakfast mixers, panels, and investor roundtables tailored to Mombasa professionals.' },
     { title: 'Community Support', icon: Sparkles, desc: 'Our local managers keep operations running seamlessly so you focus on results.' },
   ];
@@ -89,7 +89,7 @@ export const Home: React.FC = () => {
     { title: 'Professional networking', desc: 'Settle beside top founders, software engineers, and global consultants in collaborative workspaces.' },
     { title: 'Exclusive discounts & perks', desc: 'Pre-negotiated partner perks spanning premium cloud credits, legal filings, and lifestyle wellness hubs.' },
     { title: 'Priority event access', desc: 'Complimentary reserved slots at all masterclasses, founder fireside panels, and seasonal social dinners.' },
-    { title: 'Reciprocal global network', desc: 'Enjoy full hot desk booking access in any Second Desk location globally during your business travel.' },
+    { title: 'Reciprocal global network', desc: 'Enjoy full shared co-working space access in any Secondesk location globally during your business travel.' },
     { title: 'Premium mail handling', desc: 'Digital scanning, cataloging, and mail arrival push-text alerts handled securely by reception.' },
     { title: 'Mentorship connection', desc: 'Participate in our peer-led masterminds and connect with veteran capital leads and industry specialists.' },
     { title: 'Seamless operations', desc: 'Dedicated cleaning, high-speed power redundancy, and on-site hospitality managers handling the heavy lifting.' },
@@ -121,7 +121,7 @@ export const Home: React.FC = () => {
         <div className="relative z-10 max-w-[1440px] mx-auto px-6 lg:px-12 w-full text-center md:text-left pt-20">
           <div className="max-w-4xl">
             <span className="font-sans font-semibold text-xs tracking-[0.3em] uppercase text-sand inline-block mb-4 animate-slide-up">
-              Second Desk — Mombasa, Kenya
+              Secondesk — Mombasa, Kenya
             </span>
             <h1 className="font-display font-light text-4xl sm:text-6xl lg:text-7xl tracking-tight text-white mb-6 leading-[1.05] animate-slide-up animate-delay-100">
               Your Best Work <br className="hidden md:block"/>
@@ -160,7 +160,7 @@ export const Home: React.FC = () => {
       <section className="bg-white border-b border-concrete py-10 overflow-hidden relative">
         <div className="max-w-[1440px] mx-auto px-6 lg:px-12 flex flex-col md:flex-row items-center gap-6 md:gap-12 justify-between">
           <span className="font-sans text-[11px] font-bold uppercase tracking-wider text-charcoal/40 whitespace-nowrap">
-            COMPANIES WORKING FROM SECOND DESK:
+            COMPANIES WORKING FROM SECONDESK:
           </span>
           {/* Logo Strip ticker marquee style */}
           <div className="flex items-center space-x-12 overflow-x-auto scrollbar-none py-2 w-full md:w-auto justify-start md:justify-end">
@@ -228,11 +228,11 @@ export const Home: React.FC = () => {
         </div>
       </section>
 
-      {/* 4. WHY SECOND DESK SECTION */}
+      {/* 4. WHY SECONDESK SECTION */}
       <section className="py-24 bg-white border-b border-concrete">
         <div className="max-w-[1440px] mx-auto px-6 lg:px-12">
           <div className="text-center max-w-2xl mx-auto mb-20">
-            <span className="font-sans font-bold text-xs tracking-widest uppercase text-sand block mb-3">Why Second Desk</span>
+            <span className="font-sans font-bold text-xs tracking-widest uppercase text-sand block mb-3">Why Secondesk</span>
             <h2 className="font-display font-light text-3xl sm:text-4xl text-charcoal tracking-tight">
               Designed for Uninterrupted Focus
             </h2>
@@ -280,7 +280,7 @@ export const Home: React.FC = () => {
               <div className="absolute bottom-8 left-8 right-8 text-white">
                 <span className="font-serif italic text-sand text-lg block mb-2">Pristine Architecture</span>
                 <p className="font-sans text-xs text-white/80 leading-relaxed">
-                  Every Second Desk environment is crafted to maximize natural sunlight, acoustic isolation, and visual order.
+                  Every Secondesk environment is crafted to maximize natural sunlight, acoustic isolation, and visual order.
                 </p>
               </div>
             </div>
@@ -373,7 +373,7 @@ export const Home: React.FC = () => {
             { title: 'Investor Meetups', tag: 'Closed-door VC pits', desc: 'Secure direct pipelines to regional angel networks, seed funds, and institutional corporate development leads.' },
             { title: 'Founder Panels', tag: 'Real lessons, no fluff', desc: 'Listen to seasoned operators discuss serial fundraising, cross-border compliance, and complex scaling models.' },
             { title: 'SME Workshops', tag: 'Practical optimization', desc: 'Hands-on masterclasses centering local tax filings, enterprise architecture scaling, and cloud workflow systems.' },
-            { title: 'Community Dinners', tag: 'Curated 3-course mixes', desc: 'Savor gourmet catering on our rooftop gardens alongside other ambitious managing partners, founders, and directors.' }
+            { title: 'Community Dinners', tag: 'Curated 3-course mixes', desc: 'Savor gourmet catering in our common lounges alongside other ambitious managing partners, founders, and directors.' }
           ].map((item, idx) => (
             <div key={idx} className="bg-white p-8 border border-concrete hover:border-sand transition-all duration-300">
               <span className="font-mono text-[9px] uppercase tracking-widest text-sand font-bold block mb-2">{item.tag}</span>
@@ -461,7 +461,7 @@ export const Home: React.FC = () => {
                 Download Our <span className="font-serif italic text-charcoal/60">Premium Brochure.</span>
               </h2>
               <p className="font-sans text-sm text-charcoal/70 leading-relaxed max-w-xl">
-                Get an instant, high-fidelity corporate overview of SecondDesk's workspace designs and configurations. Our comprehensive A4 portfolio booklet details architectural layouts, secure fiber infrastructure setups, executive boardroom pricing packages, and customized enterprise branding models for your teams in Nyali, Mombasa CBD, and Tudor Bay.
+                Get an instant, high-fidelity corporate overview of Secondesk's workspace designs and configurations. Our comprehensive A4 portfolio booklet details architectural layouts, secure fiber infrastructure setups, executive boardroom pricing packages, and customized enterprise branding models for your teams in Nyali, Mombasa CBD, and Tudor Bay.
               </p>
               
               {/* Premium Specs list */}
@@ -538,7 +538,7 @@ export const Home: React.FC = () => {
 
                   {downloadSuccess && (
                     <p className="text-center font-sans text-[11px] text-emerald-600 animate-fade-in font-medium">
-                      Check your download folder for "SecondDesk_Premium_Workspace_Brochure.pdf"!
+                      Check your download folder for "Secondesk_Official_Brochure_PriceList.pdf"!
                     </p>
                   )}
 
@@ -613,7 +613,7 @@ export const Home: React.FC = () => {
           <div className="max-w-2xl mx-auto">
             <span className="font-sans font-bold text-xs tracking-widest uppercase text-sand block mb-4">Secure your space</span>
             <h2 className="font-display font-light text-4xl sm:text-5xl text-charcoal tracking-tight mb-6 leading-tight">
-              Ready for your <span className="font-serif italic text-charcoal/60">Second Desk?</span>
+              Ready for your <span className="font-serif italic text-charcoal/60">Secondesk?</span>
             </h2>
             <p className="font-sans text-sm text-charcoal/60 mb-10 leading-relaxed max-w-lg mx-auto">
               Book a tour today and experience a workspace built from the ground up around focus, productivity, and regional business trust.

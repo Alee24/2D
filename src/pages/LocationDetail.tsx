@@ -59,19 +59,19 @@ export const LocationDetail: React.FC = () => {
   return (
     <div className="bg-offwhite text-charcoal pt-20 animate-fade-in">
       <SEO 
-        title={`${location.name} Coworking & Private Offices`}
-        description={`Explore SecondDesk ${location.name} in Mombasa. Premium boutique workspace featuring flexible hot desks, dedicated permanent desks, private office suites, and state-of-the-art meeting rooms. Rates starting from ${location.startingPrice}.`}
+        title={`${location.name} Shared Co-Working Space & Private Offices`}
+        description={`Explore Secondesk ${location.name} in Mombasa. Featuring shared co-working space at long common tables, dedicated desks, private office suites (Small 11 sqm, Medium 14 sqm, Large 25 sqm), meeting rooms (Max 4), and boardrooms (Max 10).`}
         ogImage={location.image}
         schemaType="CoworkingSpace"
         schemaData={{
           '@context': 'https://schema.org',
           '@type': 'CoworkingSpace',
-          'name': `SecondDesk ${location.name}`,
-          'description': `Premium boutique workspace in ${location.name}, Mombasa featuring flexible hot desks, dedicated permanent desks, private office suites, and state-of-the-art meeting rooms.`,
+          'name': `Secondesk ${location.name}`,
+          'description': `Premium boutique workspace in ${location.name}, Mombasa featuring shared co-working space, dedicated desks, private office suites, and meeting rooms.`,
           'image': location.image,
           'url': window.location.origin + window.location.pathname,
           'telephone': location.phone || '0719688992',
-          'email': location.email || 'info@seconddesk.ke',
+          'email': location.email || 'info@secondesk.ke',
           'priceRange': '$$$',
           'address': {
             '@type': 'PostalAddress',
@@ -107,7 +107,7 @@ export const LocationDetail: React.FC = () => {
               {location.neighborhood}
             </span>
             <h1 className="font-display font-light text-4xl sm:text-5xl lg:text-6xl text-white tracking-tight leading-none mb-4">
-              Second Desk <span className="font-serif italic text-sand">{location.name}</span>
+              Secondesk <span className="font-serif italic text-sand">{location.name}</span>
             </h1>
             <p className="font-sans text-white/80 text-sm sm:text-base max-w-xl">
               {location.address}
@@ -128,16 +128,15 @@ export const LocationDetail: React.FC = () => {
               Workspace Availability
             </h2>
             <p className="font-sans text-xs text-charcoal/60 leading-relaxed font-light">
-              Current space availability indices at Second Desk {location.name}. Reach out to lock in standard pricing before seasonal volume caps are triggered.
+              Current space availability indices at Secondesk {location.name}. Reach out to lock in standard pricing before seasonal volume caps are triggered.
             </p>
             
             <div className="border border-concrete divide-y divide-concrete bg-white">
               {[
-                { name: 'Coworking Hot Pass', capacity: 'Flexible / Hot Desks', rate: 'KES 25,000 / mo', status: 'Immediate Opening' },
-                { name: 'Dedicated Desk Room', capacity: 'Permanent Seat', rate: 'KES 38,000 / mo', status: '2 Desks Remaining' },
-                { name: 'Private Office Suite', capacity: '2-12 seaters', rate: 'From KES 95,000 / mo', status: 'Low Availability' },
-                { name: 'Enterprise Corporate Suite', capacity: '20-100 seats', rate: 'Custom Quote', status: 'Booking Required' },
-                { name: 'Meeting & Boardrooms', capacity: '4-20 boardrooms', rate: 'KES 2,500 / hr', status: 'Reserve on App' },
+                { name: 'Shared Co-Working Space', capacity: 'Common Area Seats', rate: 'KES 17,000 / mo', status: 'Immediate Opening' },
+                { name: 'Dedicated Desk Room', capacity: 'Permanent Seat', rate: 'KES 17,000 / mo', status: '2 Desks Remaining' },
+                { name: 'Private Office Suites', capacity: 'Small 11m², Medium 14m², Large 25m²', rate: 'From KES 45,000 / mo', status: 'Low Availability' },
+                { name: 'Meeting & Boardrooms', capacity: 'Meeting Room (Max 4) | Boardroom (Max 10)', rate: 'From KES 1,500 / hr', status: 'Reserve on App' },
               ].map((row, idx) => (
                 <div key={idx} className="p-5 flex flex-col sm:flex-row sm:items-center justify-between gap-3 hover:bg-offwhite/50 transition-colors">
                   <div>
@@ -262,7 +261,7 @@ export const LocationDetail: React.FC = () => {
             </h2>
             <div className="aspect-video w-full bg-concrete border border-concrete relative">
               <iframe
-                title={`Map layout of Second Desk ${location.name}`}
+                title={`Map layout of Secondesk ${location.name}`}
                 src={location.mapEmbedUrl}
                 className="w-full h-full"
                 allowFullScreen={false}
@@ -388,23 +387,16 @@ export const LocationDetail: React.FC = () => {
 
           <div className="space-y-4">
             <div className="flex flex-col gap-1">
-              <span className="font-sans text-[10px] font-bold uppercase tracking-widest text-charcoal/40">Selected Node</span>
-              <span className="font-display font-semibold text-charcoal text-sm bg-offwhite px-3 py-2 border border-concrete flex items-center gap-1.5">
-                <MapPin className="w-3.5 h-3.5 text-sand" /> Second Desk {location.name}
-              </span>
-            </div>
-
-            <div className="flex flex-col gap-1">
               <span className="font-sans text-[10px] font-bold uppercase tracking-widest text-charcoal/40">Includes</span>
               <ul className="space-y-2 text-xs font-sans text-charcoal/70 pt-1">
                 <li className="flex items-center gap-2">
                   <Check className="w-3.5 h-3.5 text-sand" /> 1-on-1 space consultation
                 </li>
                 <li className="flex items-center gap-2">
-                  <Check className="w-3.5 h-3.5 text-sand" /> Complementary Day Pass
+                  <Check className="w-3.5 h-3.5 text-sand" /> Guided 1-on-1 walkthrough
                 </li>
                 <li className="flex items-center gap-2">
-                  <Check className="w-3.5 h-3.5 text-sand" /> Artisanal Barista espresso flight
+                  <Check className="w-3.5 h-3.5 text-sand" /> One complimentary hot beverage
                 </li>
               </ul>
             </div>

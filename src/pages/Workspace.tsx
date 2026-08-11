@@ -12,7 +12,7 @@ export const Workspace: React.FC = () => {
     <div className="bg-offwhite text-charcoal pt-20 animate-fade-in">
       <SEO 
         title="Workspace Solutions & Private Offices"
-        description="From flexible hot desks and dedicated workstations to premium private offices and enterprise suites tailored for your business."
+        description="From shared co-working space at long common tables and dedicated workstations to private office suites and meeting facilities."
       />
       <Breadcrumbs />
       {/* Editorial Hero */}
@@ -33,7 +33,7 @@ export const Workspace: React.FC = () => {
               Find Your Ideal <span className="font-serif italic text-sand">Workspace.</span>
             </h1>
             <p className="font-sans text-white/75 text-base sm:text-lg leading-relaxed max-w-xl">
-              From plug-and-play hot desks for independent remote creators to secure, customizable multi-floor headquarters for global enterprises.
+              From shared co-working space at long common tables to enclosed private office suites (Small 11 sqm, Medium 14 sqm, Large 25 sqm).
             </p>
           </div>
         </div>
@@ -151,7 +151,7 @@ export const Workspace: React.FC = () => {
               { title: 'Redundant Power Backups', desc: 'Auto-transfer diesel generators activate within 3 seconds of grid disruption.' },
               { title: 'Secure Enterprise Fiber', desc: 'Symmetrical high-speed bandwidth from separate top tier ISPs.' },
               { title: 'Mail Handling', desc: 'Secure sorting, scanning, and reception pickup alerts.' },
-              { title: 'Barista Service', desc: 'Unlimited specialty espresso, teas, and mineral water.' },
+              { title: 'Hot Beverages', desc: 'One complimentary hot beverage per guest during their stay.' },
               { title: 'Premium Cleaning', desc: 'Daily dedicated sanitation of all shared facilities, desks, and suites.' },
               { title: 'Community Events', desc: 'Monthly investor breakfasts, networking mixers, and masterclasses.' },
               { title: 'Dedicated App', desc: 'Instantly reserve meeting rooms, print files, or register guests.' },

@@ -34,7 +34,7 @@ export const Contact: React.FC = () => {
       setIsSubmitting(true);
       try {
         await dispatchEmail({
-          subject: `SECONDDESK — New Contact Inquiry from ${formData.name}`,
+          subject: `SECONDESK — New Contact Inquiry from ${formData.name}`,
           fields: {
             'Full Name': formData.name,
             'Business Email': formData.email,
@@ -97,7 +97,7 @@ export const Contact: React.FC = () => {
                   <span>0719688992</span> <span className="text-charcoal/40">|</span> <span>+254 719 688 992</span>
                 </p>
                 <p className="flex items-center gap-2">
-                  <Mail className="w-4 h-4 text-[#E31B23] shrink-0" /> info@seconddesk.ke
+                  <Mail className="w-4 h-4 text-[#E31B23] shrink-0" /> info@secondesk.ke
                 </p>
                 <div className="pt-1 space-y-1">
                   <p className="flex items-center gap-2">
@@ -111,6 +111,31 @@ export const Contact: React.FC = () => {
                     <strong>Sunday:</strong> Closed
                   </p>
                 </div>
+                <div className="pt-3 border-t border-concrete/60 space-y-2">
+                  <span className="font-sans text-[10px] font-bold uppercase tracking-widest text-[#E31B23] block">Official Social Channels</span>
+                  <div className="flex items-center gap-4 text-xs font-sans">
+                    <a 
+                      href="https://www.instagram.com/secondesknyali" 
+                      target="_blank" 
+                      rel="noreferrer" 
+                      className="inline-flex items-center gap-1.5 text-charcoal/80 hover:text-[#E31B23] transition-colors"
+                    >
+                      <Instagram className="w-3.5 h-3.5 text-[#E31B23]" />
+                      <span>@secondesknyali</span>
+                    </a>
+                    <a 
+                      href="https://www.tiktok.com/@secondesknyali" 
+                      target="_blank" 
+                      rel="noreferrer" 
+                      className="inline-flex items-center gap-1.5 text-charcoal/80 hover:text-[#E31B23] transition-colors"
+                    >
+                      <svg className="w-3.5 h-3.5 fill-[#E31B23]" viewBox="0 0 24 24">
+                        <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 1 1-5.2-1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V5.8a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 3 12a6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.34-6.34V8.05a8.21 8.21 0 0 0 4.91 1.62v-3.48a4.85 4.85 0 0 1-1-.5z"/>
+                      </svg>
+                      <span>@secondesknyali</span>
+                    </a>
+                  </div>
+                </div>
               </div>
             </div>
 
@@ -119,7 +144,7 @@ export const Contact: React.FC = () => {
               <div className="space-y-1 text-xs font-sans text-charcoal/60 leading-normal">
                 {locations.slice(0, 3).map((loc) => (
                   <p key={loc.id}>
-                    <strong>Second Desk {loc.name}:</strong> {loc.phone}
+                    <strong>Secondesk {loc.name}:</strong> {loc.phone}
                   </p>
                 ))}
               </div>
@@ -131,7 +156,7 @@ export const Contact: React.FC = () => {
             <h3 className="font-display font-semibold text-xl text-charcoal tracking-tight">Main Mombasa Node Map</h3>
             <div className="aspect-video w-full bg-concrete border border-concrete">
               <iframe
-                title="Google Map location representation of Second Desk Nyali HQ"
+                title="Google Map location representation of Secondesk Nyali HQ"
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3979.882195289944!2d39.68351541533261!3d-4.041453999080063!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x184012e5c0000000%3A0xd6891cc774fcf373!2sNyali%2C%20Mombasa!5e0!3m2!1sen!2ske!4v1655112233445!5m2!1sen!2ske"
                 className="w-full h-full border-0"
                 allowFullScreen={false}
@@ -184,7 +209,7 @@ export const Contact: React.FC = () => {
               </div>
               <h4 className="font-display font-semibold text-emerald-950 text-base">Message Sent Successfully</h4>
               <p className="font-sans text-xs text-emerald-800 leading-relaxed">
-                Thank you for reaching out. A Second Desk customer success executive has received your inquiry and will follow up within 2 business hours.
+                Thank you for reaching out. A Secondesk customer success executive has received your inquiry and will follow up within 2 business hours.
               </p>
               <button
                 onClick={() => setSubmitted(false)}
@@ -278,7 +303,7 @@ export const Contact: React.FC = () => {
                 disabled={isSubmitting}
                 className="w-full bg-charcoal border border-charcoal hover:bg-sand hover:border-sand hover:text-charcoal text-white font-sans text-xs font-bold uppercase tracking-widest py-4.5 transition-all cursor-pointer shadow-md text-center disabled:opacity-50"
               >
-                {isSubmitting ? 'Sending Message to info@seconddesk.ke...' : 'Send Inquiry Message'}
+                {isSubmitting ? 'Sending Message to info@secondesk.ke...' : 'Send Inquiry Message'}
               </button>
             </form>
           )}

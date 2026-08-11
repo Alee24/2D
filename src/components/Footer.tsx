@@ -17,7 +17,7 @@ export const Footer: React.FC = () => {
       setIsSubmitting(true);
       try {
         await dispatchEmail({
-          subject: `SECONDDESK — New Newsletter Subscription: ${email}`,
+          subject: `SECONDESK — New Newsletter Subscription: ${email}`,
           fields: {
             'Subscriber Email': email,
             'Subscription Type': 'Monthly Insights Dispatch',
@@ -55,7 +55,7 @@ export const Footer: React.FC = () => {
             <div className="flex items-center gap-2 mb-6 cursor-pointer" onClick={() => navigate('/')}>
               <Logo size={42} light={true} />
               <span className="font-display text-xl uppercase flex items-center tracking-[0.12em] font-black" style={{ fontWeight: 900 }}>
-                <span className="text-white">SECOND</span>
+                <span className="text-white">SECON</span>
                 <span className="text-[#E31B23]">DESK</span>
               </span>
             </div>
@@ -73,7 +73,7 @@ export const Footer: React.FC = () => {
                 <span className="text-white font-medium">Saturday:</span> 9:00 AM - 1:00 PM | <span className="text-white/50">Sunday: Closed</span>
               </p>
               <p className="text-white/70">
-                <span className="text-white font-medium">Email:</span> info@seconddesk.ke
+                <span className="text-white font-medium">Email:</span> info@secondesk.ke
               </p>
             </div>
             <div className="flex items-center space-x-4">
@@ -87,22 +87,24 @@ export const Footer: React.FC = () => {
                 <Linkedin className="w-4 h-4" />
               </a>
               <a 
-                href="https://instagram.com" 
+                href="https://www.instagram.com/secondesknyali" 
                 target="_blank" 
                 rel="noreferrer" 
                 className="w-10 h-10 rounded-full border border-white/10 hover:border-sand flex items-center justify-center text-white/60 hover:text-sand transition-all"
-                aria-label="Instagram"
+                aria-label="Instagram (@secondesknyali)"
               >
                 <Instagram className="w-4 h-4" />
               </a>
               <a 
-                href="https://facebook.com" 
+                href="https://www.tiktok.com/@secondesknyali" 
                 target="_blank" 
                 rel="noreferrer" 
                 className="w-10 h-10 rounded-full border border-white/10 hover:border-sand flex items-center justify-center text-white/60 hover:text-sand transition-all"
-                aria-label="Facebook"
+                aria-label="TikTok (@secondesknyali)"
               >
-                <Facebook className="w-4 h-4" />
+                <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
+                  <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 1 1-5.2-1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V5.8a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 3 12a6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.34-6.34V8.05a8.21 8.21 0 0 0 4.91 1.62v-3.48a4.85 4.85 0 0 1-1-.5z"/>
+                </svg>
               </a>
             </div>
           </div>
@@ -112,7 +114,7 @@ export const Footer: React.FC = () => {
             <h4 className="font-display text-xs font-semibold uppercase tracking-widest text-sand mb-6">Workspace</h4>
             <ul className="space-y-3">
               {[
-                { name: 'Hot Desks', slug: 'coworking' },
+                { name: 'Shared Co-Working Space', slug: 'coworking' },
                 { name: 'Dedicated Desk', slug: 'dedicated-desks' },
                 { name: 'Private Offices', slug: 'private-offices' },
                 { name: 'Meeting Rooms', slug: 'meeting-rooms' },
@@ -213,7 +215,7 @@ export const Footer: React.FC = () => {
         <div className="pt-8 border-t border-white/10 flex flex-col md:flex-row items-center justify-between gap-4">
           <div className="flex flex-wrap items-center gap-6">
             <span className="font-sans text-xs text-white/40">
-              © {new Date().getFullYear()} Second Desk Ltd. All Rights Reserved.
+              © {new Date().getFullYear()} Secondesk Ltd. All Rights Reserved.
             </span>
             <span className="font-sans text-xs text-white/40">
               Developed by <a href="https://wa.me/254724454757" target="_blank" rel="noreferrer" className="text-sand/90 underline hover:text-white transition-colors">KKDES</a>

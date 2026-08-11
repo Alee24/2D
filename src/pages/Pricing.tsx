@@ -29,21 +29,21 @@ export const Pricing: React.FC = () => {
   return (
     <div className="bg-offwhite min-h-screen pt-28 pb-20 text-charcoal animate-fade-in">
       <SEO
-        title="Official Price List & Rates — SecondDesk Mombasa"
-        description="Official transparent rates for office suites, executive boardrooms, meeting rooms, coworking desks, printing, and Zoom rooms at SecondDesk."
+        title="Official Price List & Rates — Secondesk Mombasa"
+        description="Official transparent rates for office suites, executive boardrooms, meeting rooms, coworking desks, printing, and Zoom rooms at Secondesk."
       />
 
       <div className="max-w-[1440px] mx-auto px-6 lg:px-12">
         {/* Page Header */}
         <div className="text-center max-w-3xl mx-auto mb-10">
           <span className="font-sans font-semibold text-xs tracking-[0.25em] uppercase text-sand inline-block mb-3">
-            SecondDesk Official Rates
+            Secondesk Official Rates
           </span>
           <h1 className="font-display font-light text-4xl sm:text-5xl tracking-tight mb-4">
             Transparent <span className="font-serif italic font-normal text-sand">Membership & Facility Pricing</span>
           </h1>
           <p className="font-sans text-charcoal/70 text-base sm:text-lg leading-relaxed">
-            From flexible hot desk passes to move-in-ready office suites and high-spec executive boardrooms. All rates listed exclude 16% VAT.
+            From shared co-working space seats to move-in-ready private office suites (Small 11 sqm, Medium 14 sqm, Large 25 sqm) and executive meeting facilities. All rates listed exclude 16% VAT.
           </p>
 
           <div className="flex flex-wrap items-center justify-center gap-4 mt-6">
@@ -83,7 +83,7 @@ export const Pricing: React.FC = () => {
             </div>
             <h3 className="font-display font-bold text-base mb-2">No Long Commitments</h3>
             <p className="font-sans text-xs text-charcoal/70 leading-relaxed">
-              Enjoy flexible month-to-month contracts on hot desks, dedicated desks, and office suites with 30-day flexibility.
+              Enjoy flexible month-to-month contracts on shared co-working space, dedicated desks, and private office suites with 30-day flexibility.
             </p>
           </div>
 
@@ -103,7 +103,7 @@ export const Pricing: React.FC = () => {
             </div>
             <h3 className="font-display font-bold text-base mb-2">Instant Inquiries</h3>
             <p className="font-sans text-xs text-charcoal/70 leading-relaxed">
-              Send us your space requirements at <span className="font-bold text-charcoal">info@seconddesk.ke</span> for custom corporate quotes.
+              Send us your space requirements at <span className="font-bold text-charcoal">info@secondesk.ke</span> for custom corporate quotes.
             </p>
           </div>
         </div>

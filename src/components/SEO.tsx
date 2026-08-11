@@ -14,7 +14,7 @@ interface SEOProps {
 export const SEO: React.FC<SEOProps> = ({
   title,
   description,
-  keywords = 'coworking Mombasa, shared offices Nyali, private office Tudor, meeting rooms Mombasa CBD, business lounge Mombasa, virtual office Kenya, SecondDesk, boutique workspace Coast',
+  keywords = 'coworking Mombasa, shared offices Nyali, private office Tudor, meeting rooms Mombasa CBD, business lounge Mombasa, virtual office Kenya, Secondesk, boutique workspace Coast',
   ogType = 'website',
   ogImage = 'https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=1200',
   canonicalPath,
@@ -23,7 +23,7 @@ export const SEO: React.FC<SEOProps> = ({
 }) => {
   useEffect(() => {
     // 1. Update document title
-    const fullTitle = `${title} | SecondDesk`;
+    const fullTitle = `${title} | Secondesk`;
     document.title = fullTitle;
 
     // Helper function to update or create meta tags
@@ -71,10 +71,10 @@ export const SEO: React.FC<SEOProps> = ({
     canonicalLink.setAttribute('href', currentUrl);
 
     // 6. Generate and Inject Dynamic JSON-LD Structured Data
-    let jsonLdScript = document.head.querySelector('script[id="seconddesk-jsonld"]') as HTMLScriptElement;
+    let jsonLdScript = document.head.querySelector('script[id="secondesk-jsonld"]') as HTMLScriptElement;
     if (!jsonLdScript) {
       jsonLdScript = document.createElement('script');
-      jsonLdScript.id = 'seconddesk-jsonld';
+      jsonLdScript.id = 'secondesk-jsonld';
       jsonLdScript.type = 'application/ld+json';
       document.head.appendChild(jsonLdScript);
     }
@@ -98,11 +98,11 @@ export const SEO: React.FC<SEOProps> = ({
           'image': ogImage,
           'author': {
             '@type': 'Organization',
-            'name': 'SecondDesk Team',
+            'name': 'Secondesk Team',
           },
           'publisher': {
             '@type': 'Organization',
-            'name': 'SecondDesk',
+            'name': 'Secondesk',
             'logo': {
               '@type': 'ImageObject',
               'url': 'https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=200',
@@ -111,12 +111,12 @@ export const SEO: React.FC<SEOProps> = ({
           'datePublished': new Date().toISOString().split('T')[0], // Fallback date
           'mainEntityOfPage': currentUrl,
         };
-      } else if (path.includes('/locations/') || title.includes('SecondDesk ') || (title.includes('Location') && title !== 'Premium Coworking & Private Office Locations in Mombasa')) {
+      } else if (path.includes('/locations/') || title.includes('Secondesk ') || (title.includes('Location') && title !== 'Premium Coworking & Private Office Locations in Mombasa')) {
         // Looks like an individual location detail page
         resolvedSchema = {
           '@context': 'https://schema.org',
           '@type': 'CoworkingSpace',
-          'name': `${title} | SecondDesk`,
+          'name': `${title} | Secondesk`,
           'description': description,
           'image': ogImage,
           'url': currentUrl,
@@ -134,9 +134,9 @@ export const SEO: React.FC<SEOProps> = ({
         resolvedSchema = {
           '@context': 'https://schema.org',
           '@type': 'CoworkingSpace',
-          '@id': 'https://seconddesk.ke/#organization',
-          'name': 'SecondDesk',
-          'url': 'https://seconddesk.ke',
+          '@id': 'https://secondesk.ke/#organization',
+          'name': 'Secondesk',
+          'url': 'https://secondesk.ke',
           'logo': 'https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=200',
           'image': 'https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=1200',
           'description': description,

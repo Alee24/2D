@@ -5,6 +5,7 @@ import { MapPin, Calendar, Users, Check, Clock, Phone, Mail, Award, ArrowLeft } 
 import { SEO } from '../components/SEO';
 import { Breadcrumbs } from '../components/Breadcrumbs';
 import { dispatchEmail } from '../utils/emailService';
+import { Logo } from '../components/Logo';
 
 export const BookTour: React.FC = () => {
   const { navigate } = useRouter();
@@ -32,7 +33,7 @@ export const BookTour: React.FC = () => {
       setIsSubmitting(true);
       try {
         await dispatchEmail({
-          subject: `SECONDDESK — Tour Booking Request: ${formData.name}`,
+          subject: `SECONDESK — Tour Booking Request: ${formData.name}`,
           fields: {
             'Full Name': formData.name,
             'Company Name': formData.company || 'N/A',
@@ -58,7 +59,7 @@ export const BookTour: React.FC = () => {
   return (
     <div className="bg-offwhite text-charcoal pt-20 animate-fade-in min-h-screen">
       <SEO 
-        title="Schedule a Private Tour | SecondDesk Mombasa"
+        title="Schedule a Private Tour | Secondesk Mombasa"
         description="Book a personalized tour of our boutique coworking and office spaces in Nyali, Mombasa CBD, or Tudor."
       />
       <Breadcrumbs />
@@ -110,11 +111,12 @@ export const BookTour: React.FC = () => {
               <div className="p-8 sm:p-12 space-y-8">
                 {/* Brand and Ticket Header */}
                 <div className="flex items-center justify-between border-b border-concrete pb-6">
-                  <div className="flex items-center gap-1.5">
-                    <div className="w-6 h-6 border border-charcoal bg-charcoal text-white font-display font-extrabold text-[10px] flex items-center justify-center tracking-widest">
-                      SD
-                    </div>
-                    <span className="font-display font-bold tracking-widest text-xs uppercase">Second Desk</span>
+                  <div className="flex items-center gap-2">
+                    <Logo size={24} light={false} />
+                    <span className="font-display font-black tracking-widest text-xs uppercase">
+                      <span className="text-charcoal">SECON</span>
+                      <span className="text-[#E31B23]">DESK</span>
+                    </span>
                   </div>
                   <span className="font-mono text-[9px] text-charcoal/40 uppercase tracking-widest">Itinerary Pass</span>
                 </div>
@@ -124,7 +126,7 @@ export const BookTour: React.FC = () => {
                   <div className="space-y-1">
                     <span className="text-charcoal/40 uppercase block text-[9px] font-bold tracking-widest">Host Node</span>
                     <span className="font-display font-semibold text-charcoal text-sm">
-                      Second Desk {selectedLocDetails.name}
+                      Secondesk {selectedLocDetails.name}
                     </span>
                     <span className="text-charcoal/60 block leading-relaxed pr-4">
                       {selectedLocDetails.address}
@@ -155,7 +157,7 @@ export const BookTour: React.FC = () => {
                       <Check className="w-3.5 h-3.5 text-sand" /> Individual 1-on-1 corporate strategy review
                     </li>
                     <li className="flex items-center gap-2">
-                      <Check className="w-3.5 h-3.5 text-sand" /> Complimentary Day Pass credentials issued on arrival
+                      <Check className="w-3.5 h-3.5 text-sand" /> Guided 1-on-1 spatial walkthrough
                     </li>
                     <li className="flex items-center gap-2">
                       <Check className="w-3.5 h-3.5 text-sand" /> Complete speed diagnostics of secure redundancy fiber
@@ -201,7 +203,7 @@ export const BookTour: React.FC = () => {
                   { title: 'Personalized Workspace Tour', desc: 'Walkthrough all shared areas, dedicated desk zones, private suits, and local server setups.' },
                   { title: 'Redundant Power & Fiber Audits', desc: 'See our high-redundant Tier-1 symmetrical fiber routing, biometric gates, and auto generators.' },
                   { title: '1-on-1 Spatial Consultation', desc: 'Discuss custom team scaling layouts, branding rules, corporate invoice pipelines, and event reservations.' },
-                  { title: 'Complimentary Day Pass', desc: 'Remain in our coworking areas after your tour to fully experience actual workspace focus and our barista cafes.' }
+                  { title: 'Paid Day Passes Available', desc: 'Day passes available for purchase if you wish to remain in our shared co-working space after your tour.' }
                 ].map((perk, idx) => (
                   <div key={idx} className="flex gap-4 items-start">
                     <div className="w-8 h-8 rounded-full border border-concrete bg-white flex items-center justify-center text-sand shrink-0 mt-0.5">
@@ -296,19 +298,10 @@ export const BookTour: React.FC = () => {
                 {/* Row 3: Dropdowns for Location & Team size */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                   <div className="flex flex-col gap-1.5">
-                    <span className="font-sans text-[10px] font-bold uppercase tracking-widest text-charcoal/40">Preferred Node</span>
-                    <select
-                      name="location"
-                      value={formData.location}
-                      onChange={handleInputChange}
-                      className="w-full bg-transparent border border-concrete focus:border-sand px-4 py-3.5 text-xs text-charcoal focus:outline-hidden rounded-none"
-                    >
-                      {locations.map((loc) => (
-                        <option key={loc.id} value={loc.id}>
-                          Second Desk {loc.name} ({loc.neighborhood.split(',')[1] || loc.name})
-                        </option>
-                      ))}
-                    </select>
+                    <span className="font-sans text-[10px] font-bold uppercase tracking-widest text-charcoal/40">Location</span>
+                    <div className="w-full bg-offwhite border border-concrete px-4 py-3.5 text-xs text-charcoal font-medium flex items-center gap-1.5">
+                      <MapPin className="w-3.5 h-3.5 text-sand" /> Secondesk Nyali Executive Hub
+                    </div>
                   </div>
 
                   <div className="flex flex-col gap-1.5">
@@ -361,7 +354,7 @@ export const BookTour: React.FC = () => {
                   disabled={isSubmitting}
                   className="w-full bg-charcoal border border-charcoal hover:bg-sand hover:border-sand hover:text-charcoal text-white font-sans text-xs font-bold uppercase tracking-widest py-4.5 transition-all cursor-pointer shadow-md text-center disabled:opacity-50"
                 >
-                  {isSubmitting ? 'Sending Tour Request to info@seconddesk.ke...' : 'Generate Confirmed Tour Pass'}
+                  {isSubmitting ? 'Sending Tour Request to info@secondesk.ke...' : 'Generate Confirmed Tour Pass'}
                 </button>
               </form>
             </div>

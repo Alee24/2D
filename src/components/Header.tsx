@@ -92,7 +92,7 @@ export const Header: React.FC = () => {
           >
             <Logo size={42} light={!isSolidHeader} />
             <span className="font-display text-xl uppercase flex items-center tracking-[0.12em] font-black" style={{ fontWeight: 900 }}>
-              <span className={isSolidHeader ? 'text-charcoal' : 'text-white'}>SECOND</span>
+              <span className={isSolidHeader ? 'text-charcoal' : 'text-white'}>SECON</span>
               <span className="text-[#E31B23]">DESK</span>
             </span>
           </div>
@@ -151,7 +151,7 @@ export const Header: React.FC = () => {
               className={`p-2 transition-colors duration-200 cursor-pointer ${
                 isSolidHeader ? 'text-charcoal hover:text-sand' : 'text-white hover:text-sand'
               }`}
-              aria-label="Search Second Desk"
+              aria-label="Search Secondesk"
             >
               <Search className="w-5 h-5" />
             </button>
@@ -270,7 +270,7 @@ export const Header: React.FC = () => {
                     <div className="col-span-1 border-r border-concrete pr-8">
                       <span className="text-xs font-semibold tracking-widest uppercase text-sand block mb-2">Location</span>
                       <h3 className="font-display text-2xl font-semibold text-charcoal leading-tight mb-4">Mombasa Headquarters</h3>
-                      <p className="font-sans text-sm text-charcoal/60 mb-6">Explore SecondDesk Nyali Executive Hub — our premier coastal workspace with ocean view balconies and 24/7 power redundancy.</p>
+                      <p className="font-sans text-sm text-charcoal/60 mb-6">Explore Secondesk Nyali Executive Hub — our premier coastal workspace with ocean view balconies and 24/7 power redundancy.</p>
                       <button 
                         onClick={() => { navigate('/locations'); setActiveMegaMenu(null); }}
                         className="text-xs font-semibold uppercase tracking-wider text-charcoal hover:text-sand inline-flex items-center gap-2 group cursor-pointer"
@@ -358,7 +358,7 @@ export const Header: React.FC = () => {
                 >
                   <Logo size={36} light={false} />
                   <span className="font-display font-semibold tracking-[0.15em] text-base uppercase text-charcoal">
-                    Second Desk
+                    Secondesk
                   </span>
                 </div>
                 <div className="flex items-center gap-2">
@@ -504,7 +504,7 @@ export const Header: React.FC = () => {
               <input
                 autoFocus
                 type="text"
-                placeholder="Search locations, private offices, hot desks, articles..."
+                placeholder="Search locations, private offices, shared co-working space, articles..."
                 value={localSearch}
                 onChange={(e) => setLocalSearch(e.target.value)}
                 className="w-full bg-transparent border-b border-white/20 focus:border-sand text-white text-xl lg:text-3xl font-display font-light py-4 pr-12 focus:outline-hidden transition-colors"
@@ -548,7 +548,7 @@ export const Header: React.FC = () => {
                   <div>
                     <h4 className="text-white/40 font-sans text-xs font-bold uppercase tracking-widest mb-4">Popular Queries</h4>
                     <div className="flex flex-wrap gap-2">
-                      {['Nyali', 'Private Offices', 'Hot Desks', 'Mombasa CBD', 'Meeting Rooms', 'Tudor Bay'].map((term) => (
+                      {['Nyali', 'Private Offices', 'Shared Co-Working', 'Mombasa CBD', 'Meeting Rooms', 'Tudor Bay'].map((term) => (
                         <button
                           key={term}
                           onClick={() => setLocalSearch(term)}
@@ -560,7 +560,7 @@ export const Header: React.FC = () => {
                     </div>
                   </div>
                   <div>
-                    <h4 className="text-white/40 font-sans text-xs font-bold uppercase tracking-widest mb-4">Second Desk Concept</h4>
+                    <h4 className="text-white/40 font-sans text-xs font-bold uppercase tracking-widest mb-4">Secondesk Concept</h4>
                     <p className="font-sans text-xs text-white/50 leading-relaxed">
                       Enter any keyword to locate active workspaces, corporate suites, boardrooms, community calendar events, or blog articles on the platform. Click on a result to navigate instantly.
                     </p>

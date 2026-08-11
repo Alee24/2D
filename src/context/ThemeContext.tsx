@@ -12,7 +12,7 @@ const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [theme, setTheme] = useState<Theme>(() => {
     try {
-      const stored = localStorage.getItem('seconddesk-theme');
+      const stored = localStorage.getItem('secondesk-theme');
       if (stored === 'dark' || stored === 'offwhite') {
         return stored as Theme;
       }
@@ -33,7 +33,7 @@ export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ childre
     }
     
     try {
-      localStorage.setItem('seconddesk-theme', theme);
+      localStorage.setItem('secondesk-theme', theme);
     } catch (e) {
       // Ignore localStorage write errors
     }

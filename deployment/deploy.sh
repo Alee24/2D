@@ -11,7 +11,7 @@ INSTALL_DIR="/var/www/sd"
 REPO_URL="https://github.com/Alee24/2D.git"
 
 echo "========================================================="
-echo " Starting Second Desk (2D) Deployment on $DOMAIN"
+echo " Starting Secondesk (2D) Deployment on $DOMAIN"
 echo "========================================================="
 
 # 1. Ensure script is run as root
@@ -431,7 +431,7 @@ else
 fi
 
 echo "========================================================="
-echo "[+] Second Desk (2D) application deployed successfully!"
+echo "[+] Secondesk (2D) application deployed successfully!"
 echo "    App URL:  https://$DOMAIN"
 echo "    Alias URL: https://$ALIAS_DOMAIN"
 echo "========================================================="

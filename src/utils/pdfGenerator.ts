@@ -53,7 +53,7 @@ export const generateBrochurePDF = () => {
   doc.setTextColor(colors.sand.r, colors.sand.g, colors.sand.b);
   doc.setFont('helvetica', 'bold');
   doc.setFontSize(38);
-  doc.text('S E C O N D D E S K', 105, 70, { align: 'center' });
+  doc.text('S E C O N D E S K', 105, 70, { align: 'center' });
 
   // Subtitle
   doc.setTextColor(255, 255, 255);
@@ -107,7 +107,7 @@ export const generateBrochurePDF = () => {
   doc.setTextColor(150, 150, 150);
   doc.setFont('helvetica', 'normal');
   doc.setFontSize(8);
-  doc.text('MOMBASA, KENYA  |  LINKS ROAD, NYALI (ABOVE SECOND CUP)  |  WWW.SECONDDESK.KE', 105, 265, { align: 'center' });
+  doc.text('MOMBASA, KENYA  |  LINKS ROAD, NYALI (LOCATED ABOVE SECOND CUP CAFE)  |  WWW.SECONDESK.KE', 105, 265, { align: 'center' });
 
 
   // ==========================================
@@ -146,33 +146,33 @@ export const generateBrochurePDF = () => {
   // Solutions Grid / Rows
   const packages = [
     {
-      title: '01. Private Office Suites',
+      title: '01. Private Office Suites (Only Private Spaces)',
       badge: 'MONTHLY RATES',
       details: [
-        'Small Office Suite (up to 4 desks) — KES 45,000 / month',
-        'Medium Office Suite (up to 8 desks) — KES 55,000 / month',
-        'Large Office Suite (up to 12+ desks) — KES 65,000 / month',
-        'Includes: Sound-insulated partitions, Steelcase chairs, solid oak desks, 24/7 access, and private keycard entry.'
+        'Small Office Suite (11 sqm) — KES 45,000 / month',
+        'Medium Office Suite (14 sqm) — KES 55,000 / month',
+        'Large Office Suite (25 sqm) — KES 65,000 / month',
+        'Includes: Sound-insulated private partitions, Steelcase chairs, solid oak desks, 24/7 access, and private keycard entry.'
       ]
     },
     {
-      title: '02. Executive Boardrooms & Meeting Rooms',
+      title: '02. Meeting Rooms & Executive Boardrooms',
       badge: 'HOURLY / HALF-DAY / FULL-DAY',
       details: [
-        'Executive Boardroom (Full Day) — KES 12,000  |  (Half Day) — KES 8,000  |  (Hourly) — KES 2,000',
-        'Meeting Room (Hourly) — KES 1,500 / hr',
+        'Meeting Room (Max 4 Guests) — KES 1,500 / hr',
+        'Executive Boardroom (Max 10 Guests) — Full Day: KES 12,000 | Half Day: KES 8,000 | Hourly: KES 2,000',
         'Zoom Room (Acoustic Video Pod) — KES 1,000 / hr',
-        'Includes: 75" 4K presentation screens, video conferencing bars, whiteboards, complimentary coffee & tea service.'
+        'Includes: 4K presentation screens, video conferencing bars, whiteboards, one complimentary hot beverage per guest.'
       ]
     },
     {
-      title: '03. Shared Desks & Coworking Packages',
+      title: '03. Shared Co-Working Space',
       badge: 'FLEXIBLE PASSES',
       details: [
-        'Monthly Unlimited Membership — KES 17,000 / month',
-        'Full Day Coworking Pass — KES 1,700 / day',
-        'Half Day Coworking Pass — KES 1,200 / half-day',
-        'Includes: High-speed 500Mbps fiber wifi, ergonomic seating, ocean-view terrace access, lounge & power outlets.'
+        'Monthly Shared Seat — KES 17,000 / month',
+        'Full Day Shared Seat Pass — KES 1,700 / day',
+        'Half Day Shared Seat Pass — KES 1,200 / half-day',
+        'Includes: Seats at long tables in common area, fast dedicated internet, one complimentary hot beverage per stay.'
       ]
     },
     {
@@ -229,7 +229,7 @@ export const generateBrochurePDF = () => {
   doc.setTextColor(150, 150, 150);
   doc.setFont('helvetica', 'normal');
   doc.setFontSize(7.5);
-  doc.text('PAGE 2  |  SECONDDESK OFFICIAL RATES & PACKAGES', 15, 282);
+  doc.text('PAGE 2  |  SECONDESK OFFICIAL RATES & PACKAGES', 15, 282);
 
 
   // ==========================================
@@ -259,20 +259,20 @@ export const generateBrochurePDF = () => {
   doc.setTextColor(colors.charcoal.r, colors.charcoal.g, colors.charcoal.b);
   doc.setFont('helvetica', 'normal');
   doc.setFontSize(9.5);
-  doc.text('Visit our flagship center situated directly above Second Cup on Links Road, Nyali, Mombasa.', 15, 50);
+  doc.text('Visit our flagship center situated on Links Road, Nyali (Located above Second Cup Cafe).', 15, 50);
 
   // Locations Box grid
   const locationCard = {
-    title: 'Mombasa Headquarters — Second Cup Nyali',
-    address: '3rd Floor, Second Cup Terrace, Links Road, Nyali, Mombasa, Kenya',
+    title: 'Secondesk Nyali Executive Hub',
+    address: 'Links Road, Nyali (Located above Second Cup Cafe)',
     phone: '0719688992',
-    email: 'info@seconddesk.ke / mombasa@seconddesk.ke',
-    landmarks: 'Located directly above Second Cup Coffee House, near Nyali Centre and City Mall.',
+    email: 'info@secondesk.ke',
+    landmarks: 'Located above Second Cup Cafe, near Nyali Centre and City Mall.',
     features: [
-      'Prime location on Links Road with immediate access to cafes and coastal amenities.',
+      'Prime location on Links Road with immediate access to commercial amenities.',
       'Dedicated executive boardrooms, soundproof meeting rooms, and office suites.',
-      'Uninterrupted 500Mbps fiber internet with dual backup generators.',
-      'Coastal ocean-breeze lounge and outdoor balcony workstations.'
+      'Fast dedicated internet with dual backup generators.',
+      'Enclosed private offices, meeting rooms, and shared co-working space.'
     ]
   };
 
@@ -333,7 +333,7 @@ export const generateBrochurePDF = () => {
   doc.setFont('helvetica', 'normal');
   doc.setFontSize(8.5);
   const infrastructureBullets = [
-    '• Uncapped 500Mbps Fibre internet with symmetrical redundant backup array.',
+    '• Fast dedicated internet with symmetrical redundant backup array.',
     '• 100% full electricity backup generator systems with automatic ATS failover.',
     '• Biometric keycard security integration and 24/7 CCTV surveillance.',
     '• Fully-serviced reception lounge, high-end boardrooms, and Zoom video pods.',
@@ -363,7 +363,7 @@ export const generateBrochurePDF = () => {
   doc.setTextColor(colors.charcoal.r, colors.charcoal.g, colors.charcoal.b);
   doc.setFont('helvetica', 'bold');
   doc.setFontSize(9.5);
-  doc.text('Phone / WhatsApp: 0719688992  |  Email: info@seconddesk.ke', 22, 261);
+  doc.text('Phone / WhatsApp: 0719688992  |  Email: info@secondesk.ke', 22, 261);
 
   // Developer credit inside PDF
   doc.setTextColor(160, 160, 160);
@@ -375,8 +375,8 @@ export const generateBrochurePDF = () => {
   doc.setTextColor(150, 150, 150);
   doc.setFont('helvetica', 'normal');
   doc.setFontSize(7.5);
-  doc.text('PAGE 3  |  SECONDDESK CORPORATE PORTFOLIO', 15, 282);
+  doc.text('PAGE 3  |  SECONDESK CORPORATE PORTFOLIO', 15, 282);
 
   // Save / Download PDF
-  doc.save('SecondDesk_Official_Brochure_PriceList.pdf');
+  doc.save('Secondesk_Official_Brochure_PriceList.pdf');
 };

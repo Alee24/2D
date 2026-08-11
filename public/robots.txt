@@ -38,4 +38,4 @@ User-agent: FacebookBot
 Allow: /
 
 # Sitemap
-Sitemap: https://seconddesk.co/sitemap.xml
+Sitemap: https://secondesk.co/sitemap.xml

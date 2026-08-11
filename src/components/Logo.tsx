@@ -3,17 +3,14 @@ import React from 'react';
 interface LogoProps {
   className?: string;
   size?: number; // overall height or bounding size in px
-  light?: boolean; // if true, S turns white for dark backgrounds
+  light?: boolean; // if true, S and left ring turn white for dark backgrounds
 }
 
 export const Logo: React.FC<LogoProps> = ({ className = '', size = 32, light = false }) => {
-  // We use the exact brand colors: charcoal (#1D1D1D) or offwhite, and red (#E31B23) for 'D'
+  // Brand colors: charcoal (#1D1D1D) or offwhite (#FAFAF8), and vibrant red (#E31B23)
   const sColor = light ? '#FAFAF8' : '#1D1D1D';
   const dColor = '#E31B23';
 
-  // We design a beautiful vector layout where "S" and "D" are beautifully nested.
-  // The 'Playfair Display' font is already imported globally in index.css.
-  // Using an SVG with <text> ensures pixel-perfect rendering across all devices.
   return (
     <div 
       className={`relative inline-block select-none ${className}`} 
@@ -25,38 +22,46 @@ export const Logo: React.FC<LogoProps> = ({ className = '', size = 32, light = f
         xmlns="http://www.w3.org/2000/svg"
         className="w-full h-full"
       >
-        {/* 'D' is placed on the right and slightly lower, rendered first so it stays in the background */}
-        <text
-          x="35"
-          y="78"
-          fontFamily="'Playfair Display', Georgia, serif"
-          fontSize="75"
-          fontWeight="900"
-          fill={dColor}
-          stroke={dColor}
-          strokeWidth="3"
-          strokeLinejoin="round"
-          style={{ paintOrder: 'stroke fill' }}
-          letterSpacing="-0.05em"
-        >
-          D
-        </text>
+        {/* Left half outer ring arc (Charcoal/White) */}
+        <path
+          d="M 47 7.5 A 42.5 42.5 0 0 0 47 92.5"
+          stroke={sColor}
+          strokeWidth="6"
+          strokeLinecap="round"
+        />
 
-        {/* 'S' is placed on the left, rendered second so its curves gracefully overlap the 'D' */}
+        {/* Right half outer ring arc (Red) */}
+        <path
+          d="M 53 7.5 A 42.5 42.5 0 0 1 53 92.5"
+          stroke={dColor}
+          strokeWidth="6"
+          strokeLinecap="round"
+        />
+
+        {/* 'S' in bold geometric sans-serif */}
         <text
-          x="3"
-          y="72"
-          fontFamily="'Playfair Display', Georgia, serif"
-          fontSize="75"
+          x="33"
+          y="66"
+          textAnchor="middle"
+          fontFamily="'Plus Jakarta Sans', 'Inter', 'Montserrat', -apple-system, sans-serif"
+          fontSize="46"
           fontWeight="900"
           fill={sColor}
-          stroke={sColor}
-          strokeWidth="3"
-          strokeLinejoin="round"
-          style={{ paintOrder: 'stroke fill' }}
-          letterSpacing="-0.05em"
         >
           S
+        </text>
+
+        {/* 'D' in bold geometric sans-serif */}
+        <text
+          x="67"
+          y="66"
+          textAnchor="middle"
+          fontFamily="'Plus Jakarta Sans', 'Inter', 'Montserrat', -apple-system, sans-serif"
+          fontSize="46"
+          fontWeight="900"
+          fill={dColor}
+        >
+          D
         </text>
       </svg>
     </div>
