@@ -119,7 +119,7 @@ export const workspaceCategories: WorkspaceCategory[] = [
     description: 'Enclosed, unfurnished private office suites for teams requiring total confidentiality and security.',
     longDescription: 'Only office suites are private enclosed spaces. Designed for teams requiring total confidentiality and security. Provided as unfurnished spaces ready for your custom corporate setup.',
     image: pinpoint5Img,
-    capacity: '2 to 50+ People',
+    capacity: 'Flexible Layout (Self-Allocated Space)',
     startingPrice: 'KES 45,000 / mo',
     amenities: ['Unfurnished Private Lockable Suite', 'Customizable Layout & Branding', 'Dedicated Ethernet Line', 'Executive Reception Services', 'Daily Office Cleaning'],
     features: ['Small Office Suite (11 sqm): KES 45,000 / mo', 'Medium Office Suite (14 sqm): KES 55,000 / mo', 'Large Office Suite (25 sqm): KES 65,000 / mo', 'Individual Climate Control'],
@@ -284,7 +284,7 @@ export const blogPosts: BlogPost[] = [
     id: 'b2',
     title: 'How Startups Can Utilize Hybrid Office Models to Minimize Runways',
     excerpt: 'Commercial real estate commitments shouldn’t kill your startup. Discover how flexible monthly office models are helping scale-ups survive.',
-    content: 'One of the largest liabilities on a growing startup balance sheet is long-term commercial lease commitments. When you commit to a 5-year office lease, you are gambling on your growth rate being linear. If you grow faster, you outgrow the space and pay breaking fees. If you scale back, you pay for empty desks.\n\nOur startup members utilize Private Office Suites as an operational strategy. Under a single monthly billing line, they receive a fully configured, high-security glass office that can scale from 5 to 20 seats overnight. Operational overhead like water, security, electricity, and premium reception are completely managed, allowing founders to run lean and redirect core capital into active product R&D.',
+    content: 'One of the largest liabilities on a growing startup balance sheet is long-term commercial lease commitments. When you commit to a 5-year office lease, you are gambling on your growth rate being linear. If you grow faster, you outgrow the space and pay breaking fees. If you scale back, you pay for empty desks.\n\nOur startup members utilize Private Office Suites as an operational strategy. Under a single monthly billing line, they receive an unfurnished, high-security private office suite where space is allocated according to team needs. Operational overhead like water, security, electricity, and premium reception are completely managed, allowing founders to run lean and redirect core capital into active product R&D.',
     category: 'Startups',
     author: {
       name: 'David Mwangi',
