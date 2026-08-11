@@ -92,10 +92,16 @@ export const Contact: React.FC = () => {
             <div className="space-y-4">
               <h3 className="font-display font-semibold text-lg text-charcoal">General Sales & Support</h3>
               <div className="space-y-2.5 text-xs font-sans text-charcoal/80">
-                <p className="flex items-center gap-2 font-medium">
+                <div className="flex flex-wrap items-center gap-2 font-medium">
                   <Phone className="w-4 h-4 text-[#E31B23] shrink-0" /> 
-                  <span>0719688992</span> <span className="text-charcoal/40">|</span> <span>+254 719 688 992</span>
-                </p>
+                  <a href="tel:+254719688992" className="text-charcoal font-bold hover:text-sand transition-colors">+254 719 688 992</a>
+                  <span className="text-charcoal/30">|</span>
+                  <a href="tel:+254719688992" className="text-charcoal/80 hover:text-charcoal underline transition-colors">Call</a>
+                  <span className="text-charcoal/30">•</span>
+                  <a href="sms:+254719688992" className="text-charcoal/80 hover:text-charcoal underline transition-colors">Text</a>
+                  <span className="text-charcoal/30">•</span>
+                  <a href="https://wa.me/254719688992" target="_blank" rel="noreferrer" className="text-emerald-700 dark:text-emerald-400 font-medium underline transition-colors">WhatsApp</a>
+                </div>
                 <p className="flex items-center gap-2">
                   <Mail className="w-4 h-4 text-[#E31B23] shrink-0" /> info@secondesk.ke
                 </p>

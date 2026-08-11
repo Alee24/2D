@@ -107,15 +107,15 @@ export const Home: React.FC = () => {
         description="Experience premier, design-led coworking spaces, executive private offices, and state-of-the-art meeting rooms across Mombasa's most prestigious commercial districts."
       />
       {/* 1. HERO SECTION */}
-      <section className="relative h-screen flex items-center justify-center overflow-hidden bg-charcoal">
+      <section className="relative h-screen flex items-center justify-center overflow-hidden bg-[#1D1D1D]">
         {/* Parallax background image */}
         <div className="absolute inset-0 z-0">
           <img 
             src={heroBgImg} 
             alt="SECONDESK Coworking Environment" 
-            className="w-full h-full object-cover opacity-55 scale-105 transition-transform duration-1000"
+            className="w-full h-full object-cover opacity-60 scale-105 transition-transform duration-1000"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-charcoal via-charcoal/40 to-charcoal/60"></div>
+          <div className="absolute inset-0 bg-gradient-to-t from-[#1D1D1D] via-[#1D1D1D]/70 to-[#1D1D1D]/80"></div>
         </div>
 
         {/* Hero Content */}
@@ -128,19 +128,19 @@ export const Home: React.FC = () => {
               Your Best Work <br className="hidden md:block"/>
               <span className="font-serif italic font-normal text-sand">Starts Here.</span>
             </h1>
-            <p className="font-sans text-white/80 text-base sm:text-lg lg:text-xl max-w-2xl mb-10 leading-relaxed font-light animate-slide-up animate-delay-200">
+            <p className="font-sans text-white/90 text-base sm:text-lg lg:text-xl max-w-2xl mb-10 leading-relaxed font-light animate-slide-up animate-delay-200">
               Flexible coworking spaces, private offices, meeting rooms and business services designed for ambitious professionals and growing teams.
             </p>
             <div className="flex flex-col sm:flex-row items-center gap-4 animate-slide-up animate-delay-300">
               <button 
                 onClick={() => navigate('/book-tour')}
-                className="w-full sm:w-auto bg-sand border border-sand text-charcoal hover:bg-white hover:border-white font-sans text-xs font-bold uppercase tracking-widest px-8 py-4.5 transition-all cursor-pointer shadow-lg"
+                className="w-full sm:w-auto bg-sand border border-sand text-[#1D1D1D] hover:bg-white hover:border-white font-sans text-xs font-bold uppercase tracking-widest px-8 py-4.5 transition-all cursor-pointer shadow-lg"
               >
                 Book a Tour
               </button>
               <button 
                 onClick={() => navigate('/workspace')}
-                className="w-full sm:w-auto border border-white/30 text-white hover:bg-white hover:text-charcoal font-sans text-xs font-bold uppercase tracking-widest px-8 py-4.5 transition-all cursor-pointer"
+                className="w-full sm:w-auto border border-white/40 text-white hover:bg-white hover:text-[#1D1D1D] font-sans text-xs font-bold uppercase tracking-widest px-8 py-4.5 transition-all cursor-pointer"
               >
                 Explore Spaces
               </button>

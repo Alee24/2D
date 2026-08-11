@@ -79,8 +79,8 @@ export const Header: React.FC = () => {
       <header
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
           isSolidHeader
-            ? 'bg-white border-b border-concrete shadow-sm text-charcoal'
-            : 'bg-transparent text-white'
+            ? 'bg-white border-b border-concrete shadow-xs text-charcoal'
+            : 'bg-gradient-to-b from-black/80 via-black/30 to-transparent text-white'
         }`}
       >
         <div className="max-w-[1440px] mx-auto px-6 lg:px-12 h-20 flex items-center justify-between">
@@ -91,7 +91,7 @@ export const Header: React.FC = () => {
           >
             <Logo size={isSolidHeader ? 42 : 36} light={false} />
             <span className="font-display text-xl uppercase flex items-center tracking-[0.12em] font-black" style={{ fontWeight: 900 }}>
-              <span className="text-charcoal">SECON</span>
+              <span className={isSolidHeader ? "text-charcoal" : "text-[#1D1D1D]"}>SECON</span>
               <span className="text-[#E31B23]">DESK</span>
             </span>
           </div>
@@ -110,10 +110,10 @@ export const Header: React.FC = () => {
                     onClick={() => navigate(link.path)}
                     className={`font-sans text-sm font-medium tracking-wide flex items-center gap-1 transition-colors duration-200 cursor-pointer ${
                       isActive 
-                        ? 'text-sand font-semibold' 
+                        ? 'text-sand font-bold' 
                         : isSolidHeader 
                           ? 'text-charcoal/80 hover:text-charcoal' 
-                          : 'text-white/80 hover:text-white'
+                          : 'text-white/90 hover:text-white drop-shadow-sm'
                     }`}
                   >
                     {link.label}
@@ -137,7 +137,7 @@ export const Header: React.FC = () => {
             <button
               onClick={toggleTheme}
               className={`p-2 transition-colors duration-200 cursor-pointer ${
-                isSolidHeader ? 'text-charcoal hover:text-sand' : 'text-white hover:text-sand'
+                isSolidHeader ? 'text-charcoal hover:text-sand' : 'text-white hover:text-sand drop-shadow-sm'
               }`}
               aria-label="Toggle theme mode"
             >
@@ -148,7 +148,7 @@ export const Header: React.FC = () => {
             <button
               onClick={() => setShowSearchModal(true)}
               className={`p-2 transition-colors duration-200 cursor-pointer ${
-                isSolidHeader ? 'text-charcoal hover:text-sand' : 'text-white hover:text-sand'
+                isSolidHeader ? 'text-charcoal hover:text-sand' : 'text-white hover:text-sand drop-shadow-sm'
               }`}
               aria-label="Search SECONDESK"
             >
@@ -158,10 +158,10 @@ export const Header: React.FC = () => {
             {/* Secondary CTA */}
             <button
               onClick={() => navigate('/workspace')}
-              className={`font-sans text-xs font-semibold uppercase tracking-wider transition-all duration-200 cursor-pointer ${
+              className={`font-sans text-xs font-bold uppercase tracking-wider transition-all duration-200 cursor-pointer ${
                 isSolidHeader
                   ? 'text-charcoal/80 hover:text-charcoal'
-                  : 'text-white/80 hover:text-white'
+                  : 'text-white/90 hover:text-white drop-shadow-sm'
               }`}
             >
               Get Started
@@ -170,10 +170,10 @@ export const Header: React.FC = () => {
             {/* Primary CTA */}
             <button
               onClick={() => navigate('/book-tour')}
-              className={`font-sans text-xs font-semibold uppercase tracking-widest px-6 py-3 border transition-all duration-300 cursor-pointer ${
+              className={`font-sans text-xs font-bold uppercase tracking-widest px-6 py-3 border transition-all duration-300 cursor-pointer shadow-xs ${
                 isSolidHeader
                   ? 'bg-charcoal text-white hover:bg-sand hover:text-charcoal border-charcoal hover:border-sand'
-                  : 'bg-white text-charcoal hover:bg-sand hover:border-sand border-white'
+                  : 'bg-white text-[#1D1D1D] hover:bg-sand hover:text-[#1D1D1D] border-white'
               }`}
             >
               Book a Tour

@@ -330,7 +330,15 @@ export const Locations: React.FC = () => {
                   <Phone className="w-4 h-4 text-sand shrink-0 mt-0.5" />
                   <div>
                     <strong className="block text-charcoal">Front Desk Direct Line:</strong>
-                    0719688992 / +254 719 688 992
+                    <div className="flex flex-wrap items-center gap-2 text-xs font-sans mt-0.5">
+                      <a href="tel:+254719688992" className="text-charcoal font-bold hover:text-sand transition-colors">+254 719 688 992</a>
+                      <span className="text-charcoal/30">|</span>
+                      <a href="tel:+254719688992" className="text-charcoal/80 hover:text-charcoal underline transition-colors">Call</a>
+                      <span className="text-charcoal/30">•</span>
+                      <a href="sms:+254719688992" className="text-charcoal/80 hover:text-charcoal underline transition-colors">Text</a>
+                      <span className="text-charcoal/30">•</span>
+                      <a href="https://wa.me/254719688992" target="_blank" rel="noreferrer" className="text-emerald-700 dark:text-emerald-400 font-medium underline transition-colors">WhatsApp</a>
+                    </div>
                   </div>
                 </div>
               </div>

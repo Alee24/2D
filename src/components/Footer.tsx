@@ -62,10 +62,17 @@ export const Footer: React.FC = () => {
             <p className="font-sans text-sm text-white/60 mb-6 max-w-sm leading-relaxed">
               Where Great Work Finds Its Place. Premium flexible workspaces, private office suites, and meeting facilities in Mombasa.
             </p>
-            <div className="space-y-2 mb-6 text-xs text-white/80 font-sans border-l-2 border-[#E31B23] pl-3 py-1 bg-white/5 rounded-r">
-              <p className="font-medium text-white flex items-center gap-2">
-                <span className="text-[#E31B23] font-bold">Call:</span> 0719688992 / +254 719 688 992
-              </p>
+            <div className="space-y-2 mb-6 text-xs text-white/80 font-sans border-l-2 border-[#E31B23] pl-3 py-1.5 bg-white/5 rounded-r">
+              <div className="flex flex-wrap items-center gap-2 font-medium text-white">
+                <span className="text-[#E31B23] font-bold">Contact:</span>
+                <a href="tel:+254719688992" className="text-white hover:text-sand transition-colors font-bold">+254 719 688 992</a>
+                <span className="text-white/30">|</span>
+                <a href="tel:+254719688992" className="text-white/80 hover:text-white underline transition-colors">Call</a>
+                <span className="text-white/30">•</span>
+                <a href="sms:+254719688992" className="text-white/80 hover:text-white underline transition-colors">Text</a>
+                <span className="text-white/30">•</span>
+                <a href="https://wa.me/254719688992" target="_blank" rel="noreferrer" className="text-emerald-400 hover:text-emerald-300 font-medium underline transition-colors">WhatsApp</a>
+              </div>
               <p className="text-white/70">
                 <span className="text-white font-medium">Mon - Fri:</span> 8:00 AM - 8:00 PM
               </p>
@@ -73,7 +80,7 @@ export const Footer: React.FC = () => {
                 <span className="text-white font-medium">Saturday:</span> 9:00 AM - 1:00 PM | <span className="text-white/50">Sunday: Closed</span>
               </p>
               <p className="text-white/70">
-                <span className="text-white font-medium">Email:</span> info@secondesk.ke
+                <span className="text-white font-medium">Email:</span> <a href="mailto:info@secondesk.ke" className="hover:underline text-white/90">info@secondesk.ke</a>
               </p>
             </div>
             <div className="flex items-center space-x-4">

@@ -93,7 +93,7 @@ export const Pricing: React.FC = () => {
             </div>
             <h3 className="font-display font-bold text-base mb-2">Direct Phone Support</h3>
             <p className="font-sans text-xs text-charcoal/70 leading-relaxed">
-              Have questions about customized team packages? Call our Mombasa community desk directly at <span className="font-bold text-charcoal">0719688992</span>.
+              Have questions about customized team packages? Contact our Mombasa community desk directly at <a href="tel:+254719688992" className="font-bold text-charcoal hover:text-sand transition-colors">+254 719 688 992</a> (<a href="tel:+254719688992" className="underline hover:text-charcoal">Call</a> • <a href="sms:+254719688992" className="underline hover:text-charcoal">Text</a> • <a href="https://wa.me/254719688992" target="_blank" rel="noreferrer" className="text-emerald-700 dark:text-emerald-400 font-medium underline">WhatsApp</a>).
             </p>
           </div>
 
