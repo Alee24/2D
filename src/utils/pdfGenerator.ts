@@ -107,7 +107,7 @@ export const generateBrochurePDF = () => {
   doc.setTextColor(150, 150, 150);
   doc.setFont('helvetica', 'normal');
   doc.setFontSize(8);
-  doc.text('MOMBASA, KENYA  |  LINKS ROAD, NYALI (LOCATED ABOVE SECOND CUP CAFE)  |  WWW.SECONDESK.KE', 105, 265, { align: 'center' });
+  doc.text('MOMBASA, KENYA  |  LINKS ROAD, NYALI (LOCATED ABOVE SECOND CUP CAFE ON THE 2ND FLOOR)  |  WWW.SECONDESK.KE', 105, 265, { align: 'center' });
 
 
   // ==========================================
@@ -267,15 +267,14 @@ export const generateBrochurePDF = () => {
   doc.setTextColor(colors.charcoal.r, colors.charcoal.g, colors.charcoal.b);
   doc.setFont('helvetica', 'normal');
   doc.setFontSize(9.5);
-  doc.text('Visit our flagship center situated on Links Road, Nyali (Located above Second Cup Cafe).', 15, 50);
+  doc.text('Visit our flagship center situated on Links Road, Nyali (located above Second Cup Cafe on the 2nd floor).', 15, 50);
 
   // Locations Box grid
   const locationCard = {
     title: 'Secondesk Nyali Executive Hub',
-    address: 'Links Road, Nyali (Located above Second Cup Cafe)',
+    address: 'Links Road, Nyali (located above Second Cup Cafe on the 2nd floor)',
     phone: '0719688992',
     email: 'info@secondesk.ke',
-    landmarks: 'Located above Second Cup Cafe, near Nyali Centre and City Mall.',
     features: [
       'Prime location on Links Road with immediate access to commercial amenities.',
       'Dedicated executive boardrooms, soundproof meeting rooms, and office suites.',
@@ -288,13 +287,13 @@ export const generateBrochurePDF = () => {
   
   // Fill subtle gray box
   doc.setFillColor(245, 245, 242);
-  doc.rect(15, locY, 180, 105, 'F');
+  doc.rect(15, locY, 180, 95, 'F');
   doc.setDrawColor(colors.concrete.r, colors.concrete.g, colors.concrete.b);
-  doc.rect(15, locY, 180, 105, 'S');
+  doc.rect(15, locY, 180, 95, 'S');
 
   // Accent left strip
   doc.setFillColor(colors.sand.r, colors.sand.g, colors.sand.b);
-  doc.rect(15, locY, 2.5, 105, 'F');
+  doc.rect(15, locY, 2.5, 95, 'F');
 
   // Title inside box
   doc.setTextColor(colors.charcoal.r, colors.charcoal.g, colors.charcoal.b);
@@ -308,18 +307,17 @@ export const generateBrochurePDF = () => {
   doc.setTextColor(80, 80, 80);
   doc.text(`Address: ${locationCard.address}`, 22, locY + 17);
   doc.text(`Phone: ${locationCard.phone}  |  Email: ${locationCard.email}`, 22, locY + 23);
-  doc.text(`Landmark: ${locationCard.landmarks}`, 22, locY + 29);
 
   // Features inside location box
   doc.setFont('helvetica', 'bold');
   doc.setFontSize(9);
   doc.setTextColor(colors.charcoal.r, colors.charcoal.g, colors.charcoal.b);
-  doc.text('Key Amenities & Location Benefits:', 22, locY + 39);
+  doc.text('Key Amenities & Location Benefits:', 22, locY + 33);
 
   doc.setFont('helvetica', 'normal');
   doc.setFontSize(8.5);
   doc.setTextColor(70, 70, 70);
-  let locFeatureY = locY + 46;
+  let locFeatureY = locY + 40;
   locationCard.features.forEach((feat) => {
     doc.setFillColor(colors.sand.r, colors.sand.g, colors.sand.b);
     doc.rect(23, locFeatureY - 2, 2, 0.5, 'F');

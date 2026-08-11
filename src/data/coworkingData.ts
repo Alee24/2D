@@ -206,7 +206,7 @@ export const locations: LocationData[] = [
     id: 'nyali',
     name: 'Nyali Executive Hub',
     neighborhood: 'Links Road, Nyali',
-    address: '2nd Floor, Links Road, Nyali (Located above Second Cup Cafe)',
+    address: 'Links Road, Nyali (located above Second Cup Cafe on the 2nd floor)',
     phone: '0719688992',
     email: 'info@secondesk.ke',
     mapEmbedUrl: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3979.882195289944!2d39.68351541533261!3d-4.041453999080063!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x184012e5c0000000%3A0xd6891cc774fcf373!2sSecond%20Cup%20Mombasa!5e0!3m2!1sen!2ske!4v1655112233445!5m2!1sen!2ske',
