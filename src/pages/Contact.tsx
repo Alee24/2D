@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useRouter } from '../context/NavigationContext';
 import { faqs, locations } from '../data/coworkingData';
-import { Mail, Phone, Clock, MapPin, Check, ChevronDown, MessageSquare } from 'lucide-react';
+import { Mail, Phone, Clock, MapPin, Check, ChevronDown, MessageSquare, Instagram } from 'lucide-react';
 import { SEO } from '../components/SEO';
 import { Breadcrumbs } from '../components/Breadcrumbs';
 import { dispatchEmail } from '../utils/emailService';
