@@ -113,28 +113,15 @@ export const workspaceCategories: WorkspaceCategory[] = [
     slug: 'coworking',
   },
   {
-    id: 'dedicated-desk',
-    name: 'Dedicated Desk',
-    tagline: 'Your Permanent Desk',
-    description: 'A permanent workstation with secure storage and ergonomic seating in a shared professional environment.',
-    longDescription: 'Establish your professional base with a desk that is yours and yours alone. Located in a secured, quieter zone of the building, each dedicated desk features premium ergonomic setups.',
-    image: workspaceMainImg,
-    capacity: '1 Person',
-    startingPrice: 'KES 17,000 / mo',
-    amenities: ['Permanent Desk & Ergonomic Chair', 'Lockable Storage Cabinet', 'Business Address Registration', '24/7 Premium Access', 'Free B&W Printing'],
-    features: ['Personalized mail handling', 'Meeting room access', 'High-speed internet', 'Dedicated storage safety'],
-    slug: 'dedicated-desks',
-  },
-  {
     id: 'private-office',
     name: 'Office Suites (Private)',
-    tagline: 'Enclosed & Move-In-Ready Office Suites',
-    description: 'Enclosed, fully private office suites available in Small (11 sqm), Medium (14 sqm), and Large (25 sqm) layouts.',
-    longDescription: 'Only office suites are private enclosed spaces. Designed for teams requiring total confidentiality and security. Available in Small (11 sqm — KES 45k), Medium (14 sqm — KES 55k), and Large (25 sqm — KES 65k) configurations.',
+    tagline: 'Enclosed Unfurnished Office Suites',
+    description: 'Enclosed, unfurnished private office suites for teams requiring total confidentiality and security.',
+    longDescription: 'Only office suites are private enclosed spaces. Designed for teams requiring total confidentiality and security. Provided as unfurnished spaces ready for your custom corporate setup.',
     image: pinpoint5Img,
     capacity: '2 to 50+ People',
     startingPrice: 'KES 45,000 / mo',
-    amenities: ['Fully Furnished Lockable Suite', 'Customizable Layout & Branding', 'Dedicated Ethernet Line', 'Executive Reception Services', 'Daily Office Cleaning'],
+    amenities: ['Unfurnished Private Lockable Suite', 'Customizable Layout & Branding', 'Dedicated Ethernet Line', 'Executive Reception Services', 'Daily Office Cleaning'],
     features: ['Small Office Suite (11 sqm): KES 45,000 / mo', 'Medium Office Suite (14 sqm): KES 55,000 / mo', 'Large Office Suite (25 sqm): KES 65,000 / mo', 'Individual Climate Control'],
     slug: 'private-offices',
   },
@@ -143,12 +130,12 @@ export const workspaceCategories: WorkspaceCategory[] = [
     name: 'Meeting Rooms & Boardrooms',
     tagline: 'Meeting Room (Max 4) & Boardroom (Max 10)',
     description: 'Meeting Room (max capacity 4 guests) and Boardroom (max capacity 10 guests) equipped for client pitches and presentations.',
-    longDescription: 'Leave a lasting impression on clients or your team. Choose from Meeting Rooms (Max 4 guests — KES 1,500/hr), Boardrooms (Max 10 guests — KES 2,000/hr or KES 12,000 Full Day), and Zoom Rooms (KES 1,000/hr).',
+    longDescription: 'Leave a lasting impression on clients or your team. Choose from Meeting Rooms (Max 4 guests — KES 1,500/hr) and Boardrooms (Max 10 guests — KES 2,000/hr or KES 12,000 Full Day).',
     image: pinpoint17Img,
     capacity: 'Meeting Room: Max 4 Guests | Boardroom: Max 10 Guests',
     startingPrice: 'KES 1,500 / hr',
     amenities: ['4K Presentation Screen', 'Studio Video Bar', 'Magnetic Whiteboard', 'One Complimentary Hot Beverage Per Guest', 'High-Speed Fiber'],
-    features: ['Meeting Room (Max 4 Guests): KES 1,500 / hr', 'Boardroom (Max 10 Guests): KES 2,000 / hr (KES 12k Full Day)', 'Zoom Room Hourly: KES 1,000', 'Printing & Copying Services'],
+    features: ['Meeting Room (Max 4 Guests): KES 1,500 / hr', 'Boardroom (Max 10 Guests): KES 2,000 / hr (KES 12k Full Day)', 'Printing & Copying Services'],
     slug: 'meeting-rooms',
   }
 ];
@@ -159,7 +146,7 @@ export const workspaceSolutions: WorkspaceSolution[] = [
     targetAudience: 'Freelancers & Solopreneurs',
     challenge: 'Isolation, inconsistent internet, lack of a formal client meeting setting, and home office distractions.',
     solution: 'We offer an inspiring, community-driven shared co-working space that provides standard-setting enterprise facilities, premium printing, and beautiful open common lounges.',
-    recommendation: 'Shared Co-Working Space or Dedicated Desk with flexible monthly commitments.',
+    recommendation: 'Shared Co-Working Space with flexible monthly commitments.',
     benefits: ['Collaborative networking', 'One complimentary hot beverage per stay', 'Professional presentation environments', 'Low overhead expenses'],
     image: 'https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&q=80&w=600'
   },
@@ -168,9 +155,9 @@ export const workspaceSolutions: WorkspaceSolution[] = [
     targetAudience: 'Startups & Scaleups',
     challenge: 'Unpredictable team growth, lack of capital for long-term commercial leases, and time wasted managing operations.',
     solution: 'Secondesk handles everything—high-speed internet, security, printing, cleaning, and guest reception—so you can focus 100% on building your product.',
-    recommendation: 'Private Office Suites with flexible month-to-month contracts.',
-    benefits: ['Ultra-flexible scaling', 'Full operational support', 'Access to investor and mentorship meetups', 'Talent-attracting architectural design'],
-    image: 'https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&q=80&w=600'
+    recommendation: 'Hybrid Private Office or Shared Co-Working Space Passes.',
+    benefits: ['Dedicated secure Ethernet lines', 'Boosted collaboration and synergy', 'Prestigious business physical base', 'Access to high-spec meeting rooms'],
+    image: 'https://images.unsplash.com/photo-1542744094-3a31f103e35f?auto=format&fit=crop&q=80&w=600'
   },
   {
     id: 'remote-teams',
@@ -186,7 +173,7 @@ export const workspaceSolutions: WorkspaceSolution[] = [
     targetAudience: 'SMEs & Agencies',
     challenge: 'High cost of commercial fit-outs, maintenance staff recruitment, and utility backup solutions.',
     solution: 'Secondesk provides ready-to-use, premium glass-fronted offices supported by 100% stable generator power, modern server rooms, and client-facing reception services.',
-    recommendation: 'Private Office Suites (Small 11 sqm, Medium 14 sqm, Large 25 sqm).',
+    recommendation: 'Unfurnished Private Office Suites.',
     benefits: ['Zero capital expenditure for office buildout', 'Uninterrupted power and water backup', 'Receptionists greeting your clients', 'Branded directory placement'],
     image: 'https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=600'
   },
@@ -213,7 +200,7 @@ export const locations: LocationData[] = [
     startingPrice: 'KES 17,000 / mo',
     image: workspaceMainImg,
     nearbyLandmarks: ['Second Cup Cafe (Ground Floor)', 'Nyali Centre Mall', 'City Mall Nyali', 'Nyali Golf & Country Club', 'Nyali Beach'],
-    spacesAvailable: ['Meeting Room (Max 4)', 'Executive Boardroom (Max 10)', 'Private Office Suites (11-25 sqm)', 'Shared Co-Working Space', 'Dedicated Desks'],
+    spacesAvailable: ['Meeting Room (Max 4)', 'Executive Boardroom (Max 10)', 'Private Office Suites', 'Shared Co-Working Space'],
     amenities: ['Dual Backup Generators', 'Fast Dedicated Internet', 'One Complimentary Hot Beverage Per Stay'],
     gallery: [
       workspaceMainImg,
@@ -238,7 +225,7 @@ export const locations: LocationData[] = [
       title: 'Private Office Suites',
       image: reception1Img,
       features: [
-        { iconName: 'Armchair', text: 'Ergonomic Steelcase chairs & custom solid-oak desks' },
+        { iconName: 'Lock', text: 'Unfurnished private enclosed suites with secure lockable doors' },
         { iconName: 'Lock', text: 'Acoustically sound-masked glass partitions' },
         { iconName: 'Fingerprint', text: 'Biometric fingerprint keyless security entry' },
         { iconName: 'Wind', text: 'Personalized Nest intelligent climate controls' },
@@ -268,7 +255,7 @@ export const testimonials: Testimonial[] = [
   },
   {
     id: 't3',
-    quote: "The quiet dedicated desks and premium coffee are what keep me focused. But the true game-changer is the robust community—investor meetups here connected me to our seed-round lead.",
+    quote: "The quiet shared co-working space and premium coffee are what keep me focused. But the true game-changer is the robust community—investor meetups here connected me to our seed-round lead.",
     author: "Sarah Welime",
     role: "Co-Founder",
     company: "SokoFlow",
@@ -281,7 +268,7 @@ export const blogPosts: BlogPost[] = [
     id: 'b1',
     title: 'The Future of Shared Workspaces: Designing for Privacy & Collaboration',
     excerpt: 'Explore how top-tier spatial designers are blending open lounge acoustics with private office modularity to boost productivity.',
-    content: 'The workspace landscape is undergoing a silent revolution. Long gone are the days of fluorescent-lit rows of identical cubicles, but so are the days of the chaotic open-plan startup playroom. Today, ambitious businesses require architectural integrity. They need spaces that foster quiet focus when desired, and structured collaboration when teams need to align.\n\nAt Secondesk, our architectural team spends months studying spatial density. We have found that the optimal layout utilizes a 60/40 design rule: 60% of square footage dedicated to enclosed, high-acoustic privacy suites and dedicated desks, and 40% curated as beautiful public lobbies, libraries, coffee stations, and garden terraces. This dualism allows professionals to transition smoothly from head-down work to high-energy community events.',
+    content: 'The workspace landscape is undergoing a silent revolution. Long gone are the days of fluorescent-lit rows of identical cubicles, but so are the days of the chaotic open-plan startup playroom. Today, ambitious businesses require architectural integrity. They need spaces that foster quiet focus when desired, and structured collaboration when teams need to align.\n\nAt Secondesk, our architectural team spends months studying spatial density. We have found that the optimal layout utilizes a 60/40 design rule: 60% of square footage dedicated to enclosed, high-acoustic privacy suites, and 40% curated as beautiful public lobbies, libraries, coffee stations, and garden terraces. This dualism allows professionals to transition smoothly from head-down work to high-energy community events.',
     category: 'Workspace Design',
     author: {
       name: 'Elena Rostova',
@@ -394,7 +381,7 @@ export const faqs: FAQItem[] = [
   },
   {
     question: "How do flexible monthly workspace commitments work?",
-    answer: "Most of our memberships—including Shared Co-Working Space, Dedicated Desks, and select Private Office configurations—are billed on a convenient month-to-month basis. There are no heavy lock-in commitments. If your team needs change, simply provide us with a 30-day notice prior to your next billing cycle."
+    answer: "Most of our memberships—including Shared Co-Working Space and select Private Office configurations—are billed on a convenient month-to-month basis. There are no heavy lock-in commitments. If your team needs change, simply provide us with a 30-day notice prior to your next billing cycle."
   },
   {
     question: "How do you guarantee power and internet stability?",

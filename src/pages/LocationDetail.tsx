@@ -60,14 +60,14 @@ export const LocationDetail: React.FC = () => {
     <div className="bg-offwhite text-charcoal pt-20 animate-fade-in">
       <SEO 
         title={`${location.name} Shared Co-Working Space & Private Offices`}
-        description={`Explore Secondesk ${location.name} in Mombasa. Featuring shared co-working space at long common tables, dedicated desks, private office suites (Small 11 sqm, Medium 14 sqm, Large 25 sqm), meeting rooms (Max 4), and boardrooms (Max 10).`}
+        description={`Explore Secondesk ${location.name} in Mombasa. Featuring shared co-working space at long common tables, private office suites, meeting rooms (Max 4), and boardrooms (Max 10).`}
         ogImage={location.image}
         schemaType="CoworkingSpace"
         schemaData={{
           '@context': 'https://schema.org',
           '@type': 'CoworkingSpace',
           'name': `Secondesk ${location.name}`,
-          'description': `Premium boutique workspace in ${location.name}, Mombasa featuring shared co-working space, dedicated desks, private office suites, and meeting rooms.`,
+          'description': `Premium boutique workspace in ${location.name}, Mombasa featuring shared co-working space, private office suites, and meeting rooms.`,
           'image': location.image,
           'url': window.location.origin + window.location.pathname,
           'telephone': location.phone || '0719688992',
@@ -134,7 +134,6 @@ export const LocationDetail: React.FC = () => {
             <div className="border border-concrete divide-y divide-concrete bg-white">
               {[
                 { name: 'Shared Co-Working Space', capacity: 'Common Area Seats', rate: 'KES 17,000 / mo', status: 'Immediate Opening' },
-                { name: 'Dedicated Desk Room', capacity: 'Permanent Seat', rate: 'KES 17,000 / mo', status: '2 Desks Remaining' },
                 { name: 'Private Office Suites', capacity: 'Small 11m², Medium 14m², Large 25m²', rate: 'From KES 45,000 / mo', status: 'Low Availability' },
                 { name: 'Meeting & Boardrooms', capacity: 'Meeting Room (Max 4) | Boardroom (Max 10)', rate: 'From KES 1,500 / hr', status: 'Reserve on App' },
               ].map((row, idx) => (

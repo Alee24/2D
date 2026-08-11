@@ -236,34 +236,28 @@ export const Locations: React.FC = () => {
             Available Spaces at <span className="font-serif italic text-sand">Nyali Hub.</span>
           </h2>
           <p className="font-sans text-sm text-charcoal/60 leading-relaxed font-light">
-            Whether you need a seat in our shared co-working space for the day or a private office suite (Small 11 sqm, Medium 14 sqm, Large 25 sqm), our Mombasa location offers ready-to-use professional environments.
+            Whether you need a seat in our shared co-working space for the day or a private office suite, our Mombasa location offers ready-to-use professional environments.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {[
             {
               title: 'Shared Co-Working Space',
-              desc: 'Book a seat at our long tables in the open common area with high-speed fiber and one complimentary hot beverage per stay.',
+              desc: 'Book a seat at our long tables in the open common area with fast dedicated internet and one complimentary hot beverage per stay.',
               price: 'KES 1,700 / day',
               features: ['Fast Dedicated Internet', 'One Complimentary Hot Beverage', 'Common Area Seating', 'Power Outlets at Every Seat']
             },
             {
-              title: 'Dedicated Desks',
-              desc: 'Your reserved desk with lockable storage credenza, ergonomic Steelcase chair, and 24/7 access.',
-              price: 'KES 17,000 / mo',
-              features: ['Personal Lockable Storage', 'Ergonomic Task Seating', '24/7 Biometric Access', 'KES 2,000 Meeting Credits']
-            },
-            {
               title: 'Private Office Suites',
-              desc: 'Acoustically soundproofed executive suites configured for 2 to 20 team members with custom signage.',
-              price: 'KES 45,000 / mo',
-              features: ['Acoustic Sound Masking', 'Custom Door Branding', 'Private Nest AC Controls', 'Dedicated Server Rack Option']
+              desc: 'Enclosed, unfurnished private office suites configured for confidentiality and security.',
+              price: 'From KES 45,000 / mo',
+              features: ['Unfurnished Private Rooms', 'Custom Door Branding', 'Private Nest AC Controls', 'Dedicated Server Rack Option']
             },
             {
               title: 'Executive Boardrooms',
               desc: 'State-of-the-art meeting rooms with 75" 4K Polycom screens, acoustic whiteboards, and catered service.',
-              price: 'KES 2,500 / hr',
+              price: 'From KES 1,500 / hr',
               features: ['75" 4K Polycom Video Screen', 'Porcelain Whiteboards', 'Catered Refreshments', 'Acoustic Privacy Walls']
             }
           ].map((space, idx) => (

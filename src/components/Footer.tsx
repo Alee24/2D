@@ -115,7 +115,6 @@ export const Footer: React.FC = () => {
             <ul className="space-y-3">
               {[
                 { name: 'Shared Co-Working Space', slug: 'coworking' },
-                { name: 'Dedicated Desk', slug: 'dedicated-desks' },
                 { name: 'Private Offices', slug: 'private-offices' },
                 { name: 'Meeting Rooms', slug: 'meeting-rooms' },
               ].map((link) => (

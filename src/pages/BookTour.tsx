@@ -200,7 +200,7 @@ export const BookTour: React.FC = () => {
 
               <div className="space-y-6">
                 {[
-                  { title: 'Personalized Workspace Tour', desc: 'Walkthrough all shared areas, dedicated desk zones, private suits, and local server setups.' },
+                  { title: 'Personalized Workspace Tour', desc: 'Walkthrough all shared areas, private office suites, and local server setups.' },
                   { title: 'Redundant Power & Fiber Audits', desc: 'See our high-redundant Tier-1 symmetrical fiber routing, biometric gates, and auto generators.' },
                   { title: '1-on-1 Spatial Consultation', desc: 'Discuss custom team scaling layouts, branding rules, corporate invoice pipelines, and event reservations.' },
                   { title: 'Paid Day Passes Available', desc: 'Day passes available for purchase if you wish to remain in our shared co-working space after your tour.' }

@@ -152,7 +152,7 @@ export const generateBrochurePDF = () => {
         'Small Office Suite (11 sqm) — KES 45,000 / month',
         'Medium Office Suite (14 sqm) — KES 55,000 / month',
         'Large Office Suite (25 sqm) — KES 65,000 / month',
-        'Includes: Sound-insulated private partitions, Steelcase chairs, solid oak desks, 24/7 access, and private keycard entry.'
+        'Includes: Unfurnished sound-insulated private partitions, 24/7 access, and private keycard entry.'
       ]
     },
     {
