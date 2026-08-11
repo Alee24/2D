@@ -11,17 +11,29 @@ export interface EmailPayload {
 export const dispatchEmail = async (payload: EmailPayload): Promise<void> => {
   return new Promise<void>((resolve) => {
     try {
-      // 1. Prepare FormData for FormSubmit & Web3Forms
+      const name = payload.fields['Full Name'] || payload.fields['name'] || 'N/A';
+      const email = payload.fields['Business Email'] || payload.fields['email'] || '';
+      const phone = payload.fields['Phone Number'] || payload.fields['phone'] || 'N/A';
+      const company = payload.fields['Company Name'] || payload.fields['company'] || 'N/A';
+      const location = payload.fields['Preferred Node'] || payload.fields['location'] || 'N/A';
+      const teamSize = payload.fields['Team Footprint'] || payload.fields['teamSize'] || 'N/A';
+      const date = payload.fields['Preferred Tour Date'] || payload.fields['date'] || 'N/A';
+      const message = payload.fields['Inquiry Details'] || payload.fields['Special Notes'] || payload.fields['message'] || 'N/A';
+
+      // 1. Prepare FormData for FormSubmit
       const formData = new FormData();
       formData.append('_subject', payload.subject);
       formData.append('_captcha', 'false');
       formData.append('_template', 'table');
+      if (email) {
+        formData.append('_replyto', email);
+      }
 
       Object.entries(payload.fields).forEach(([key, val]) => {
         formData.append(key, val);
       });
 
-      // 2. Hidden Iframe Form Submit (Native HTML POST)
+      // 2. Hidden Iframe Form Submit (Native HTML POST to formsubmit.co)
       let iframe = document.getElementById('secondesk_email_iframe') as HTMLIFrameElement;
       if (!iframe) {
         iframe = document.createElement('iframe');
@@ -42,14 +54,18 @@ export const dispatchEmail = async (payload: EmailPayload): Promise<void> => {
         { name: '_template', value: 'table' },
       ];
 
+      if (email) {
+        hiddenInputs.push({ name: '_replyto', value: email });
+      }
+
       Object.entries(payload.fields).forEach(([label, val]) => {
         hiddenInputs.push({ name: label, value: val });
       });
 
-      hiddenInputs.forEach(({ name, value }) => {
+      hiddenInputs.forEach(({ name: inputName, value }) => {
         const input = document.createElement('input');
         input.type = 'hidden';
-        input.name = name;
+        input.name = inputName;
         input.value = value;
         form.appendChild(input);
       });
@@ -60,28 +76,24 @@ export const dispatchEmail = async (payload: EmailPayload): Promise<void> => {
       // 3. Parallel AJAX fetch to FormSubmit
       fetch('https://formsubmit.co/ajax/info@secondesk.ke', {
         method: 'POST',
+        headers: { 'Accept': 'application/json' },
         body: formData,
       }).catch(() => null);
 
-      // 4. Parallel fetch to Web3Forms API
-      fetch('https://api.web3forms.com/submit', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          access_key: '00000000-0000-0000-0000-000000000000', // Web3Forms endpoint handler
-          subject: payload.subject,
-          to_email: 'info@secondesk.ke',
-          from_name: 'SECONDESK Web',
-          ...payload.fields,
-        }),
-      }).catch(() => null);
-
-      // 5. Parallel fetch to Host PHP script
+      // 4. Parallel fetch to Host PHP script
       fetch('/api/contact.php', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           subject: payload.subject,
+          name,
+          email,
+          phone,
+          company,
+          location,
+          teamSize,
+          date,
+          message,
           ...payload.fields,
         }),
       }).catch(() => null);
