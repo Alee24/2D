@@ -146,11 +146,11 @@ export const Contact: React.FC = () => {
             </div>
 
             <div className="space-y-4">
-              <h3 className="font-display font-semibold text-lg text-charcoal">Locations Operations</h3>
+              <h3 className="font-display font-semibold text-lg text-charcoal">Location Operations</h3>
               <div className="space-y-1 text-xs font-sans text-charcoal/60 leading-normal">
                 {locations.slice(0, 3).map((loc) => (
                   <p key={loc.id}>
-                    <strong>SECONDESK {loc.name}:</strong> {loc.phone}
+                    <strong>SECONDESK {loc.name}:</strong> <a href="tel:+254719688992" className="hover:text-red transition-colors">{loc.phone}</a>
                   </p>
                 ))}
               </div>
@@ -159,7 +159,7 @@ export const Contact: React.FC = () => {
 
           {/* Interactive Google Map Embed */}
           <div className="space-y-4">
-            <h3 className="font-display font-semibold text-xl text-charcoal tracking-tight">Main Mombasa Node Map</h3>
+            <h3 className="font-display font-semibold text-xl text-charcoal tracking-tight">Main Mombasa Location Map</h3>
             <div className="aspect-video w-full bg-concrete border border-concrete">
               <iframe
                 title="Google Map location representation of SECONDESK Nyali HQ"

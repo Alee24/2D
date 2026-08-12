@@ -114,8 +114,8 @@ export const Footer: React.FC = () => {
               {[
                 { name: 'Shared Co-Working Space', slug: 'coworking' },
                 { name: 'Private Office Suites', slug: 'private-offices' },
-                { name: 'Meeting Room (Max 4)', slug: 'meeting-room' },
-                { name: 'Executive Boardroom (Max 10)', slug: 'boardroom' },
+                { name: 'Meeting Room', slug: 'meeting-room' },
+                { name: 'Executive Boardroom', slug: 'boardroom' },
               ].map((link) => (
                 <li key={link.name}>
                   <button
