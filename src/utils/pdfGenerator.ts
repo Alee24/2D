@@ -403,6 +403,39 @@ export const generateBrochurePDF = () => {
   doc.setFontSize(7.5);
   doc.text('PAGE 3  |  SECONDESK CORPORATE PORTFOLIO', 15, 282);
 
-  // Save / Download PDF
-  doc.save('SECONDESK_Official_Brochure_PriceList.pdf');
+  // 1. Standard jsPDF save
+  try {
+    doc.save('SECONDESK_Official_Brochure_PriceList.pdf');
+  } catch (e) {
+    console.warn('Standard doc.save failed, trying Blob fallback', e);
+  }
+
+  // 2. Multi-device Fallback for Mobile (iOS Safari & Android Chrome)
+  try {
+    const pdfBlob = doc.output('blob');
+    const blobUrl = URL.createObjectURL(pdfBlob);
+    
+    const link = document.createElement('a');
+    link.href = blobUrl;
+    link.download = 'SECONDESK_Official_Brochure_PriceList.pdf';
+    link.target = '_blank';
+    document.body.appendChild(link);
+    link.click();
+    
+    setTimeout(() => {
+      try {
+        document.body.removeChild(link);
+        URL.revokeObjectURL(blobUrl);
+      } catch (err) {}
+    }, 5000);
+  } catch (e) {
+    // 3. Data URI fallback
+    try {
+      const dataUri = doc.output('datauristring');
+      const win = window.open();
+      if (win) {
+        win.document.write('<iframe src="' + dataUri + '" frameborder="0" style="border:0; top:0px; left:0px; bottom:0px; right:0px; width:100%; height:100%;" allowfullscreen></iframe>');
+      }
+    } catch (err) {}
+  }
 };
