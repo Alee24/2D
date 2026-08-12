@@ -11,19 +11,17 @@ export const Pricing: React.FC = () => {
   const [downloadSuccess, setDownloadSuccess] = React.useState(false);
 
   const handleDownload = () => {
-    setIsDownloading(true);
-    setDownloadSuccess(false);
-    setTimeout(() => {
-      try {
-        generateBrochurePDF();
-        setDownloadSuccess(true);
-      } catch (err) {
-        console.error('Failed to generate PDF', err);
-      } finally {
-        setIsDownloading(false);
-        setTimeout(() => setDownloadSuccess(false), 4000);
-      }
-    }, 1000);
+    try {
+      setIsDownloading(true);
+      setDownloadSuccess(false);
+      generateBrochurePDF();
+      setDownloadSuccess(true);
+      setTimeout(() => setDownloadSuccess(false), 4000);
+    } catch (err) {
+      console.error('Failed to generate PDF', err);
+    } finally {
+      setIsDownloading(false);
+    }
   };
 
   return (

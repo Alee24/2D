@@ -19,19 +19,17 @@ export const Home: React.FC = () => {
   const [downloadSuccess, setDownloadSuccess] = useState(false);
 
   const handleDownloadBrochure = () => {
-    setIsDownloading(true);
-    setDownloadSuccess(false);
-    setTimeout(() => {
-      try {
-        generateBrochurePDF();
-        setDownloadSuccess(true);
-      } catch (err) {
-        console.error('Failed to generate PDF brochure', err);
-      } finally {
-        setIsDownloading(false);
-        setTimeout(() => setDownloadSuccess(false), 4000);
-      }
-    }, 1200);
+    try {
+      setIsDownloading(true);
+      setDownloadSuccess(false);
+      generateBrochurePDF();
+      setDownloadSuccess(true);
+      setTimeout(() => setDownloadSuccess(false), 4000);
+    } catch (err) {
+      console.error('Failed to generate PDF brochure', err);
+    } finally {
+      setIsDownloading(false);
+    }
   };
 
   // Statistics counters simulation
