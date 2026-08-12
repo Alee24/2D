@@ -45,14 +45,15 @@ export const Pricing: React.FC = () => {
           </p>
 
           <div className="flex flex-wrap items-center justify-center gap-4 mt-6">
-            <button
-              onClick={handleDownload}
-              disabled={isDownloading}
+            <a
+              href="/SECONDESK_Official_Brochure_PriceList.pdf"
+              download="SECONDESK_Official_Brochure_PriceList.pdf"
+              onClick={() => handleDownload()}
               className="bg-charcoal hover:bg-sand text-white hover:text-charcoal border border-charcoal hover:border-sand font-sans text-xs font-bold uppercase tracking-wider px-6 py-3.5 rounded-lg transition-all flex items-center gap-2 cursor-pointer shadow-sm"
             >
               <Download className="w-4 h-4" />
               {isDownloading ? 'Generating Official PDF...' : 'Download Official Price List PDF'}
-            </button>
+            </a>
             <button
               onClick={() => navigate('/book-tour')}
               className="bg-sand hover:bg-charcoal text-charcoal hover:text-white font-sans text-xs font-bold uppercase tracking-wider px-6 py-3.5 rounded-lg transition-all flex items-center gap-2 cursor-pointer"

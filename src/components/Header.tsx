@@ -435,7 +435,9 @@ export const Header: React.FC = () => {
                       Book a Tour
                     </button>
                     
-                    <button
+                    <a
+                      href="/SECONDESK_Official_Brochure_PriceList.pdf"
+                      download="SECONDESK_Official_Brochure_PriceList.pdf"
                       onClick={() => {
                         generateBrochurePDF();
                         setMobileMenuOpen(false);
@@ -444,7 +446,7 @@ export const Header: React.FC = () => {
                     >
                       <Download className="w-3.5 h-3.5" />
                       Download Brochure
-                    </button>
+                    </a>
                   </div>
 
                   {/* Contact Info & Socials */}

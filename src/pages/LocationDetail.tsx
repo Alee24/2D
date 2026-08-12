@@ -418,13 +418,15 @@ export const LocationDetail: React.FC = () => {
             Book a Tour
           </button>
 
-          <button
-            onClick={generateBrochurePDF}
+          <a
+            href="/SECONDESK_Official_Brochure_PriceList.pdf"
+            download="SECONDESK_Official_Brochure_PriceList.pdf"
+            onClick={() => generateBrochurePDF()}
             className="w-full border border-charcoal/30 hover:border-charcoal text-charcoal bg-white font-sans text-xs font-bold uppercase tracking-widest py-3.5 flex items-center justify-center gap-2 transition-all cursor-pointer shadow-xs"
           >
             <Download className="w-4 h-4" />
             Download Brochure
-          </button>
+          </a>
 
           <div className="pt-4 border-t border-concrete/60 text-center">
             <span className="text-[10px] text-charcoal/40 font-sans block mb-1">Direct Location Inquiries</span>

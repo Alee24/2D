@@ -388,32 +388,25 @@ export const generateBrochurePDF = () => {
     doc.setFontSize(7.5);
     doc.text('PAGE 3  |  SECONDESK CORPORATE PORTFOLIO', 15, 282);
 
-    // 1. Direct browser save
+    // Single Clean Download Trigger
     try {
       doc.save('SECONDESK_Official_Brochure_PriceList.pdf');
     } catch (e) {
-      console.warn('Standard doc.save failed, using Blob fallback', e);
-    }
-
-    // 2. Blob anchor fallback for mobile Safari & Chrome
-    try {
+      console.warn('Standard doc.save failed, triggering blob link fallback', e);
       const pdfBlob = doc.output('blob');
       const blobUrl = URL.createObjectURL(pdfBlob);
-      
       const link = document.createElement('a');
       link.href = blobUrl;
       link.download = 'SECONDESK_Official_Brochure_PriceList.pdf';
-      link.target = '_blank';
       document.body.appendChild(link);
       link.click();
-      
       setTimeout(() => {
         try {
           document.body.removeChild(link);
           URL.revokeObjectURL(blobUrl);
         } catch (err) {}
       }, 4000);
-    } catch (e) {}
+    }
   } catch (err) {
     console.error('Failed to generate PDF', err);
   }

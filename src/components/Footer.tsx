@@ -159,18 +159,23 @@ export const Footer: React.FC = () => {
                 { name: 'Download Brochure', path: 'download_pdf_brochure' },
               ].map((link) => (
                 <li key={link.name}>
-                  <button
-                    onClick={() => {
-                      if (link.path === 'download_pdf_brochure') {
-                        generateBrochurePDF();
-                      } else {
-                        navigate(link.path);
-                      }
-                    }}
-                    className="font-sans text-sm text-white/60 hover:text-white transition-colors cursor-pointer text-left"
-                  >
-                    {link.name}
-                  </button>
+                  {link.path === 'download_pdf_brochure' ? (
+                    <a
+                      href="/SECONDESK_Official_Brochure_PriceList.pdf"
+                      download="SECONDESK_Official_Brochure_PriceList.pdf"
+                      onClick={() => generateBrochurePDF()}
+                      className="font-sans text-sm text-white/60 hover:text-white transition-colors cursor-pointer text-left inline-block"
+                    >
+                      {link.name}
+                    </a>
+                  ) : (
+                    <button
+                      onClick={() => navigate(link.path)}
+                      className="font-sans text-sm text-white/60 hover:text-white transition-colors cursor-pointer text-left"
+                    >
+                      {link.name}
+                    </button>
+                  )}
                 </li>
               ))}
             </ul>

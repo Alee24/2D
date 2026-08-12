@@ -392,9 +392,10 @@ export const Home: React.FC = () => {
 
                   {/* Dynamic feedback CTA button */}
                   <div className="pt-2">
-                    <button
-                      onClick={handleDownloadBrochure}
-                      disabled={isDownloading}
+                    <a
+                      href="/SECONDESK_Official_Brochure_PriceList.pdf"
+                      download="SECONDESK_Official_Brochure_PriceList.pdf"
+                      onClick={() => handleDownloadBrochure()}
                       className={`w-full font-sans text-xs font-bold uppercase tracking-widest px-6 py-4.5 transition-all flex items-center justify-center gap-3 cursor-pointer shadow-md ${
                         downloadSuccess 
                           ? 'bg-emerald-600 border border-emerald-600 text-white' 
@@ -419,7 +420,7 @@ export const Home: React.FC = () => {
                           <span>Download Brochure</span>
                         </>
                       )}
-                    </button>
+                    </a>
                   </div>
 
                   {downloadSuccess && (
