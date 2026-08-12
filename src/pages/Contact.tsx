@@ -159,11 +159,21 @@ export const Contact: React.FC = () => {
 
           {/* Interactive Google Map Embed */}
           <div className="space-y-4">
-            <h3 className="font-display font-semibold text-xl text-charcoal tracking-tight">Main Mombasa Location Map</h3>
+            <div className="flex items-center justify-between">
+              <h3 className="font-display font-semibold text-xl text-charcoal tracking-tight">Main Mombasa Location Map</h3>
+              <a
+                href="https://www.google.com/maps/dir/?api=1&destination=-4.027375,39.717229"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-sans text-xs font-bold text-red hover:underline flex items-center gap-1.5"
+              >
+                Open Directions in Google Maps &rarr;
+              </a>
+            </div>
             <div className="aspect-video w-full bg-concrete border border-concrete">
               <iframe
                 title="Google Map location representation of SECONDESK Nyali HQ"
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3979.882195289944!2d39.68351541533261!3d-4.041453999080063!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x184012e5c0000000%3A0xd6891cc774fcf373!2sNyali%2C%20Mombasa!5e0!3m2!1sen!2ske!4v1655112233445!5m2!1sen!2ske"
+                src="https://maps.google.com/maps?q=-4.027375,39.717229&hl=en&z=17&output=embed"
                 className="w-full h-full border-0"
                 allowFullScreen={false}
                 loading="lazy"
