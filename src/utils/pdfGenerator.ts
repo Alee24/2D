@@ -8,11 +8,14 @@ export const generateBrochurePDF = () => {
       format: 'a4',
     });
 
-    // SECONDESK Official Color Palette Definitions
+    // Color Palette Definitions
     const black = '#111111';
     const red = '#E31B23';
-    const offwhite = '#FAFAF8';
-    const concrete = '#E7E7E7';
+    const offwhite = '#FFFFFF';
+    const concrete = '#E5E5E5';
+    const lightbox = '#F8F8F8';
+    const textgray = '#444444';
+    const lighttext = '#777777';
 
     const hexToRgb = (hex: string) => {
       const r = parseInt(hex.slice(1, 3), 16);
@@ -26,60 +29,52 @@ export const generateBrochurePDF = () => {
       red: hexToRgb(red),
       offwhite: hexToRgb(offwhite),
       concrete: hexToRgb(concrete),
+      lightbox: hexToRgb(lightbox),
+      textgray: hexToRgb(textgray),
+      lighttext: hexToRgb(lighttext),
     };
 
     // ==========================================
-    // PAGE 1: COVER PAGE (SECONDESK Red & Black Theme)
+    // PAGE 1: COVER PAGE (White background, Red Top Bar, SECONDDESK Logo)
     // ==========================================
-    
-    // Background: Full bleed Black
-    doc.setFillColor(colors.black.r, colors.black.g, colors.black.b);
+    doc.setFillColor(255, 255, 255);
     doc.rect(0, 0, 210, 297, 'F');
 
-    // Outer framing in SECONDESK Red
-    doc.setDrawColor(colors.red.r, colors.red.g, colors.red.b);
-    doc.setLineWidth(0.8);
+    // Top Red Accent Bar
+    doc.setFillColor(colors.red.r, colors.red.g, colors.red.b);
+    doc.rect(10, 10, 190, 4, 'F');
+
+    // Outer Framing Box
+    doc.setDrawColor(colors.concrete.r, colors.concrete.g, colors.concrete.b);
+    doc.setLineWidth(0.4);
     doc.rect(10, 10, 190, 277, 'S');
 
-    // Logo Circle Emblem (SD)
-    doc.setFillColor(colors.black.r, colors.black.g, colors.black.b);
-    doc.setDrawColor(colors.red.r, colors.red.g, colors.red.b);
-    doc.setLineWidth(1.2);
-    doc.circle(105, 42, 14, 'FD');
-
-    doc.setTextColor(255, 255, 255);
+    // Brand Logo: SECOND (Black) + DESK (Red)
     doc.setFont('helvetica', 'bold');
-    doc.setFontSize(14);
-    doc.text('S', 98.5, 46.5);
+    doc.setFontSize(36);
+    doc.setTextColor(colors.black.r, colors.black.g, colors.black.b);
+    doc.text('SECOND', 103, 72, { align: 'right' });
     doc.setTextColor(colors.red.r, colors.red.g, colors.red.b);
-    doc.text('D', 106.5, 46.5);
+    doc.text('DESK', 105, 72, { align: 'left' });
 
-    // Logo / Brand Name: SECON (White) + DESK (Red)
-    doc.setFont('helvetica', 'bold');
-    doc.setFontSize(32);
-    doc.setTextColor(255, 255, 255);
-    doc.text('S E C O N', 100, 70, { align: 'right' });
-    doc.setTextColor(colors.red.r, colors.red.g, colors.red.b);
-    doc.text('D E S K', 105, 70, { align: 'left' });
-
-    // Accent horizontal line in Red
+    // Accent Horizontal Line in Red
     doc.setDrawColor(colors.red.r, colors.red.g, colors.red.b);
     doc.setLineWidth(1.5);
-    doc.line(30, 80, 180, 80);
+    doc.line(30, 82, 180, 82);
 
     // Subtitle
-    doc.setTextColor(colors.red.r, colors.red.g, colors.red.b);
+    doc.setTextColor(colors.black.r, colors.black.g, colors.black.b);
     doc.setFont('helvetica', 'bold');
-    doc.setFontSize(12);
-    doc.text('PREMIUM WORKSPACE PORTFOLIO', 105, 95, { align: 'center' });
+    doc.setFontSize(13);
+    doc.text('PREMIUM WORKSPACE PORTFOLIO', 105, 96, { align: 'center' });
 
     // Luxury Divider Detail
-    doc.setDrawColor(colors.red.r, colors.red.g, colors.red.b);
+    doc.setDrawColor(colors.concrete.r, colors.concrete.g, colors.concrete.b);
     doc.setLineWidth(0.5);
-    doc.line(90, 110, 120, 110);
+    doc.line(95, 110, 115, 110);
 
-    // Description copy
-    doc.setTextColor(220, 220, 220);
+    // Description Copy
+    doc.setTextColor(colors.textgray.r, colors.textgray.g, colors.textgray.b);
     doc.setFont('helvetica', 'normal');
     doc.setFontSize(10);
     const introText = [
@@ -87,7 +82,7 @@ export const generateBrochurePDF = () => {
       'state-of-the-art boardrooms, and custom enterprise layouts',
       'crafted for elite focus and professional excellence.'
     ];
-    doc.text(introText, 105, 125, { align: 'center', lineHeightFactor: 1.6 });
+    doc.text(introText, 105, 126, { align: 'center', lineHeightFactor: 1.6 });
 
     // Core Pillars Section
     const pillars = [
@@ -98,66 +93,66 @@ export const generateBrochurePDF = () => {
 
     let pillarY = 175;
     pillars.forEach((p) => {
-      // Draw tiny square accent in Red
+      // Red square accent
       doc.setFillColor(colors.red.r, colors.red.g, colors.red.b);
-      doc.rect(30, pillarY - 4, 3, 3, 'F');
+      doc.rect(30, pillarY - 4, 3.5, 3.5, 'F');
 
-      doc.setTextColor(colors.red.r, colors.red.g, colors.red.b);
+      doc.setTextColor(colors.black.r, colors.black.g, colors.black.b);
       doc.setFont('helvetica', 'bold');
-      doc.setFontSize(9.5);
-      doc.text(p.title, 38, pillarY);
+      doc.setFontSize(10);
+      doc.text(p.title, 39, pillarY);
 
-      doc.setTextColor(230, 230, 230);
+      doc.setTextColor(colors.lighttext.r, colors.lighttext.g, colors.lighttext.b);
       doc.setFont('helvetica', 'normal');
       doc.setFontSize(9);
-      doc.text(p.desc, 38, pillarY + 5);
+      doc.text(p.desc, 39, pillarY + 5.5);
 
-      pillarY += 20;
+      pillarY += 21;
     });
 
-    // Footer text
-    doc.setTextColor(150, 150, 150);
+    // Footer Line
+    doc.setTextColor(colors.lighttext.r, colors.lighttext.g, colors.lighttext.b);
     doc.setFont('helvetica', 'normal');
     doc.setFontSize(8);
-    doc.text('MOMBASA, KENYA  |  LINKS ROAD, NYALI (LOCATED ABOVE SECOND CUP CAFE ON THE 2ND FLOOR)  |  WWW.SECONDESK.KE', 105, 265, { align: 'center' });
+    doc.text('MOMBASA, KENYA  |  LINKS ROAD, NYALI (LOCATED ABOVE SECOND CUP CAFE ON THE 2ND FLOOR)  |  WWW.SECONDESK.KE', 105, 268, { align: 'center' });
 
 
     // ==========================================
     // PAGE 2: OFFICIAL PRICE LIST & WORKSPACE PACKAGES
     // ==========================================
     doc.addPage();
-
-    // Background: Full bleed Off-white
-    doc.setFillColor(colors.offwhite.r, colors.offwhite.g, colors.offwhite.b);
+    doc.setFillColor(255, 255, 255);
     doc.rect(0, 0, 210, 297, 'F');
 
-    // Outer framing in Concrete
+    // Top Red Accent Bar
+    doc.setFillColor(colors.red.r, colors.red.g, colors.red.b);
+    doc.rect(10, 10, 190, 4, 'F');
+
+    // Outer Framing Box
     doc.setDrawColor(colors.concrete.r, colors.concrete.g, colors.concrete.b);
-    doc.setLineWidth(0.3);
+    doc.setLineWidth(0.4);
     doc.rect(10, 10, 190, 277, 'S');
 
-    // Header Title block (Black background + Red accent line)
+    // Black Title Block
     doc.setFillColor(colors.black.r, colors.black.g, colors.black.b);
-    doc.rect(15, 15, 180, 25, 'F');
-    doc.setFillColor(colors.red.r, colors.red.g, colors.red.b);
-    doc.rect(15, 38, 180, 2, 'F');
+    doc.rect(15, 16, 180, 24, 'F');
 
     doc.setTextColor(255, 255, 255);
     doc.setFont('helvetica', 'bold');
     doc.setFontSize(13);
-    doc.text('OFFICIAL PRICE LIST & AVAILABLE PACKAGES', 25, 30);
+    doc.text('OFFICIAL PRICE LIST & AVAILABLE PACKAGES', 23, 31);
 
     // Sub-header under Header
-    doc.setTextColor(colors.black.r, colors.black.g, colors.black.b);
+    doc.setTextColor(colors.textgray.r, colors.textgray.g, colors.textgray.b);
     doc.setFont('helvetica', 'normal');
-    doc.setFontSize(9.5);
+    doc.setFontSize(9);
     doc.text(
       'All rates listed below exclude 16% VAT. Shared Co-Working Space available on flexible terms; Private Office Suites require a minimum 6-month rental duration.',
       15,
-      48
+      47,
+      { maxWidth: 180, lineHeightFactor: 1.3 }
     );
 
-    // Solutions Grid / Rows
     const packages = [
       {
         title: '01. Private Office Suites',
@@ -172,7 +167,7 @@ export const generateBrochurePDF = () => {
       },
       {
         title: '02. Meeting Room',
-        badge: 'HOURLY / HALF-DAY / FULL-DAY',
+        badge: 'HOURLY PASSES',
         details: [
           'Hourly Rate — KES 1,500 / hr',
           'Half Day Pass (4 Hours) — KES 5,000 | Full Day Pass (8 Hours) — KES 8,000',
@@ -212,33 +207,33 @@ export const generateBrochurePDF = () => {
 
     let solY = 58;
     packages.forEach((pkg) => {
-      // Top separator line
+      // Separator Line
       doc.setDrawColor(colors.concrete.r, colors.concrete.g, colors.concrete.b);
-      doc.setLineWidth(0.5);
+      doc.setLineWidth(0.4);
       doc.line(15, solY, 195, solY);
 
       // Title
       doc.setTextColor(colors.black.r, colors.black.g, colors.black.b);
       doc.setFont('helvetica', 'bold');
-      doc.setFontSize(11);
+      doc.setFontSize(10.5);
       doc.text(pkg.title, 15, solY + 6);
 
-      // Badge in Red
+      // Badge Text in Red
       doc.setTextColor(colors.red.r, colors.red.g, colors.red.b);
       doc.setFont('helvetica', 'bold');
       doc.setFontSize(8.5);
       doc.text(pkg.badge, 195, solY + 6, { align: 'right' });
 
-      // Details Bullet List
-      doc.setTextColor(60, 60, 60);
+      // Details
+      doc.setTextColor(colors.textgray.r, colors.textgray.g, colors.textgray.b);
       doc.setFont('helvetica', 'normal');
       doc.setFontSize(8.5);
 
       let bulletY = solY + 12;
       pkg.details.forEach((bullet) => {
-        // Red square icon
+        // Red Dash Icon
         doc.setFillColor(colors.red.r, colors.red.g, colors.red.b);
-        doc.rect(17, bulletY - 2, 2, 2, 'F');
+        doc.rect(17, bulletY - 2, 2.5, 0.8, 'F');
         
         const splitBullet = doc.splitTextToSize(bullet, 170);
         doc.text(splitBullet, 22, bulletY);
@@ -249,7 +244,7 @@ export const generateBrochurePDF = () => {
     });
 
     // Page 2 Footer
-    doc.setTextColor(150, 150, 150);
+    doc.setTextColor(colors.lighttext.r, colors.lighttext.g, colors.lighttext.b);
     doc.setFont('helvetica', 'normal');
     doc.setFontSize(7.5);
     doc.text('PAGE 2  |  SECONDESK OFFICIAL RATES & PACKAGES', 15, 282);
@@ -259,34 +254,33 @@ export const generateBrochurePDF = () => {
     // PAGE 3: LOCATION & BOOKING INFORMATION
     // ==========================================
     doc.addPage();
-
-    // Background: Full bleed Off-white
-    doc.setFillColor(colors.offwhite.r, colors.offwhite.g, colors.offwhite.b);
+    doc.setFillColor(255, 255, 255);
     doc.rect(0, 0, 210, 297, 'F');
 
-    // Outer framing in Concrete
+    // Top Red Accent Bar
+    doc.setFillColor(colors.red.r, colors.red.g, colors.red.b);
+    doc.rect(10, 10, 190, 4, 'F');
+
+    // Outer Framing Box
     doc.setDrawColor(colors.concrete.r, colors.concrete.g, colors.concrete.b);
-    doc.setLineWidth(0.3);
+    doc.setLineWidth(0.4);
     doc.rect(10, 10, 190, 277, 'S');
 
-    // Header Title block (Black background + Red accent line)
+    // Black Title Block
     doc.setFillColor(colors.black.r, colors.black.g, colors.black.b);
-    doc.rect(15, 15, 180, 25, 'F');
-    doc.setFillColor(colors.red.r, colors.red.g, colors.red.b);
-    doc.rect(15, 38, 180, 2, 'F');
+    doc.rect(15, 16, 180, 24, 'F');
 
     doc.setTextColor(255, 255, 255);
     doc.setFont('helvetica', 'bold');
     doc.setFontSize(13);
-    doc.text('HEADQUARTERS LOCATION & CONTACT DETAILS', 25, 30);
+    doc.text('HEADQUARTERS LOCATION & CONTACT DETAILS', 23, 31);
 
     // Description
-    doc.setTextColor(colors.black.r, colors.black.g, colors.black.b);
+    doc.setTextColor(colors.textgray.r, colors.textgray.g, colors.textgray.b);
     doc.setFont('helvetica', 'normal');
     doc.setFontSize(9.5);
     doc.text('Visit our flagship center situated on Links Road, Nyali (located above Second Cup Cafe on the 2nd floor).', 15, 48);
 
-    // Locations Box grid
     const locationCard = {
       title: 'SECONDESK Nyali Executive Hub',
       address: 'Links Road, Nyali (located above Second Cup Cafe on the 2nd floor)',
@@ -301,56 +295,52 @@ export const generateBrochurePDF = () => {
     };
 
     let locY = 56;
-    
-    // Fill subtle box
-    doc.setFillColor(245, 245, 242);
+
+    doc.setFillColor(colors.lightbox.r, colors.lightbox.g, colors.lightbox.b);
     doc.rect(15, locY, 180, 95, 'F');
     doc.setDrawColor(colors.concrete.r, colors.concrete.g, colors.concrete.b);
     doc.rect(15, locY, 180, 95, 'S');
 
-    // Red accent left strip
+    // Red Strip on Left
     doc.setFillColor(colors.red.r, colors.red.g, colors.red.b);
     doc.rect(15, locY, 3, 95, 'F');
 
-    // Title inside box
     doc.setTextColor(colors.black.r, colors.black.g, colors.black.b);
     doc.setFont('helvetica', 'bold');
     doc.setFontSize(11);
-    doc.text(locationCard.title, 22, locY + 10);
+    doc.text(locationCard.title, 23, locY + 10);
 
-    // Address line
     doc.setFont('helvetica', 'normal');
     doc.setFontSize(9);
-    doc.setTextColor(80, 80, 80);
-    doc.text(`Address: ${locationCard.address}`, 22, locY + 17);
-    doc.text(`Phone: ${locationCard.phone}  |  Email: ${locationCard.email}`, 22, locY + 23);
+    doc.setTextColor(colors.lighttext.r, colors.lighttext.g, colors.lighttext.b);
+    doc.text(`Address: ${locationCard.address}`, 23, locY + 17);
+    doc.text(`Phone: ${locationCard.phone}  |  Email: ${locationCard.email}`, 23, locY + 23);
 
-    // Features inside location box
     doc.setFont('helvetica', 'bold');
     doc.setFontSize(9);
     doc.setTextColor(colors.black.r, colors.black.g, colors.black.b);
-    doc.text('Key Amenities & Location Benefits:', 22, locY + 33);
+    doc.text('Key Amenities & Location Benefits:', 23, locY + 33);
 
     doc.setFont('helvetica', 'normal');
     doc.setFontSize(8.5);
-    doc.setTextColor(70, 70, 70);
+    doc.setTextColor(colors.textgray.r, colors.textgray.g, colors.textgray.b);
     let locFeatureY = locY + 40;
     locationCard.features.forEach((feat) => {
       doc.setFillColor(colors.red.r, colors.red.g, colors.red.b);
-      doc.rect(23, locFeatureY - 2, 2, 2, 'F');
+      doc.rect(24, locFeatureY - 2, 2.5, 0.8, 'F');
       const splitFeat = doc.splitTextToSize(feat, 160);
-      doc.text(splitFeat, 28, locFeatureY);
+      doc.text(splitFeat, 29, locFeatureY);
       locFeatureY += (splitFeat.length * 4.5);
     });
 
-    // Infrastructure block (Black card + Red accent header)
+    // Infrastructure Card
     doc.setFillColor(colors.black.r, colors.black.g, colors.black.b);
     doc.rect(15, 168, 180, 52, 'F');
 
-    doc.setTextColor(colors.red.r, colors.red.g, colors.red.b);
+    doc.setTextColor(255, 255, 255);
     doc.setFont('helvetica', 'bold');
     doc.setFontSize(11);
-    doc.text('UNCOMPROMISING INFRASTRUCTURE AS STANDARD', 22, 179);
+    doc.text('UNCOMPROMISING INFRASTRUCTURE AS STANDARD', 23, 179);
 
     doc.setTextColor(230, 230, 230);
     doc.setFont('helvetica', 'normal');
@@ -362,40 +352,38 @@ export const generateBrochurePDF = () => {
       '• Fully-serviced reception lounge, high-end boardrooms, and executive facilities.',
       '• One complimentary hot beverage per guest during their stay.'
     ];
-    doc.text(infrastructureBullets, 22, 188, { lineHeightFactor: 1.5 });
+    doc.text(infrastructureBullets, 23, 188, { lineHeightFactor: 1.5 });
 
-    // Contact / Call to Action Box in SECONDESK Red
+    // Contact CTA Box
     doc.setDrawColor(colors.red.r, colors.red.g, colors.red.b);
-    doc.setLineWidth(1);
+    doc.setLineWidth(0.8);
     doc.rect(15, 228, 180, 36, 'S');
 
     doc.setTextColor(colors.red.r, colors.red.g, colors.red.b);
     doc.setFont('helvetica', 'bold');
     doc.setFontSize(10);
-    doc.text('BOOK A SPATIAL TOUR OR RESERVE YOUR SPACE', 22, 237);
+    doc.text('BOOK A SPATIAL TOUR OR RESERVE YOUR SPACE', 23, 237);
 
     doc.setFont('helvetica', 'normal');
     doc.setFontSize(8.5);
-    doc.setTextColor(70, 70, 70);
+    doc.setTextColor(colors.textgray.r, colors.textgray.g, colors.textgray.b);
     doc.text([
       'Call our Mombasa community team directly to book a site inspection, test a day pass,',
       'or request a customized enterprise office package for your business team.'
-    ], 22, 243, { lineHeightFactor: 1.3 });
+    ], 23, 243, { lineHeightFactor: 1.3 });
 
-    // Contact CTA text right aligned inside box
     doc.setTextColor(colors.black.r, colors.black.g, colors.black.b);
     doc.setFont('helvetica', 'bold');
     doc.setFontSize(9.5);
-    doc.text('Phone / WhatsApp: +254 719 688 992  |  Email: info@secondesk.ke', 22, 257);
+    doc.text('Phone / WhatsApp: +254 719 688 992  |  Email: info@secondesk.ke', 23, 257);
 
-    // Developer credit inside PDF
-    doc.setTextColor(160, 160, 160);
+    doc.setTextColor(colors.lighttext.r, colors.lighttext.g, colors.lighttext.b);
     doc.setFont('helvetica', 'normal');
     doc.setFontSize(7.5);
     doc.text('Developed by KKDES', 195, 257, { align: 'right' });
 
-    // Footer for Page 3
-    doc.setTextColor(150, 150, 150);
+    // Page 3 Footer
+    doc.setTextColor(colors.lighttext.r, colors.lighttext.g, colors.lighttext.b);
     doc.setFont('helvetica', 'normal');
     doc.setFontSize(7.5);
     doc.text('PAGE 3  |  SECONDESK CORPORATE PORTFOLIO', 15, 282);
