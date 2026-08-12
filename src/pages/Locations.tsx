@@ -251,15 +251,15 @@ export const Locations: React.FC = () => {
             },
             {
               title: 'Private Office Suites',
-              desc: 'Enclosed, unfurnished private office suites configured for confidentiality and security.',
+              desc: 'Enclosed private office suites configured for confidentiality and security.',
               price: 'From KES 45,000 / mo',
-              features: ['Unfurnished Private Rooms', 'Custom Door Branding', 'Private Nest AC Controls', 'Dedicated Server Rack Option']
+              features: ['Secure Private Suites', 'Custom Door Branding', 'Private Nest AC Controls', 'Dedicated Server Rack Option']
             },
             {
               title: 'Meeting Room',
-              desc: 'Intimate round-table meeting space for up to 4 guests, equipped for presentations and client syncs.',
+              desc: 'Our meeting room comfortably seats up to 4 guests in a premium intimate setting, perfect for confidentiality and privacy.',
               price: 'KES 1,500 / hr',
-              features: ['Max 4 Guests Capacity', 'Round Wooden Table', '4K Presentation Screen', 'Studio Video Bar']
+              features: ['Max 4 Guests Capacity', 'Magnetic Whiteboard', 'One Complimentary Hot Beverage', 'Fast Dedicated Internet']
             },
             {
               title: 'Executive Boardroom',

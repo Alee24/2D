@@ -153,7 +153,7 @@ export const generateBrochurePDF = () => {
         'Small Office Suite (11 sqm) — KES 45,000 / month',
         'Medium Office Suite (14 sqm) — KES 55,000 / month',
         'Large Office Suite (25 sqm) — KES 65,000 / month',
-        'Includes: Unfurnished sound-insulated private partitions, 24/7 access, and private keycard entry.'
+        'Includes: Sound-insulated private partitions, 24/7 access, and private keycard entry.'
       ]
     },
     {
@@ -162,7 +162,7 @@ export const generateBrochurePDF = () => {
       details: [
         'Hourly Rate — KES 1,500 / hr',
         'Half Day Pass — KES 5,000 | Full Day Pass — KES 8,000',
-        'Includes: 4K presentation screen, studio video bar, magnetic whiteboard, one complimentary hot beverage per guest.'
+        'Includes: Magnetic whiteboard, fast dedicated internet, one complimentary hot beverage per guest.'
       ]
     },
     {

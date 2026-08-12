@@ -350,13 +350,13 @@ export const Home: React.FC = () => {
                 Explore Our <span className="font-serif italic text-charcoal/60">Official Brochure & Pricing.</span>
               </h2>
               <p className="font-sans text-sm text-charcoal/70 leading-relaxed max-w-xl">
-                Get a complete overview of SECONDESK's boutique coworking environments, lockable unfurnished private office suites, meeting rooms (Max 4), and executive boardrooms (Max 10). Discover flexible membership terms, transparent pricing, and enterprise-grade infrastructure on Links Road, Nyali.
+                Get a complete overview of SECONDESK's boutique coworking environments, lockable private office suites, meeting rooms (Max 4), and executive boardrooms (Max 10). Discover flexible membership terms, transparent pricing, and enterprise-grade infrastructure on Links Road, Nyali.
               </p>
               
               {/* Premium Business Offerings list */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4">
                 {[
-                  'Unfurnished private office suites (Min 6-Mo)',
+                  'Secure private office suites (Min 6-Mo)',
                   'Fast dedicated internet & dual generator backup',
                   'Shared co-working space at long common tables',
                   'One complimentary hot beverage per guest',
