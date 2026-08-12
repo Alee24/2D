@@ -13,7 +13,8 @@ define('SECURITY_PIN', '5459');
 
 $dataDir = __DIR__ . '/data';
 if (!file_exists($dataDir)) {
-    @mkdir($dataDir, 0755, true);
+    @mkdir($dataDir, 0777, true);
+    @chmod($dataDir, 0777);
 }
 $dataFile = $dataDir . '/analytics.json';
 
@@ -54,7 +55,13 @@ function getAnalyticsData($file) {
 }
 
 function saveAnalyticsData($file, $data) {
+    $dir = dirname($file);
+    if (!file_exists($dir)) {
+        @mkdir($dir, 0777, true);
+        @chmod($dir, 0777);
+    }
     @file_put_contents($file, json_encode($data, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES), LOCK_EX);
+    @chmod($file, 0666);
 }
 
 function checkPinAuth() {
@@ -77,7 +84,20 @@ if ($action === 'track') {
     $rawInput = file_get_contents('php://input');
     $data = json_decode($rawInput, true);
 
-    $path = isset($data['path']) ? $data['path'] : '/';
+    if (!$data || !is_array($data)) {
+        if (!empty($_POST)) {
+            $data = $_POST;
+        } else {
+            parse_str($rawInput, $parsed);
+            if (!empty($parsed) && is_array($parsed)) {
+                $data = $parsed;
+            } else {
+                $data = $_GET;
+            }
+        }
+    }
+
+    $path = isset($data['path']) ? trim($data['path']) : ($_GET['path'] ?? '/');
     
     // Ignore tracking for the secret count dashboard itself
     if ($path === '/count' || strpos($path, '/api/') === 0) {
@@ -89,9 +109,15 @@ if ($action === 'track') {
     $ipParts = explode(',', $ip);
     $ip = trim($ipParts[0]);
 
-    $visitorId = isset($data['visitorId']) ? preg_replace('/[^a-zA-Z0-9_\-]/', '', $data['visitorId']) : 'anon_' . substr(md5($ip), 0, 10);
-    $sessionId = isset($data['sessionId']) ? preg_replace('/[^a-zA-Z0-9_\-]/', '', $data['sessionId']) : 's_' . substr(md5(microtime()), 0, 10);
-    $device = isset($data['device']) ? $data['device'] : 'desktop';
+    $visitorId = isset($data['visitorId']) && !empty($data['visitorId']) 
+        ? preg_replace('/[^a-zA-Z0-9_\-]/', '', $data['visitorId']) 
+        : 'v_' . substr(md5($ip . ($_SERVER['HTTP_USER_AGENT'] ?? '')), 0, 12);
+        
+    $sessionId = isset($data['sessionId']) && !empty($data['sessionId'])
+        ? preg_replace('/[^a-zA-Z0-9_\-]/', '', $data['sessionId']) 
+        : 's_' . substr(md5(microtime()), 0, 10);
+
+    $device = isset($data['device']) ? htmlspecialchars($data['device']) : 'desktop';
     $os = isset($data['os']) ? htmlspecialchars($data['os']) : 'Unknown OS';
     $browser = isset($data['browser']) ? htmlspecialchars($data['browser']) : 'Unknown Browser';
     $screen = isset($data['screen']) ? htmlspecialchars($data['screen']) : 'N/A';
@@ -184,10 +210,11 @@ if ($action === 'track') {
         "path" => $path,
         "device" => $device,
         "browser" => $browser,
+        "os" => $os,
         "ip" => preg_replace('/(\d+)\.(\d+)\.(\d+)\.(\d+)/', '$1.$2.$3.***', $ip)
     ];
 
-    // Clean up stale active visitors older than 10 mins
+    // Clean up stale active visitors older than 10 mins (600s)
     foreach ($db['activeVisitors'] as $vId => $vData) {
         if ($nowTimestamp - $vData['lastSeen'] > 600) {
             unset($db['activeVisitors'][$vId]);
@@ -222,7 +249,7 @@ if ($action === 'track') {
 
     saveAnalyticsData($dataFile, $db);
 
-    echo json_encode(["success" => true]);
+    echo json_encode(["success" => true, "recorded" => true]);
     exit();
 }
 
@@ -243,12 +270,15 @@ if ($action === 'stats') {
         foreach ($db['activeVisitors'] as $vId => $vData) {
             if ($nowTimestamp - $vData['lastSeen'] <= 300) {
                 $activeLiveCount++;
+                $diffSec = $nowTimestamp - $vData['lastSeen'];
+                $agoStr = $diffSec < 5 ? 'just now' : $diffSec . 's ago';
                 $liveVisitorsList[] = [
                     "visitorId" => substr($vId, 0, 8),
                     "path" => $vData['path'],
                     "device" => $vData['device'],
                     "browser" => $vData['browser'],
-                    "ago" => ($nowTimestamp - $vData['lastSeen']) . 's ago'
+                    "os" => $vData['os'] ?? 'Device',
+                    "ago" => $agoStr
                 ];
             }
         }
@@ -264,8 +294,8 @@ if ($action === 'stats') {
     $topPages = [];
     if (isset($db['pageViews']) && is_array($db['pageViews'])) {
         arsort($db['pageViews']);
-        foreach ($db['pageViews'] as $path => $count) {
-            $topPages[] = ["path" => $path, "views" => $count];
+        foreach ($db['pageViews'] as $pPath => $count) {
+            $topPages[] = ["path" => $pPath, "views" => $count];
         }
     }
 

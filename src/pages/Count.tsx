@@ -184,6 +184,25 @@ export const Count: React.FC = () => {
     return () => clearInterval(timer);
   }, [isAuthenticated, autoRefresh]);
 
+  const handleTestPing = async () => {
+    try {
+      await fetch('/api/counter.php?action=track', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          path: '/test-ping',
+          device: /Mobile|Android|iPhone/.test(navigator.userAgent) ? 'mobile' : 'desktop',
+          browser: 'Mobile Test Ping',
+          os: navigator.userAgent.includes('iPhone') ? 'iOS' : navigator.userAgent.includes('Android') ? 'Android' : 'Mobile OS',
+          visitorId: 'test_' + Math.random().toString(36).substring(2, 8)
+        })
+      });
+      fetchStats();
+    } catch (e) {
+      alert('Ping error: ' + e);
+    }
+  };
+
   const handleResetData = async () => {
     try {
       const pin = sessionStorage.getItem('secondesk_analytics_pin') || '5459';
@@ -352,6 +371,15 @@ export const Count: React.FC = () => {
           </div>
 
           <div className="flex items-center gap-3 sm:gap-4">
+            <button
+              onClick={handleTestPing}
+              title="Send a Test Hit to Verify Connection"
+              className="px-3 py-1.5 text-xs font-mono font-medium rounded-lg border border-sand/40 text-sand hover:bg-sand hover:text-charcoal transition-all cursor-pointer flex items-center gap-1.5"
+            >
+              <Sparkles className="w-3.5 h-3.5" />
+              <span className="hidden sm:inline">Test Ping</span>
+            </button>
+
             <button
               onClick={() => setAutoRefresh(!autoRefresh)}
               className={`px-3 py-1.5 text-xs font-mono font-medium rounded-lg border transition-all cursor-pointer flex items-center gap-1.5 ${

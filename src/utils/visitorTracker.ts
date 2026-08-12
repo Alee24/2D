@@ -1,6 +1,7 @@
 /**
  * Google Analytics-Grade Silent Visitor Telemetry for SECONDESK
  * Captures non-blocking session, device, OS, browser, screen resolution, and path metrics.
+ * Supports multi-fallback mobile network transport (Fetch, sendBeacon, Image Pixel).
  */
 
 const VISITOR_KEY = 'secondesk_vid';
@@ -37,7 +38,7 @@ const getDeviceType = (): string => {
   if (/(tablet|ipad|playbook|silk)|(android(?!.*mobi))/i.test(ua)) {
     return 'tablet';
   }
-  if (/Mobile|iP(hone|od)|Android|BlackBerry|IEMobile|Kindle|Silk-Accelerated|(hpw|web)OS|Opera M(obi|ini)/.test(navigator.userAgent)) {
+  if (/Mobile|iP(hone|od)|Android|BlackBerry|IEMobile|Kindle|Silk-Accelerated|(hpw|web)OS|Opera M(obi|ini)/.test(ua)) {
     return 'mobile';
   }
   return 'desktop';
@@ -84,20 +85,50 @@ export const trackPageView = (path: string): void => {
       referrer: document.referrer ? new URL(document.referrer).hostname : 'Direct',
     };
 
-    const blob = new Blob([JSON.stringify(payload)], { type: 'application/json' });
-    
-    // Prefer navigator.sendBeacon for non-blocking unload/navigation safety
-    if (navigator.sendBeacon) {
-      navigator.sendBeacon('/api/counter.php?action=track', blob);
-    } else {
-      fetch('/api/counter.php?action=track', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(payload),
-        keepalive: true,
-      }).catch(() => null);
-    }
+    const endpoint = '/api/counter.php?action=track';
+
+    // 1. Primary Transport: Fetch API
+    fetch(endpoint, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload),
+      keepalive: true,
+    }).catch(() => {
+      // 2. Secondary Transport: sendBeacon
+      try {
+        const blob = new Blob([JSON.stringify(payload)], { type: 'application/json' });
+        if (navigator.sendBeacon) {
+          navigator.sendBeacon(endpoint, blob);
+        }
+      } catch (err2) {
+        // 3. Fallback: Image / Query String Pixel ping
+        const query = new URLSearchParams({
+          action: 'track',
+          path: payload.path,
+          visitorId: payload.visitorId,
+          device: payload.device,
+          os: payload.os,
+          browser: payload.browser,
+        }).toString();
+        const img = new Image();
+        img.src = `${endpoint}&${query}`;
+      }
+    });
+
   } catch (err) {
     // Fail silently with zero console errors or UI impact
   }
+};
+
+// Auto-start active visitor heartbeat every 20 seconds while page is active
+let heartbeatInterval: any = null;
+
+export const startActiveHeartbeat = (getCurrentPath: () => string): void => {
+  if (heartbeatInterval) return;
+  heartbeatInterval = setInterval(() => {
+    const path = getCurrentPath();
+    if (path && path !== '/count' && !path.startsWith('/api/')) {
+      trackPageView(path);
+    }
+  }, 20000);
 };

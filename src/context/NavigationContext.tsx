@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
-import { trackPageView } from '../utils/visitorTracker';
+import { trackPageView, startActiveHeartbeat } from '../utils/visitorTracker';
 
 interface NavigationContextType {
   currentPath: string;
@@ -24,6 +24,11 @@ export const NavigationProvider: React.FC<{ children: React.ReactNode }> = ({ ch
     // Silent background visitor tracking on route change
     trackPageView(currentPath);
   }, [currentPath]);
+
+  useEffect(() => {
+    // Start active visitor heartbeat every 20s
+    startActiveHeartbeat(() => window.location.pathname || '/');
+  }, []);
 
   useEffect(() => {
     const handlePopState = () => {
