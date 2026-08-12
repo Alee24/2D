@@ -263,9 +263,9 @@ export const Locations: React.FC = () => {
             },
             {
               title: 'Executive Boardroom',
-              desc: 'State-of-the-art conference boardroom for up to 10 guests with 75" 4K Polycom screens and catered service.',
+              desc: 'State-of-the-art conference boardroom for up to 10 guests with 75" 4K presentation screen and fast dedicated internet.',
               price: 'KES 2,000 / hr',
-              features: ['Max 10 Guests Capacity', '75" 4K Polycom Screen', 'Porcelain Whiteboards', 'Catered Refreshments On Demand']
+              features: ['Max 10 Guests Capacity', '75" 4K Presentation Screen', 'Magnetic Whiteboard', 'One Complimentary Hot Beverage']
             }
           ].map((space, idx) => (
             <div 

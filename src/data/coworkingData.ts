@@ -148,12 +148,12 @@ export const workspaceCategories: WorkspaceCategory[] = [
     name: 'Executive Boardroom',
     tagline: 'High-Level Presentations & Conferences (Max 10 Guests)',
     description: 'Executive boardroom accommodating up to 10 guests for board meetings, strategic planning, and corporate presentations.',
-    longDescription: 'Host executive board meetings and high-stakes corporate presentations in our flagship Boardroom accommodating up to 10 guests. Features 75" 4K Polycom video conferencing tools, high-speed fiber, and gourmet catering options on demand.',
+    longDescription: 'Host executive board meetings and high-stakes corporate presentations in our flagship Boardroom accommodating up to 10 guests. Features 75" 4K presentation screen and fast dedicated internet.',
     image: boardroomImg,
     capacity: 'Max 10 Guests',
     startingPrice: 'KES 2,000 / hr',
-    amenities: ['75" 4K Smart TV', 'Polycom Studio Video Conferencing', 'Magnetic Whiteboard', 'One Complimentary Hot Beverage Per Guest', 'Fast Dedicated Internet'],
-    features: ['Hourly Rate: KES 2,000 / hr', 'Half-Day Rate: KES 8,000', 'Full-Day Rate: KES 12,000', 'Gourmet Catering Options On Demand'],
+    amenities: ['75" 4K Presentation Screen', 'Magnetic Whiteboard', 'One Complimentary Hot Beverage Per Guest', 'Fast Dedicated Internet'],
+    features: ['Hourly Rate: KES 2,000 / hr', 'Half-Day Rate: KES 8,000', 'Full-Day Rate: KES 12,000', 'One Complimentary Hot Beverage Per Guest'],
     slug: 'boardroom',
   }
 ];
@@ -234,12 +234,11 @@ export const locations: LocationData[] = [
       image: pinpoint17Img,
       features: [
         { iconName: 'PenTool', text: 'On Demand Executive Stationery' },
-        { iconName: 'Tv', text: '75" 4K Smart TV with Polycom Video conferencing' },
+        { iconName: 'Tv', text: '75" 4K Presentation Screen' },
         { iconName: 'Presentation', text: 'Acoustic Whiteboards & Presentation Setup' },
         { iconName: 'Coffee', text: 'One Complimentary Hot Beverage Per Guest' },
         { iconName: 'Users', text: 'Meeting Room: Max 4 Guests | Boardroom: Max 10 Guests' },
-        { iconName: 'Wifi', text: 'Fast Dedicated Internet' },
-        { iconName: 'Utensils', text: 'Gourmet Catered lunch services on-demand' }
+        { iconName: 'Wifi', text: 'Fast Dedicated Internet' }
       ]
     },
     privateOfficeDetails: {

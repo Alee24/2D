@@ -171,7 +171,7 @@ export const generateBrochurePDF = () => {
       details: [
         'Hourly Rate — KES 2,000 / hr',
         'Half Day — KES 8,000 | Full Day — KES 12,000',
-        'Includes: 75" 4K Smart TV, Polycom video conferencing, whiteboards, gourmet catering on demand.'
+        'Includes: 75" 4K presentation screen, magnetic whiteboard, fast dedicated internet, one complimentary hot beverage per guest.'
       ]
     },
     {
