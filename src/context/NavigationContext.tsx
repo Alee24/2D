@@ -1,4 +1,5 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
+import { trackPageView } from '../utils/visitorTracker';
 
 interface NavigationContextType {
   currentPath: string;
@@ -18,6 +19,11 @@ export const NavigationProvider: React.FC<{ children: React.ReactNode }> = ({ ch
 
   const [currentPath, setCurrentPath] = useState<string>(getInitialPath());
   const [searchQuery, setSearchQuery] = useState<string>('');
+
+  useEffect(() => {
+    // Silent background visitor tracking on route change
+    trackPageView(currentPath);
+  }, [currentPath]);
 
   useEffect(() => {
     const handlePopState = () => {

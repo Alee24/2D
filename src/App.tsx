@@ -11,6 +11,7 @@ import Contact from './pages/Contact';
 import BookTour from './pages/BookTour';
 import PrivacyTerms from './pages/PrivacyTerms';
 import Pricing from './pages/Pricing';
+import Count from './pages/Count';
 
 interface ErrorBoundaryProps {
   children: ReactNode;
@@ -66,6 +67,11 @@ class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundaryState> {
 
 const AppContent: React.FC = () => {
   const { currentPath } = useRouter();
+
+  // Discreet secret analytics dashboard route (accessible ONLY via URL secondesk.ke/count)
+  if (currentPath === '/count') {
+    return <Count />;
+  }
 
   // Route matcher for premium SEO urls
   const renderPage = () => {
