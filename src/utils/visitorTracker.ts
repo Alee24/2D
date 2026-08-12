@@ -1,7 +1,7 @@
 /**
  * Google Analytics-Grade Live Visitor Sensor & Telemetry for SECONDESK
  * Tracks real-time active visitors, page view events, time spent on page, OS, browser, screen size, and referrers.
- * Features 4-second active heartbeat + bulletproof 3-tier transport (Fetch, sendBeacon, Image Pixel).
+ * Features 4-second active heartbeat + bulletproof dual-transport (Fetch API + Image Pixel Ping).
  */
 
 const VISITOR_KEY = 'secondesk_vid';
@@ -69,55 +69,63 @@ const getBrowserName = (): string => {
   return 'Unknown Browser';
 };
 
-// Send telemetry payload via 3-tier fallback transport
+// Send telemetry payload via dual-transport fallback
 const sendTelemetry = (action: 'track' | 'ping', path: string, timeSpentSeconds: number = 0): void => {
   if (path === '/count' || path.startsWith('/api/')) return;
 
-  const payload = {
-    path,
+  const vId = getVisitorId();
+  const sId = getSessionId();
+  const dev = getDeviceType();
+  const os = getOSName();
+  const browser = getBrowserName();
+  const screen = `${window.screen.width}x${window.screen.height}`;
+  const lang = navigator.language || 'en-US';
+  const ref = document.referrer ? new URL(document.referrer).hostname : 'Direct';
+
+  const queryParams = new URLSearchParams({
     action,
-    visitorId: getVisitorId(),
-    sessionId: getSessionId(),
-    device: getDeviceType(),
-    os: getOSName(),
-    browser: getBrowserName(),
-    screen: `${window.screen.width}x${window.screen.height}`,
-    language: navigator.language || 'en-US',
-    referrer: document.referrer ? new URL(document.referrer).hostname : 'Direct',
-    timeSpent: timeSpentSeconds
-  };
+    path,
+    visitorId: vId,
+    sessionId: sId,
+    device: dev,
+    os,
+    browser,
+    screen,
+    language: lang,
+    referrer: ref,
+    timeSpent: timeSpentSeconds.toString(),
+    _t: Date.now().toString()
+  }).toString();
 
-  const endpoint = `/api/counter.php?action=${action}`;
+  const endpoint = `/api/counter.php?${queryParams}`;
 
-  // Transport 1: Fetch POST
-  fetch(endpoint, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(payload),
-    keepalive: true,
-  }).catch(() => {
-    // Transport 2: sendBeacon
-    try {
-      const blob = new Blob([JSON.stringify(payload)], { type: 'application/json' });
-      if (navigator.sendBeacon) {
-        navigator.sendBeacon(endpoint, blob);
-      }
-    } catch (err2) {
-      // Transport 3: Pixel GET
-      const query = new URLSearchParams({
+  // 1. Image Pixel Ping (100% fail-safe on mobile Safari & Chrome)
+  try {
+    const img = new Image();
+    img.src = endpoint;
+  } catch (e) {}
+
+  // 2. Fetch API with JSON Body
+  try {
+    fetch('/api/counter.php?action=' + action, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        path,
         action,
-        path: payload.path,
-        visitorId: payload.visitorId,
-        device: payload.device,
-        os: payload.os,
-        browser: payload.browser,
-        timeSpent: timeSpentSeconds.toString(),
-        _t: Date.now().toString()
-      }).toString();
-      const img = new Image();
-      img.src = `${endpoint}&${query}`;
-    }
-  });
+        visitorId: vId,
+        sessionId: sId,
+        device: dev,
+        os,
+        browser,
+        screen,
+        language: lang,
+        referrer: ref,
+        timeSpent: timeSpentSeconds
+      }),
+      keepalive: true,
+    }).catch(() => null);
+  } catch (e) {}
 };
 
 export const trackPageView = (path: string): void => {

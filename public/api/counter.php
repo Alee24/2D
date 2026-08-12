@@ -11,12 +11,28 @@ if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
 
 define('SECURITY_PIN', '5459');
 
-$dataDir = __DIR__ . '/data';
-if (!file_exists($dataDir)) {
-    @mkdir($dataDir, 0777, true);
-    @chmod($dataDir, 0777);
+function getAnalyticsFilePath() {
+    $primaryDir = __DIR__ . '/data';
+    $primaryFile = $primaryDir . '/analytics.json';
+
+    if (!file_exists($primaryDir)) {
+        @mkdir($primaryDir, 0777, true);
+        @chmod($primaryDir, 0777);
+    }
+
+    if (is_writable($primaryDir) || (file_exists($primaryFile) && is_writable($primaryFile))) {
+        return $primaryFile;
+    }
+
+    $tempDir = sys_get_temp_dir() . '/secondesk_analytics';
+    if (!file_exists($tempDir)) {
+        @mkdir($tempDir, 0777, true);
+        @chmod($tempDir, 0777);
+    }
+    return $tempDir . '/analytics.json';
 }
-$dataFile = $dataDir . '/analytics.json';
+
+$dataFile = getAnalyticsFilePath();
 
 function getAnalyticsData($file) {
     if (!file_exists($file)) {
@@ -92,11 +108,13 @@ if ($action === 'track' || $action === 'ping') {
         } else {
             parse_str($rawInput, $parsed);
             if (!empty($parsed) && is_array($parsed)) {
-                $data = $parsed;
+                $data = array_merge($_GET, $parsed);
             } else {
                 $data = $_GET;
             }
         }
+    } else {
+        $data = array_merge($_GET, $data);
     }
 
     $path = isset($data['path']) ? trim($data['path']) : ($_GET['path'] ?? '/');
@@ -237,7 +255,7 @@ if ($action === 'track' || $action === 'ping') {
         if (!isset($db['pageTimeSpent'][$path])) {
             $db['pageTimeSpent'][$path] = 0;
         }
-        $db['pageTimeSpent'][$path] += 1; // Increment duration
+        $db['pageTimeSpent'][$path] += 1;
     }
 
     // Active Live Visitors (Updated timestamp per visitorId)
@@ -258,9 +276,9 @@ if ($action === 'track' || $action === 'ping') {
         "ip" => preg_replace('/(\d+)\.(\d+)\.(\d+)\.(\d+)/', '$1.$2.$3.***', $ip)
     ];
 
-    // Clean up stale active visitors older than 45 seconds
+    // Clean up stale active visitors older than 180 seconds (3 mins)
     foreach ($db['activeVisitors'] as $vId => $vData) {
-        if ($nowTimestamp - $vData['lastSeen'] > 45) {
+        if ($nowTimestamp - $vData['lastSeen'] > 180) {
             unset($db['activeVisitors'][$vId]);
         }
     }
@@ -281,12 +299,12 @@ if ($action === 'stats') {
     $yesterday = date('Y-m-d', strtotime('-1 day'));
     $nowTimestamp = time();
 
-    // Active Live Visitors count (Active in last 45 seconds)
+    // Active Live Visitors count (Active in last 180 seconds)
     $activeLiveCount = 0;
     $liveVisitorsList = [];
     if (isset($db['activeVisitors']) && is_array($db['activeVisitors'])) {
         foreach ($db['activeVisitors'] as $vId => $vData) {
-            if ($nowTimestamp - $vData['lastSeen'] <= 45) {
+            if ($nowTimestamp - $vData['lastSeen'] <= 180) {
                 $activeLiveCount++;
                 $diffSec = $nowTimestamp - $vData['lastSeen'];
                 $agoStr = $diffSec < 4 ? 'just now' : $diffSec . 's ago';
@@ -377,6 +395,7 @@ if ($action === 'stats') {
     echo json_encode([
         "success" => true,
         "authenticated" => true,
+        "dataFile" => $dataFile,
         "metrics" => [
             "totalViews" => $db['totalViews'] ?? 0,
             "totalUniqueVisitors" => count($db['uniqueVisitors'] ?? []),
