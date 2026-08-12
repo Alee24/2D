@@ -160,7 +160,7 @@ export const Contact: React.FC = () => {
           {/* Interactive Google Map Embed */}
           <div className="space-y-4">
             <div className="flex items-center justify-between">
-              <h3 className="font-display font-semibold text-xl text-charcoal tracking-tight">Main Mombasa Location Map</h3>
+              <h3 className="font-display font-semibold text-xl text-charcoal tracking-tight">SECONDESK Nyali, Mombasa</h3>
               <a
                 href="https://www.google.com/maps/dir/?api=1&destination=-4.027375,39.717229"
                 target="_blank"
