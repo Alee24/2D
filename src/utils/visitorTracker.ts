@@ -1,11 +1,14 @@
 /**
- * Google Analytics-Grade Silent Visitor Telemetry for SECONDESK
- * Captures non-blocking session, device, OS, browser, screen resolution, and path metrics.
- * Supports multi-fallback mobile network transport (Fetch, sendBeacon, Image Pixel).
+ * Google Analytics-Grade Live Visitor Sensor & Telemetry for SECONDESK
+ * Tracks real-time active visitors, page view events, time spent on page, OS, browser, screen size, and referrers.
+ * Features 4-second active heartbeat + bulletproof 3-tier transport (Fetch, sendBeacon, Image Pixel).
  */
 
 const VISITOR_KEY = 'secondesk_vid';
 const SESSION_KEY = 'secondesk_sid';
+
+let pageEntryTime = Date.now();
+let currentTrackedPath = '';
 
 const getVisitorId = (): string => {
   try {
@@ -66,69 +69,96 @@ const getBrowserName = (): string => {
   return 'Unknown Browser';
 };
 
+// Send telemetry payload via 3-tier fallback transport
+const sendTelemetry = (action: 'track' | 'ping', path: string, timeSpentSeconds: number = 0): void => {
+  if (path === '/count' || path.startsWith('/api/')) return;
+
+  const payload = {
+    path,
+    action,
+    visitorId: getVisitorId(),
+    sessionId: getSessionId(),
+    device: getDeviceType(),
+    os: getOSName(),
+    browser: getBrowserName(),
+    screen: `${window.screen.width}x${window.screen.height}`,
+    language: navigator.language || 'en-US',
+    referrer: document.referrer ? new URL(document.referrer).hostname : 'Direct',
+    timeSpent: timeSpentSeconds
+  };
+
+  const endpoint = `/api/counter.php?action=${action}`;
+
+  // Transport 1: Fetch POST
+  fetch(endpoint, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(payload),
+    keepalive: true,
+  }).catch(() => {
+    // Transport 2: sendBeacon
+    try {
+      const blob = new Blob([JSON.stringify(payload)], { type: 'application/json' });
+      if (navigator.sendBeacon) {
+        navigator.sendBeacon(endpoint, blob);
+      }
+    } catch (err2) {
+      // Transport 3: Pixel GET
+      const query = new URLSearchParams({
+        action,
+        path: payload.path,
+        visitorId: payload.visitorId,
+        device: payload.device,
+        os: payload.os,
+        browser: payload.browser,
+        timeSpent: timeSpentSeconds.toString(),
+        _t: Date.now().toString()
+      }).toString();
+      const img = new Image();
+      img.src = `${endpoint}&${query}`;
+    }
+  });
+};
+
 export const trackPageView = (path: string): void => {
   try {
-    // Never track the secret /count analytics dashboard itself
-    if (path === '/count' || path.startsWith('/api/')) {
-      return;
-    }
+    if (path === '/count' || path.startsWith('/api/')) return;
 
-    const payload = {
-      path,
-      visitorId: getVisitorId(),
-      sessionId: getSessionId(),
-      device: getDeviceType(),
-      os: getOSName(),
-      browser: getBrowserName(),
-      screen: `${window.screen.width}x${window.screen.height}`,
-      language: navigator.language || 'en-US',
-      referrer: document.referrer ? new URL(document.referrer).hostname : 'Direct',
-    };
+    currentTrackedPath = path;
+    pageEntryTime = Date.now();
 
-    const endpoint = '/api/counter.php?action=track';
-
-    // 1. Primary Transport: Fetch API
-    fetch(endpoint, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(payload),
-      keepalive: true,
-    }).catch(() => {
-      // 2. Secondary Transport: sendBeacon
-      try {
-        const blob = new Blob([JSON.stringify(payload)], { type: 'application/json' });
-        if (navigator.sendBeacon) {
-          navigator.sendBeacon(endpoint, blob);
-        }
-      } catch (err2) {
-        // 3. Fallback: Image / Query String Pixel ping
-        const query = new URLSearchParams({
-          action: 'track',
-          path: payload.path,
-          visitorId: payload.visitorId,
-          device: payload.device,
-          os: payload.os,
-          browser: payload.browser,
-        }).toString();
-        const img = new Image();
-        img.src = `${endpoint}&${query}`;
-      }
-    });
-
+    // Initial hit
+    sendTelemetry('track', path, 0);
   } catch (err) {
-    // Fail silently with zero console errors or UI impact
+    // Fail silently
   }
 };
 
-// Auto-start active visitor heartbeat every 20 seconds while page is active
-let heartbeatInterval: any = null;
+let activeHeartbeatTimer: any = null;
 
 export const startActiveHeartbeat = (getCurrentPath: () => string): void => {
-  if (heartbeatInterval) return;
-  heartbeatInterval = setInterval(() => {
+  if (activeHeartbeatTimer) return;
+
+  // 4-second active heartbeat ping
+  activeHeartbeatTimer = setInterval(() => {
     const path = getCurrentPath();
     if (path && path !== '/count' && !path.startsWith('/api/')) {
-      trackPageView(path);
+      const timeSpentSeconds = Math.max(0, Math.floor((Date.now() - pageEntryTime) / 1000));
+      sendTelemetry('ping', path, timeSpentSeconds);
     }
-  }, 20000);
+  }, 4000);
+
+  // Send instant ping on tab focus / visibilitychange
+  const handleVisibilityChange = () => {
+    if (document.visibilityState === 'visible') {
+      const path = getCurrentPath();
+      if (path && path !== '/count' && !path.startsWith('/api/')) {
+        const timeSpentSeconds = Math.max(0, Math.floor((Date.now() - pageEntryTime) / 1000));
+        sendTelemetry('ping', path, timeSpentSeconds);
+      }
+    }
+  };
+
+  window.addEventListener('visibilitychange', handleVisibilityChange);
+  window.addEventListener('focus', handleVisibilityChange);
 };

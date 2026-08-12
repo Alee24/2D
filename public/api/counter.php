@@ -26,6 +26,7 @@ function getAnalyticsData($file) {
             "dailyStats" => [],
             "hourlyStats" => [],
             "pageViews" => [],
+            "pageTimeSpent" => [],
             "deviceStats" => ["desktop" => 0, "mobile" => 0, "tablet" => 0],
             "osStats" => [],
             "browserStats" => [],
@@ -43,6 +44,7 @@ function getAnalyticsData($file) {
             "dailyStats" => [],
             "hourlyStats" => [],
             "pageViews" => [],
+            "pageTimeSpent" => [],
             "deviceStats" => ["desktop" => 0, "mobile" => 0, "tablet" => 0],
             "osStats" => [],
             "browserStats" => [],
@@ -79,8 +81,8 @@ function checkPinAuth() {
 
 $action = isset($_GET['action']) ? $_GET['action'] : ($_SERVER['REQUEST_METHOD'] === 'POST' ? 'track' : 'stats');
 
-// ACTION: Background Silent Tracking
-if ($action === 'track') {
+// ACTION: Background Silent Tracking / Heartbeat Ping
+if ($action === 'track' || $action === 'ping') {
     $rawInput = file_get_contents('php://input');
     $data = json_decode($rawInput, true);
 
@@ -123,6 +125,7 @@ if ($action === 'track') {
     $screen = isset($data['screen']) ? htmlspecialchars($data['screen']) : 'N/A';
     $language = isset($data['language']) ? htmlspecialchars($data['language']) : 'N/A';
     $referrer = isset($data['referrer']) ? htmlspecialchars($data['referrer']) : 'Direct';
+    $timeSpent = isset($data['timeSpent']) ? (int)$data['timeSpent'] : 0;
 
     // Referrer Categorization
     $refCategory = 'Direct';
@@ -144,107 +147,122 @@ if ($action === 'track') {
     $hour = date('H');
     $nowFormatted = date('Y-m-d H:i:s');
 
-    // Total Views
-    $db['totalViews'] = ($db['totalViews'] ?? 0) + 1;
+    if ($action === 'track') {
+        // Total Views
+        $db['totalViews'] = ($db['totalViews'] ?? 0) + 1;
 
-    // Unique Visitors
-    if (!isset($db['uniqueVisitors']) || !is_array($db['uniqueVisitors'])) {
-        $db['uniqueVisitors'] = [];
-    }
-    if (!in_array($visitorId, $db['uniqueVisitors'])) {
-        $db['uniqueVisitors'][] = $visitorId;
+        // Unique Visitors
+        if (!isset($db['uniqueVisitors']) || !is_array($db['uniqueVisitors'])) {
+            $db['uniqueVisitors'] = [];
+        }
+        if (!in_array($visitorId, $db['uniqueVisitors'])) {
+            $db['uniqueVisitors'][] = $visitorId;
+        }
+
+        // Daily Stats
+        if (!isset($db['dailyStats'][$today])) {
+            $db['dailyStats'][$today] = ["views" => 0, "visitors" => []];
+        }
+        $db['dailyStats'][$today]['views'] += 1;
+        if (!in_array($visitorId, $db['dailyStats'][$today]['visitors'])) {
+            $db['dailyStats'][$today]['visitors'][] = $visitorId;
+        }
+
+        // Hourly Peak Traffic Stats for Today
+        if (!isset($db['hourlyStats'][$today])) {
+            $db['hourlyStats'][$today] = array_fill_keys(range(0, 23), 0);
+        }
+        $hourInt = (int)$hour;
+        $db['hourlyStats'][$today][$hourInt] = ($db['hourlyStats'][$today][$hourInt] ?? 0) + 1;
+
+        // Page Views Breakdown
+        if (!isset($db['pageViews'][$path])) {
+            $db['pageViews'][$path] = 0;
+        }
+        $db['pageViews'][$path] += 1;
+
+        // Device Stats
+        if (!isset($db['deviceStats'][$device])) {
+            $db['deviceStats'][$device] = 0;
+        }
+        $db['deviceStats'][$device] += 1;
+
+        // OS Stats
+        if (!isset($db['osStats'][$os])) {
+            $db['osStats'][$os] = 0;
+        }
+        $db['osStats'][$os] += 1;
+
+        // Browser Stats
+        if (!isset($db['browserStats'][$browser])) {
+            $db['browserStats'][$browser] = 0;
+        }
+        $db['browserStats'][$browser] += 1;
+
+        // Referrer Category Stats
+        if (!isset($db['referrerStats'][$refCategory])) {
+            $db['referrerStats'][$refCategory] = 0;
+        }
+        $db['referrerStats'][$refCategory] += 1;
+
+        // Recent Visit Logs (keep last 500)
+        if (!isset($db['logs'])) {
+            $db['logs'] = [];
+        }
+
+        $anonymizedIp = preg_replace('/(\d+)\.(\d+)\.(\d+)\.(\d+)/', '$1.$2.$3.***', $ip);
+
+        array_unshift($db['logs'], [
+            "timestamp" => $nowFormatted,
+            "path" => $path,
+            "visitorId" => substr($visitorId, 0, 8),
+            "sessionId" => substr($sessionId, 0, 8),
+            "device" => $device,
+            "os" => $os,
+            "browser" => $browser,
+            "screen" => $screen,
+            "language" => $language,
+            "ip" => $anonymizedIp,
+            "referrer" => $referrer,
+            "refCategory" => $refCategory
+        ]);
+
+        if (count($db['logs']) > 500) {
+            $db['logs'] = array_slice($db['logs'], 0, 500);
+        }
     }
 
-    // Daily Stats
-    if (!isset($db['dailyStats'][$today])) {
-        $db['dailyStats'][$today] = ["views" => 0, "visitors" => []];
+    // Update Page Time Spent Total
+    if ($timeSpent > 0) {
+        if (!isset($db['pageTimeSpent'][$path])) {
+            $db['pageTimeSpent'][$path] = 0;
+        }
+        $db['pageTimeSpent'][$path] += 1; // Increment duration
     }
-    $db['dailyStats'][$today]['views'] += 1;
-    if (!in_array($visitorId, $db['dailyStats'][$today]['visitors'])) {
-        $db['dailyStats'][$today]['visitors'][] = $visitorId;
-    }
-
-    // Hourly Peak Traffic Stats for Today
-    if (!isset($db['hourlyStats'][$today])) {
-        $db['hourlyStats'][$today] = array_fill_keys(range(0, 23), 0);
-    }
-    $hourInt = (int)$hour;
-    $db['hourlyStats'][$today][$hourInt] = ($db['hourlyStats'][$today][$hourInt] ?? 0) + 1;
-
-    // Page Views Breakdown
-    if (!isset($db['pageViews'][$path])) {
-        $db['pageViews'][$path] = 0;
-    }
-    $db['pageViews'][$path] += 1;
-
-    // Device Stats
-    if (!isset($db['deviceStats'][$device])) {
-        $db['deviceStats'][$device] = 0;
-    }
-    $db['deviceStats'][$device] += 1;
-
-    // OS Stats
-    if (!isset($db['osStats'][$os])) {
-        $db['osStats'][$os] = 0;
-    }
-    $db['osStats'][$os] += 1;
-
-    // Browser Stats
-    if (!isset($db['browserStats'][$browser])) {
-        $db['browserStats'][$browser] = 0;
-    }
-    $db['browserStats'][$browser] += 1;
-
-    // Referrer Category Stats
-    if (!isset($db['referrerStats'][$refCategory])) {
-        $db['referrerStats'][$refCategory] = 0;
-    }
-    $db['referrerStats'][$refCategory] += 1;
 
     // Active Live Visitors (Updated timestamp per visitorId)
     if (!isset($db['activeVisitors']) || !is_array($db['activeVisitors'])) {
         $db['activeVisitors'] = [];
     }
+    
+    $existingTimeSpent = isset($db['activeVisitors'][$visitorId]['timeSpent']) ? $db['activeVisitors'][$visitorId]['timeSpent'] : 0;
+    $newTimeSpent = max($timeSpent, $existingTimeSpent + 4);
+
     $db['activeVisitors'][$visitorId] = [
         "lastSeen" => $nowTimestamp,
         "path" => $path,
         "device" => $device,
         "browser" => $browser,
         "os" => $os,
+        "timeSpent" => $newTimeSpent,
         "ip" => preg_replace('/(\d+)\.(\d+)\.(\d+)\.(\d+)/', '$1.$2.$3.***', $ip)
     ];
 
-    // Clean up stale active visitors older than 10 mins (600s)
+    // Clean up stale active visitors older than 45 seconds
     foreach ($db['activeVisitors'] as $vId => $vData) {
-        if ($nowTimestamp - $vData['lastSeen'] > 600) {
+        if ($nowTimestamp - $vData['lastSeen'] > 45) {
             unset($db['activeVisitors'][$vId]);
         }
-    }
-
-    // Recent Visit Logs (keep last 500)
-    if (!isset($db['logs'])) {
-        $db['logs'] = [];
-    }
-
-    $anonymizedIp = preg_replace('/(\d+)\.(\d+)\.(\d+)\.(\d+)/', '$1.$2.$3.***', $ip);
-
-    array_unshift($db['logs'], [
-        "timestamp" => $nowFormatted,
-        "path" => $path,
-        "visitorId" => substr($visitorId, 0, 8),
-        "sessionId" => substr($sessionId, 0, 8),
-        "device" => $device,
-        "os" => $os,
-        "browser" => $browser,
-        "screen" => $screen,
-        "language" => $language,
-        "ip" => $anonymizedIp,
-        "referrer" => $referrer,
-        "refCategory" => $refCategory
-    ]);
-
-    if (count($db['logs']) > 500) {
-        $db['logs'] = array_slice($db['logs'], 0, 500);
     }
 
     saveAnalyticsData($dataFile, $db);
@@ -263,21 +281,27 @@ if ($action === 'stats') {
     $yesterday = date('Y-m-d', strtotime('-1 day'));
     $nowTimestamp = time();
 
-    // Active Live Visitors count (last 5 minutes = 300 seconds)
+    // Active Live Visitors count (Active in last 45 seconds)
     $activeLiveCount = 0;
     $liveVisitorsList = [];
     if (isset($db['activeVisitors']) && is_array($db['activeVisitors'])) {
         foreach ($db['activeVisitors'] as $vId => $vData) {
-            if ($nowTimestamp - $vData['lastSeen'] <= 300) {
+            if ($nowTimestamp - $vData['lastSeen'] <= 45) {
                 $activeLiveCount++;
                 $diffSec = $nowTimestamp - $vData['lastSeen'];
-                $agoStr = $diffSec < 5 ? 'just now' : $diffSec . 's ago';
+                $agoStr = $diffSec < 4 ? 'just now' : $diffSec . 's ago';
+                
+                $spentSec = $vData['timeSpent'] ?? 0;
+                $spentStr = $spentSec >= 60 ? floor($spentSec / 60) . 'm ' . ($spentSec % 60) . 's' : $spentSec . 's';
+
                 $liveVisitorsList[] = [
                     "visitorId" => substr($vId, 0, 8),
                     "path" => $vData['path'],
                     "device" => $vData['device'],
                     "browser" => $vData['browser'],
                     "os" => $vData['os'] ?? 'Device',
+                    "timeSpentStr" => $spentStr,
+                    "timeSpentSec" => $spentSec,
                     "ago" => $agoStr
                 ];
             }
@@ -290,12 +314,20 @@ if ($action === 'stats') {
     $yesterdayViews = isset($db['dailyStats'][$yesterday]) ? $db['dailyStats'][$yesterday]['views'] : 0;
     $yesterdayVisitors = isset($db['dailyStats'][$yesterday]) ? count($db['dailyStats'][$yesterday]['visitors']) : 0;
 
-    // Top Pages
+    // Top Pages & Average Time Spent per Page
     $topPages = [];
     if (isset($db['pageViews']) && is_array($db['pageViews'])) {
         arsort($db['pageViews']);
         foreach ($db['pageViews'] as $pPath => $count) {
-            $topPages[] = ["path" => $pPath, "views" => $count];
+            $totalSec = $db['pageTimeSpent'][$pPath] ?? 0;
+            $avgSec = $count > 0 ? round($totalSec / $count) : 0;
+            $avgStr = $avgSec >= 60 ? floor($avgSec / 60) . 'm ' . ($avgSec % 60) . 's' : $avgSec . 's';
+
+            $topPages[] = [
+                "path" => $pPath, 
+                "views" => $count,
+                "avgTimeSpent" => $avgStr
+            ];
         }
     }
 
@@ -377,6 +409,7 @@ if ($action === 'reset') {
             "dailyStats" => [],
             "hourlyStats" => [],
             "pageViews" => [],
+            "pageTimeSpent" => [],
             "deviceStats" => ["desktop" => 0, "mobile" => 0, "tablet" => 0],
             "osStats" => [],
             "browserStats" => [],

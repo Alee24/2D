@@ -555,17 +555,30 @@ export const Count: React.FC = () => {
                 </span>
               </div>
 
-              <div className="space-y-2.5 max-h-52 overflow-y-auto">
+              <div className="space-y-3 max-h-64 overflow-y-auto pr-1">
                 {liveVisitors.length === 0 ? (
-                  <p className="text-xs font-mono text-white/40 py-8 text-center">No active online visitors in the last 5 minutes.</p>
+                  <div className="text-center py-8 space-y-2">
+                    <p className="text-xs font-mono text-white/40">No active online visitors in the last 45 seconds.</p>
+                    <p className="text-[11px] text-sand/60 font-mono">Browse secondesk.ke on any phone or laptop to see yourself live!</p>
+                  </div>
                 ) : (
-                  liveVisitors.map((v, i) => (
-                    <div key={i} className="p-2.5 border border-emerald-900/40 bg-emerald-950/20 rounded-lg flex items-center justify-between text-xs font-mono">
-                      <div className="space-y-0.5">
-                        <span className="text-emerald-300 font-bold block">{v.path}</span>
-                        <span className="text-[10px] text-white/40 capitalize">{v.device} ({v.browser})</span>
+                  liveVisitors.map((v: any, i: number) => (
+                    <div key={i} className="p-3 border border-emerald-800/60 bg-emerald-950/30 rounded-xl flex items-center justify-between text-xs font-mono shadow-sm">
+                      <div className="space-y-1">
+                        <div className="flex items-center gap-2">
+                          <div className="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></div>
+                          <span className="text-emerald-300 font-bold text-sm">{v.path}</span>
+                        </div>
+                        <span className="text-[11px] text-white/70 capitalize block">
+                          {v.device} • {v.os} ({v.browser})
+                        </span>
+                        <span className="text-[10px] text-sand font-mono block">
+                          ⏱️ Spent on Page: {v.timeSpentStr || 'just arrived'}
+                        </span>
                       </div>
-                      <span className="text-[10px] text-emerald-400 font-bold bg-emerald-900/50 px-2 py-0.5 rounded">{v.ago}</span>
+                      <span className="text-[10px] text-emerald-400 font-bold bg-emerald-900/80 border border-emerald-700/50 px-2.5 py-1 rounded-full whitespace-nowrap">
+                        {v.ago}
+                      </span>
                     </div>
                   ))
                 )}
@@ -689,7 +702,10 @@ export const Count: React.FC = () => {
                         <span className="font-mono font-bold text-white truncate max-w-[170px]">
                           {item.path}
                         </span>
-                        <span className="font-mono text-sand font-bold">{(item.views || 0).toLocaleString()} hits</span>
+                        <div className="text-right">
+                          <span className="font-mono text-sand font-bold block">{(item.views || 0).toLocaleString()} hits</span>
+                          <span className="font-mono text-[10px] text-white/40 block">Avg Time: {(item as any).avgTimeSpent || 'N/A'}</span>
+                        </div>
                       </div>
                       <div className="w-full h-1.5 bg-[#2D2D2D] rounded-full overflow-hidden">
                         <div className="h-full bg-sand rounded-full" style={{ width: `${pct}%` }}></div>
