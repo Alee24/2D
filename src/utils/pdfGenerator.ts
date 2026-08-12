@@ -35,7 +35,7 @@ export const generateBrochurePDF = () => {
     };
 
     // ==========================================
-    // PAGE 1: COVER PAGE (White background, Red Top Bar, SECONDDESK Logo)
+    // PAGE 1: COVER PAGE
     // ==========================================
     doc.setFillColor(255, 255, 255);
     doc.rect(0, 0, 210, 297, 'F');
@@ -93,7 +93,6 @@ export const generateBrochurePDF = () => {
 
     let pillarY = 175;
     pillars.forEach((p) => {
-      // Red square accent
       doc.setFillColor(colors.red.r, colors.red.g, colors.red.b);
       doc.rect(30, pillarY - 4, 3.5, 3.5, 'F');
 
@@ -155,32 +154,32 @@ export const generateBrochurePDF = () => {
 
     const packages = [
       {
-        title: '01. Private Office Suites',
+        title: '01. Private Office Suites (Only Private Spaces)',
         badge: 'MIN 6-MONTH TERM',
         details: [
           'Minimum Rental Duration: 6 Months (Mandatory Management Policy)',
           'Small Office Suite (11 sqm) — KES 45,000 / month',
           'Medium Office Suite (14 sqm) — KES 55,000 / month',
           'Large Office Suite (25 sqm) — KES 65,000 / month',
-          'Includes: Sound-insulated private partitions, 24/7 access, and private keycard entry.'
+          'Includes: Unfurnished sound-insulated private partitions, 24/7 access, and private keycard entry.'
         ]
       },
       {
-        title: '02. Meeting Room',
+        title: '02. Meeting Room (Max 4 Guests)',
         badge: 'HOURLY PASSES',
         details: [
           'Hourly Rate — KES 1,500 / hr',
-          'Half Day Pass (4 Hours) — KES 5,000 | Full Day Pass (8 Hours) — KES 8,000',
-          'Includes: Magnetic whiteboard, fast dedicated internet, one complimentary hot beverage per guest.'
+          'Half Day Pass — KES 5,000 | Full Day Pass — KES 8,000',
+          'Includes: 4K presentation screen, studio video bar, magnetic whiteboard, one complimentary hot beverage per guest.'
         ]
       },
       {
-        title: '03. Executive Boardroom',
+        title: '03. Executive Boardroom (Max 10 Guests)',
         badge: 'HOURLY / HALF-DAY / FULL-DAY',
         details: [
           'Hourly Rate — KES 2,000 / hr',
-          'Half Day (4 Hours) — KES 8,000 | Full Day (8 Hours) — KES 12,000',
-          'Includes: 75" 4K presentation screen, magnetic whiteboard, fast dedicated internet, one complimentary hot beverage per guest.'
+          'Half Day — KES 8,000 | Full Day — KES 12,000',
+          'Includes: 75" 4K Smart TV, Polycom video conferencing, whiteboards, gourmet catering on demand.'
         ]
       },
       {
@@ -188,8 +187,8 @@ export const generateBrochurePDF = () => {
         badge: 'FLEXIBLE PASSES',
         details: [
           'Monthly Shared Seat — KES 17,000 / month',
-          'Full Day Shared Seat Pass (8 Hours) — KES 1,700 / day',
-          'Half Day Shared Seat Pass (4 Hours) — KES 1,200 / half-day',
+          'Full Day Shared Seat Pass — KES 1,700 / day',
+          'Half Day Shared Seat Pass — KES 1,200 / half-day',
           'Includes: Seats at long tables in common area, fast dedicated internet, one complimentary hot beverage per stay.'
         ]
       },
@@ -200,7 +199,7 @@ export const generateBrochurePDF = () => {
           'Black & White Printing / Copying — KES 15 / page',
           'Color Printing / Copying — KES 50 / page',
           'High-Resolution Document Scanning — Complimentary for all registered members',
-          'Operating Hours: Mon - Fri (8:00 AM - 8:00 PM), Sat (9:00 AM - 1:00 PM), Sun (Closed / 24-7 Member Keycard Access)'
+          'Operating Hours: Mon - Fri (8:00 AM - 8:00 PM), Sat (9:00 AM - 6:00 PM), Sun (Closed / 24-7 Member Keycard Access)'
         ]
       }
     ];
@@ -284,7 +283,7 @@ export const generateBrochurePDF = () => {
     const locationCard = {
       title: 'SECONDESK Nyali Executive Hub',
       address: 'Links Road, Nyali (located above Second Cup Cafe on the 2nd floor)',
-      phone: '+254 719 688 992',
+      phone: '0719688992',
       email: 'info@secondesk.ke',
       features: [
         'Prime location on Links Road with immediate access to commercial amenities.',
@@ -350,7 +349,7 @@ export const generateBrochurePDF = () => {
       '• 100% full electricity backup generator systems with automatic ATS failover.',
       '• Biometric keycard security integration and 24/7 CCTV surveillance.',
       '• Fully-serviced reception lounge, high-end boardrooms, and executive facilities.',
-      '• One complimentary hot beverage per guest during their stay.'
+      '• Fresh coffee & tea bar with direct service from Second Cup downstairs.'
     ];
     doc.text(infrastructureBullets, 23, 188, { lineHeightFactor: 1.5 });
 
@@ -375,7 +374,7 @@ export const generateBrochurePDF = () => {
     doc.setTextColor(colors.black.r, colors.black.g, colors.black.b);
     doc.setFont('helvetica', 'bold');
     doc.setFontSize(9.5);
-    doc.text('Phone / WhatsApp: +254 719 688 992  |  Email: info@secondesk.ke', 23, 257);
+    doc.text('Phone / WhatsApp: 0719688992  |  Email: info@secondesk.ke', 23, 257);
 
     doc.setTextColor(colors.lighttext.r, colors.lighttext.g, colors.lighttext.b);
     doc.setFont('helvetica', 'normal');
