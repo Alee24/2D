@@ -1,6 +1,6 @@
 <?php
 header("Access-Control-Allow-Origin: *");
-header("Access-Control-Allow-Headers: Content-Type");
+header("Access-Control-Allow-Headers: Content-Type, X-Analytics-Pin");
 header("Access-Control-Allow-Methods: GET, POST, OPTIONS");
 header("Content-Type: application/json; charset=UTF-8");
 
@@ -9,21 +9,27 @@ if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
     exit();
 }
 
+define('SECURITY_PIN', '5459');
+
 $dataDir = __DIR__ . '/data';
 if (!file_exists($dataDir)) {
     @mkdir($dataDir, 0755, true);
 }
 $dataFile = $dataDir . '/analytics.json';
 
-// Helper to load data
 function getAnalyticsData($file) {
     if (!file_exists($file)) {
         return [
             "totalViews" => 0,
             "uniqueVisitors" => [],
             "dailyStats" => [],
+            "hourlyStats" => [],
             "pageViews" => [],
             "deviceStats" => ["desktop" => 0, "mobile" => 0, "tablet" => 0],
+            "osStats" => [],
+            "browserStats" => [],
+            "referrerStats" => ["Direct" => 0, "Google" => 0, "Social" => 0, "WhatsApp" => 0, "External" => 0],
+            "activeVisitors" => [],
             "logs" => []
         ];
     }
@@ -34,21 +40,39 @@ function getAnalyticsData($file) {
             "totalViews" => 0,
             "uniqueVisitors" => [],
             "dailyStats" => [],
+            "hourlyStats" => [],
             "pageViews" => [],
             "deviceStats" => ["desktop" => 0, "mobile" => 0, "tablet" => 0],
+            "osStats" => [],
+            "browserStats" => [],
+            "referrerStats" => ["Direct" => 0, "Google" => 0, "Social" => 0, "WhatsApp" => 0, "External" => 0],
+            "activeVisitors" => [],
             "logs" => []
         ];
     }
     return $json;
 }
 
-// Helper to save data safely
 function saveAnalyticsData($file, $data) {
     @file_put_contents($file, json_encode($data, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES), LOCK_EX);
 }
 
+function checkPinAuth() {
+    $pin = $_GET['pin'] ?? $_POST['pin'] ?? $_SERVER['HTTP_X_ANALYTICS_PIN'] ?? '';
+    if ($pin !== SECURITY_PIN) {
+        http_response_code(401);
+        echo json_encode([
+            "success" => false, 
+            "error" => "Invalid Security PIN. Access Restricted.",
+            "authRequired" => true
+        ]);
+        exit();
+    }
+}
+
 $action = isset($_GET['action']) ? $_GET['action'] : ($_SERVER['REQUEST_METHOD'] === 'POST' ? 'track' : 'stats');
 
+// ACTION: Background Silent Tracking
 if ($action === 'track') {
     $rawInput = file_get_contents('php://input');
     $data = json_decode($rawInput, true);
@@ -61,20 +85,43 @@ if ($action === 'track') {
         exit();
     }
 
-    $visitorId = isset($data['visitorId']) ? preg_replace('/[^a-zA-Z0-9_\-]/', '', $data['visitorId']) : 'anon_' . substr(md5($_SERVER['REMOTE_ADDR'] ?? ''), 0, 10);
+    $ip = $_SERVER['HTTP_X_FORWARDED_FOR'] ?? $_SERVER['HTTP_CLIENT_IP'] ?? $_SERVER['REMOTE_ADDR'] ?? '127.0.0.1';
+    $ipParts = explode(',', $ip);
+    $ip = trim($ipParts[0]);
+
+    $visitorId = isset($data['visitorId']) ? preg_replace('/[^a-zA-Z0-9_\-]/', '', $data['visitorId']) : 'anon_' . substr(md5($ip), 0, 10);
+    $sessionId = isset($data['sessionId']) ? preg_replace('/[^a-zA-Z0-9_\-]/', '', $data['sessionId']) : 's_' . substr(md5(microtime()), 0, 10);
     $device = isset($data['device']) ? $data['device'] : 'desktop';
-    $browser = isset($data['browser']) ? htmlspecialchars($data['browser']) : 'Unknown';
+    $os = isset($data['os']) ? htmlspecialchars($data['os']) : 'Unknown OS';
+    $browser = isset($data['browser']) ? htmlspecialchars($data['browser']) : 'Unknown Browser';
+    $screen = isset($data['screen']) ? htmlspecialchars($data['screen']) : 'N/A';
+    $language = isset($data['language']) ? htmlspecialchars($data['language']) : 'N/A';
     $referrer = isset($data['referrer']) ? htmlspecialchars($data['referrer']) : 'Direct';
+
+    // Referrer Categorization
+    $refCategory = 'Direct';
+    $refLower = strtolower($referrer);
+    if (strpos($refLower, 'google') !== false || strpos($refLower, 'bing') !== false || strpos($refLower, 'duckduckgo') !== false) {
+        $refCategory = 'Google';
+    } elseif (strpos($refLower, 'whatsapp') !== false || strpos($refLower, 'wa.me') !== false) {
+        $refCategory = 'WhatsApp';
+    } elseif (strpos($refLower, 'instagram') !== false || strpos($refLower, 'facebook') !== false || strpos($refLower, 'tiktok') !== false || strpos($refLower, 'twitter') !== false || strpos($refLower, 't.co') !== false || strpos($refLower, 'linkedin') !== false) {
+        $refCategory = 'Social';
+    } elseif ($referrer !== 'Direct' && !empty($referrer)) {
+        $refCategory = 'External';
+    }
 
     $db = getAnalyticsData($dataFile);
 
+    $nowTimestamp = time();
     $today = date('Y-m-d');
-    $now = date('Y-m-d H:i:s');
+    $hour = date('H');
+    $nowFormatted = date('Y-m-d H:i:s');
 
     // Total Views
     $db['totalViews'] = ($db['totalViews'] ?? 0) + 1;
 
-    // Unique Visitor
+    // Unique Visitors
     if (!isset($db['uniqueVisitors']) || !is_array($db['uniqueVisitors'])) {
         $db['uniqueVisitors'] = [];
     }
@@ -91,6 +138,13 @@ if ($action === 'track') {
         $db['dailyStats'][$today]['visitors'][] = $visitorId;
     }
 
+    // Hourly Peak Traffic Stats for Today
+    if (!isset($db['hourlyStats'][$today])) {
+        $db['hourlyStats'][$today] = array_fill_keys(range(0, 23), 0);
+    }
+    $hourInt = (int)$hour;
+    $db['hourlyStats'][$today][$hourInt] = ($db['hourlyStats'][$today][$hourInt] ?? 0) + 1;
+
     // Page Views Breakdown
     if (!isset($db['pageViews'][$path])) {
         $db['pageViews'][$path] = 0;
@@ -103,23 +157,63 @@ if ($action === 'track') {
     }
     $db['deviceStats'][$device] += 1;
 
+    // OS Stats
+    if (!isset($db['osStats'][$os])) {
+        $db['osStats'][$os] = 0;
+    }
+    $db['osStats'][$os] += 1;
+
+    // Browser Stats
+    if (!isset($db['browserStats'][$browser])) {
+        $db['browserStats'][$browser] = 0;
+    }
+    $db['browserStats'][$browser] += 1;
+
+    // Referrer Category Stats
+    if (!isset($db['referrerStats'][$refCategory])) {
+        $db['referrerStats'][$refCategory] = 0;
+    }
+    $db['referrerStats'][$refCategory] += 1;
+
+    // Active Live Visitors (Updated timestamp per visitorId)
+    if (!isset($db['activeVisitors']) || !is_array($db['activeVisitors'])) {
+        $db['activeVisitors'] = [];
+    }
+    $db['activeVisitors'][$visitorId] = [
+        "lastSeen" => $nowTimestamp,
+        "path" => $path,
+        "device" => $device,
+        "browser" => $browser,
+        "ip" => preg_replace('/(\d+)\.(\d+)\.(\d+)\.(\d+)/', '$1.$2.$3.***', $ip)
+    ];
+
+    // Clean up stale active visitors older than 10 mins
+    foreach ($db['activeVisitors'] as $vId => $vData) {
+        if ($nowTimestamp - $vData['lastSeen'] > 600) {
+            unset($db['activeVisitors'][$vId]);
+        }
+    }
+
     // Recent Visit Logs (keep last 500)
     if (!isset($db['logs'])) {
         $db['logs'] = [];
     }
 
-    $ip = $_SERVER['HTTP_X_FORWARDED_FOR'] ?? $_SERVER['REMOTE_ADDR'] ?? '127.0.0.1';
-    // Anonymize IP last octet for privacy
     $anonymizedIp = preg_replace('/(\d+)\.(\d+)\.(\d+)\.(\d+)/', '$1.$2.$3.***', $ip);
 
     array_unshift($db['logs'], [
-        "timestamp" => $now,
+        "timestamp" => $nowFormatted,
         "path" => $path,
         "visitorId" => substr($visitorId, 0, 8),
+        "sessionId" => substr($sessionId, 0, 8),
         "device" => $device,
+        "os" => $os,
         "browser" => $browser,
+        "screen" => $screen,
+        "language" => $language,
         "ip" => $anonymizedIp,
-        "referrer" => $referrer
+        "referrer" => $referrer,
+        "refCategory" => $refCategory
     ]);
 
     if (count($db['logs']) > 500) {
@@ -132,12 +226,33 @@ if ($action === 'track') {
     exit();
 }
 
-// Action: Stats for /count dashboard
+// ACTION: Stats for /count dashboard (Protected by PIN 5459)
 if ($action === 'stats') {
+    checkPinAuth();
+
     $db = getAnalyticsData($dataFile);
 
     $today = date('Y-m-d');
     $yesterday = date('Y-m-d', strtotime('-1 day'));
+    $nowTimestamp = time();
+
+    // Active Live Visitors count (last 5 minutes = 300 seconds)
+    $activeLiveCount = 0;
+    $liveVisitorsList = [];
+    if (isset($db['activeVisitors']) && is_array($db['activeVisitors'])) {
+        foreach ($db['activeVisitors'] as $vId => $vData) {
+            if ($nowTimestamp - $vData['lastSeen'] <= 300) {
+                $activeLiveCount++;
+                $liveVisitorsList[] = [
+                    "visitorId" => substr($vId, 0, 8),
+                    "path" => $vData['path'],
+                    "device" => $vData['device'],
+                    "browser" => $vData['browser'],
+                    "ago" => ($nowTimestamp - $vData['lastSeen']) . 's ago'
+                ];
+            }
+        }
+    }
 
     $todayViews = isset($db['dailyStats'][$today]) ? $db['dailyStats'][$today]['views'] : 0;
     $todayVisitors = isset($db['dailyStats'][$today]) ? count($db['dailyStats'][$today]['visitors']) : 0;
@@ -145,7 +260,7 @@ if ($action === 'stats') {
     $yesterdayViews = isset($db['dailyStats'][$yesterday]) ? $db['dailyStats'][$yesterday]['views'] : 0;
     $yesterdayVisitors = isset($db['dailyStats'][$yesterday]) ? count($db['dailyStats'][$yesterday]['visitors']) : 0;
 
-    // Format top pages
+    // Top Pages
     $topPages = [];
     if (isset($db['pageViews']) && is_array($db['pageViews'])) {
         arsort($db['pageViews']);
@@ -154,7 +269,25 @@ if ($action === 'stats') {
         }
     }
 
-    // Format daily timeline (last 14 days)
+    // Top Browsers
+    $topBrowsers = [];
+    if (isset($db['browserStats']) && is_array($db['browserStats'])) {
+        arsort($db['browserStats']);
+        foreach ($db['browserStats'] as $bName => $bCount) {
+            $topBrowsers[] = ["name" => $bName, "count" => $bCount];
+        }
+    }
+
+    // Top OS
+    $topOS = [];
+    if (isset($db['osStats']) && is_array($db['osStats'])) {
+        arsort($db['osStats']);
+        foreach ($db['osStats'] as $osName => $osCount) {
+            $topOS[] = ["name" => $osName, "count" => $osCount];
+        }
+    }
+
+    // 14-Day Timeline
     $timeline = [];
     for ($i = 13; $i >= 0; $i--) {
         $dayKey = date('Y-m-d', strtotime("-$i days"));
@@ -169,36 +302,59 @@ if ($action === 'stats') {
         ];
     }
 
+    // Today's Hourly Traffic Curve (00:00 to 23:00)
+    $todayHourly = [];
+    $rawHourly = $db['hourlyStats'][$today] ?? array_fill_keys(range(0, 23), 0);
+    for ($h = 0; $h < 24; $h++) {
+        $todayHourly[] = [
+            "hour" => sprintf("%02d:00", $h),
+            "views" => $rawHourly[$h] ?? 0
+        ];
+    }
+
     echo json_encode([
         "success" => true,
+        "authenticated" => true,
         "metrics" => [
             "totalViews" => $db['totalViews'] ?? 0,
             "totalUniqueVisitors" => count($db['uniqueVisitors'] ?? []),
+            "activeLiveVisitors" => $activeLiveCount,
             "todayViews" => $todayViews,
             "todayUniqueVisitors" => $todayVisitors,
             "yesterdayViews" => $yesterdayViews,
             "yesterdayUniqueVisitors" => $yesterdayVisitors,
         ],
+        "liveVisitorsList" => $liveVisitorsList,
         "deviceStats" => $db['deviceStats'] ?? ["desktop" => 0, "mobile" => 0, "tablet" => 0],
-        "topPages" => array_slice($topPages, 0, 10),
+        "referrerStats" => $db['referrerStats'] ?? ["Direct" => 0, "Google" => 0, "Social" => 0, "WhatsApp" => 0, "External" => 0],
+        "topBrowsers" => array_slice($topBrowsers, 0, 6),
+        "topOS" => array_slice($topOS, 0, 6),
+        "topPages" => array_slice($topPages, 0, 15),
         "timeline" => $timeline,
-        "recentLogs" => array_slice($db['logs'] ?? [], 0, 50)
+        "todayHourly" => $todayHourly,
+        "recentLogs" => array_slice($db['logs'] ?? [], 0, 100)
     ]);
     exit();
 }
 
-// Action: Reset stats (protected action)
+// ACTION: Reset (Protected by PIN 5459)
 if ($action === 'reset') {
+    checkPinAuth();
     if (isset($_GET['confirm']) && $_GET['confirm'] === 'yes') {
         saveAnalyticsData($dataFile, [
             "totalViews" => 0,
             "uniqueVisitors" => [],
             "dailyStats" => [],
+            "hourlyStats" => [],
             "pageViews" => [],
             "deviceStats" => ["desktop" => 0, "mobile" => 0, "tablet" => 0],
+            "osStats" => [],
+            "browserStats" => [],
+            "referrerStats" => ["Direct" => 0, "Google" => 0, "Social" => 0, "WhatsApp" => 0, "External" => 0],
+            "activeVisitors" => [],
             "logs" => []
         ]);
-        echo json_encode(["success" => true, "message" => "Analytics reset successfully"]);
+        echo json_encode(["success" => true, "message" => "Analytics database reset successfully"]);
     } else {
         echo json_encode(["success" => false, "message" => "Confirm param required"]);
     }
