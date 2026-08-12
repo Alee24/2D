@@ -63,8 +63,8 @@ export const officialPriceList = {
       id: 'boardroom',
       title: 'BOARDROOM (MAX 10 GUESTS)',
       rates: [
-        { name: 'Full Day', period: 'DAY', price: 'KES 12,000' },
-        { name: 'Half Day', period: 'HALF DAY', price: 'KES 8,000' },
+        { name: 'Full Day (8 Hours)', period: '8 HOURS', price: 'KES 12,000' },
+        { name: 'Half Day (4 Hours)', period: '4 HOURS', price: 'KES 8,000' },
         { name: 'Hourly', period: 'HOURLY', price: 'KES 2,000' },
       ]
     },
@@ -83,6 +83,8 @@ export const officialPriceList = {
       title: 'MEETING ROOM (MAX 4 GUESTS)',
       rates: [
         { name: 'Hourly Rate', period: 'HOURLY', price: 'KES 1,500' },
+        { name: 'Half Day (4 Hours)', period: '4 HOURS', price: 'KES 5,000' },
+        { name: 'Full Day (8 Hours)', period: '8 HOURS', price: 'KES 8,000' },
       ]
     },
     {
@@ -140,7 +142,7 @@ export const workspaceCategories: WorkspaceCategory[] = [
     capacity: 'Max 4 Guests',
     startingPrice: 'KES 1,500 / hr',
     amenities: ['Magnetic Whiteboard', 'One Complimentary Hot Beverage Per Guest', 'Fast Dedicated Internet'],
-    features: ['Hourly Rate: KES 1,500 / hr', 'Half-Day Pass: KES 5,000', 'Full-Day Pass: KES 8,000', 'One Complimentary Hot Beverage Per Guest'],
+    features: ['Hourly Rate: KES 1,500 / hr', 'Half-Day Pass (4 Hours): KES 5,000', 'Full-Day Pass (8 Hours): KES 8,000', 'One Complimentary Hot Beverage Per Guest'],
     slug: 'meeting-room',
   },
   {
@@ -153,7 +155,7 @@ export const workspaceCategories: WorkspaceCategory[] = [
     capacity: 'Max 10 Guests',
     startingPrice: 'KES 2,000 / hr',
     amenities: ['75" 4K Presentation Screen', 'Magnetic Whiteboard', 'One Complimentary Hot Beverage Per Guest', 'Fast Dedicated Internet'],
-    features: ['Hourly Rate: KES 2,000 / hr', 'Half-Day Rate: KES 8,000', 'Full-Day Rate: KES 12,000', 'One Complimentary Hot Beverage Per Guest'],
+    features: ['Hourly Rate: KES 2,000 / hr', 'Half-Day Rate (4 Hours): KES 8,000', 'Full-Day Rate (8 Hours): KES 12,000', 'One Complimentary Hot Beverage Per Guest'],
     slug: 'boardroom',
   }
 ];

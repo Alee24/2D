@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useRouter } from '../context/NavigationContext';
-import { Mail, ArrowUp, Linkedin, Instagram, Facebook, ArrowRight } from 'lucide-react';
+import { Mail, ArrowUp, Instagram, Facebook, ArrowRight } from 'lucide-react';
 import { generateBrochurePDF } from '../utils/pdfGenerator';
 import { dispatchEmail } from '../utils/emailService';
 import { Logo } from './Logo';
@@ -84,15 +84,6 @@ export const Footer: React.FC = () => {
               </p>
             </div>
             <div className="flex items-center space-x-4">
-              <a 
-                href="https://linkedin.com" 
-                target="_blank" 
-                rel="noreferrer" 
-                className="w-10 h-10 rounded-full border border-white/10 hover:border-sand flex items-center justify-center text-white/60 hover:text-sand transition-all"
-                aria-label="LinkedIn"
-              >
-                <Linkedin className="w-4 h-4" />
-              </a>
               <a 
                 href="https://www.instagram.com/secondesknyali" 
                 target="_blank" 

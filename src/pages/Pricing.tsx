@@ -43,7 +43,7 @@ export const Pricing: React.FC = () => {
             Transparent <span className="font-serif italic font-normal text-sand">Membership & Facility Pricing</span>
           </h1>
           <p className="font-sans text-charcoal/70 text-base sm:text-lg leading-relaxed">
-            From shared co-working space seats to move-in-ready private office suites (Small 11 sqm, Medium 14 sqm, Large 25 sqm) and executive meeting facilities. All rates listed exclude 16% VAT.
+            From shared co-working spaces, to private office suites and executive meeting facilities, SECONDESK has it all. All rates listed exclude 16% VAT.
           </p>
 
           <div className="flex flex-wrap items-center justify-center gap-4 mt-6">

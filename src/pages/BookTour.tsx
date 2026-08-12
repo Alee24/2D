@@ -15,7 +15,6 @@ export const BookTour: React.FC = () => {
     email: '',
     phone: '',
     location: 'nyali',
-    teamSize: '1-5',
     date: '',
     message: ''
   });
@@ -40,7 +39,6 @@ export const BookTour: React.FC = () => {
             'Business Email': formData.email,
             'Phone Number': formData.phone || 'N/A',
             'Preferred Node': `SECONDESK ${formData.location.toUpperCase()}`,
-            'Team Footprint': formData.teamSize,
             'Preferred Tour Date': formData.date,
             'Special Notes': formData.message || 'None',
           },
@@ -138,12 +136,6 @@ export const BookTour: React.FC = () => {
                       <span className="text-charcoal/40 uppercase block text-[9px] font-bold tracking-widest">Preferred Date</span>
                       <span className="font-display font-semibold text-charcoal text-sm flex items-center gap-1.5">
                         <Calendar className="w-4 h-4 text-sand" /> {formData.date}
-                      </span>
-                    </div>
-                    <div className="space-y-1">
-                      <span className="text-charcoal/40 uppercase block text-[9px] font-bold tracking-widest">Team Footprint</span>
-                      <span className="font-display font-semibold text-charcoal text-sm flex items-center gap-1.5">
-                        <Users className="w-4 h-4 text-sand" /> {formData.teamSize} Persons
                       </span>
                     </div>
                   </div>
@@ -295,29 +287,11 @@ export const BookTour: React.FC = () => {
                   </div>
                 </div>
 
-                {/* Row 3: Dropdowns for Location & Team size */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                  <div className="flex flex-col gap-1.5">
-                    <span className="font-sans text-[10px] font-bold uppercase tracking-widest text-charcoal/40">Location</span>
-                    <div className="w-full bg-offwhite border border-concrete px-4 py-3.5 text-xs text-charcoal font-medium flex items-center gap-1.5">
-                      <MapPin className="w-3.5 h-3.5 text-sand" /> SECONDESK Nyali Executive Hub
-                    </div>
-                  </div>
-
-                  <div className="flex flex-col gap-1.5">
-                    <span className="font-sans text-[10px] font-bold uppercase tracking-widest text-charcoal/40">Team Footprint</span>
-                    <select
-                      name="teamSize"
-                      value={formData.teamSize}
-                      onChange={handleInputChange}
-                      className="w-full bg-transparent border border-concrete focus:border-sand px-4 py-3.5 text-xs text-charcoal focus:outline-hidden rounded-none"
-                    >
-                      <option value="1">1 Person (Freelancer/Solopreneur)</option>
-                      <option value="2-5">2 to 5 Persons (Startups/Studios)</option>
-                      <option value="6-15">6 to 15 Persons (SMEs/Hybrid Units)</option>
-                      <option value="16-40">16 to 40 Persons (Scaleups/Agencies)</option>
-                      <option value="40+">40+ Persons (Enterprise/Headquarters)</option>
-                    </select>
+                {/* Location Display */}
+                <div className="flex flex-col gap-1.5">
+                  <span className="font-sans text-[10px] font-bold uppercase tracking-widest text-charcoal/40">Location</span>
+                  <div className="w-full bg-offwhite border border-concrete px-4 py-3.5 text-xs text-charcoal font-medium flex items-center gap-1.5">
+                    <MapPin className="w-3.5 h-3.5 text-sand" /> SECONDESK Nyali Executive Hub
                   </div>
                 </div>
 
