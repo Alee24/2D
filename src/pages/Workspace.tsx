@@ -40,7 +40,7 @@ export const Workspace: React.FC = () => {
               Find Your Ideal <span className="font-serif italic text-sand">Workspace.</span>
             </h1>
             <p className="font-sans text-white/75 text-base sm:text-lg leading-relaxed max-w-xl">
-              From shared co-working space at long common tables to enclosed private office suites, meeting rooms (Max 4), and executive boardrooms (Max 10). All rates listed exclude 16% VAT.
+              From shared co-working space at long common tables to enclosed private office suites, meeting rooms, and executive boardrooms. All rates listed exclude 16% VAT.
             </p>
           </div>
         </div>

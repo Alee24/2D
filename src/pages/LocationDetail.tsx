@@ -61,7 +61,7 @@ export const LocationDetail: React.FC = () => {
     <div className="bg-offwhite text-charcoal pt-20 animate-fade-in">
       <SEO 
         title={`${location.name} Shared Co-Working Space & Private Offices`}
-        description={`Explore SECONDESK ${location.name} in Mombasa. Featuring shared co-working space at long common tables, private office suites, meeting rooms (Max 4), and boardrooms (Max 10).`}
+        description={`Explore SECONDESK ${location.name} in Mombasa. Featuring shared co-working space at long common tables, private office suites, meeting rooms, and boardrooms.`}
         ogImage={location.image}
         schemaType="CoworkingSpace"
         schemaData={{
@@ -262,7 +262,7 @@ export const LocationDetail: React.FC = () => {
             </h2>
             <div className="aspect-video w-full bg-concrete border border-concrete relative overflow-hidden group">
               <a 
-                href="https://maps.app.goo.gl/9fE9K6GEV4xGvHL68" 
+                href="https://maps.app.goo.gl/im6FDmYiXpf1Hwy77?g_st=iw" 
                 target="_blank" 
                 rel="noreferrer" 
                 className="absolute top-4 right-4 bg-charcoal/90 hover:bg-sand text-white hover:text-charcoal text-[11px] font-bold uppercase tracking-wider px-4 py-2.5 rounded-sm shadow-lg flex items-center gap-2 transition-all cursor-pointer z-10 backdrop-blur-xs"

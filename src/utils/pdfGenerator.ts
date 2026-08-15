@@ -170,7 +170,7 @@ export const generateBrochurePDF = () => {
         details: [
           'Hourly Rate — KES 1,500 / hr',
           'Half Day Pass — KES 5,000 | Full Day Pass — KES 8,000',
-          'Includes: 4K presentation screen, studio video bar, magnetic whiteboard, one complimentary hot beverage per guest.'
+          'Includes: Studio video bar, magnetic whiteboard, one complimentary hot beverage per guest.'
         ]
       },
       {
@@ -347,7 +347,7 @@ export const generateBrochurePDF = () => {
     const infrastructureBullets = [
       '• Fast dedicated internet with symmetrical redundant backup array.',
       '• 100% full electricity backup generator systems with automatic ATS failover.',
-      '• Biometric keycard security integration and CCTV surveillance.',
+      '• Keycard security integration and CCTV surveillance.',
       '• Fully-serviced reception lounge, high-end boardrooms, and executive facilities.',
       '• Fresh coffee & tea bar with direct service from Second Cup downstairs.'
     ];

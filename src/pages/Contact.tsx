@@ -162,7 +162,7 @@ export const Contact: React.FC = () => {
             <div className="flex items-center justify-between">
               <h3 className="font-display font-semibold text-xl text-charcoal tracking-tight">SECONDESK Nyali, Mombasa</h3>
               <a
-                href="https://maps.app.goo.gl/9fE9K6GEV4xGvHL68"
+                href="https://maps.app.goo.gl/im6FDmYiXpf1Hwy77?g_st=iw"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="font-sans text-xs font-bold text-red hover:underline flex items-center gap-1.5"

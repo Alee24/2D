@@ -141,7 +141,7 @@ export const workspaceCategories: WorkspaceCategory[] = [
     image: pinpoint17Img,
     capacity: 'Max 4 Guests',
     startingPrice: 'KES 1,500 / hr',
-    amenities: ['75" 4K Presentation Screen', 'Magnetic Whiteboard', 'One Complimentary Hot Beverage Per Guest', 'Fast Dedicated Internet', 'Individual Climate Control'],
+    amenities: ['Magnetic Whiteboard', 'One Complimentary Hot Beverage Per Guest', 'Fast Dedicated Internet', 'Individual Climate Control'],
     features: ['Hourly Rate: KES 1,500 / hr', 'Half-Day Pass (4 Hours): KES 5,000', 'Full-Day Pass (8 Hours): KES 8,000', 'One Complimentary Hot Beverage Per Guest'],
     slug: 'meeting-room',
   },
@@ -217,7 +217,7 @@ export const locations: LocationData[] = [
     phone: '+254 719 688 992',
     email: 'info@secondesk.ke',
     mapEmbedUrl: 'https://maps.google.com/maps?q=Second+Cup+Nyali+Links+Road+Mombasa&hl=en&z=17&iwloc=&output=embed',
-    mapUrl: 'https://maps.app.goo.gl/9fE9K6GEV4xGvHL68',
+    mapUrl: 'https://maps.app.goo.gl/im6FDmYiXpf1Hwy77?g_st=iw',
     startingPrice: 'KES 17,000 / mo',
     image: workspaceMainImg,
     nearbyLandmarks: ['Second Cup Cafe (Ground Floor)', 'Nyali Centre Mall', 'City Mall Nyali', 'Nyali Golf & Country Club', 'Nyali Beach'],
@@ -233,7 +233,7 @@ export const locations: LocationData[] = [
       reception2Img
     ],
     meetingRoomDetails: {
-      title: 'Meeting Rooms (Max 4) & Boardrooms (Max 10)',
+      title: 'Meeting Rooms & Executive Boardrooms',
       image: pinpoint17Img,
       features: [
         { iconName: 'PenTool', text: 'On Demand Executive Stationery' },
@@ -250,9 +250,9 @@ export const locations: LocationData[] = [
       features: [
         { iconName: 'Lock', text: 'Private enclosed suites with secure lockable doors' },
         { iconName: 'Lock', text: 'Acoustically sound-masked glass partitions' },
-        { iconName: 'Fingerprint', text: 'Biometric fingerprint keyless security entry' },
+        { iconName: 'Lock', text: 'Secure keycard entry access' },
         { iconName: 'Wind', text: 'Individual climate control' },
-        { iconName: 'Sliders', text: 'Dimmable indirect warm LED ambient lighting' },
+        { iconName: 'Sliders', text: 'Indirect warm LED ambient lighting' },
         { iconName: 'Wifi', text: 'Wireless Cloud Printing access' }
       ]
     }

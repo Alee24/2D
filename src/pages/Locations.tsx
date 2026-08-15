@@ -264,7 +264,7 @@ export const Locations: React.FC = () => {
             <div className="lg:col-span-7">
               <div className="aspect-video w-full bg-concrete border border-concrete shadow-lg relative overflow-hidden group">
                 <a 
-                  href="https://maps.app.goo.gl/9fE9K6GEV4xGvHL68" 
+                  href="https://maps.app.goo.gl/im6FDmYiXpf1Hwy77?g_st=iw" 
                   target="_blank" 
                   rel="noreferrer" 
                   className="absolute top-4 right-4 bg-charcoal/90 hover:bg-sand text-white hover:text-charcoal text-[11px] font-bold uppercase tracking-wider px-4 py-2.5 rounded-sm shadow-lg flex items-center gap-2 transition-all cursor-pointer z-10 backdrop-blur-xs"

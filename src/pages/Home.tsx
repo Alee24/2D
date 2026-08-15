@@ -77,7 +77,7 @@ export const Home: React.FC = () => {
     { title: 'Business Address', icon: MapPin, desc: 'A prestigious physical address for mail receiving, local registration and brand prestige.' },
     { title: 'Printing Services', icon: FileText, desc: 'Secure, high-volume document scanning and industrial black & white or color printing.' },
     { title: 'Reception Services', icon: Users, desc: 'Our front-of-house team welcomes guests, manages mail, and assists with administrative requests.' },
-    { title: 'Coffee & Refreshments', icon: Coffee, desc: 'One complimentary hot beverage per guest during their stay.' },
+    { title: 'Hot beverages & Refreshments', icon: Coffee, desc: 'One complimentary hot beverage per guest during their stay.' },
     { title: 'Networking Events', icon: Calendar, desc: 'Curated breakfast mixers, panels, and investor roundtables tailored to Mombasa professionals.' },
     { title: 'Community Support', icon: Sparkles, desc: 'Our local managers keep operations running seamlessly so you focus on results.' },
   ];
@@ -348,7 +348,7 @@ export const Home: React.FC = () => {
                 Explore Our <span className="font-serif italic text-charcoal/60">Official Brochure & Pricing.</span>
               </h2>
               <p className="font-sans text-sm text-charcoal/70 leading-relaxed max-w-xl">
-                Get a complete overview of SECONDESK's boutique coworking environments, lockable private office suites, meeting rooms (Max 4), and executive boardrooms (Max 10). Discover flexible membership terms, transparent pricing, and enterprise-grade infrastructure on Links Road, Nyali.
+                Get a complete overview of SECONDESK's boutique coworking environments, lockable private office suites, meeting rooms, and executive boardrooms. Discover flexible membership terms, transparent pricing, and enterprise-grade infrastructure on Links Road, Nyali.
               </p>
               
               {/* Premium Business Offerings list */}
@@ -358,7 +358,7 @@ export const Home: React.FC = () => {
                   'Fast dedicated internet & dual generator backup',
                   'Shared co-working space at long common tables',
                   'One complimentary hot beverage per guest',
-                  'Meeting Room (Max 4) & Boardroom (Max 10)',
+                  'Meeting Rooms & Executive Boardrooms',
                   'Prime business address on Links Road, Nyali'
                 ].map((spec, i) => (
                   <div key={i} className="flex items-center gap-2.5">
