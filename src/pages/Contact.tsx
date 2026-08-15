@@ -162,7 +162,7 @@ export const Contact: React.FC = () => {
             <div className="flex items-center justify-between">
               <h3 className="font-display font-semibold text-xl text-charcoal tracking-tight">SECONDESK Nyali, Mombasa</h3>
               <a
-                href="https://maps.app.goo.gl/im6FDmYiXpf1Hwy77?g_st=iw"
+                href="https://maps.app.goo.gl/UFtufu7ruA8tNk4v6"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="font-sans text-xs font-bold text-red hover:underline flex items-center gap-1.5"
@@ -173,7 +173,7 @@ export const Contact: React.FC = () => {
             <div className="aspect-video w-full bg-concrete border border-concrete">
               <iframe
                 title="Google Map location representation of SECONDESK Nyali HQ"
-                src="https://maps.google.com/maps?q=Second+Cup+Nyali+Links+Road+Mombasa&hl=en&z=17&iwloc=&output=embed"
+                src="https://maps.google.com/maps?q=SECONDESK+Nyali+Executive+Hub+Mombasa&hl=en&z=17&iwloc=&output=embed"
                 className="w-full h-full border-0"
                 allowFullScreen={false}
                 loading="lazy"
