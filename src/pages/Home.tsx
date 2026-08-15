@@ -72,7 +72,7 @@ export const Home: React.FC = () => {
   // Why SECONDESK array
   const coreAmenities = [
     { title: 'Flexible Membership', icon: Compass, desc: 'Agile month-to-month contracts designed to scale with your team.' },
-    { title: '24/7 Secure Access', icon: Shield, desc: 'State-of-the-art secure biometric access to keep you creating round the clock.' },
+    { title: '24/7 CCTV Security', icon: Shield, desc: 'Round-the-clock CCTV security surveillance. Guests can access the space during work hours.' },
     { title: 'High-Speed Internet', icon: Wifi, desc: '99.9% redundant fiber optic internet with dual automatic backup power.' },
     { title: 'Business Address', icon: MapPin, desc: 'A prestigious physical address for mail receiving, local registration and brand prestige.' },
     { title: 'Printing Services', icon: FileText, desc: 'Secure, high-volume document scanning and industrial black & white or color printing.' },

@@ -36,6 +36,7 @@ export interface LocationData {
   phone: string;
   email: string;
   mapEmbedUrl: string; // Used to simulate map coordinates or visual map container
+  mapUrl?: string; // Direct Google Maps share link
   startingPrice: string;
   image: string;
   nearbyLandmarks: string[];

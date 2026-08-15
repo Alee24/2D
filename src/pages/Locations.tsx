@@ -60,7 +60,7 @@ export const Locations: React.FC = () => {
               </h1>
 
               <p className="font-sans text-white/80 text-base sm:text-lg leading-relaxed max-w-2xl font-light">
-                Positioned on Links Road in the heart of Nyali, our Mombasa headquarters blends high-performance corporate infrastructure with fast dedicated internet and 24/7 power reliability.
+                Positioned on Links Road in the heart of Nyali, our Mombasa headquarters blends high-performance corporate infrastructure with fast dedicated internet and dual generator power reliability.
               </p>
 
               {/* Key Quick Badges */}
@@ -167,10 +167,6 @@ export const Locations: React.FC = () => {
                   </div>
                 </div>
               </div>
-              <div className="pt-6 mt-6 border-t border-concrete/60">
-                <span className="text-[10px] text-charcoal/50 uppercase block">Co-Working Plans From (Excl. 16% VAT)</span>
-                <span className="font-display font-semibold text-2xl text-charcoal">{location.startingPrice}</span>
-              </div>
             </div>
 
             {/* Box 2: Nearby Landmarks */}
@@ -190,23 +186,13 @@ export const Locations: React.FC = () => {
                   ))}
                 </ul>
               </div>
-              <div className="pt-6 mt-6 border-t border-concrete/60">
-                <a 
-                  href="https://maps.google.com/?q=Nyali+Executive+Centre+Mombasa" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="text-xs font-bold uppercase tracking-wider text-charcoal hover:text-sand inline-flex items-center gap-1.5 transition-colors"
-                >
-                  Open in Google Maps <ExternalLink className="w-3.5 h-3.5" />
-                </a>
-              </div>
             </div>
 
             {/* Box 3: Premium Amenities */}
             <div className="bg-offwhite border border-concrete p-8 flex flex-col justify-between">
               <div>
                 <span className="text-[10px] font-bold uppercase tracking-widest text-sand block mb-2">Facility Highlights</span>
-                <h3 className="font-display font-medium text-2xl text-charcoal mb-4">Coastal Amenities</h3>
+                <h3 className="font-display font-medium text-2xl text-charcoal mb-4">Premium Amenities</h3>
                 <ul className="space-y-3">
                   {location.amenities.map((amenity, idx) => (
                     <li key={idx} className="flex items-center gap-3 text-xs font-sans text-charcoal/80">
@@ -226,84 +212,6 @@ export const Locations: React.FC = () => {
               </div>
             </div>
           </div>
-        </div>
-      </section>
-
-      {/* Available Workspaces inside Nyali Location */}
-      <section className="py-24 max-w-[1440px] mx-auto px-6 lg:px-12">
-        <div className="text-center max-w-2xl mx-auto mb-16">
-          <span className="font-sans text-xs font-bold uppercase tracking-widest text-sand block mb-3">Workspace Options</span>
-          <h2 className="font-display font-light text-3xl sm:text-4xl text-charcoal tracking-tight mb-4">
-            Available Spaces at <span className="font-serif italic text-sand">Nyali Hub.</span>
-          </h2>
-          <p className="font-sans text-sm text-charcoal/60 leading-relaxed font-light">
-            Whether you need a seat in our shared co-working space for the day or a private office suite, our Mombasa location offers ready-to-use professional environments.
-          </p>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {[
-            {
-              title: 'Shared Co-Working Space',
-              desc: 'Book a seat at our long tables in the open common area with fast dedicated internet and one complimentary hot beverage per stay.',
-              price: 'KES 1,700 / day',
-              features: ['Fast Dedicated Internet', 'One Complimentary Hot Beverage', 'Common Area Seating', 'Power Outlets at Every Seat']
-            },
-            {
-              title: 'Private Office Suites',
-              desc: 'Enclosed private office suites configured for confidentiality and security.',
-              price: 'From KES 45,000 / mo',
-              features: ['Secure Private Suites', 'Custom Door Branding', 'Private Nest AC Controls', 'Dedicated Server Rack Option']
-            },
-            {
-              title: 'Meeting Room',
-              desc: 'Our meeting room comfortably seats up to 4 guests in a premium intimate setting, perfect for confidentiality and privacy.',
-              price: 'KES 1,500 / hr',
-              features: ['Max 4 Guests Capacity', 'Magnetic Whiteboard', 'One Complimentary Hot Beverage', 'Fast Dedicated Internet']
-            },
-            {
-              title: 'Executive Boardroom',
-              desc: 'State-of-the-art conference boardroom for up to 10 guests with 75" 4K presentation screen and fast dedicated internet.',
-              price: 'KES 2,000 / hr',
-              features: ['Max 10 Guests Capacity', '75" 4K Presentation Screen', 'Magnetic Whiteboard', 'One Complimentary Hot Beverage']
-            }
-          ].map((space, idx) => (
-            <div 
-              key={idx}
-              className="bg-white border border-concrete p-7 flex flex-col justify-between hover:border-sand transition-all duration-300 group shadow-xs"
-            >
-              <div>
-                <span className="text-[10px] font-bold uppercase tracking-widest text-sand block mb-2">Option {idx + 1}</span>
-                <h3 className="font-display font-medium text-xl text-charcoal mb-3 group-hover:text-sand transition-colors">
-                  {space.title}
-                </h3>
-                <p className="font-sans text-xs text-charcoal/60 leading-relaxed font-light mb-6">
-                  {space.desc}
-                </p>
-                <div className="space-y-2.5 border-t border-concrete/40 pt-4 mb-6">
-                  {space.features.map((feat, fIdx) => (
-                    <div key={fIdx} className="flex items-center gap-2 text-[11px] font-sans text-charcoal/80">
-                      <div className="w-1.5 h-1.5 rounded-full bg-sand shrink-0"></div>
-                      <span>{feat}</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              <div>
-                <div className="pt-4 border-t border-concrete/40 flex items-center justify-between mb-4">
-                  <span className="text-[10px] text-charcoal/40 uppercase">Starting at</span>
-                  <span className="font-display font-semibold text-charcoal text-sm">{space.price}</span>
-                </div>
-                <button
-                  onClick={() => navigate('/book-tour')}
-                  className="w-full bg-offwhite group-hover:bg-charcoal group-hover:text-white text-charcoal border border-concrete py-2.5 text-xs font-bold uppercase tracking-wider transition-all cursor-pointer text-center"
-                >
-                  Book Space
-                </button>
-              </div>
-            </div>
-          ))}
         </div>
       </section>
 
@@ -356,7 +264,7 @@ export const Locations: React.FC = () => {
             <div className="lg:col-span-7">
               <div className="aspect-video w-full bg-concrete border border-concrete shadow-lg relative overflow-hidden group">
                 <a 
-                  href="https://maps.google.com/?q=Second+Cup+Nyali+Links+Road+Mombasa" 
+                  href="https://maps.app.goo.gl/9fE9K6GEV4xGvHL68" 
                   target="_blank" 
                   rel="noreferrer" 
                   className="absolute top-4 right-4 bg-charcoal/90 hover:bg-sand text-white hover:text-charcoal text-[11px] font-bold uppercase tracking-wider px-4 py-2.5 rounded-sm shadow-lg flex items-center gap-2 transition-all cursor-pointer z-10 backdrop-blur-xs"

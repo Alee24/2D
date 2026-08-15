@@ -161,7 +161,7 @@ export const generateBrochurePDF = () => {
           'Small Office Suite (11 sqm) — KES 45,000 / month',
           'Medium Office Suite (14 sqm) — KES 55,000 / month',
           'Large Office Suite (25 sqm) — KES 65,000 / month',
-          'Includes: Unfurnished sound-insulated private partitions, 24/7 access, and private keycard entry.'
+          'Includes: Unfurnished sound-insulated private partitions, 24/7 CCTV security, and work-hours access.'
         ]
       },
       {
@@ -199,7 +199,7 @@ export const generateBrochurePDF = () => {
           'Black & White Printing / Copying — KES 15 / page',
           'Color Printing / Copying — KES 50 / page',
           'High-Resolution Document Scanning — Complimentary for all registered members',
-          'Operating Hours: Mon - Fri (8:00 AM - 8:00 PM), Sat (9:00 AM - 6:00 PM), Sun (Closed / 24-7 Member Keycard Access)'
+          'Operating Hours: Mon - Fri (8:00 AM - 6:00 PM), Sat (9:00 AM - 1:00 PM), Sun (Closed). Access during work hours with 24/7 CCTV security.'
         ]
       }
     ];
@@ -347,7 +347,7 @@ export const generateBrochurePDF = () => {
     const infrastructureBullets = [
       '• Fast dedicated internet with symmetrical redundant backup array.',
       '• 100% full electricity backup generator systems with automatic ATS failover.',
-      '• Biometric keycard security integration and 24/7 CCTV surveillance.',
+      '• 24/7 CCTV security surveillance and managed work-hours access.',
       '• Fully-serviced reception lounge, high-end boardrooms, and executive facilities.',
       '• Fresh coffee & tea bar with direct service from Second Cup downstairs.'
     ];

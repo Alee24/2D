@@ -115,7 +115,7 @@ export const workspaceCategories: WorkspaceCategory[] = [
     image: pinpoint6Img,
     capacity: 'Single Seat (Common Area)',
     startingPrice: 'KES 17,000 / mo',
-    amenities: ['24/7 Secure Access', 'High-Speed Wi-Fi 6', 'One Complimentary Hot Beverage', 'Daily Cleaning'],
+    amenities: ['24/7 CCTV Security', 'Work Hours Guest Access', 'High-Speed Wi-Fi 6', 'One Complimentary Hot Beverage', '75" 4K Presentation Screens', 'Individual Climate Control', 'Daily Cleaning'],
     features: ['Monthly Rate: KES 17,000', 'Day Pass (8 Hours): KES 1,700', 'Half-Day Pass (4 Hours): KES 1,200', 'Hourly Pass: KES 500'],
     slug: 'coworking',
   },
@@ -128,8 +128,8 @@ export const workspaceCategories: WorkspaceCategory[] = [
     image: pinpoint5Img,
     capacity: 'Flexible Layout (Self-Allocated Space)',
     startingPrice: 'KES 45,000 / mo',
-    amenities: ['Secure Private Lockable Suite', 'Customizable Layout & Branding', 'Dedicated Ethernet Line', 'Executive Reception Services', 'Daily Office Cleaning'],
-    features: ['Minimum 6-Month Rental Duration', 'Small Office Suite (11 sqm): KES 45,000 / mo', 'Medium Office Suite (14 sqm): KES 55,000 / mo', 'Large Office Suite (25 sqm): KES 65,000 / mo', 'Individual Climate Control'],
+    amenities: ['Secure Private Lockable Suite', 'Customizable Layout & Branding', 'Dedicated Ethernet Line', '24/7 CCTV Security', 'Wireless Cloud Printing Access', 'Individual Climate Control', 'Executive Reception Services', 'Daily Office Cleaning'],
+    features: ['Minimum 6-Month Rental Duration', 'Small Office Suite (11 sqm): KES 45,000 / mo', 'Medium Office Suite (14 sqm): KES 55,000 / mo', 'Large Office Suite (25 sqm): KES 65,000 / mo', 'Individual Climate Control', 'Wireless Cloud Printing Access'],
     slug: 'private-offices',
   },
   {
@@ -141,7 +141,7 @@ export const workspaceCategories: WorkspaceCategory[] = [
     image: pinpoint17Img,
     capacity: 'Max 4 Guests',
     startingPrice: 'KES 1,500 / hr',
-    amenities: ['Magnetic Whiteboard', 'One Complimentary Hot Beverage Per Guest', 'Fast Dedicated Internet'],
+    amenities: ['75" 4K Presentation Screen', 'Magnetic Whiteboard', 'One Complimentary Hot Beverage Per Guest', 'Fast Dedicated Internet', 'Individual Climate Control'],
     features: ['Hourly Rate: KES 1,500 / hr', 'Half-Day Pass (4 Hours): KES 5,000', 'Full-Day Pass (8 Hours): KES 8,000', 'One Complimentary Hot Beverage Per Guest'],
     slug: 'meeting-room',
   },
@@ -154,7 +154,7 @@ export const workspaceCategories: WorkspaceCategory[] = [
     image: boardroomImg,
     capacity: 'Max 10 Guests',
     startingPrice: 'KES 2,000 / hr',
-    amenities: ['75" 4K Presentation Screen', 'Magnetic Whiteboard', 'One Complimentary Hot Beverage Per Guest', 'Fast Dedicated Internet'],
+    amenities: ['75" 4K Presentation Screen', 'Magnetic Whiteboard', 'One Complimentary Hot Beverage Per Guest', 'Fast Dedicated Internet', 'Individual Climate Control'],
     features: ['Hourly Rate: KES 2,000 / hr', 'Half-Day Rate (4 Hours): KES 8,000', 'Full-Day Rate (8 Hours): KES 12,000', 'One Complimentary Hot Beverage Per Guest'],
     slug: 'boardroom',
   }
@@ -216,12 +216,13 @@ export const locations: LocationData[] = [
     address: 'Links Road, Nyali (located above Second Cup Cafe on the 2nd floor)',
     phone: '+254 719 688 992',
     email: 'info@secondesk.ke',
-    mapEmbedUrl: 'https://maps.google.com/maps?q=-4.027375,39.717229&hl=en&z=17&output=embed',
+    mapEmbedUrl: 'https://maps.google.com/maps?q=-4.0278266,39.7171797&hl=en&z=17&output=embed',
+    mapUrl: 'https://maps.app.goo.gl/9fE9K6GEV4xGvHL68',
     startingPrice: 'KES 17,000 / mo',
     image: workspaceMainImg,
     nearbyLandmarks: ['Second Cup Cafe (Ground Floor)', 'Nyali Centre Mall', 'City Mall Nyali', 'Nyali Golf & Country Club', 'Nyali Beach'],
     spacesAvailable: ['Meeting Room', 'Executive Boardroom', 'Private Office Suites', 'Shared Co-Working Space'],
-    amenities: ['Dual Backup Generators', 'Fast Dedicated Internet', 'One Complimentary Hot Beverage Per Stay'],
+    amenities: ['24/7 CCTV Security', 'Dual Backup Generators', 'Fast Dedicated Internet', '75" 4K Presentation Screens', 'Individual Climate Control', 'One Complimentary Hot Beverage Per Stay'],
     gallery: [
       workspaceMainImg,
       boardroom1Img,
@@ -250,9 +251,9 @@ export const locations: LocationData[] = [
         { iconName: 'Lock', text: 'Private enclosed suites with secure lockable doors' },
         { iconName: 'Lock', text: 'Acoustically sound-masked glass partitions' },
         { iconName: 'Fingerprint', text: 'Biometric fingerprint keyless security entry' },
-        { iconName: 'Wind', text: 'Personalized Nest intelligent climate controls' },
+        { iconName: 'Wind', text: 'Individual climate control' },
         { iconName: 'Sliders', text: 'Dimmable indirect warm LED ambient lighting' },
-        { iconName: 'Wifi', text: 'High-volume secure badge-release cloud printing' }
+        { iconName: 'Wifi', text: 'Wireless Cloud Printing access' }
       ]
     }
   }
@@ -395,7 +396,7 @@ export const communityEvents: CommunityEvent[] = [
 export const faqs: FAQItem[] = [
   {
     question: "What is included in a Shared Co-Working Space membership?",
-    answer: "Our Shared Co-Working Space membership includes a reserved seat at our long tables in the open common area, 24/7 access, ultra-fast Wi-Fi, one complimentary hot beverage per guest during their stay, full utility backups, and access to all standard community networking events."
+    answer: "Our Shared Co-Working Space membership includes a reserved seat at our long tables in the open common area, access during work hours with 24/7 CCTV security, ultra-fast Wi-Fi, one complimentary hot beverage per guest during their stay, full utility backups, and access to all standard community networking events."
   },
   {
     question: "Can I try out the space before committing to a membership?",

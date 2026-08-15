@@ -214,7 +214,7 @@ export const Workspace: React.FC = () => {
               { title: 'Hot Beverages', desc: 'One complimentary hot beverage per guest during their stay.' },
               { title: 'Premium Cleaning', desc: 'Daily dedicated sanitation of all shared facilities, desks, and suites.' },
               { title: 'Community Events', desc: 'Monthly investor breakfasts, networking mixers, and masterclasses.' },
-              { title: '24/7 Security Controls', desc: 'CCTV networks, physical security guards, and biometric access keys.' }
+              { title: '24/7 CCTV Security', desc: 'Round-the-clock CCTV security surveillance; guest access available during work hours.' }
             ].map((amen, idx) => (
               <div key={idx} className="border-l border-sand pl-4 py-2">
                 <h4 className="font-display font-semibold text-charcoal text-sm mb-1">{amen.title}</h4>

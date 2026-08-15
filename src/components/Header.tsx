@@ -269,7 +269,7 @@ export const Header: React.FC = () => {
                     <div className="col-span-1 border-r border-concrete pr-8">
                       <span className="text-xs font-semibold tracking-widest uppercase text-sand block mb-2">Location</span>
                       <h3 className="font-display text-2xl font-semibold text-charcoal leading-tight mb-4">Mombasa Headquarters</h3>
-                      <p className="font-sans text-sm text-charcoal/60 mb-6">Explore SECONDESK Nyali Executive Hub — our premier coastal workspace with ocean view balconies and 24/7 power redundancy.</p>
+                      <p className="font-sans text-sm text-charcoal/60 mb-6">Explore SECONDESK Nyali Executive Hub — our premier coastal workspace with ocean view balconies and dual power generator redundancy.</p>
                       <button 
                         onClick={() => { navigate('/locations'); setActiveMegaMenu(null); }}
                         className="text-xs font-semibold uppercase tracking-wider text-charcoal hover:text-sand inline-flex items-center gap-2 group cursor-pointer"
@@ -302,9 +302,9 @@ export const Header: React.FC = () => {
                       <div className="bg-sand/10 border border-sand/30 p-6 flex flex-col justify-between h-full">
                         <div>
                           <span className="text-[10px] font-bold uppercase tracking-widest text-sand block mb-1">Mombasa Operating Hours</span>
-                          <h4 className="font-display font-medium text-charcoal text-lg mb-2">24/7 Member Access</h4>
+                          <h4 className="font-display font-medium text-charcoal text-lg mb-2">24/7 CCTV Security</h4>
                           <p className="font-sans text-xs text-charcoal/70 leading-relaxed">
-                            Front desk serviced Monday – Friday, 8:00 AM – 6:00 PM. Dedicated members enjoy 24/7 biometric keycard access.
+                            Front desk & space access available Monday – Friday, 8:00 AM – 6:00 PM (work hours). Monitored with 24/7 CCTV security.
                           </p>
                         </div>
                         <div className="pt-4">
