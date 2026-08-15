@@ -22,7 +22,14 @@ import {
   Sparkles,
   Check,
   Zap,
-  Radio
+  Radio,
+  Download,
+  FileSpreadsheet,
+  FileCode,
+  ChevronLeft,
+  ChevronRight,
+  ChevronsLeft,
+  ChevronsRight
 } from 'lucide-react';
 import { SEO } from '../components/SEO';
 import { Logo } from '../components/Logo';
@@ -106,6 +113,10 @@ export const Count: React.FC = () => {
   const [searchTerm, setSearchTerm] = useState<string>('');
   const [lastRefreshed, setLastRefreshed] = useState<Date>(new Date());
   const [resetConfirming, setResetConfirming] = useState<boolean>(false);
+
+  // History Pagination State
+  const [currentPage, setCurrentPage] = useState<number>(1);
+  const [rowsPerPage, setRowsPerPage] = useState<number>(25);
 
   const handlePinSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -326,14 +337,69 @@ export const Count: React.FC = () => {
     }
   };
 
+  const handleExportCSV = () => {
+    try {
+      const pin = sessionStorage.getItem('secondesk_analytics_pin') || '5459';
+      window.open(`/api/counter.php?action=export_csv&pin=${pin}`, '_blank');
+    } catch (e) {
+      // Fallback to client-side CSV Blob export
+      const headers = ['Timestamp', 'Path', 'Visitor ID', 'Session ID', 'Device', 'OS', 'Browser', 'Screen', 'Language', 'Referrer', 'Source Category', 'IP'];
+      const rows = logs.map(l => [
+        `"${l.timestamp || ''}"`,
+        `"${l.path || ''}"`,
+        `"${l.visitorId || ''}"`,
+        `"${l.sessionId || ''}"`,
+        `"${l.device || ''}"`,
+        `"${l.os || ''}"`,
+        `"${l.browser || ''}"`,
+        `"${l.screen || ''}"`,
+        `"${l.language || ''}"`,
+        `"${l.referrer || ''}"`,
+        `"${l.refCategory || ''}"`,
+        `"${l.ip || ''}"`
+      ].join(','));
+      const csvContent = 'data:text/csv;charset=utf-8,' + [headers.join(','), ...rows].join('\n');
+      const encodedUri = encodeURI(csvContent);
+      const link = document.createElement('a');
+      link.setAttribute('href', encodedUri);
+      link.setAttribute('download', `secondesk_visitor_history_${new Date().toISOString().split('T')[0]}.csv`);
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    }
+  };
+
+  const handleExportJSON = () => {
+    try {
+      const pin = sessionStorage.getItem('secondesk_analytics_pin') || '5459';
+      window.open(`/api/counter.php?action=export_json&pin=${pin}`, '_blank');
+    } catch (e) {
+      const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(logs, null, 2));
+      const link = document.createElement('a');
+      link.setAttribute("href", dataStr);
+      link.setAttribute("download", `secondesk_visitor_history_${new Date().toISOString().split('T')[0]}.json`);
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    }
+  };
+
   const filteredLogs = logs.filter(log => 
     log.path.toLowerCase().includes(searchTerm.toLowerCase()) ||
     log.browser.toLowerCase().includes(searchTerm.toLowerCase()) ||
     log.os.toLowerCase().includes(searchTerm.toLowerCase()) ||
     log.device.toLowerCase().includes(searchTerm.toLowerCase()) ||
     log.referrer.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    (log.visitorId || '').toLowerCase().includes(searchTerm.toLowerCase()) ||
+    (log.sessionId || '').toLowerCase().includes(searchTerm.toLowerCase()) ||
+    (log.timestamp || '').toLowerCase().includes(searchTerm.toLowerCase()) ||
     log.ip.toLowerCase().includes(searchTerm.toLowerCase())
   );
+
+  const totalFilteredPages = Math.max(1, Math.ceil(filteredLogs.length / (rowsPerPage === -1 ? filteredLogs.length || 1 : rowsPerPage)));
+  const indexOfLastRow = rowsPerPage === -1 ? filteredLogs.length : currentPage * rowsPerPage;
+  const indexOfFirstRow = rowsPerPage === -1 ? 0 : (currentPage - 1) * rowsPerPage;
+  const currentLogsPage = filteredLogs.slice(indexOfFirstRow, indexOfLastRow);
 
   const maxTimelineViews = Math.max(...timeline.map(t => t.views), 1);
   const maxHourlyViews = Math.max(...todayHourly.map(h => h.views), 1);
@@ -826,51 +892,81 @@ export const Count: React.FC = () => {
             </div>
           </div>
 
-          {/* Full Telemetry Visit Log Table */}
+          {/* Full Permanent Telemetry & Visitor History Explorer Table */}
           <div className="lg:col-span-8 bg-[#1A1A1A] border border-[#2D2D2D] p-6 rounded-2xl space-y-4">
-            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-[#2D2D2D] pb-3">
+            <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-[#2D2D2D] pb-4">
               <div>
-                <h2 className="font-display font-light text-lg text-white tracking-tight">Visitor Telemetry Logs</h2>
-                <p className="text-xs text-white/50 font-sans">Detailed user session records</p>
+                <div className="flex items-center gap-2">
+                  <h2 className="font-display font-light text-lg text-white tracking-tight">Complete Visitor History Log</h2>
+                  <span className="text-[10px] font-mono bg-sand/20 text-sand border border-sand/30 px-2 py-0.5 rounded font-bold">
+                    {logs.length.toLocaleString()} Total Recorded Visits
+                  </span>
+                </div>
+                <p className="text-xs text-white/50 font-sans">Full uninterrupted historical session telemetry</p>
               </div>
 
-              {/* Search Filter */}
-              <div className="relative">
-                <Search className="w-3.5 h-3.5 text-white/40 absolute left-3 top-1/2 -translate-y-1/2" />
-                <input 
-                  type="text"
-                  placeholder="Filter by page, OS, IP..."
-                  value={searchTerm}
-                  onChange={(e) => setSearchTerm(e.target.value)}
-                  className="bg-[#111111] border border-[#2D2D2D] focus:border-sand text-xs font-mono px-3 py-1.5 pl-8 rounded-lg text-white placeholder:text-white/30 outline-none transition-colors w-full sm:w-60"
-                />
+              {/* Search Filter & Export Buttons */}
+              <div className="flex flex-wrap items-center gap-2.5">
+                <div className="relative">
+                  <Search className="w-3.5 h-3.5 text-white/40 absolute left-3 top-1/2 -translate-y-1/2" />
+                  <input 
+                    type="text"
+                    placeholder="Search history, IP, OS, path..."
+                    value={searchTerm}
+                    onChange={(e) => {
+                      setSearchTerm(e.target.value);
+                      setCurrentPage(1);
+                    }}
+                    className="bg-[#111111] border border-[#2D2D2D] focus:border-sand text-xs font-mono px-3 py-1.5 pl-8 rounded-lg text-white placeholder:text-white/30 outline-none transition-colors w-full sm:w-52"
+                  />
+                </div>
+
+                <button
+                  onClick={handleExportCSV}
+                  title="Download Complete History as CSV Spreadsheet"
+                  className="bg-[#2D2D2D] hover:bg-emerald-950 hover:text-emerald-400 hover:border-emerald-800 text-white/80 border border-[#3A3A3A] text-xs font-mono px-3 py-1.5 rounded-lg transition-all cursor-pointer flex items-center gap-1.5"
+                >
+                  <FileSpreadsheet className="w-3.5 h-3.5 text-emerald-400" />
+                  <span>CSV</span>
+                </button>
+
+                <button
+                  onClick={handleExportJSON}
+                  title="Download Complete History as JSON"
+                  className="bg-[#2D2D2D] hover:bg-sky-950 hover:text-sky-400 hover:border-sky-800 text-white/80 border border-[#3A3A3A] text-xs font-mono px-3 py-1.5 rounded-lg transition-all cursor-pointer flex items-center gap-1.5"
+                >
+                  <FileCode className="w-3.5 h-3.5 text-sky-400" />
+                  <span>JSON</span>
+                </button>
               </div>
             </div>
 
-            <div className="overflow-x-auto max-h-96 overflow-y-auto">
+            {/* Main History Table */}
+            <div className="overflow-x-auto min-h-[320px]">
               <table className="w-full text-left text-xs font-mono">
                 <thead>
                   <tr className="border-b border-[#2D2D2D] text-white/40 uppercase tracking-widest text-[10px]">
-                    <th className="pb-3 pr-3">Time</th>
-                    <th className="pb-3 pr-3">Page</th>
+                    <th className="pb-3 pr-3">Timestamp</th>
+                    <th className="pb-3 pr-3">Page Path</th>
                     <th className="pb-3 pr-3">OS / Browser</th>
                     <th className="pb-3 pr-3">Screen</th>
-                    <th className="pb-3 pr-3">Source</th>
+                    <th className="pb-3 pr-3">Source Category</th>
+                    <th className="pb-3 pr-3">Visitor ID</th>
                     <th className="pb-3">IP (Anon)</th>
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-[#2D2D2D]">
-                  {filteredLogs.length === 0 ? (
+                  {currentLogsPage.length === 0 ? (
                     <tr>
-                      <td colSpan={6} className="py-8 text-center text-white/40 font-mono">
-                        No visitor logs match your search filter.
+                      <td colSpan={7} className="py-12 text-center text-white/40 font-mono">
+                        No visitor history records match your filter criteria.
                       </td>
                     </tr>
                   ) : (
-                    filteredLogs.map((log, i) => (
+                    currentLogsPage.map((log, i) => (
                       <tr key={i} className="hover:bg-[#2D2D2D]/30 transition-colors">
                         <td className="py-2.5 pr-3 text-white/60 whitespace-nowrap text-[11px]">
-                          {log.timestamp.split(' ')[1] || log.timestamp}
+                          {log.timestamp}
                         </td>
                         <td className="py-2.5 pr-3 font-bold text-sand whitespace-nowrap">
                           {log.path}
@@ -886,6 +982,9 @@ export const Count: React.FC = () => {
                             {log.refCategory || 'Direct'}
                           </span>
                         </td>
+                        <td className="py-2.5 pr-3 text-white/40 text-[10px] whitespace-nowrap">
+                          {log.visitorId}
+                        </td>
                         <td className="py-2.5 text-white/40 whitespace-nowrap text-[10px]">
                           {log.ip}
                         </td>
@@ -894,6 +993,68 @@ export const Count: React.FC = () => {
                   )}
                 </tbody>
               </table>
+            </div>
+
+            {/* Pagination Controls */}
+            <div className="pt-3 border-t border-[#2D2D2D] flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs font-mono text-white/60">
+              <div className="flex items-center gap-3">
+                <span>
+                  Showing {filteredLogs.length === 0 ? 0 : indexOfFirstRow + 1} to {Math.min(indexOfLastRow, filteredLogs.length)} of {filteredLogs.length.toLocaleString()} history records
+                </span>
+                <div className="flex items-center gap-1">
+                  <span className="text-[10px] text-white/40">Rows:</span>
+                  <select
+                    value={rowsPerPage}
+                    onChange={(e) => {
+                      setRowsPerPage(Number(e.target.value));
+                      setCurrentPage(1);
+                    }}
+                    className="bg-[#111111] border border-[#2D2D2D] text-white px-2 py-0.5 rounded text-xs font-mono outline-none"
+                  >
+                    <option value={25}>25</option>
+                    <option value={50}>50</option>
+                    <option value={100}>100</option>
+                    <option value={250}>250</option>
+                    <option value={-1}>All ({filteredLogs.length})</option>
+                  </select>
+                </div>
+              </div>
+
+              {rowsPerPage !== -1 && totalFilteredPages > 1 && (
+                <div className="flex items-center gap-1.5">
+                  <button
+                    onClick={() => setCurrentPage(1)}
+                    disabled={currentPage === 1}
+                    className="p-1.5 rounded bg-[#2D2D2D] hover:bg-sand hover:text-charcoal disabled:opacity-30 disabled:hover:bg-[#2D2D2D] disabled:hover:text-white/60 transition-all cursor-pointer"
+                  >
+                    <ChevronsLeft className="w-3.5 h-3.5" />
+                  </button>
+                  <button
+                    onClick={() => setCurrentPage(p => Math.max(1, p - 1))}
+                    disabled={currentPage === 1}
+                    className="p-1.5 rounded bg-[#2D2D2D] hover:bg-sand hover:text-charcoal disabled:opacity-30 disabled:hover:bg-[#2D2D2D] disabled:hover:text-white/60 transition-all cursor-pointer"
+                  >
+                    <ChevronLeft className="w-3.5 h-3.5" />
+                  </button>
+                  <span className="px-2 text-sand font-bold">
+                    Page {currentPage} of {totalFilteredPages}
+                  </span>
+                  <button
+                    onClick={() => setCurrentPage(p => Math.min(totalFilteredPages, p + 1))}
+                    disabled={currentPage === totalFilteredPages}
+                    className="p-1.5 rounded bg-[#2D2D2D] hover:bg-sand hover:text-charcoal disabled:opacity-30 disabled:hover:bg-[#2D2D2D] disabled:hover:text-white/60 transition-all cursor-pointer"
+                  >
+                    <ChevronRight className="w-3.5 h-3.5" />
+                  </button>
+                  <button
+                    onClick={() => setCurrentPage(totalFilteredPages)}
+                    disabled={currentPage === totalFilteredPages}
+                    className="p-1.5 rounded bg-[#2D2D2D] hover:bg-sand hover:text-charcoal disabled:opacity-30 disabled:hover:bg-[#2D2D2D] disabled:hover:text-white/60 transition-all cursor-pointer"
+                  >
+                    <ChevronsRight className="w-3.5 h-3.5" />
+                  </button>
+                </div>
+              )}
             </div>
           </div>
         </div>

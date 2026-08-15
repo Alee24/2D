@@ -154,7 +154,6 @@ const updateLocalAnalyticsStore = (action: 'track' | 'ping', payload: any): void
         referrer: payload.referrer,
         refCategory: refCat
       });
-      if (db.logs.length > 500) db.logs = db.logs.slice(0, 500);
     }
 
     if (payload.timeSpent > 0) {

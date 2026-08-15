@@ -233,14 +233,14 @@ if ($action === 'track' || $action === 'ping') {
         }
         $db['referrerStats'][$refCategory] += 1;
 
-        // Recent Visit Logs (keep last 500)
+        // Unlimited Permanent Visit History Logs
         if (!isset($db['logs'])) {
             $db['logs'] = [];
         }
 
         $anonymizedIp = preg_replace('/(\d+)\.(\d+)\.(\d+)\.(\d+)/', '$1.$2.$3.***', $ip);
 
-        array_unshift($db['logs'], [
+        $logEntry = [
             "timestamp" => $nowFormatted,
             "path" => $path,
             "visitorId" => substr($visitorId, 0, 8),
@@ -253,11 +253,13 @@ if ($action === 'track' || $action === 'ping') {
             "ip" => $anonymizedIp,
             "referrer" => $referrer,
             "refCategory" => $refCategory
-        ]);
+        ];
 
-        if (count($db['logs']) > 500) {
-            $db['logs'] = array_slice($db['logs'], 0, 500);
-        }
+        array_unshift($db['logs'], $logEntry);
+
+        // Also write to append-only permanent archive file
+        $historyFile = dirname($dataFile) . '/visitor_history.jsonl';
+        @file_put_contents($historyFile, json_encode($logEntry) . "\n", FILE_APPEND | LOCK_EX);
     }
 
     // Update Page Time Spent Total
@@ -423,9 +425,49 @@ if ($action === 'stats') {
         "topPages" => array_slice($topPages, 0, 15),
         "timeline" => $timeline,
         "todayHourly" => $todayHourly,
-        "recentLogs" => array_slice($db['logs'] ?? [], 0, 100)
+        "totalHistoryLogsCount" => count($db['logs'] ?? []),
+        "recentLogs" => $db['logs'] ?? []
     ]);
     exit();
+}
+
+// ACTION: Export Full Visitor History CSV / JSON (Protected by PIN 5459)
+if ($action === 'export_csv' || $action === 'export_json') {
+    checkPinAuth();
+    $db = getAnalyticsData($dataFile);
+    $logs = $db['logs'] ?? [];
+
+    if ($action === 'export_csv') {
+        header('Content-Type: text/csv; charset=utf-8');
+        header('Content-Disposition: attachment; filename=secondesk_visitor_history_' . date('Y-m-d') . '.csv');
+        $output = fopen('php://output', 'w');
+        fputcsv($output, ['Timestamp', 'Path', 'Visitor ID', 'Session ID', 'Device', 'OS', 'Browser', 'Screen', 'Language', 'Referrer', 'Source Category', 'Anonymized IP']);
+        foreach ($logs as $row) {
+            fputcsv($output, [
+                $row['timestamp'] ?? '',
+                $row['path'] ?? '',
+                $row['visitorId'] ?? '',
+                $row['sessionId'] ?? '',
+                $row['device'] ?? '',
+                $row['os'] ?? '',
+                $row['browser'] ?? '',
+                $row['screen'] ?? '',
+                $row['language'] ?? '',
+                $row['referrer'] ?? '',
+                $row['refCategory'] ?? '',
+                $row['ip'] ?? ''
+            ]);
+        }
+        fclose($output);
+        exit();
+    }
+
+    if ($action === 'export_json') {
+        header('Content-Type: application/json; charset=UTF-8');
+        header('Content-Disposition: attachment; filename=secondesk_visitor_history_' . date('Y-m-d') . '.json');
+        echo json_encode($logs, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES);
+        exit();
+    }
 }
 
 // ACTION: Reset (Protected by PIN 5459)
