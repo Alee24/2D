@@ -49,13 +49,17 @@ export const generateBrochurePDF = () => {
     doc.setLineWidth(0.4);
     doc.rect(10, 10, 190, 277, 'S');
 
-    // Brand Logo: SECOND (Black) + DESK (Red)
+    // Brand Logo: SECOND (Black) + DESK (Red) as one single word SECONDESK
     doc.setFont('helvetica', 'bold');
     doc.setFontSize(36);
+    const secondWidth = doc.getTextWidth('SECOND');
+    const deskWidth = doc.getTextWidth('DESK');
+    const logoStartX = (210 - (secondWidth + deskWidth)) / 2;
+
     doc.setTextColor(colors.black.r, colors.black.g, colors.black.b);
-    doc.text('SECOND', 103, 72, { align: 'right' });
+    doc.text('SECOND', logoStartX, 72);
     doc.setTextColor(colors.red.r, colors.red.g, colors.red.b);
-    doc.text('DESK', 105, 72, { align: 'left' });
+    doc.text('DESK', logoStartX + secondWidth, 72);
 
     // Accent Horizontal Line in Red
     doc.setDrawColor(colors.red.r, colors.red.g, colors.red.b);
