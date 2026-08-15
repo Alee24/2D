@@ -160,8 +160,7 @@ export const generateBrochurePDF = () => {
           'Minimum Rental Duration: 6 Months (Mandatory Management Policy)',
           'Small Office Suite (11 sqm) — KES 45,000 / month',
           'Medium Office Suite (14 sqm) — KES 55,000 / month',
-          'Large Office Suite (25 sqm) — KES 65,000 / month',
-          'Includes: Unfurnished sound-insulated private partitions and private keycard entry.'
+          'Large Office Suite (25 sqm) — KES 65,000 / month'
         ]
       },
       {
@@ -169,8 +168,7 @@ export const generateBrochurePDF = () => {
         badge: 'HOURLY PASSES',
         details: [
           'Hourly Rate — KES 1,500 / hr',
-          'Half Day Pass — KES 5,000 | Full Day Pass — KES 8,000',
-          'Includes: 4K presentation screen, studio video bar, magnetic whiteboard, one complimentary hot beverage per guest.'
+          'Half Day Pass — KES 5,000 | Full Day Pass — KES 8,000'
         ]
       },
       {
@@ -178,8 +176,7 @@ export const generateBrochurePDF = () => {
         badge: 'HOURLY / HALF-DAY / FULL-DAY',
         details: [
           'Hourly Rate — KES 2,000 / hr',
-          'Half Day — KES 8,000 | Full Day — KES 12,000',
-          'Includes: 75" 4K Smart TV, Polycom video conferencing, whiteboards, gourmet catering on demand.'
+          'Half Day — KES 8,000 | Full Day — KES 12,000'
         ]
       },
       {
