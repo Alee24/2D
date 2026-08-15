@@ -11,19 +11,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
 
 define('SECURITY_PIN', '5459');
 
-function getAnalyticsFilePath() {
+function getAnalyticsPrimaryFile() {
     $primaryDir = __DIR__ . '/data';
-    $primaryFile = $primaryDir . '/analytics.json';
-
     if (!file_exists($primaryDir)) {
         @mkdir($primaryDir, 0777, true);
         @chmod($primaryDir, 0777);
     }
+    return $primaryDir . '/analytics.json';
+}
 
-    if (is_writable($primaryDir) || (file_exists($primaryFile) && is_writable($primaryFile))) {
-        return $primaryFile;
-    }
-
+function getAnalyticsBackupFile() {
     $tempDir = sys_get_temp_dir() . '/secondesk_analytics';
     if (!file_exists($tempDir)) {
         @mkdir($tempDir, 0777, true);
@@ -32,54 +29,67 @@ function getAnalyticsFilePath() {
     return $tempDir . '/analytics.json';
 }
 
-$dataFile = getAnalyticsFilePath();
+$dataFile = getAnalyticsPrimaryFile();
 
 function getAnalyticsData($file) {
-    if (!file_exists($file)) {
-        return [
-            "totalViews" => 0,
-            "uniqueVisitors" => [],
-            "dailyStats" => [],
-            "hourlyStats" => [],
-            "pageViews" => [],
-            "pageTimeSpent" => [],
-            "deviceStats" => ["desktop" => 0, "mobile" => 0, "tablet" => 0],
-            "osStats" => [],
-            "browserStats" => [],
-            "referrerStats" => ["Direct" => 0, "Google" => 0, "Social" => 0, "WhatsApp" => 0, "External" => 0],
-            "activeVisitors" => [],
-            "logs" => []
-        ];
+    $backupFile = getAnalyticsBackupFile();
+    $defaultDb = [
+        "totalViews" => 0,
+        "uniqueVisitors" => [],
+        "dailyStats" => [],
+        "hourlyStats" => [],
+        "pageViews" => [],
+        "pageTimeSpent" => [],
+        "deviceStats" => ["desktop" => 0, "mobile" => 0, "tablet" => 0],
+        "osStats" => [],
+        "browserStats" => [],
+        "referrerStats" => ["Direct" => 0, "Google" => 0, "Social" => 0, "WhatsApp" => 0, "External" => 0],
+        "activeVisitors" => [],
+        "logs" => []
+    ];
+
+    $primaryData = null;
+    if (file_exists($file)) {
+        $content = @file_get_contents($file);
+        $primaryData = @json_decode($content, true);
     }
-    $content = @file_get_contents($file);
-    $json = @json_decode($content, true);
-    if (!$json || !is_array($json)) {
-        return [
-            "totalViews" => 0,
-            "uniqueVisitors" => [],
-            "dailyStats" => [],
-            "hourlyStats" => [],
-            "pageViews" => [],
-            "pageTimeSpent" => [],
-            "deviceStats" => ["desktop" => 0, "mobile" => 0, "tablet" => 0],
-            "osStats" => [],
-            "browserStats" => [],
-            "referrerStats" => ["Direct" => 0, "Google" => 0, "Social" => 0, "WhatsApp" => 0, "External" => 0],
-            "activeVisitors" => [],
-            "logs" => []
-        ];
+
+    $backupData = null;
+    if (file_exists($backupFile)) {
+        $content = @file_get_contents($backupFile);
+        $backupData = @json_decode($content, true);
     }
-    return $json;
+
+    if (is_array($primaryData) && is_array($backupData)) {
+        if (($primaryData['totalViews'] ?? 0) >= ($backupData['totalViews'] ?? 0)) {
+            return array_merge($defaultDb, $primaryData);
+        } else {
+            return array_merge($defaultDb, $backupData);
+        }
+    }
+
+    if (is_array($primaryData)) return array_merge($defaultDb, $primaryData);
+    if (is_array($backupData)) return array_merge($defaultDb, $backupData);
+
+    return $defaultDb;
 }
 
 function saveAnalyticsData($file, $data) {
+    $backupFile = getAnalyticsBackupFile();
     $dir = dirname($file);
     if (!file_exists($dir)) {
         @mkdir($dir, 0777, true);
         @chmod($dir, 0777);
     }
-    @file_put_contents($file, json_encode($data, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES), LOCK_EX);
+    $json = json_encode($data, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES);
+    
+    // Save to primary storage
+    @file_put_contents($file, $json, LOCK_EX);
     @chmod($file, 0666);
+
+    // Save to backup storage
+    @file_put_contents($backupFile, $json, LOCK_EX);
+    @chmod($backupFile, 0666);
 }
 
 function checkPinAuth() {

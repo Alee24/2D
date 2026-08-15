@@ -26,6 +26,7 @@ import {
 } from 'lucide-react';
 import { SEO } from '../components/SEO';
 import { Logo } from '../components/Logo';
+import { getLocalAnalyticsData } from '../utils/visitorTracker';
 
 interface AnalyticsMetrics {
   totalViews: number;
@@ -124,6 +125,114 @@ export const Count: React.FC = () => {
     setPinInput('');
   };
 
+  const loadLocalFallbackStats = () => {
+    try {
+      const localDb = getLocalAnalyticsData();
+      const today = new Date().toISOString().split('T')[0];
+      const yesterday = new Date(Date.now() - 86400000).toISOString().split('T')[0];
+      const nowSec = Math.floor(Date.now() / 1000);
+
+      const activeLiveList: LiveVisitor[] = [];
+      let activeLiveCount = 0;
+      if (localDb.activeVisitors) {
+        Object.entries(localDb.activeVisitors).forEach(([vId, vData]: [string, any]) => {
+          if (nowSec - vData.lastSeen <= 180) {
+            activeLiveCount++;
+            const diffSec = nowSec - vData.lastSeen;
+            const agoStr = diffSec < 4 ? 'just now' : `${diffSec}s ago`;
+            const spentSec = vData.timeSpent || 0;
+            const spentStr = spentSec >= 60 ? `${Math.floor(spentSec / 60)}m ${spentSec % 60}s` : `${spentSec}s`;
+            activeLiveList.push({
+              visitorId: vId.substring(0, 8),
+              path: vData.path,
+              device: vData.device,
+              browser: vData.browser,
+              ago: agoStr,
+              ...(vData as any)
+            });
+          }
+        });
+      }
+
+      const todayViews = localDb.dailyStats?.[today]?.views || 0;
+      const todayUnique = localDb.dailyStats?.[today]?.visitors?.length || 0;
+      const yesterdayViews = localDb.dailyStats?.[yesterday]?.views || 0;
+      const yesterdayUnique = localDb.dailyStats?.[yesterday]?.visitors?.length || 0;
+
+      const topPagesArr: TopItem[] = [];
+      if (localDb.pageViews) {
+        Object.entries(localDb.pageViews).forEach(([path, views]) => {
+          const totalSec = localDb.pageTimeSpent?.[path] || 0;
+          const countNum = views as number;
+          const avgSec = countNum > 0 ? Math.round(totalSec / countNum) : 0;
+          const avgStr = avgSec >= 60 ? `${Math.floor(avgSec / 60)}m ${avgSec % 60}s` : `${avgSec}s`;
+          topPagesArr.push({ path, views: countNum, avgTimeSpent: avgStr } as any);
+        });
+        topPagesArr.sort((a, b) => (b.views || 0) - (a.views || 0));
+      }
+
+      const topBrowsersArr: TopItem[] = [];
+      if (localDb.browserStats) {
+        Object.entries(localDb.browserStats).forEach(([name, count]) => {
+          topBrowsersArr.push({ name, count: count as number });
+        });
+        topBrowsersArr.sort((a, b) => (b.count || 0) - (a.count || 0));
+      }
+
+      const topOSArr: TopItem[] = [];
+      if (localDb.osStats) {
+        Object.entries(localDb.osStats).forEach(([name, count]) => {
+          topOSArr.push({ name, count: count as number });
+        });
+        topOSArr.sort((a, b) => (b.count || 0) - (a.count || 0));
+      }
+
+      const timelineArr: TimelineItem[] = [];
+      for (let i = 13; i >= 0; i--) {
+        const d = new Date(Date.now() - i * 86400000);
+        const dayKey = d.toISOString().split('T')[0];
+        const label = d.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+        timelineArr.push({
+          date: dayKey,
+          label,
+          views: localDb.dailyStats?.[dayKey]?.views || 0,
+          visitors: localDb.dailyStats?.[dayKey]?.visitors?.length || 0
+        });
+      }
+
+      const todayHourlyArr: HourlyItem[] = [];
+      const rawHourly = localDb.hourlyStats?.[today] || Array(24).fill(0);
+      for (let h = 0; h < 24; h++) {
+        todayHourlyArr.push({
+          hour: `${h.toString().padStart(2, '0')}:00`,
+          views: rawHourly[h] || 0
+        });
+      }
+
+      setMetrics({
+        totalViews: localDb.totalViews || 0,
+        totalUniqueVisitors: localDb.uniqueVisitors?.length || 0,
+        activeLiveVisitors: activeLiveCount,
+        todayViews,
+        todayUniqueVisitors: todayUnique,
+        yesterdayViews,
+        yesterdayUniqueVisitors: yesterdayUnique
+      });
+      setLiveVisitors(activeLiveList);
+      setDeviceStats(localDb.deviceStats || { desktop: 0, mobile: 0, tablet: 0 });
+      setReferrerStats(localDb.referrerStats || { Direct: 0, Google: 0, Social: 0, WhatsApp: 0, External: 0 });
+      setTopBrowsers(topBrowsersArr.slice(0, 6));
+      setTopOS(topOSArr.slice(0, 6));
+      setTopPages(topPagesArr.slice(0, 15));
+      setTimeline(timelineArr);
+      setTodayHourly(todayHourlyArr);
+      setLogs(localDb.logs || []);
+      setLastRefreshed(new Date());
+    } catch (err) {
+      console.warn('Could not parse local fallback analytics', err);
+    }
+  };
+
   const fetchStats = async () => {
     if (!isAuthenticated) return;
     setIsLoading(true);
@@ -162,8 +271,8 @@ export const Count: React.FC = () => {
         throw new Error(data.error || 'Failed to parse analytics payload');
       }
     } catch (err: any) {
-      console.error('Failed to load visitor stats:', err);
-      setError(err.message || 'Unable to connect to analytics endpoint');
+      console.warn('API endpoint unavailable, relying on persistent client analytics engine:', err);
+      loadLocalFallbackStats();
     } finally {
       setIsLoading(false);
     }

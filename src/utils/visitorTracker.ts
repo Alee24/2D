@@ -69,6 +69,120 @@ const getBrowserName = (): string => {
   return 'Unknown Browser';
 };
 
+const LOCAL_ANALYTICS_KEY = 'secondesk_local_analytics_db';
+
+export const getLocalAnalyticsData = (): any => {
+  try {
+    const raw = localStorage.getItem(LOCAL_ANALYTICS_KEY);
+    if (raw) return JSON.parse(raw);
+  } catch (e) {}
+  return {
+    totalViews: 0,
+    uniqueVisitors: [],
+    dailyStats: {},
+    hourlyStats: {},
+    pageViews: {},
+    pageTimeSpent: {},
+    deviceStats: { desktop: 0, mobile: 0, tablet: 0 },
+    osStats: {},
+    browserStats: {},
+    referrerStats: { Direct: 0, Google: 0, Social: 0, WhatsApp: 0, External: 0 },
+    activeVisitors: {},
+    logs: []
+  };
+};
+
+const updateLocalAnalyticsStore = (action: 'track' | 'ping', payload: any): void => {
+  try {
+    const db = getLocalAnalyticsData();
+    const today = new Date().toISOString().split('T')[0];
+    const hour = new Date().getHours();
+    const nowFormatted = new Date().toISOString().replace('T', ' ').substring(0, 19);
+
+    if (!db.uniqueVisitors) db.uniqueVisitors = [];
+    if (!db.dailyStats) db.dailyStats = {};
+    if (!db.hourlyStats) db.hourlyStats = {};
+    if (!db.pageViews) db.pageViews = {};
+    if (!db.pageTimeSpent) db.pageTimeSpent = {};
+    if (!db.deviceStats) db.deviceStats = { desktop: 0, mobile: 0, tablet: 0 };
+    if (!db.osStats) db.osStats = {};
+    if (!db.browserStats) db.browserStats = {};
+    if (!db.referrerStats) db.referrerStats = { Direct: 0, Google: 0, Social: 0, WhatsApp: 0, External: 0 };
+    if (!db.activeVisitors) db.activeVisitors = {};
+    if (!db.logs) db.logs = [];
+
+    if (action === 'track') {
+      db.totalViews = (db.totalViews || 0) + 1;
+      if (!db.uniqueVisitors.includes(payload.visitorId)) {
+        db.uniqueVisitors.push(payload.visitorId);
+      }
+      if (!db.dailyStats[today]) {
+        db.dailyStats[today] = { views: 0, visitors: [] };
+      }
+      db.dailyStats[today].views += 1;
+      if (!db.dailyStats[today].visitors.includes(payload.visitorId)) {
+        db.dailyStats[today].visitors.push(payload.visitorId);
+      }
+      if (!db.hourlyStats[today]) {
+        db.hourlyStats[today] = Array(24).fill(0);
+      }
+      db.hourlyStats[today][hour] = (db.hourlyStats[today][hour] || 0) + 1;
+      db.pageViews[payload.path] = (db.pageViews[payload.path] || 0) + 1;
+      db.deviceStats[payload.device] = (db.deviceStats[payload.device] || 0) + 1;
+      db.osStats[payload.os] = (db.osStats[payload.os] || 0) + 1;
+      db.browserStats[payload.browser] = (db.browserStats[payload.browser] || 0) + 1;
+      
+      const refLower = (payload.referrer || '').toLowerCase();
+      const refCat = (refLower.includes('google') || refLower.includes('bing')) ? 'Google' 
+        : (refLower.includes('whatsapp') || refLower.includes('wa.me')) ? 'WhatsApp' 
+        : (refLower.includes('instagram') || refLower.includes('facebook') || refLower.includes('tiktok') || refLower.includes('twitter')) ? 'Social' 
+        : payload.referrer !== 'Direct' && payload.referrer ? 'External' : 'Direct';
+      
+      db.referrerStats[refCat] = (db.referrerStats[refCat] || 0) + 1;
+
+      db.logs.unshift({
+        timestamp: nowFormatted,
+        path: payload.path,
+        visitorId: payload.visitorId.substring(0, 8),
+        sessionId: payload.sessionId.substring(0, 8),
+        device: payload.device,
+        os: payload.os,
+        browser: payload.browser,
+        screen: payload.screen,
+        language: payload.language,
+        ip: '127.0.0.***',
+        referrer: payload.referrer,
+        refCategory: refCat
+      });
+      if (db.logs.length > 500) db.logs = db.logs.slice(0, 500);
+    }
+
+    if (payload.timeSpent > 0) {
+      db.pageTimeSpent[payload.path] = (db.pageTimeSpent[payload.path] || 0) + 1;
+    }
+
+    db.activeVisitors[payload.visitorId] = {
+      lastSeen: Math.floor(Date.now() / 1000),
+      path: payload.path,
+      device: payload.device,
+      browser: payload.browser,
+      os: payload.os,
+      timeSpent: payload.timeSpent,
+      ip: '127.0.0.***'
+    };
+
+    // Clean active visitors older than 3 mins
+    const nowSec = Math.floor(Date.now() / 1000);
+    Object.keys(db.activeVisitors).forEach((vid) => {
+      if (nowSec - db.activeVisitors[vid].lastSeen > 180) {
+        delete db.activeVisitors[vid];
+      }
+    });
+
+    localStorage.setItem(LOCAL_ANALYTICS_KEY, JSON.stringify(db));
+  } catch (e) {}
+};
+
 // Send telemetry payload via dual-transport fallback
 const sendTelemetry = (action: 'track' | 'ping', path: string, timeSpentSeconds: number = 0): void => {
   if (path === '/count' || path.startsWith('/api/')) return;
@@ -81,6 +195,23 @@ const sendTelemetry = (action: 'track' | 'ping', path: string, timeSpentSeconds:
   const screen = `${window.screen.width}x${window.screen.height}`;
   const lang = navigator.language || 'en-US';
   const ref = document.referrer ? new URL(document.referrer).hostname : 'Direct';
+
+  const payload = {
+    path,
+    action,
+    visitorId: vId,
+    sessionId: sId,
+    device: dev,
+    os,
+    browser,
+    screen,
+    language: lang,
+    referrer: ref,
+    timeSpent: timeSpentSeconds
+  };
+
+  // Always update local persistent database immediately
+  updateLocalAnalyticsStore(action, payload);
 
   const queryParams = new URLSearchParams({
     action,
@@ -110,19 +241,7 @@ const sendTelemetry = (action: 'track' | 'ping', path: string, timeSpentSeconds:
     fetch('/api/counter.php?action=' + action, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        path,
-        action,
-        visitorId: vId,
-        sessionId: sId,
-        device: dev,
-        os,
-        browser,
-        screen,
-        language: lang,
-        referrer: ref,
-        timeSpent: timeSpentSeconds
-      }),
+      body: JSON.stringify(payload),
       keepalive: true,
     }).catch(() => null);
   } catch (e) {}
