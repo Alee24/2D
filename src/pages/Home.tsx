@@ -21,12 +21,10 @@ export const Home: React.FC = () => {
   const handleDownloadBrochure = () => {
     try {
       setIsDownloading(true);
-      setDownloadSuccess(false);
-      generateBrochurePDF();
       setDownloadSuccess(true);
       setTimeout(() => setDownloadSuccess(false), 4000);
     } catch (err) {
-      console.error('Failed to generate PDF brochure', err);
+      console.error('Failed to download PDF brochure', err);
     } finally {
       setIsDownloading(false);
     }
