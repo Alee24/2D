@@ -436,8 +436,8 @@ export const Header: React.FC = () => {
                     </button>
                     
                     <a
-                      href="/SECONDESK_Official_Brochure_PriceList.pdf?v=20260815"
-                      download="SECONDESK_Official_Brochure_PriceList.pdf"
+                      href="/Brochure.pdf?v=20260815"
+                      download="Brochure.pdf"
                       onClick={() => {
                         setMobileMenuOpen(false);
                       }}

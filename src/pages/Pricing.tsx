@@ -44,8 +44,8 @@ export const Pricing: React.FC = () => {
 
           <div className="flex flex-wrap items-center justify-center gap-4 mt-6">
             <a
-              href="/SECONDESK_Official_Brochure_PriceList.pdf?v=20260815"
-              download="SECONDESK_Official_Brochure_PriceList.pdf"
+              href="/Brochure.pdf?v=20260815"
+              download="Brochure.pdf"
               onClick={() => handleDownload()}
               className="bg-charcoal hover:bg-sand text-white hover:text-charcoal border border-charcoal hover:border-sand font-sans text-xs font-bold uppercase tracking-wider px-6 py-3.5 rounded-lg transition-all flex items-center gap-2 cursor-pointer shadow-sm"
             >

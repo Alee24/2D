@@ -386,14 +386,14 @@ export const generateBrochurePDF = () => {
 
     // Single Clean Download Trigger
     try {
-      doc.save('SECONDESK_Official_Brochure_PriceList.pdf');
+      doc.save('Brochure.pdf');
     } catch (e) {
       console.warn('Standard doc.save failed, triggering blob link fallback', e);
       const pdfBlob = doc.output('blob');
       const blobUrl = URL.createObjectURL(pdfBlob);
       const link = document.createElement('a');
       link.href = blobUrl;
-      link.download = 'SECONDESK_Official_Brochure_PriceList.pdf';
+      link.download = 'Brochure.pdf';
       document.body.appendChild(link);
       link.click();
       setTimeout(() => {
