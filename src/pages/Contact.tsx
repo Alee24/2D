@@ -173,7 +173,7 @@ export const Contact: React.FC = () => {
             <div className="aspect-video w-full bg-concrete border border-concrete">
               <iframe
                 title="Google Map location representation of SECONDESK Nyali HQ"
-                src="https://maps.google.com/maps?q=-4.0278266,39.7171797&hl=en&z=17&output=embed"
+                src="https://maps.google.com/maps?q=Second+Cup+Nyali+Links+Road+Mombasa&hl=en&z=17&iwloc=&output=embed"
                 className="w-full h-full border-0"
                 allowFullScreen={false}
                 loading="lazy"

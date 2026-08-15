@@ -216,7 +216,7 @@ export const locations: LocationData[] = [
     address: 'Links Road, Nyali (located above Second Cup Cafe on the 2nd floor)',
     phone: '+254 719 688 992',
     email: 'info@secondesk.ke',
-    mapEmbedUrl: 'https://maps.google.com/maps?q=-4.0278266,39.7171797&hl=en&z=17&output=embed',
+    mapEmbedUrl: 'https://maps.google.com/maps?q=Second+Cup+Nyali+Links+Road+Mombasa&hl=en&z=17&iwloc=&output=embed',
     mapUrl: 'https://maps.app.goo.gl/9fE9K6GEV4xGvHL68',
     startingPrice: 'KES 17,000 / mo',
     image: workspaceMainImg,
