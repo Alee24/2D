@@ -170,7 +170,7 @@ export const generateBrochurePDF = () => {
         details: [
           'Hourly Rate — KES 1,500 / hr',
           'Half Day Pass — KES 5,000 | Full Day Pass — KES 8,000',
-          'Includes: Studio video bar, magnetic whiteboard, one complimentary hot beverage per guest.'
+          'Includes: 4K presentation screen, studio video bar, magnetic whiteboard, one complimentary hot beverage per guest.'
         ]
       },
       {
@@ -198,8 +198,7 @@ export const generateBrochurePDF = () => {
         details: [
           'Black & White Printing / Copying — KES 15 / page',
           'Color Printing / Copying — KES 50 / page',
-          'High-Resolution Document Scanning — Complimentary for all registered members',
-          'Operating Hours: Mon - Fri (8:00 AM - 8:00 PM), Sat (9:00 AM - 6:00 PM), Sun (Closed)'
+          'High-Resolution Document Scanning — Complimentary for all registered members'
         ]
       }
     ];
@@ -314,16 +313,17 @@ export const generateBrochurePDF = () => {
     doc.setTextColor(colors.lighttext.r, colors.lighttext.g, colors.lighttext.b);
     doc.text(`Address: ${locationCard.address}`, 23, locY + 17);
     doc.text(`Phone: ${locationCard.phone}  |  Email: ${locationCard.email}`, 23, locY + 23);
+    doc.text('Operating Hours: Mon - Fri (8:00 AM - 8:00 PM), Sat (9:00 AM - 6:00 PM), Sun (Closed)', 23, locY + 29);
 
     doc.setFont('helvetica', 'bold');
     doc.setFontSize(9);
     doc.setTextColor(colors.black.r, colors.black.g, colors.black.b);
-    doc.text('Key Amenities & Location Benefits:', 23, locY + 33);
+    doc.text('Key Amenities & Location Benefits:', 23, locY + 39);
 
     doc.setFont('helvetica', 'normal');
     doc.setFontSize(8.5);
     doc.setTextColor(colors.textgray.r, colors.textgray.g, colors.textgray.b);
-    let locFeatureY = locY + 40;
+    let locFeatureY = locY + 46;
     locationCard.features.forEach((feat) => {
       doc.setFillColor(colors.red.r, colors.red.g, colors.red.b);
       doc.rect(24, locFeatureY - 2, 2.5, 0.8, 'F');
@@ -347,7 +347,7 @@ export const generateBrochurePDF = () => {
     const infrastructureBullets = [
       '• Fast dedicated internet with symmetrical redundant backup array.',
       '• 100% full electricity backup generator systems with automatic ATS failover.',
-      '• Keycard security integration and CCTV surveillance.',
+      '• Biometric keycard security integration and CCTV surveillance.',
       '• Fully-serviced reception lounge, high-end boardrooms, and executive facilities.',
       '• Fresh coffee & tea bar with direct service from Second Cup downstairs.'
     ];
