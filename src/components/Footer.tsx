@@ -161,9 +161,8 @@ export const Footer: React.FC = () => {
                 <li key={link.name}>
                   {link.path === 'download_pdf_brochure' ? (
                     <a
-                      href="/SECONDESK_Official_Brochure_PriceList.pdf"
+                      href="/SECONDESK_Official_Brochure_PriceList.pdf?v=20260815"
                       download="SECONDESK_Official_Brochure_PriceList.pdf"
-                      onClick={() => generateBrochurePDF()}
                       className="font-sans text-sm text-white/60 hover:text-white transition-colors cursor-pointer text-left inline-block"
                     >
                       {link.name}

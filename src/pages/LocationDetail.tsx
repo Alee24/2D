@@ -419,9 +419,8 @@ export const LocationDetail: React.FC = () => {
           </button>
 
           <a
-            href="/SECONDESK_Official_Brochure_PriceList.pdf"
+            href="/SECONDESK_Official_Brochure_PriceList.pdf?v=20260815"
             download="SECONDESK_Official_Brochure_PriceList.pdf"
-            onClick={() => generateBrochurePDF()}
             className="w-full border border-charcoal/30 hover:border-charcoal text-charcoal bg-white font-sans text-xs font-bold uppercase tracking-widest py-3.5 flex items-center justify-center gap-2 transition-all cursor-pointer shadow-xs"
           >
             <Download className="w-4 h-4" />

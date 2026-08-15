@@ -391,7 +391,7 @@ export const Home: React.FC = () => {
                   {/* Dynamic feedback CTA button */}
                   <div className="pt-2">
                     <a
-                      href="/SECONDESK_Official_Brochure_PriceList.pdf"
+                      href="/SECONDESK_Official_Brochure_PriceList.pdf?v=20260815"
                       download="SECONDESK_Official_Brochure_PriceList.pdf"
                       onClick={() => handleDownloadBrochure()}
                       className={`w-full font-sans text-xs font-bold uppercase tracking-widest px-6 py-4.5 transition-all flex items-center justify-center gap-3 cursor-pointer shadow-md ${
