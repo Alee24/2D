@@ -225,7 +225,7 @@ export const Contact: React.FC = () => {
               </div>
               <h4 className="font-display font-semibold text-emerald-950 text-base">Message Sent Successfully</h4>
               <p className="font-sans text-xs text-emerald-800 leading-relaxed">
-                Thank you for reaching out. A SECONDESK customer success executive has received your inquiry and will follow up within 2 business hours.
+                Thank you for reaching out. A confirmation email has been sent to your email address. A SECONDESK customer success executive will follow up within 2 business hours.
               </p>
               <button
                 onClick={() => setSubmitted(false)}

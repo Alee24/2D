@@ -94,9 +94,13 @@ export const BookTour: React.FC = () => {
                 <Check className="w-6 h-6 animate-pulse" />
               </div>
               <h2 className="font-display font-light text-3xl text-charcoal tracking-tight">Your Tour is Confirmed</h2>
-              <p className="font-sans text-xs text-charcoal/60 max-w-sm mx-auto">
-                Thank you, {formData.name}. We have secured your private spatial walkthrough schedule.
+              <p className="font-sans text-xs text-charcoal/70 max-w-md mx-auto leading-relaxed">
+                Thank you, <strong className="text-charcoal font-semibold">{formData.name}</strong>. We have secured your private spatial walkthrough schedule.
               </p>
+              <div className="inline-flex items-center gap-2 bg-emerald-50 border border-emerald-200/80 px-4 py-2 rounded-full text-[11px] font-sans text-emerald-900 mx-auto">
+                <Mail className="w-3.5 h-3.5 text-emerald-700 shrink-0" />
+                <span>Confirmation pass emailed to <strong className="font-semibold">{formData.email}</strong> (check inbox/spam)</span>
+              </div>
             </div>
 
             {/* Print-Receipt-Style Visual Ticket */}

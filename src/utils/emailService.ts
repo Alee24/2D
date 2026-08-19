@@ -57,6 +57,10 @@ export const dispatchEmail = async (payload: EmailPayload): Promise<void> => {
     formData.append('_template', 'table');
     if (email) {
       formData.append('_replyto', email);
+      formData.append(
+        '_autoresponse',
+        `Hello ${name},\n\nThank you for scheduling a visit with SECONDESK. Your request has been received and your spatial tour itinerary pass is confirmed!\n\nItinerary Details:\n- Guest Name: ${name}\n- Preferred Tour Date: ${date}\n- Host Node: ${location}\n- Company: ${company}\n\nOur team is looking forward to hosting you for a 1-on-1 spatial walkthrough, speed diagnostics, and coffee tasting.\n\nFor any inquiries or to reschedule, call or WhatsApp our reception directly at +254 719 688 992.\n\nBest regards,\nSECONDESK Team\nhttps://secondesk.ke`
+      );
     }
 
     Object.entries(payload.fields).forEach(([key, val]) => {

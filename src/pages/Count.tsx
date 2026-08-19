@@ -777,9 +777,10 @@ export const Count: React.FC = () => {
             </div>
             <div className="space-y-3 font-mono text-xs">
               {(() => {
-                const totalRef = Object.values(referrerStats).reduce((a, b) => a + b, 0) || 1;
+                const totalRef: number = (Object.values(referrerStats) as any[]).reduce((a: number, b: any) => a + (Number(b) || 0), 0) || 1;
                 return Object.entries(referrerStats).map(([cat, count], i) => {
-                  const pct = Math.round((count / totalRef) * 100);
+                  const countNum: number = Number(count) || 0;
+                  const pct: number = Math.round((countNum / totalRef) * 100);
                   return (
                     <div key={i} className="space-y-1">
                       <div className="flex justify-between text-white/80">
